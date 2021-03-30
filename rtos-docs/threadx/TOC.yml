@@ -1,0 +1,81 @@
+- name: Documentación de Azure RTOS ThreadX
+  href: index.yml
+- name: Introducción a ThreadX
+  href: overview-threadx.md
+- name: Manual del usuario de ThreadX
+  expanded: true
+  items:
+    - name: Acerca de esta guía
+      href: about-this-guide.md
+    - name: 'Cap. 1: Introducción a ThreadX'
+      href: chapter1.md
+    - name: 'Cap. 2: Instalación y uso de ThreadX'
+      href: chapter2.md
+    - name: 'Cap. 3: Componentes funcionales de ThreadX'
+      href: chapter3.md
+    - name: 'Cap. 4: Descripción de los servicios de ThreadX'
+      href: chapter4.md
+    - name: 'Cap. 5: Controladores de dispositivos para ThreadX'
+      href: chapter5.md
+    - name: 'Cap. 6: Sistema de demostración de ThreadX'
+      href: chapter6.md
+    - name: 'Apéndice A: Servicios de ThreadX API'
+      href: appendix-a.md
+    - name: 'Apéndice B: Constantes de ThreadX'
+      href: appendix-b.md
+    - name: 'Apéndice C: Tipos de datos de ThreadX'
+      href: appendix-c.md
+    - name: 'Apéndice D: Códigos de caracteres ASCII'
+      href: appendix-d.md
+- name: Manual del usuario de ThreadX SMP
+  items:
+    - name: Acerca de esta guía
+      href: ./threadx-smp/about-this-guide.md
+    - name: 'Cap. 1: Introducción a ThreadX SMP'
+      href: ./threadx-smp/chapter1.md
+    - name: 'Cap. 2: Instalación y uso de ThreadX SMP'
+      href: ./threadx-smp/chapter2.md
+    - name: 'Cap. 3: Componentes funcionales de ThreadX SMP'
+      href: ./threadx-smp/chapter3.md
+    - name: 'Cap. 4: Descripción de los servicios de ThreadX SMP'
+      href: ./threadx-smp/chapter4.md
+    - name: 'Cap. 5: Controladores de dispositivos para ThreadX SMP'
+      href: ./threadx-smp/chapter5.md
+    - name: 'Cap. 6: Sistema de demostración de ThreadX SMP'
+      href: ./threadx-smp/chapter6.md
+    - name: 'Apéndice A: Servicios de ThreadX SMP API'
+      href: ./threadx-smp/appendix-a.md
+    - name: 'Apéndice B: Constantes de ThreadX SMP'
+      href: ./threadx-smp/appendix-b.md
+    - name: 'Apéndice C: Tipos de datos de ThreadX SMP'
+      href: ./threadx-smp/appendix-c.md
+    - name: 'Apéndice D: Códigos de caracteres ASCII'
+      href: ./threadx-smp/appendix-d.md
+- name: Repositorio de ThreadX
+  href: 'https://github.com/azure-rtos/threadx'
+- name: Servicios relacionados
+  items:
+    - name: 'Defender para IoT: RTOS (versión preliminar)'
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Componentes de Microsoft Azure RTOS
+  items:
+    - name: Microsoft Azure RTOS
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: Módulos de ThreadX
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUIX
+      href: ../guix/index.yml
+    - name: FileX
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: TraceX
+      href: ../tracex/index.yml

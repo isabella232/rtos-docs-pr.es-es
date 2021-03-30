@@ -1,0 +1,25 @@
+### YamlMime:Landing
+title: Documentación de Azure RTOS ThreadX Modules
+summary: El componente Azure RTOS ThreadX Modules proporciona una infraestructura para que las aplicaciones carguen dinámicamente módulos que se compilan de forma independiente de la parte residente de la aplicación.
+metadata:
+  title: ¿Qué es Azure RTOS ThreadX Modules?
+  description: Azure RTOS ThreadX Modules proporciona módulos cargados dinámicamente que se compilan de forma independiente de la aplicación.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 07/10/2020
+  ms.openlocfilehash: 40958716dfaa14813279fbce3b63d696e3dc21d2
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: HT
+  ms.contentlocale: es-ES
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797606"
+landingContent:
+- title: Introducción a Azure RTOS ThreadX Modules
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ¿Qué es Azure RTOS ThreadX Modules?
+      url: chapter1.md

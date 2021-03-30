@@ -1,0 +1,31 @@
+### YamlMime:Landing
+title: Documentación de Azure RTOS LevelX
+summary: Azure RTOS LevelX proporciona instalaciones de redistribución del uso de flash NAND y NOR en aplicaciones insertadas.
+metadata:
+  title: ¿Qué es Azure RTOS LevelX?
+  description: Azure RTOS LevelX proporciona instalaciones de redistribución del uso de flash NAND y NOR en aplicaciones insertadas.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 07/10/2020
+  ms.openlocfilehash: 27ce4d34d53b2a6daec651dd83c648024aad0291
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: HT
+  ms.contentlocale: es-ES
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797638"
+landingContent:
+- title: Introducción a Azure RTOS LevelX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ¿Qué es Azure RTOS LevelX?
+      url: chapter1.md
+- title: Instalación y uso de Azure RTOS LevelX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Manual del usuario de Azure RTOS LevelX
+      url: chapter2.md

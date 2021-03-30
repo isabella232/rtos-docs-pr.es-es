@@ -1,0 +1,86 @@
+- name: Documentación de Azure RTOS USBX
+  href: index.yml
+- name: Introducción a USBX
+  href: overview-usbx.md
+- name: Manual del usuario de la pila del dispositivo USBX
+  items:
+    - name: Acerca de esta guía
+      href: usbx-device-stack-about.md
+    - name: 'Cap. 1: Introducción a USBX'
+      href: usbx-device-stack-1.md
+    - name: 'Cap. 2: Instalación de USBX'
+      href: usbx-device-stack-2.md
+    - name: 'Cap. 3: Componentes funcionales de la pila del dispositivo USBX'
+      href: usbx-device-stack-3.md
+    - name: 'Cap. 4: Descripción de los servicios del dispositivo USBX'
+      href: usbx-device-stack-4.md
+    - name: 'Cap. 5: Consideraciones acerca de la clase del dispositivo USBX'
+      href: usbx-device-stack-5.md
+- name: Complemento de pila del dispositivo USBX
+  items:
+    - name: 'Cap. 1: Introducción al complemento del manual del usuario de la pila del dispositivo USBX'
+      href: usbx-device-stack-supplemental-1.md
+    - name: 'Cap. 2: Consideraciones acerca de la clase del dispositivo USBX'
+      href: usbx-device-stack-supplemental-2.md
+    - name: 'Cap. 3: Consideraciones acerca de la clase DPUMP de USBX'
+      href: usbx-device-stack-supplemental-3.md
+    - name: 'Cap. 4: Implementación de USBX Pictbridge'
+      href: usbx-device-stack-supplemental-4.md
+    - name: 'Cap. 5: USBX OTG'
+      href: usbx-device-stack-supplemental-5.md
+- name: Manual del usuario de la pila de host de USBX
+  items:
+    - name: Acerca de esta guía
+      href: usbx-host-stack-about.md
+    - name: 'Cap. 1: Introducción a USBX'
+      href: usbx-host-stack-1.md
+    - name: 'Cap. 2: Instalación de USBX'
+      href: usbx-host-stack-2.md
+    - name: 'Cap. 3: Componentes funcionales de la pila del host USBX'
+      href: usbx-host-stack-3.md
+    - name: 'Cap. 4: Descripción de los servicios de host de USBX'
+      href: usbx-host-stack-4.md
+    - name: 'Cap. 5: API de clases de host de USBX'
+      href: usbx-host-stack-5.md
+    - name: 'Cap. 6: Uso de la clase CDC-ECM de USBX'
+      href: usbx-host-stack-6.md
+- name: Suplemento de la pila de host de USBX
+  items:
+    - name: 'Cap. 1: Introducción al complemento del manual del usuario de la pila del host USBX'
+      href: usbx-host-stack-supplemental-1.md
+    - name: 'Cap. 2: API de clases de host de USBX'
+      href: usbx-host-stack-supplemental-2.md
+    - name: 'Cap. 3: Consideraciones acerca de la clase DPUMP de USBX'
+      href: usbx-host-stack-supplemental-3.md
+    - name: 'Cap. 4: Implementación de USBX Pictbridge'
+      href: usbx-host-stack-supplemental-4.md
+    - name: 'Cap. 5: USBX OTG'
+      href: usbx-host-stack-supplemental-5.md
+- name: Repositorio de USBX
+  href: 'https://github.com/azure-rtos/usbx/'
+- name: Servicios relacionados
+  items:
+    - name: 'Defender para IoT: RTOS (versión preliminar)'
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Componentes de Microsoft Azure RTOS
+  items:
+    - name: Microsoft Azure RTOS
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: Módulos de ThreadX
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUIX
+      href: ../guix/index.yml
+    - name: FileX
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: TraceX
+      href: ../tracex/index.yml
