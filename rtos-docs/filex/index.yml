@@ -1,0 +1,31 @@
+### YamlMime:Landing
+title: Documentación de Azure RTOS FileX
+summary: Azure RTOS FileX es un sistema de archivos de alto rendimiento compatible con la tabla de asignación de archivos (FAT) de alto rendimiento que está totalmente integrado con Azure RTO ThreadX y está disponible para todos los procesadores compatibles. Al igual que Azure RTO ThreadX, Azure RTOS FileX está diseñado para ocupar poca superficie de memoria y proporcionar un alto rendimiento, lo que lo convierte en una opción ideal para las actuales aplicaciones profundamente insertadas, que requieren operaciones de administración de archivos. FileX admite la mayoría de los soportes físicos, como la memoria RAM, Azure RTOS USBX, tarjeta SD y memorias Flash NAND/NOR a través de Azure RTO LevelX.
+metadata:
+  title: ¿Qué es Azure RTOS FileX?
+  description: Azure RTOS FileX es un sistema de archivos de alto rendimiento compatible con la tabla de asignación de archivos (FAT) de alto rendimiento que está totalmente integrado con Azure RTO ThreadX y está disponible para todos los procesadores compatibles. Al igual que Azure RTO ThreadX, Azure RTOS FileX está diseñado para ocupar poca superficie de memoria y proporcionar un alto rendimiento, lo que lo convierte en una opción ideal para las actuales aplicaciones profundamente insertadas, que requieren operaciones de administración de archivos. FileX admite la mayoría de los soportes físicos, como la memoria RAM, Azure RTOS USBX, tarjeta SD y memorias Flash NAND/NOR a través de Azure RTO LevelX.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 05/19/2020
+  ms.openlocfilehash: bf7fd9f842c363b753f8acd52f54b9f8e462616c
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: HT
+  ms.contentlocale: es-ES
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797650"
+landingContent:
+- title: Introducción a Azure RTOS FileX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ¿Qué es Azure RTOS FileX?
+      url: overview-filex.md
+- title: Primeros pasos con Azure RTOS FileX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Manual del usuario de Azure RTOS FileX
+      url: about-this-guide.md

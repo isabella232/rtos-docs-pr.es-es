@@ -1,0 +1,33 @@
+### YamlMime:Landing
+title: Documentación de Azure RTOS USBX
+summary: Azure RTOS USBX es un host USB de alto rendimiento, un dispositivo y una pila insertada "on-the-go" (OTG). Azure RTOS USBX está totalmente integrado con Azure RTOS ThreadX y está disponible para todos los procesadores compatibles con Azure RTOS ThreadX.
+metadata:
+  title: ¿Qué es Azure RTOS USBX?
+  description: Azure RTOS USBX es un host USB de alto rendimiento, un dispositivo y una pila insertada "on-the-go" (OTG). Azure RTOS USBX está totalmente integrado con Azure RTOS ThreadX y está disponible para todos los procesadores compatibles con Azure RTOS ThreadX.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 05ff41048304d3cb66b74cbf342de664e8ad88ab
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: HT
+  ms.contentlocale: es-ES
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797691"
+landingContent:
+- title: Introducción a Azure RTOS USBX
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ¿Qué es Azure RTOS USBX?
+      url: overview-usbx.md
+- title: Primeros pasos con Azure RTOS USBX
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Manual del usuario de la pila del dispositivo Azure RTOS USBX
+      url: usbx-device-stack-about.md
+    - text: Manual del usuario de la pila del host Azure RTOS USBX
+      url: usbx-host-stack-about.md

@@ -1,0 +1,93 @@
+- name: Documentación de Azure RTOS GUIX
+  href: index.yml
+- name: Introducción a GUIX
+  href: overview-guix.md
+- name: Guía de inicio rápido de GUIX Studio
+  href: guix-studio-quick-start.md
+- name: Manual del usuario de GUIX
+  expanded: true
+  items:
+    - name: Acerca de esta guía
+      href: about-guix.md
+    - name: 'Cap. 1: Introducción a GUIX'
+      href: chapter-1.md
+    - name: 'Cap. 2: Instalación y uso de GUIX'
+      href: chapter-2.md
+    - name: 'Cap. 3: Introducción funcional a GUIX'
+      href: chapter-3.md
+    - name: 'Cap. 4: Descripción de los servicios de GUIX'
+      href: chapter-4.md
+    - name: 'Cap. 5: Controladores de pantalla de GUIX'
+      href: chapter-5.md
+    - name: Ejemplo de GUIX
+      href: guix-example.md
+    - name: 'Apéndice A: Definiciones de colores de GUIX'
+      href: appendix-a.md
+    - name: 'Apéndice B: Formatos de colores de GUIX'
+      href: appendix-b.md
+    - name: 'Apéndice C: Estilos de widgets de GUIX'
+      href: appendix-c.md
+    - name: 'Apéndice D: Atributos de degradados, lienzos y pinceles de GUIX'
+      href: appendix-d.md
+    - name: 'Apéndice E: Descripción de eventos de GUIX'
+      href: appendix-e.md
+    - name: 'Apéndice F: Servicios de enlace de GUIX RTOS'
+      href: appendix-f.md
+    - name: 'Apéndice G: Estructura de fuentes de GUIX'
+      href: appendix-g.md
+    - name: 'Apéndice H: Marcas de configuración de tiempo de compilación de GUIX'
+      href: appendix-h.md
+    - name: 'Apéndice I: Estructuras de información de GUIX'
+      href: appendix-i.md
+- name: Manual del usuario de GUIX Studio
+  items:
+    - name: Acerca de GUIX Studio
+      href: about-guix-studio.md
+    - name: 'Cap. 1: Introducción a GUIX Studio'
+      href: guix-studio-1.md
+    - name: 'Cap. 2: Instalación y uso de GUIX Studio'
+      href: guix-studio-2.md
+    - name: 'Cap. 3: Descripción de GUIX Studio'
+      href: guix-studio-3.md
+    - name: 'Cap. 4: Recursos de GUIX Studio'
+      href: guix-studio-4.md
+    - name: 'Cap. 5: Diseñador de pantallas de GUIX Studio'
+      href: guix-studio-5.md
+    - name: 'Cap. 6: Código generado por GUIX Studio'
+      href: guix-studio-6.md
+    - name: 'Cap. 7: Definición de flujo de pantalla'
+      href: guix-studio-7.md
+    - name: 'Cap. 8: Notas sobre la edición de tipos de widgets específicos'
+      href: guix-studio-8.md
+    - name: 'Cap. 9: Línea de comandos de GUIX Studio'
+      href: guix-studio-9.md
+    - name: 'Cap. 10: Proyecto de ejemplo simple'
+      href: guix-studio-10.md
+- name: Repositorio de GUIX
+  href: 'https://github.com/azure-rtos/guix'
+- name: Servicios relacionados
+  items:
+    - name: 'Defender para IoT: RTOS (versión preliminar)'
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Componentes de Microsoft Azure RTOS
+  items:
+    - name: Microsoft Azure RTOS
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: Módulos de ThreadX
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUIX
+      href: ../guix/index.yml
+    - name: FileX
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: TraceX
+      href: ../tracex/index.yml

@@ -1,0 +1,10 @@
+- name: Manual del usuario de Azure RTOS NetX Duo NAT
+  items:
+    - name: 'Cap. 1: Introducción a NAT'
+      href: chapter1.md
+    - name: 'Cap. 2: Instalación y uso de NAT'
+      href: chapter2.md
+    - name: 'Cap. 3: Opciones de configuración de NAT'
+      href: chapter3.md
+    - name: 'Cap. 4: Descripción de los servicios de NAT'
+      href: chapter4.md

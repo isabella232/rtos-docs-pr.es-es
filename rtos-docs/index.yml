@@ -1,0 +1,121 @@
+### YamlMime:Hub
+title: Documentación de Microsoft Azure RTOS
+summary: Explore la documentación de Azure RTOS.
+brand: azure
+metadata:
+  title: Centro de documentación de Microsoft Azure RTOS
+  description: Explore la documentación de Azure RTOS.
+  ms.service: rtos
+  ms.topic: hub-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 12f6535be21d072fd9500c43d7a10f5f7bf0b10a
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: HT
+  ms.contentlocale: es-ES
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104797642"
+highlightedContent:
+  items:
+  - title: ¿Qué es Azure RTOS?
+    itemType: overview
+    url: overview-rtos.md
+  - title: Introducción al desarrollo de dispositivos insertados
+    itemType: quickstart
+    url: https://docs.microsoft.com/azure/iot-develop/quickstart-device-development
+  - title: Descarga del código fuente en GitHub
+    itemType: download
+    url: https://github.com/azure-rtos/
+  - title: 'Defender para IoT: RTOS (versión preliminar)'
+    itemType: overview
+    url: https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos
+conceptualContent:
+  title: Azure RTOS
+  summary: Cree aplicaciones de IoT y dispositivos perimetrales insertados profundamente.
+  items:
+  - title: Creación de una aplicación insertada
+    links:
+    - url: ./threadx/overview-threadx.md
+      itemType: overview
+      text: ¿Qué es Azure RTOS ThreadX?
+    - url: ./threadx/about-this-guide.md
+      itemType: how-to-guide
+      text: Exploración del manual del usuario
+    footerLink:
+      url: ./threadx/index.yml
+      text: Ver más
+  - title: Habilitación de la administración de archivos
+    links:
+    - url: ./filex/overview-filex.md
+      itemType: overview
+      text: ¿Qué es Azure RTOS FileX?
+    - url: ./filex/about-this-guide.md
+      itemType: how-to-guide
+      text: Exploración del manual del usuario
+    footerLink:
+      url: ./filex/index.yml
+      text: Ver más
+  - title: Integración de elementos gráficos
+    links:
+    - url: ./guix/overview-guix.md
+      itemType: overview
+      text: ¿Qué es Azure RTOS GUIX?
+    - url: ./guix/about-guix.md
+      itemType: how-to-guide
+      text: Exploración del manual del usuario
+    footerLink:
+      url: ./guix/index.yml
+      text: Ver más
+  - title: Depuración y resolución de problemas
+    links:
+    - url: ./tracex/overview-tracex.md
+      itemType: overview
+      text: ¿Qué es Azure RTOS TraceX?
+    footerLink:
+      url: ./tracex/index.yml
+      text: Ver más
+  - title: Habilitar la conectividad de red
+    links:
+    - url: ./netx/overview-netx.md
+      itemType: overview
+      text: ¿Qué es Azure RTOS NetX?
+    - url: ./netx/about-this-guide.md
+      itemType: how-to-guide
+      text: Exploración del manual del usuario
+    footerLink:
+      url: ./netx/index.yml
+      text: Ver más
+  - title: Habilitación de la conectividad de red y las funcionalidades de IPv6
+    links:
+    - url: ./netx-duo/overview-netx-duo.md
+      itemType: overview
+      text: ¿Qué es Azure RTOS NetX Duo?
+    - url: ./netx-duo/about-this-guide.md
+      itemType: how-to-guide
+      text: Exploración del manual del usuario
+    footerLink:
+      url: ./netx-duo/index.yml
+      text: Ver más
+  - title: Interfaz con dispositivos USB
+    links:
+    - url: ./usbx/overview-usbx.md
+      itemType: overview
+      text: ¿Qué es Azure RTOS USBX?
+    - url: ./usbx/usbx-device-stack-about.md
+      itemType: how-to-guide
+      text: Exploración del manual de usuario de la pila del dispositivo
+    - url: ./usbx/usbx-host-stack-about.md
+      itemType: how-to-guide
+      text: Exploración del manual de usuario de la pila del host
+    footerLink:
+      url: ./usbx/index.yml
+      text: Ver más
+  - title: Proporcionar redistribución del uso de la memoria Flash
+    links:
+    - url: ./levelx/chapter1.md
+      itemType: overview
+      text: ¿Qué es Azure RTOS LevelX?
+    footerLink:
+      url: ./levelx/index.yml
+      text: Ver más
