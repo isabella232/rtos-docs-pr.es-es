@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 468f1dc8a8334dc89064594b29dc8cfabd7d8fae
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 347bd83fa8c72ced2e8678a92ec5c5f8393c136d
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815373"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550208"
 ---
 # <a name="chapter-3-functional-description-of-azure-rtos-netx-secure-dtls"></a>Capítulo 3: Descripción funcional del servicio DTLS de Azure RTOS NetX Secure
 
@@ -46,7 +46,7 @@ Cualquier registro DTLS válido debe tener un encabezado DTLS, como se muestra e
 
 Los campos del encabezado de registro TLS se definen de la siguiente manera:
 
-| Campo de encabezado TLS | Propósito  |
+| Campo de encabezado TLS | Fin  |
 | ---------------- | --------- |
 | **Tipo de mensaje de 8 bits** | Este campo contiene el tipo de registro DTLS que se está enviando. Los tipos válidos son los siguientes:<br />- ChangeCipherSpec: 0x14<br />- Alert: 0x15<br />- Handshake: 0x16<br />- ApplicationData: 0x17<br /> |
 | **Versión del protocolo de 16 bits** | Este campo contiene la versión del protocolo DTLS. Los valores válidos son los siguientes:<br />- DTLS 1.1: 0xFEFD |
@@ -64,14 +64,14 @@ Cualquier registro de protocolo de enlace DTLS válido debe tener un encabezado 
 
 Los campos del encabezado de registro de protocolo de enlace DTLS se definen de la siguiente manera:
 
-| Campo de encabezado TLS | Propósito |
+| Campo de encabezado TLS | Fin  |
 | ---------------- | ------------------------------------------------ |
 | **Tipo de mensaje de 8 bits** | Este campo contiene el tipo de registro DTLS que se está enviando. Los tipos válidos son los siguientes:<br />- ChangeCipherSpec: 0x14<br />- Alert: 0x15<br />- Handshake: 0x16<br />- ApplicationData: 0x17 |
 |  **Época de 16 bits** | Este campo contiene la “época” de DTLS, que es un contador que se incrementa cada vez que se cambia el estado de cifrado (por ejemplo, al generar nuevas claves de sesión). |
 |  **Número de secuencia de 48 bits** | Este campo contiene un número de secuencia que identifica este registro en particular. Lo usa DTLS para mantener el orden de los registros y comprobar la necesidad de retransmisión. |
 |  **Versión del protocolo de 16 bits** | Este campo contiene la versión del protocolo DTLS. Los valores válidos son los siguientes:<br />- DTLS 1.1: 0xFEFD |
 | **Longitud de 16 bits** | Este campo contiene la longitud de los datos encapsulados en el registro DTLS. |
-| **Tipo de protocolo de enlace de 8 bits** | Este campo contiene el tipo de mensaje del protocolo de enlace. Los valores válidos son los siguientes:<br />- HelloRequest: 0x00<br />- ClientHello: 0x01<br />- ServerHello: 0x02<br />- Certificate: 0x0B<br />- ServerKeyExchange: 0x0C<br />- CertificateRequest: 0x0D<br />- ServerHelloDone: 0x0E<br />- CertificateVerify: 0x0F<br />- ClientKeyExchange: 0x10<br />- Finalizado | 0x14 |
+| **Tipo de protocolo de enlace de 8 bits** | Este campo contiene el tipo de mensaje del protocolo de enlace. Los valores válidos son los siguientes:<br />- HelloRequest: 0x00<br />- ClientHello: 0x01<br />- ServerHello: 0x02<br />- Certificate: 0x0B<br />- ServerKeyExchange: 0x0C<br />- CertificateRequest: 0x0D<br />- ServerHelloDone: 0x0E<br />- CertificateVerify: 0x0F<br />- ClientKeyExchange: 0x10<br />- Finished: 0x14 |
 | **Longitud de 24 bits** | Este campo contiene la longitud de los datos del mensaje del protocolo de enlace. |
 | **Número de secuencia de 16 bits** | Este campo contiene un número de secuencia. |
 
