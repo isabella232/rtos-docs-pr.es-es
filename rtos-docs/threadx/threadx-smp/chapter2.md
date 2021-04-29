@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 53d73789d93cac7bed241a54b1dde20b8610ef13
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: cc352ebd7965c84c341d25dfa7bff2671dfb5e66
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815098"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550259"
 ---
 # <a name="chapter-2---installation--use-of-azure-rtos-threadx-smp"></a>Capítulo 2: Instalación y uso de Azure RTOS ThreadX SMP
 
@@ -23,7 +23,7 @@ El software insertado se suele desarrollar en equipos host con Windows o Linux (
 
 Normalmente, la descarga en el destino se realiza desde el depurador de la herramienta de desarrollo. Después de la descarga, el depurador es responsable de proporcionar el control de ejecución de destino (ir, detener, punto de interrupción, etc.), así como el acceso a los registros de memoria y del procesador.
 
-La mayoría de los depuradores de las herramientas de desarrollo se comunican con el hardware de destino mediante conexiones de depuración en el chip (OCD), como JTAG (IEEE 1149.1) y el modo de depuración en segundo plano (BDM). Los depuradores también se comunican con el hardware de destino mediante conexiones de emulación en el circuito (ICE). Las conexiones OCD e ICE proporcionan soluciones sólidas con una intrusión mínima en el software residente de destino.
+La mayoría de los depuradores de herramientas de desarrollo se comunican con el hardware de destino mediante conexiones de depuración en chip (OCD), como JTAG (IEEE 1149.1) y el modo de depuración en segundo plano (BDM). Los depuradores también se comunican con el hardware de destino mediante conexiones de emulación en el circuito (ICE). Las conexiones OCD e ICE proporcionan soluciones sólidas con una intrusión mínima en el software residente de destino.
 
 En cuanto a los recursos utilizados en el host, el código fuente de ThreadX SMP se entrega en formato ASCII y requiere aproximadamente 1 MByte de espacio en el disco duro del equipo host.
 
@@ -51,7 +51,7 @@ En este PDF se proporciona un sencillo procedimiento de cuatro pasos para empeza
 
 Archivo de texto que contiene información específica sobre el puerto ThreadX SMP, incluida la información sobre el procesador de destino y las herramientas de desarrollo.
 
-|                 |                     |
+| Herramienta | Descripción |
 | -------------- | ------------------------------------------------------------------------------------------------- |
 | **tx_api.h**  | Archivo de encabezado de C que contiene todas las equivalencias del sistema, las estructuras de datos y los prototipos del servicio.             |
 | **tx_port.h** | Archivo de encabezado de C que contiene todas las definiciones y estructuras de datos específicos de la herramienta de desarrollo y del destino. |
@@ -131,7 +131,7 @@ void my_thread_entry(ULONG thread_input)
 
 Aunque este es un ejemplo sencillo, proporciona una buena plantilla para el desarrollo de aplicaciones reales. Una vez más, vea el archivo de ***readme_threadx.txt*** para obtener más detalles.
 
-## <a name="troubleshooting"></a>Solución de problemas
+## <a name="troubleshooting"></a>Solucionar problemas
 
 Cada puerto de ThreadX SMP se entrega con una aplicación de demostración. Siempre es una buena idea iniciar en primer lugar la ejecución del sistema de demostración, ya sea en el hardware de destino real o en un entorno simulado.
 
