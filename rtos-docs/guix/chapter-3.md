@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2057b86e6f44912fe8ca349cdf0ad2cc10f5c4cd
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 53ffc900debd3bfaa1a38d792ddf294b2ce92461
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815521"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550310"
 ---
 # <a name="chapter-3---functional-overview-of-guix"></a>Capítulo 3: Introducción funcional a GUIX
 
@@ -292,7 +292,7 @@ Los servicios de GUIX que requieren servicios de asignación y desasignación de
 
   - Uso de widgets de texto con GX_STYLE_TEXT_COPY.
 
-  - Funciones de utilidad de cambio de tamaño y rotación del mapa de píxeles en tiempo de ejecución.
+  - Funciones de utilidad de cambio de tamaño y rotación de mapa de píxeles en tiempo de ejecución.
   - Asignación de bloques de control de pantalla y de widget en tiempo de ejecución.
 
 En el caso de las aplicaciones más pequeñas, los recursos de GUIX se suelen compilar y vincular estáticamente como parte de la imagen de aplicación, y no es necesaria la instalación de recursos binarios. Los recursos binarios permiten que una aplicación instale recursos (fuentes, imágenes, idiomas) en tiempo de ejecución cargados desde alguna ubicación de almacenamiento, como una unidad flash o una dirección URL.
@@ -310,7 +310,7 @@ Por último, los bloques de control de las pantallas y los widgets de GUIX se pu
 
 Las API de GUIX se dividen y se organizan en varios grupos básicos que se corresponden con los componentes fundamentales del sistema de GUIX. A continuación se indican los componentes fundamentales:
 
-| <!-- -->    | <!-- -->    |
+| Componentes  | Descripción  |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | GX_SYSTEM  | Es el componente de sistema de GUIX, responsable de la inicialización, los eventos, los temporizadores, las tablas de cadenas y la administración de la jerarquía de widgets visibles.                                                                                                                                                                                                                                                                      |
 | GX_CANVAS  | Es un área de dibujo. Un lienzo puede ser una abstracción fina del búfer de cuadros de hardware o también podría ser directamente un lienzo de memoria. El tipo de lienzo viene determinado por los parámetros que se pasan a la función de API gx_canvas_create.                                                                                                                                                                                   |
@@ -988,7 +988,7 @@ De manera predeterminada, una ventana raíz no puede moverse y, en el caso más 
 Si se puede mover una ventana raíz, no cambia su posición en el lienzo como haría una ventana secundaria, sino que mueve el propio lienzo.
 Esta característica permite a la ventana raíz de GUIX aprovechar el hardware compatible con varios búferes de cuadros con registros de desplazamiento de hardware.
 
-### <a name="background"></a>Información previa 
+### <a name="background"></a>Fondo 
 
 Los fondos de las ventanas son colores sólidos o imágenes de mapa de bits. Hay un fondo de ventana predeterminado en el nivel de sistema que proporciona el valor predeterminado para el conjunto inicial de ventanas. Por supuesto, cualquier fondo de ventana se puede cambiar a través de las API de GUIX.
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 640d9ed4c8037d3af6c5f45158c9496ad1258a3c
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 0ebcebdd2b227ed8d9ccf8b3078b716f90f35bef
+ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550106"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104814426"
 ---
 # <a name="about-this-filex-user-guide"></a>Acerca de esta guía del usuario de FileX
 
@@ -56,7 +56,6 @@ Esta guía contiene información exhaustiva sobre Azure RTOS FileX, el sistema d
 Además de los tipos de datos personalizados de la estructura de control de Azure RTOS FileX, hay varios tipos de datos especiales que se usan en las interfaces de llamada a servicios de Azure RTOS FileX. Estos tipos de datos especiales se asignan directamente a los tipos de datos del compilador de C subyacente. De esta manera, se garantiza la portabilidad entre diferentes compiladores de C. La implementación exacta se hereda de Azure RTOS ThreadX y se puede encontrar en el archivo tx_port.h incluido en la distribución de Azure RTOS ThreadX.
 
 A continuación se muestra una lista de los tipos de datos de llamada a servicios de Azure RTOS FileX y sus significados asociados.
-
 | Tipo  | Descripción  |
 |---|---|
 | **UINT** | Entero sin signo básico. Este tipo debe admitir datos sin signo de 8 bits, pero se asigna al tipo de datos sin signo más conveniente. |
@@ -69,7 +68,7 @@ Se usan tipos de datos adicionales en el origen de FileX. Se encuentran en los a
 
 ## <a name="customer-support-center"></a>Centro de soporte al cliente
 
-Envíe una incidencia de soporte técnico por medio de Azure Portal si tiene alguna pregunta o necesita ayuda con estos pasos. Proporcione la siguiente información en un mensaje de correo electrónico para que podamos resolver la solicitud de soporte técnico de la forma más eficaz posible:
+Envíe una incidencia de soporte técnico por medio de Azure Portal si tiene alguna pregunta o necesita ayuda con estos pasos. Proporcione la siguiente información en un mensaje de correo electrónico para que podamos resolver la solicitud de soporte técnico de la forma más eficaz posible.
 
 1. Una descripción detallada del problema, incluida la frecuencia con que se produce y si se puede reproducir de forma confiable.
 2. Una descripción detallada de los cambios en la aplicación o en FileX que precedieron al problema.

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1e1e1a1dbd844d811c7ee3122113f28162639fb4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a94344a7079e3f0e3e451bc678c369fee543aef6
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814409"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550174"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-filex"></a>Capítulo 3: Componentes funcionales de Azure RTOS FileX
 
@@ -42,6 +42,7 @@ El desplazamiento exacto del sector de las demás áreas de la vista del sector 
 - **Sectores por clúster** El campo de *sectores por clúster* del registro de arranque del medio define el número de sectores asignados a un clúster. El clúster es el elemento de asignación fundamental de un sistema de archivos compatible con FAT. Toda la información de los archivos y los subdirectorios se asignan desde los clústeres disponibles del medio según determina la tabla de asignación de archivos (FAT).
 
     **TABLA 1. Registro de arranque del medio de FileX**
+    
     |Offset  |Campo  |Número de bytes|
     |----------|-----------|------------|
     |0x00|Instrucción de salto (e9,xx,xx or eb,xx,90)|3|
@@ -102,7 +103,7 @@ El contenido del registro de arranque del medio de exFAT es diferente de los de 
     |----------|-----------|------------|
     |0x00|Instrucción de salto|3|
     |0x03|Nombre del sistema de archivos|8|
-    |0x0B|Reservado|53|
+    |0x0B|Reservada|53|
     |0x40|Desplazamiento de partición|8|
     |0x48|Longitud de volumen|8|
     |0x50|Desplazamiento de FAT|4|
@@ -118,7 +119,7 @@ El contenido del registro de arranque del medio de exFAT es diferente de los de 
     |0x6E|Número de FAT|1|
     |0x6F|Selección de unidad|1|
     |0x70|Porcentaje en uso|7|
-    |0x71|Reservado|1|
+    |0x71|Reservada|1|
     |0x78|Código de arranque|390|
     |0x1FE|Firma de arranque|2|
 
@@ -161,13 +162,14 @@ Las dos primeras entradas de la tabla FAT no se usan y normalmente tienen el sig
 La entrada FAT número 2 representa el primer clúster del área de datos del medio. El contenido de cada entrada del clúster determina si está o no disponible, o forma parte de una lista vinculada de clústeres asignados para un archivo o un subdirectorio. Si la entrada del clúster contiene otra entrada del clúster válida, el clúster se asigna y su valor señala al siguiente clúster asignado en la cadena de clúster.
 
 Las entradas del clúster posibles se definen como se indica a continuación.
+
 |Significado|FAT de 12 bits|FAT de 16 bits|FAT de 32 bits| exFAT|
 |----------|-----------|------------|-------|------|
 |Clúster disponible|0x000|0x0000|0x00000000|0x00000000|
 |No se utiliza|0x001|0x0001|0x00000001|0x00000001|
-|Reservado|0xFF0-FF6|0xFFF0-FFF6|0x0FFFFFF0-6|ClusterCounter +2 a 0xFFFFFFF6|
+|Reservada|0xFF0-FF6|0xFFF0-FFF6|0x0FFFFFF0-6|ClusterCounter +2 a 0xFFFFFFF6|
 |Clúster incorrecto|0xFF7|0xFFF7|0x0FFFFFF7|0xFFFFFFF7|
-|Reservado| - | - | - | 0xFFFFFFF8-E|
+|Reservada| - | - | - | 0xFFFFFFF8-E|
 |Último clúster| 0xFF8-FFF| 0xFFF8-FFFF| 0x0FFFFFF8-F| 0xFFFFFFFF|
 |Vínculo de clúster| 0x002-0xFEF| 0x0002-FFEF| 0x2-0x0FFFFFEF | 0x2 - ClusterCount + 1|
 
@@ -283,26 +285,26 @@ FileX admite formatos de nombre de archivo largos (LFN) de Windows y 8.3. Ademá
 
     **TABLA 4. Entrada de directorio de nombre de archivo largo**
 
-    |Offset|Campo|Número de bytes|
+    | Offset | Campo | Número de bytes |
     |------------|-----------|------------|
-    0x00|Campo ordinal|1|
-    0x01|Carácter Unicode 1|2|
-    0x03|Carácter Unicode 2|2|
-    0x05|Carácter Unicode 3|2|
-    0x07|Carácter Unicode 4|2|
-    0x09|Carácter Unicode 5|2|
-    0x0B|Atributos de LFN|1|
-    0x0C|Tipo de LFN (reservado siempre 0)|1|
-    0x0D|Suma de comprobación de LFN|1|
-    0x0E|Carácter Unicode 6|2|
-    0x10|Carácter Unicode 7|2|
-    0x12|Carácter Unicode 8|2|
-    0x14|Carácter Unicode 9|2|
-    0x16|Carácter Unicode 10|2|
-    0x18|Carácter Unicode 11|2|
-    0x1A|Clúster de LFN (no utilizado siempre 0)|2|
-    0x1C|Carácter Unicode 12|2|
-    0x1E|Carácter Unicode |13|2|
+    | 0x00 | Campo ordinal | 1 |
+    | 0x01 | Carácter Unicode 1 | 2 |
+    | 0x03 | Carácter Unicode 2 | 2 |
+    | 0x05 | Carácter Unicode 3 | 2 |
+    | 0x07 | Carácter Unicode 4 | 2 |
+    | 0x09 | Carácter Unicode 5 | 2 |
+    | 0x0B | Atributos de LFN | 1 |
+    | 0x0C | Tipo de LFN (reservado siempre 0) | 1 |
+    | 0x0D | Suma de comprobación de LFN | 1 |
+    | 0x0E | Carácter Unicode 6 | 2 | 
+    | 0x10 | Carácter Unicode 7 | 2 |
+    | 0x12 | Carácter Unicode 8 | 2 |
+    | 0x14 | Carácter Unicode 9 | 2 |
+    | 0x16 | Carácter Unicode 10 | 2 |
+    | 0x18 | Carácter Unicode 11 | 2 |
+    | 0x1A | Clúster de LFN (no utilizado siempre 0) | 2 |
+    | 0x1C | Carácter Unicode 12 | 2 |
+    | 0x1E | Carácter Unicode 13 | 2 |
 
 - **Carácter Unicode**
 
@@ -384,7 +386,7 @@ En la tabla y los párrafos siguientes se incluye una descripción de la entrada
     |0x08|La entrada está reservada|
     |0x10|La entrada es un directorio|
     |0x20|La entrada se ha modificado|
-    |Todos los demás bits|Reservado|
+    |Todos los demás bits|Reservada|
 
 - **Reserved1**
 
@@ -472,6 +474,7 @@ En la tabla siguiente se incluye una descripción de la entrada de directorio de
 - **Marcas**
 
     Este campo contiene una serie de bits que especifican diversas propiedades:
+    
     |Bit de marca|Significado    |
     |-----------------|-----------|
     |0x01            |Este campo indica si es posible o no la asignación de clústeres. Este campo debe ser 1.|

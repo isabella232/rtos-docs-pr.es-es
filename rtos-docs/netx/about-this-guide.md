@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8e1c23892c4360ddc8783b04ae8f23e371899f1d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 01077e3315e87b918cdfd47423d8e0c1b6bbdbbd
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815333"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550276"
 ---
 # <a name="about-the-azure-rtos-netx-user-guide"></a>Acerca de la guía del usuario de Azure RTOS NetX
 
@@ -47,18 +47,18 @@ Además de los tipos de datos de estructura de control personalizados de Azure R
 
 A continuación se muestra una lista de los tipos de datos de llamada de servicio de Azure RTOS NetX y sus significados asociados:
 
-| <!-- -->    | <!-- -->    |
+| Tipo de datos | Descripción  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | **UINT**  | Entero sin signo básico. Este tipo debe admitir datos sin signo de 32 bits, pero se asigna al tipo de datos sin signo más conveniente. |
-| **ULONG** | Tipo entero largo sin signo. Este tipo debe admitir datos sin signo de 32 bits.                                                                      |
+| **ULONG** | Tipo entero largo sin signo. Este tipo debe admitir datos sin signo de 32 bits.                                                                      |
 | **VOID**  | Casi siempre equivale al tipo void del compilador.                                                                                 |
 | **CHAR**  | Suele ser un tipo de carácter de 8 bits estándar.                                                                                           |
 
 Se usan tipos de datos adicionales en el código fuente de Azure RTOS NetX. Se encuentran en los archivos ***tx_port.h** _ o _ *_nx_port.h_**.
 
-## <a name="customer-support-center"></a>Centro de soporte técnico al cliente
+## <a name="customer-support-center"></a>Centro de soporte al cliente
 
-Envíe una incidencia de soporte técnico mediante Azure Portal si tiene alguna pregunta o necesita ayuda siguiendo los pasos que se describen a continuación. Proporcione la siguiente información en un mensaje de correo electrónico para que podamos resolver la solicitud de soporte técnico de forma más eficaz:
+Envíe una incidencia de soporte técnico por medio de Azure Portal si tiene alguna pregunta o necesita ayuda con estos pasos. Proporcione la siguiente información en un mensaje de correo electrónico para que podamos resolver la solicitud de soporte técnico de la forma más eficaz posible:
 
 1. Una descripción detallada del problema, incluida la frecuencia de repetición y si se puede reproducir de forma fiable.
 

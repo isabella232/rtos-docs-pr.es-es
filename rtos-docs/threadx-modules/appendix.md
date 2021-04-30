@@ -6,14 +6,14 @@ ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c2324a2057bf2ddb2d255b2ff611d34fc664560a
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: b54b8b094e608052fdbfc392d93a57ebb34515ed
+ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106549817"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104815654"
 ---
-# <a name="appendix---port-specific-examples"></a>Apéndice: ejemplos específicos de puertos
+# <a name="appendix---port-specific-examples"></a>Apéndice: Ejemplos específicos de la distribución
 
 ## <a name="arm11-processor"></a>Procesador ARM11
 
@@ -71,7 +71,7 @@ _txm_module_preamble:
 
 | bit | Value | Significado |
 |---|---|---|
-| [23-0] | 0 | Reservada
+| [23-0] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-arm11-using-gcc"></a>Enlazador de módulos para ARM11 con GCC
@@ -381,7 +381,7 @@ __txm_module_preamble
 
 | bit | Value | Significado |
 |---|---|---|
-| [23-0] | 0 | Reservada
+| [23-0] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-arm11-using-ac5"></a>Enlazador de módulos para ARM11 con AC5
@@ -493,7 +493,7 @@ __txm_module_preamble
 | bit | Value | Significado |
 |---|---|---|
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
-| [23-1] | 0 | Reservada
+| [23-1] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-a7-using-ac5"></a>Enlazador de módulos para Cortex-A7 con AC5
@@ -542,7 +542,6 @@ armlink -d -o demo_threadx_module_manager.axf --elf --ro 0x80000000 --first tx_i
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-a7-using-ac5"></a>Atributos de API de habilitación de memoria externa para Cortex-A7 con AC5
 
 Los siguientes atributos se pueden usar para configurar valores de memoria compartida:
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MMU_ATTRIBUTE_XN | No ejecutar nunca |
@@ -637,7 +636,7 @@ __txm_module_preamble
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m3-using-ac5"></a>Enlazador de módulos para Cortex-M3 con AC5
@@ -685,7 +684,6 @@ armlink -d -o sample_threadx_module_manager.axf --elf --ro 0x00000000 --first tx
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac5"></a>Atributos de API de habilitación de memoria externa para Cortex-M3 con AC5
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -766,7 +764,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m3-using-ac6"></a>Enlazador de módulos para Cortex-M3 con AC6
@@ -802,7 +800,6 @@ Se proporciona un área de trabajo de ejemplo. Compile la biblioteca de ThreadX,
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac6"></a>Atributos de API de habilitación de memoria externa para Cortex-M3 con AC6
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -880,7 +877,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m3-using-gnu"></a>Enlazador de módulos para Cortex-M3 con GNU
@@ -1140,7 +1137,6 @@ arm-none-eabi-ld -A cortex-m3 -ereset_handler -T sample_threadx.ld tx_simulator_
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-gnu"></a>Atributos de API de habilitación de memoria externa para Cortex-M3 con GNU
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -1230,7 +1226,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m3-using-iar"></a>Enlazador de módulos para Cortex-M3 con IAR
@@ -1320,7 +1316,6 @@ Se proporciona un área de trabajo de ejemplo. Compile la biblioteca de ThreadX,
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-iar"></a>Atributos de API de habilitación de memoria externa para Cortex-M3 con IAR
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -1407,7 +1402,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m33-using-ac6"></a>Enlazador de módulos para Cortex-M33 con AC6
@@ -1477,7 +1472,7 @@ Se proporciona un área de trabajo de ejemplo. Compile la biblioteca de ThreadX,
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m33-using-gnu"></a>Enlazador de módulos para Cortex-M33 con GNU
@@ -1582,7 +1577,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m33-using-iar"></a>Enlazador de módulos para Cortex-M33 con IAR
@@ -1761,7 +1756,7 @@ __txm_module_preamble
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m4-using-ac5"></a>Enlazador de módulos para Cortex-M4 con AC5
@@ -1809,7 +1804,6 @@ armlink -d -o sample_threadx_module_manager.axf --elf --ro 0x00000000 --first tx
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac5"></a>Atributos de API de habilitación de memoria externa para Cortex-M4 con AC5
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -1890,7 +1884,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m4-using-ac6"></a>Enlazador de módulos para Cortex-M4 con AC6
@@ -1926,7 +1920,6 @@ Se proporciona un área de trabajo de ejemplo. Compile la biblioteca de ThreadX,
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac6"></a>Atributos de API de habilitación de memoria externa para Cortex-M4 con AC6
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -2003,7 +1996,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m4-using-gnu"></a>Enlazador de módulos para Cortex-M4 con GNU
@@ -2264,7 +2257,6 @@ arm-none-eabi-gcc -g -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=vfpv4 -mthumb -T sam
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-gnu"></a>Atributos de API de habilitación de memoria externa para Cortex-M4 con GNU
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -2354,7 +2346,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m4-using-iar"></a>Enlazador de módulos para Cortex-M4 con IAR
@@ -2444,7 +2436,6 @@ Se proporciona un área de trabajo de ejemplo. Compile la biblioteca de ThreadX,
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-iar"></a>Atributos de API de habilitación de memoria externa para Cortex-M4 con IAR
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -2534,7 +2525,7 @@ __txm_module_preamble
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m7-using-ac5"></a>Enlazador de módulos para Cortex-M7 con AC5
@@ -2591,7 +2582,7 @@ armlink -d -o demo_threadx_module_manager.axf --elf --ro 0x00000000 --first tx_i
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m7-using-ac6"></a>Enlazador de módulos para Cortex-M7 con AC6
@@ -2627,7 +2618,6 @@ Se proporciona un área de trabajo de ejemplo. Compile la biblioteca de ThreadX,
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac6"></a>Atributos de API de habilitación de memoria externa para Cortex-M7 con AC6
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -2641,7 +2631,7 @@ El módulo siempre tiene acceso de lectura a la memoria compartida.
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m7-using-gnu"></a>Enlazador de módulos para Cortex-M7 con GNU
@@ -2901,7 +2891,6 @@ arm-none-eabi-gcc -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb -no
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-gnu"></a>Atributos de API de habilitación de memoria externa para Cortex-M7 con GNU
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -2991,7 +2980,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-m7-using-iar"></a>Enlazador de módulos para Cortex-M7 con IAR
@@ -3075,7 +3064,6 @@ Se proporciona un área de trabajo de ejemplo. Compile la biblioteca de ThreadX,
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-iar"></a>Atributos de API de habilitación de memoria externa para Cortex-M7 con IAR
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -3151,7 +3139,7 @@ __txm_module_preamble:
 | bit | Value | Significado |
 |---|---|---|
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
-| [23-1] | 0 | Reservada
+| [23-1] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-r4-using-ac6"></a>Enlazador de módulos para Cortex-R4 con AC6
@@ -3203,7 +3191,6 @@ armlink -d -o demo_threadx_module_manager.axf --elf --scatter=demo_threadx.scat 
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-ac6"></a>Atributos de API de habilitación de memoria externa para Cortex-R4 con AC6
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -3280,7 +3267,7 @@ __txm_module_preamble:
 | bit | Value | Significado |
 |---|---|---|
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
-| [23-1] | 0 | Reservada
+| [23-1] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x01<br />0x02 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 #### <a name="module-linker-for-cortex-r4-using-iar"></a>Enlazador de módulos para Cortex-R4 con IAR
@@ -3361,7 +3348,6 @@ Se proporciona un área de trabajo de ejemplo. Compile la biblioteca de ThreadX,
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-iar"></a>Atributos de API de habilitación de memoria externa para Cortex-R4 con IAR
 
 El módulo siempre tiene acceso de lectura a la memoria compartida.
-
 | Parámetro de atributo | Significado |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Acceso de escritura |
@@ -3430,7 +3416,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MMU<br />Protección de MMU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x03 | **Identificador de compilador**<br />GHS |
 
 #### <a name="module-linker-for-mcf544xx-using-ghs"></a>Enlazador de módulos para MCF544xx con GHS
@@ -3594,7 +3580,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x02 | **Identificador de compilador**<br />IAR<br />GNU |
 
 #### <a name="module-linker-for-rx63-using-iar"></a>Enlazador de módulos para RX63 con IAR
@@ -3791,7 +3777,7 @@ __txm_module_preamble:
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservada
+| [23-3] | 0 | Reservado
 | [31-24] | <br />0x00<br />0x02 | **Identificador de compilador**<br />IAR<br />GNU |
 
 #### <a name="module-linker-for-rx65n-using-iar"></a>Enlazador de módulos para RX65N con IAR
