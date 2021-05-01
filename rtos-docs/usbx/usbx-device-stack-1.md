@@ -1,17 +1,17 @@
 ---
 title: 'Capítulo 1: Introducción a pila de dispositivos de Azure RTOS USBX'
-description: USBX es una pila USB que incorpora todas las características para aplicaciones con alto grado de inserción. En este capítulo se presenta USBX y se describen sus aplicaciones y ventajas.
+description: USBX es una pila USB que incorpora todas las características para aplicaciones con alto grado de inserción. En este capítulo se presenta USBX y se describen sus ventajas y aplicación.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 6965303f1fbf19212b9f7ff20f811a71fb207f54
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8b1e08130d4531fd82629378761cd5b1752f0a07
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816469"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550293"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-usbx-device-stack"></a>Capítulo 1: Introducción a pila de dispositivos de Azure RTOS USBX
 

@@ -1,17 +1,17 @@
 ---
 title: 'Capítulo 2: Instalación de la pila de dispositivos de Azure RTOS USBX'
-description: Obtenga información sobre cómo instalar la pila de dispositivos de Azure RTOS USBX, así como las consideraciones de host importantes que debe tener en cuenta antes de la instalación.
+description: Aprenda a instalar USBX.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: dd58f77130fa252be9163bd70c29f7deee400d30
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 097fdd3c6f09c666ec3ad6eda9e5ba3fa159cb4d
+ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106549783"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104816353"
 ---
 # <a name="chapter-2---azure-rtos-usbx-device-stack-installation"></a>Capítulo 2: Instalación de la pila de dispositivos de Azure RTOS USBX
 
@@ -35,7 +35,7 @@ El código fuente de USBX se entrega en formato ASCII y requiere aproximadamente
 
 ### <a name="target-considerations"></a>Consideraciones sobre el destino
 
-USBX requiere entre 24 KB y 64 KB de memoria de solo lectura (ROM) en el destino en modo de host. La cantidad de memoria necesaria depende del tipo de controlador utilizado y de las clases USB vinculadas a USBX. Se requieren otros 32 KB de memoria de acceso aleatorio (RAM) del destino para las estructuras de datos globales de USBX y el bloque de memoria. Este bloque de memoria también se puede ajustar en función del número esperado de dispositivos en el USB y el tipo de controlador USB. El lado del dispositivo USBX requiere aproximadamente entre 10 y 12 KB de ROM según el tipo de controlador de dispositivo. El uso de memoria RAM depende del tipo de clase emulada por el dispositivo.
+USBX requiere entre 24 KB y 64 KB de memoria de solo lectura (ROM) en el destino en modo de host. La cantidad de memoria necesaria depende del tipo de controlador utilizado y de las clases USB vinculadas a USBX. Se requieren otros 32 KB de memoria de acceso aleatorio (RAM) del destino para las estructuras de datos globales de USBX y el bloque de memoria. Este bloque de memoria también se puede ajustar en función del número esperado de dispositivos en el USB y el tipo de controladora USB. El lado del dispositivo USBX requiere aproximadamente entre 10 y 12 KB de ROM según el tipo de controladora de dispositivo. El uso de memoria RAM depende del tipo de clase emulada por el dispositivo.
 
 USBX también se basa en semáforos, exclusiones mutuas y subprocesos de ThreadX para la protección de varios subprocesos, y en la suspensión de E/S y el procesamiento periódico para la supervisión de la topología del bus USB.
 
@@ -83,7 +83,7 @@ En la lista siguiente se detalla cada opción de configuración.
 | Opción de&nbsp;configuración | Descripción |
 | --- | --- |
 | **UX_PERIODIC_RATE** | Este valor representa el número de tics por segundo de una plataforma de hardware específica. El valor predeterminado es 1000, que indica un tic por milisegundo. |
-| **UX_THREAD_STACK_SIZE** | Este valor es el tamaño de la pila en bytes para los subprocesos de USBX. Normalmente puede ser de 1024 bytes o de 2048 bytes, según el procesador usado y el controlador de host. |
+| **UX_THREAD_STACK_SIZE** | Este valor es el tamaño de la pila en bytes para los subprocesos de USBX. Normalmente puede ser de 1024 bytes o de 2048 bytes, según el procesador usado y la controladora de host. |
 | **UX_THREAD_PRIORITY_ENUM** | Este es el valor de prioridad de ThreadX para los subprocesos de enumeración de USBX que supervisa la topología de bus. |
 | **UX_THREAD_PRIORITY_CLASS** | Este es el valor de prioridad de ThreadX para los subprocesos de USBX estándar. |
 | **UX_THREAD_PRIORITY_KEYBOARD** | Este es el valor de prioridad de ThreadX para la clase de teclado HID de USBX. |
@@ -110,10 +110,10 @@ Para que los archivos sean reconocibles por sus nombres, se ha adoptado la sigui
 | ----------------- | ----------------------------------------- |
 | ux_host_stack   | archivos principales de pila de host de usbx                |
 | ux_host_class   | archivos de clases de pila de host de usbx             |
-| ux_hcd           | archivos de controlador de pila de host de usbx   |
+| ux_hcd           | archivos del controlador de la controladora de la pila de host de usbx   |
 | ux_device_stack | archivos principales de pila de dispositivo de usbx              |
 | ux_device_class | archivos de clases de pila de dispositivo de usbx           |
-| ux_dcd           | archivos de controlador de pila de host de usbx |
+| ux_dcd           | archivos del controlador de la controladora de la pila de dispositivos de usbx |
 | ux_otg           | archivos relacionados con el controlador de otg de usbx  |
 | ux_pictbridge    | archivos de pictbridge de usbx                     |
 | ux_utility       | funciones de utilidad de usbx                    |
