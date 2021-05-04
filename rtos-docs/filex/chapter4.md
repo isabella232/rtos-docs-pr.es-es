@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c9e91244856b322d53f85bdd572bd317a055776a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: f70b8890be6b12f917ac1724a29559afab33b88d
+ms.sourcegitcommit: 0520b2afb6b7f8ae1ea48581e160459fc9292ca7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815082"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108297503"
 ---
 # <a name="chapter-4--description-of-azure-rtos-filex-services"></a>Capítulo 4: Descripción de los servicios de Azure RTOS FileX
 
@@ -4105,6 +4105,9 @@ Este servicio da formato al medio proporcionado en un modo compatible con exFAT 
 
 > [!WARNING]
 > *El formato a un medio ya formateado borra eficazmente todos los archivos y directorios del medio.*
+
+> [!IMPORTANT]
+> *El tamaño del volumen exFAT debe coincidir con el tamaño de la partición (si hay un diseño MBR o GPT) o con el tamaño de todo el dispositivo si no hay diseño de partición (sin MBR o GPT). En Windows existe la limitación de que el disco exFAT si se formatea con algunos valores de sectores totales que sean inferiores a los sectores disponibles.*
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 

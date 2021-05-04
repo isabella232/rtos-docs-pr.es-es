@@ -6,17 +6,17 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 3b1c63135f6069652d7f66fc976b9d770a4dfeb2
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c902289b487c439da4ef5138319fe09d74a2347f
+ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815118"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108171282"
 ---
 # <a name="what-is-microsoft-azure-rtos"></a>¿Qué es Microsoft Azure RTOS?
 
-Azure RTOS es un sistema operativo en tiempo real (RTOS) para dispositivos IoT y perimetrales con tecnología de microcontroladores (MCU). Azure RTOS está diseñado para admitir la mayoría de los dispositivos altamente restringidos (con batería y con menos de 64 kB de memoria flash).
- 
+Azure RTOS es un sistema operativo en tiempo real (RTOS) para dispositivos de Internet de las cosas (IoT) y perimetrales con tecnología de microcontroladores (MCU). Azure RTOS está diseñado para admitir la mayoría de los dispositivos altamente restringidos (con batería y con menos de 64 kB de memoria flash).
+
 Azure RTOS está certificado previamente para una amplia variedad de estándares de seguridad. Entre ellas se incluyen las certificaciones IEC 61508 SIL 4, IEC 62304 clase C e ISO 26262 ASIL D. Azure RTOS ThreadX también tiene la certificación DO-178.
 
 Azure RTOS proporciona un entorno certificado de seguridad de criterios comunes de EAL4 +, incluida la seguridad de la capa de IP completa a través de IPsec y la seguridad de la capa de socket a través de TLS y DTLS. Nuestra biblioteca de criptografía de software ha logrado la certificación FIPS 140-2. También aprovechamos las funcionalidades criptográficas de hardware, la protección de memoria a través de módulos de ThreadX y la compatibilidad con las características de seguridad de TrustZone ARMv8-M de ARM.
@@ -54,6 +54,116 @@ Azure RTOS USBX es un host USB de alto rendimiento, un dispositivo y una pila in
 Azure RTOS GUIX Studio proporciona un entorno de diseño de aplicaciones GUI completo, lo que facilita la creación y el mantenimiento de todos los elementos gráficos de la GUI de la aplicación. Azure RTOS GUIX Studio genera automáticamente un código de C compatible con la biblioteca de Azure RTOS GUIX, listo para compilarse y ejecutarse en el destino.
 
 Azure RTOS TraceX es la herramienta de análisis basada en host que proporciona a los desarrolladores una vista gráfica de los eventos del sistema en tiempo real y les permite visualizar y comprender mejor el comportamiento de sus sistemas en tiempo real.
+
+## <a name="the-azure-rtos-advantage"></a>La ventaja de Azure RTOS
+Azure RTOS proporciona las siguientes ventajas con respecto a otros sistemas operativos en tiempo real.
+
+### <a name="intuitive-and-consistent-api-design"></a>Diseño de API intuitivo y coherente
+
+* API intuitiva y coherente.
+* Convención de nomenclatura sustantivo-verbo.
+* Todas las API tienen un prefijo inicial, como *tx_* para ThreadX y *nx_* para FileX, para identificar fácilmente el componente de Azure RTOS al que pertenecen.
+* Las API de bloqueo tienen un tiempo de espera de subprocesos opcional
+* Muchas API están directamente disponibles desde los ISR de la aplicación.
+- Devoluciones de llamada de notificación de usuario opcionales para operaciones de archivos y soporte físico.
+* Modelo de programación basado en eventos (API).
+
+### <a name="high-efficiency"></a>Alta eficacia
+
+- Superficie de código pequeña.
+- Superficie de código escalable en función de los servicios usados.
+- Certificado previamente por TUV y UL para CEI 61508 SIL 4, CEI 62304 clase C, ISO 26262 ASIL D y EN 50128 SW-SIL4.
+- Ejecución rápida
+
+### <a name="fastest-time-to-market"></a>Tiempo de comercialización más rápido
+
+Azure RTOS es fácil de instalar, conocer, usar, depurar, comprobar, certificar y mantener. Como resultado, Azure RTOS es uno de los más populares sistemas operativos en tiempo real para dispositivos IoT integrados, incluidos muchos SoC de Broadcom, Gainspan, etc. Nuestra ventaja continua de plazo de comercialización se basa en lo siguiente:
+
+* Disponibilidad completa del código fuente.
+* API fácil de usar.
+* Conjunto de características completo y avanzado.
+
+### <a name="one-simple-license"></a>Una licencia sencilla
+
+No hay ningún costo asociado al uso y las pruebas del código fuente ni a las licencias de producción si se implementa en dispositivos con licencia previa; todos los demás dispositivos necesitan una licencia anual sencilla.
+
+### <a name="full-highest-quality-source-code"></a>Código fuente completo y de máxima calidad
+
+A lo largo de los años, el código fuente de Azure RTOS ha colocado el listón en calidad y facilidad de comprensión. Además, la convención de tener una función por archivo facilita la navegación por el origen.
+
+### <a name="pre-certified-by-tuv-and-ul-to-many-safety-standards"></a>Certificado previamente por TUV y UL para varios estándares de seguridad
+
+Azure RTOS ha sido certificado por los SG-TUV Saar para su uso en sistemas críticos para la seguridad, según CEI-61508 SIL 4, CEI-62304 SW Clase de seguridad C, ISO 26262 ASIL D y EN 50128. La certificación confirma que Azure RTOS se puede usar en el desarrollo de software relacionado con la seguridad para los niveles de integridad de seguridad más altos de CEI-61508, CEI-62304, ISO 26262 y EN 50128 para la "seguridad funcional de sistemas relacionados con la seguridad electrónica de electricidad, electrónica y programable". SG-TUV Saar, que es una sociedad conjunta entre las empresas alemanas SGS-Group y TUV Saarland, se ha convertido en la empresa líder independiente acreditada para probar, auditar, comprobar y certificar software insertado para sistemas relacionados con la seguridad en todo el mundo. El estándar de seguridad industrial CEI 61508 y todos los estándares que se derivan de él, incluidos CEI-62304, ISO 26262 y EN 50128, se usan para garantizar la seguridad funcional de los dispositivos médicos eléctricos, electrónicos y electrónicos programables relacionados con la seguridad, los sistemas de control de procesos, la maquinaria industrial, los automóviles y los sistemas de control de ferrocarriles.
+
+:::image type="content" source="media/partener-logo-sgs-tuv-saar.png" alt-text="Certificación SGS-TUV":::
+
+Azure RTOS ha sido reconocido por UL por su conformidad con los estándares de seguridad para software de componentes programables UL 60730-1 anexo H, CSA E60730-1 anexo H, CEI 60730-1 anexo H, UL 60335-1 anexo R, CEI 60335-1 anexo R y UL 1998. UL es una empresa global e independiente especializada en la seguridad en la ciencia con más de un siglo de experiencia aportando innovaciones en soluciones de seguridad que abarcan desde la adopción pública de electricidad hasta los avances en sostenibilidad, energías renovables y nanotecnología.
+
+:::image type="content" source="media/cru-logo-certification.png" alt-text="Certificación UL CRU":::
+
+Los artefactos (certificado, manual de seguridad, informe de pruebas, etc.) asociados a las certificaciones TUV y UL están disponibles para su venta.
+
+En los casos en los que la aplicación necesite certificación adicional, hay un servicio de certificación disponible con Microsoft para proporcionar una certificación llave en mano para varios estándares con la plataforma de hardware real e incluso abarcando el código de la aplicación. Póngase en contacto con nosotros para más detalles sobre nuestro servicio de certificación.
+
+### <a name="eal4-common-criteria-security-certification"></a>Certificación de seguridad EAL4+ de Common Criteria
+
+Azure RTOS ha logrado la certificación de seguridad EAL4+ de Common Criteria. El objetivo de la evaluación (TOE) cubre Azure RTOS ThreadX, Azure RTOS NetX Duo, TLS de Azure RTOS NetX Secure y MQTT de Azure RTOS NetX. Representa los protocolos de IoT más habituales que requieren los sensores, dispositivos, enrutadores perimetrales y puertas de enlace con alto grado de inserción.
+
+:::image type="content" source="media/eal-logo-certification.png" alt-text="Certificación EAL":::
+
+El recurso de evaluación de seguridad de TI usado para la certificación de seguridad de Microsoft Azure RTOS SC es Brightsight BV y la entidad de certificación es SERTIT.
+
+### <a name="fips-140-2-validated"></a>Validación conforme a FIPS 140-2
+
+Las bibliotecas criptográficas de Azure RTOS han logrado la certificación del Estándar federal de procesamiento de información 140-2 (FIPS 140-2) para software, que especifica los requisitos para los módulos criptográficos. FIPS 140-2 requiere que todos los organismos y departamentos gubernamentales federales que usan seguridad basada en cifrado cumplan los estándares específicos relacionados con el nivel y las funcionalidades de cifrado. Estos estándares de seguridad basados en el cifrado también se reconocen en Canadá y en la Unión Europea.
+
+El laboratorio de evaluación de la seguridad de la información que se usó para las bibliotecas criptográficas de Azure RTOS fue atsec y la entidad de certificación es el [Instituto nacional de estándares y tecnología (NIST)](https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/3394).
+
+### <a name="supports-most-popular-architectures"></a>Compatible con las arquitecturas más populares
+
+Azure RTOS se ejecuta en los microprocesadores de 32 y 64 bits más populares, de serie, totalmente probado y totalmente compatible, incluidas las siguientes arquitecturas avanzadas:
+
+**Dispositivos analógicos**: SHARC, Blackfin, CM4xx
+
+**Andes Core**: RISC-V
+
+**Ambiqmicro**: Apollo MCU
+
+**ARM**: ARM7, ARM9, ARM11, Cortex-M0/M3/M4/M7/A15/A5/A7/A8/A9/A5x 64-bi/A7x 64-bit/R4/R5, TrustZone ARMv8-M
+
+**Cadence**: Xtensa, Diamond
+
+**CEVA**: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0+, FM3, MF4, WICED WiFi
+
+**Cypress**: RISC-V
+
+**EnSilica**: eSi-RISC
+
+**Infineon**: XMC1000, XMC4000, TriCore
+
+**Intel; Intel FPGA**: x36/Pentium, XScale, NIOS II, Cyclone, Arria 10
+
+**Microchip**: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/SV, PIC24/PIC32
+
+**Microsemi**: RISC-V
+
+**NXP**: LPC, ARM7, ARM9, PowerPC, 68 K, i.MX, ColdFire, Kinetis Cortex-M3/M4
+
+**Renesas**: SH, HS, V850, RX, RZ, Synergy
+
+**Silicon Labs**: EFM32
+
+**Synopsys**: ARC 600, 700, ARC EM, ARC HS
+
+**ST**: STM32, ARM7, ARM9, Cortex-M3/M4/M7
+
+**Tl**: C5xxx, C6xxx, Stellaris, Sitara, Tiva-C
+
+**Wave Computing**: MIPS32 4K, 24 K, 34 K, 1004 K, MIPS64 5K, microAptiv, interAptiv, proAptiv, M-Class
+
+**Xilinx**: MicroBlaze, PowerPC 405, ZYNQ, ZYNQ UltraSCALE
+
+*Todas las cifras de tiempos y tamaños enumeradas son estimaciones y pueden ser diferentes en su plataforma de desarrollo.*
 
 ## <a name="in-the-context-of-azure-iot"></a>En el contexto de Azure IoT
 

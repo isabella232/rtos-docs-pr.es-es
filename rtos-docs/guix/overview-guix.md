@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 0d0ff37784673f851ab918e20b255d19ddf98b0f
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8f4a1578fcabdabfb213ced9c6593f6cffc964aa
+ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815449"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108171410"
 ---
 # <a name="overview-of-azure-rtos-guix-and-azure-rtos-guix-studio"></a>Información general de Azure RTOS GUIX y Azure RTOS GUIX Studio
 
@@ -19,136 +19,87 @@ La GUI insertada de Azure GUIX es la solución de GUI avanzada de nivel industri
 
 ## <a name="azure-rtos-guix-api"></a>Azure RTOS GUIX API
 
-### <a name="intuitive-and-consistent-api"></a>API intuitivas y coherentes
-
-* Convención de nomenclatura sustantivo-verbo
-
-* Todas las API tienen *gx_* líderes para identificar fácilmente como GUIX de Azure RTOS
-
-* Modelo de programación basado en eventos (API)
+### <a name="powerful-apis"></a>API eficaces
 
 * Compatibilidad total con el dibujo de lienzo directo cuando sea necesario
-
 * Fácil de interactuar con el código generado por Azure RTOS GUIX Studio
-
 * API para líneas, rectángulos, polígonos, etc.
-
 * API para círculos, arco, circular, cuerda, elipse, etc.
-
 * API para dibujar y colocar texto
-
 * Suavizado de contorno, relleno de textura y rellenos sólidos
-
 * API para crear y modificar pantallas y widgets
 
 ### <a name="azure-rtos-guix-studio-generated-files"></a>Archivos generados por Azure RTOS GUIX Studio
 
 * Archivos de código fuente ANSI C generados automáticamente
-
 * Aísla el software de la aplicación de los detalles del diseño
-
 * Incluye fuentes e imágenes que requiere el diseño de la interfaz de usuario
-
 * Archivos generados compilados con código de aplicación
-
 * El diseño de pantalla se puede actualizar sin afectar a la lógica de la aplicación
-
 * Los identificadores de recursos crean independencia de lenguaje y tema
-
 * Funciones de dibujo y procesamiento de eventos personalizadas proporcionadas por el usuario
 
 ### <a name="widget-library"></a>Biblioteca de widgets
 
 * Conjunto predefinido pero personalizable de elementos comunes de la interfaz
-
 * Extremadamente pequeño, compacto y eficaz
-
 * La biblioteca incluye el botón, el medidor, la lista, la ventana, el desplazamiento, el control deslizante, la barra de progreso, el símbolo del sistema y muchos más
-
 * Dibujo y apariencia totalmente personalizables
-
 * Control de eventos y operaciones totalmente personalizables
-
 * Solo los widgets usados están vinculados con el software de la aplicación
 
 ### <a name="math-and-utilities"></a>Matemáticas y utilidades
 
 * Funciones para sin, cos, arcsin, arccos, tangente, raíz cuadrada
-
 * Funciones para manipular regiones de pantalla
-
 * Configuración e inicio del sistema
-
 * Definición del grupo de memoria (opcional)
-
 * Administración de temporizadores
-
 * Administrador de animaciones
-
 * Mantenimiento de la lista de integridad
 
 ### <a name="image-processing"></a>Procesamiento de imágenes
 
 * Funciones para descodificar en tiempo de ejecución imágenes jpeg y png
-
 * Aplicar la conversión de espacio de colores y interpolación
-
 * Rotación de imagen
-
 * Escalado de imagen
-
 * Combinación de imagen
 
 ### <a name="event-processing"></a>Procesamiento de eventos
 
 * Suspende automáticamente el subproceso de Azure RTOS GUIX cuando está inactivo
-
 * Modelo de programación orientado a eventos conocido en el diseño de la interfaz de usuario
-
 * Aísla los controladores de entrada del subproceso de dibujo de Azure RTOS GUIX
-
 * Funciones para enviar y recibir eventos
-
 * Tipos de eventos predefinidos para todos los tipos de widgets de Azure RTOS GUIX
-
 * Se admiten eventos personalizados definidos por el usuario
 
 ### <a name="canvas-processing"></a>Procesamiento de lienzo
 
 * Recorte y mantenimiento del orden Z
-
 * Aísla la biblioteca de widgets de detalles de hardware
-
 * Aísla la aplicación de los detalles de hardware
-
 * Actualización automática en segundo plano de áreas desfasadas
-
 * Se admiten varios lienzos con capas y combinación
-
 * Se puede invocar directamente mediante el software de la aplicación
 
 ### <a name="input-device-drivers"></a>Controladores de dispositivo de entrada
 
 * Compatibilidad específica con el hardware, Azure RTOS GUIX y la aplicación aislada de los detalles de hardware
-
 * Touch resistente, extremo touch y teclado numérico compatible
-
 * Eventos de entrada pasados a la cola de eventos de Azure RTOS GUIX
 
 ### <a name="display-drivers"></a>Mostrar controladores
 
 * Compatibilidad específica del hardware
-
 * Controladores genéricos proporcionados para todos los formatos y la profundidad de color
-
 * Personalización para el uso de aceleradores de gráficos disponibles
 
 ### <a name="target-hardware"></a>Hardware de destino
 
 * Casi cualquier hardware con capacidad de salida gráfica es compatible con GUIX
-
 * Se admiten varias pantallas físicas
-
 * Requisitos de RAM y Flash mínimos
 
 ## <a name="create-elegant-user-interfaces"></a>Crear interfaces de usuario elegantes
@@ -183,7 +134,7 @@ Cada referencia de Azure RTOS GUIX tiene un proyecto de Azure RTOS GUIX Studio c
 
 Genere todos los archivos de salida para generar el código C para Azure RTOS GUIX. A continuación, simplemente vuelva a compilar la aplicación de destino y ejecútela para observar el diseño de referencia modificado.
 
-### <a name="small-footprint"></a>Superficie pequeña
+### <a name="memory-footprint"></a>Superficie de memoria
 
 Azure RTOS GUIX tiene una superficie mínima de 13,2 KB de FLASH y 4 KB de RAM para soporte básico, sin incluir la memoria necesaria para un lienzo.
 
@@ -201,18 +152,6 @@ El tamaño de este área de memoria depende de varios factores, como el número 
 
 Al igual que Azure RTOS ThreadX, el tamaño de Azure RTOS GUIX se escala automáticamente en función de los servicios que la aplicación usa realmente. Esto elimina prácticamente la necesidad de configuraciones y parámetros de compilación complicados, lo que facilita el trabajo del desarrollador.
 
-### <a name="fast-execution"></a>Ejecución rápida
-
-Azure RTOS GUIX está escrito exclusivamente en C y está diseñado para la velocidad. Azure RTOS GUIX tiene una capa mínima de llamadas de función interna.
-
-Además, Azure RTOS GUIX proporciona un recorte optimizado, dibujo y control de eventos. Todo esto y una filosofía general de diseño orientada al rendimiento ayudan a Azure RTOS GUIX a lograr el rendimiento más rápido posible.
-
-### <a name="pre-certified--by-tuv-to-many-safety-standards"></a>Certificado previamente por TUV para varios estándares de seguridad
-
-Azure RTOS GUIX ha sido certificado por los SG-TUV Saar para su uso en sistemas críticos para la seguridad, según CEI-61508 SIL 4, CEI-62304 SW Clase de seguridad C, ISO 26262 ASIL D y EN 50128. La certificación confirma que Azure RTOS GUIX se puede usar en el desarrollo de software relacionado con la seguridad para los niveles de integridad de seguridad más altos de CEI-61508, CEI-62304, ISO 26262 y EN 50128 para la "seguridad funcional de sistemas relacionados con la seguridad electrónica de electricidad, electrónica y programable". SG-TUV Saar, que es una sociedad conjunta entre las empresas alemanas SGS-Group y TUV Saarland, se ha convertido en la empresa líder independiente acreditada para probar, auditar, comprobar y certificar software insertado para sistemas relacionados con la seguridad en todo el mundo. El estándar de seguridad industrial CEI 61508, y todos los estándares que se derivan de él, incluidos CEI-62304, ISO 26262 y EN 50128, se usan para garantizar la seguridad funcional de los dispositivos médicos eléctricos, electrónicos y programables relacionados con la seguridad electrónica, los sistemas de control de procesos, la maquinaria industrial, los automóviles y los sistemas de control de ferrocarriles.
-
-<img alt="SGS-TUV Saar" class="img-responsive" src="https://rtos.com/wp-content/uploads/2017/10/partener-logo-sgs-tuv-saar-2.png"/>
-
 #### <a name="simple-easy-to-use"></a>Simple y fácil de usar
 
 Azure RTOS GUIX es muy simple de usar y Azure RTOS GUIX Studio lo hace aún más fácil al permitir a los desarrolladores diseñar visualmente en el escritorio y generar código C que se ejecuta en el objetivo real. Después, las aplicaciones pueden agregar sus propias funciones de control de eventos y dibujo personalizadas para completar su GUI.
@@ -222,71 +161,38 @@ El uso de la API de Azure RTOS GUIX es sencillo. La API de Azure RTOS GUIX es in
 ### <a name="comprehensive-set-of-built-in-widgets"></a>Conjunto completo de widgets integrados
 
 * Azure RTOS GUIX ofrece un amplio conjunto de widgets integrados, entre los que se incluyen:
-
 * Menú Accordion
-
 * Botón
-
 * Casilla de verificación
-
 * Medidor circular
-
 * Lista desplegable
-
 * Lista horizontal
-
 * Horizontal Scrollbar Window
-
 * Icono
-
 * Botón de icono
-
 * Gráfico de líneas
-
 * Menú
-
 * Botón de texto de varias líneas
-
 * Entrada de texto de varias líneas
-
 * Vista de texto de varias líneas
-
 * Solicitud PixelMap numérica
-
 * Solicitud numérica
-
 * Rueda del mouse numérico
-
 * Botón PixelMap
-
 * Símbolo del sistema de PixelMap
-
 * Control deslizante PixelMap
-
 * Sprite PixelMap
-
 * ProgressBar
-
 * Prompt
-
 * Barra de progreso radial
-
 * Radio Button
-
 * Rueda del mouse
-
 * Entrada de texto de una sola línea
-
 * Control deslizante
-
 * Rueda del mouse de cadena
-
 * Botón de texto
-
 * Vista de árbol
-
 * Lista vertical
-
 * Barra de desplazamiento vertical
 
 También es fácil para la aplicación crear sus propios widgets de cliente.
@@ -298,33 +204,19 @@ Azure RTOS GUIX proporciona una API de dibujo de lienzo sólida, lo que permite 
 Todas las funciones admiten el suavizado de contorno en los objetivos de profundidad de color alta y todas las formas se pueden rellenar, incluidos los rellenos de patrón sólido y PixelMap. Todos los primitivos de dibujo admiten el pincel alfa cuando se ejecutan con 16 bpp y una profundidad de color superior. Las funciones de dibujo incluyen:
 
 * Dibujo de arco
-
 * Dibujo con círculo
-
 * Dibujo de línea
-
 * Dibujo circular
-
 * PixelMap Blend
-
 * Icono de PixelMap
-
 * Dibujo de polígono
-
 * Dibujo de texto
-
 * Dibujo de cuerda
-
 * Dibujo de elipse
-
 * Dibujo de píxeles
-
 * Dibujo de PixelMap
-
 * Girar PixelMap
-
 * Dibujo de rectángulo
-
 * Combinación de texto
 
 ### <a name="default-free-fonts-and-easy-to-add-more"></a>Fuentes gratuitas predeterminadas y fáciles de agregar
@@ -364,107 +256,22 @@ Azure RTOS GUIX se ejecuta en un equipo con Windows, usando exactamente la misma
 ### <a name="advanced-technology"></a>Tecnología avanzada
 
 * La tecnología avanzada de Azure RTOS GUIX incorpora:
-
 * Combinación alfa
-
 * Suavizado de contorno
-
 * Escalado automático
-
 * Compresión de mapa de bits
-
 * Combinación de lienzos
-
 * Compatibilidad con widgets personalizados
-
 * Compatibilidad con dibujos diferidos
-
 * Compatibilidad con la interpolación
-
 * Programación neutra endian
-
 * Compatibilidad con el acelerador de hardware
-
 * Compatibilidad multilingüe y codificación UTF-8
-
 * Compatibilidad con varias pantallas y lienzos
-
 * Recorte, dibujo y control de eventos optimizados
-
 * Descodificador de JPEG y PNG runtime
-
 * Cambio de aspecto visual y temas
-
 * Admite monocromo a través de color verdadero de 32 bits con formatos de gráficos alfa
-
 * Transiciones, sprites y compatibilidad con animaciones
-
 * Simulación de Win32
-
 * Administración de ventanas, incluidas las ventanillas y el mantenimiento de orden Z
-
-### <a name="fastest-time-to-market"></a>Tiempo de comercialización más rápido
-
-Azure RTOS USBX es fácil de instalar, conocer, usar, depurar, comprobar, certificar y mantener. Azure RTOS GUIX Studio también ayuda a simplificar el diseño y la implementación de la GUI incrustada. Como resultado, Azure RTOS GUIX es una de las soluciones GUI más populares para dispositivos IoT insertados. Nuestra ventaja continua de plazo de comercialización se basa en lo siguiente:
-
-* Documentación de calidad: consulte nuestra [Guía de usuario de Azure RTOS GUIX](about-guix.md) y véalo usted mismo.
-
-* Disponibilidad completa del código fuente
-
-* API fáciles de usar
-
-* Conjunto de características completo y avanzado
-
-## <a name="one-simple-license"></a>Una licencia sencilla
-
-No hay ningún costo asociado al uso y las pruebas del código fuente ni a las licencias de producción si se implementa en dispositivos con licencia previa; todos los demás dispositivos necesitan una licencia anual sencilla.
-
-## <a name="full-highest-quality-source-code"></a>Código fuente completo y de máxima calidad
-
-A lo largo de los años, el código fuente de Azure RTOS NetX ha marcado el listón en calidad y facilidad de comprensión. Además, la convención de tener una función por archivo facilita la navegación por el origen.
-
-## <a name="supports-most-popular-architectures"></a>Compatible con las arquitecturas más populares
-
-Azure RTOS USBX se ejecuta en los microprocesadores de 32 o 64 bits más populares, de serie, totalmente probado y totalmente compatible, lo que incluye lo siguiente:
-
-Arquitecturas avanzadas:
-
-**Dispositivos analógicos**: SHARC, Blackfin, CM4xx
-
-**Andes Core**: RISC-V
-
-**Ambiqmicro**: Apollo MCU
-
-**ARM**: ARM7, ARM9, ARM11, Cortex-M0/M3/M4/M7/A15/A5/A7/A8/A9/A5x 64-bi/A7x 64-bit/R4/R5, TrustZone ARMv8-M
-
-**Cadence**: Xtensa, Diamond
-
-**CEVA**: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0+, FM3, MF4, WICED WiFi
-
-**Cypress**: RISC-V
-
-**EnSilica**: eSi-RISC
-
-**Infineon**: XMC1000, XMC4000, TriCore
-
-**Intel; Intel FPGA**: x36/Pentium, XScale, NIOS II, Cyclone, Arria 10
-
-**Microchip**: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/SV, PIC24/PIC32
-
-**Microsemi**: RISC-V
-
-**NXP**: LPC, ARM7, ARM9, PowerPC, 68K, i.MX, ColdFire, Kinetis Cortex-M3/M4
-
-**Renesas**: SH, HS, V850, RX, RZ, Synergy
-
-**Silicon Labs**: EFM32
-
-**Synopsys**: ARC 600, 700, ARC EM, ARC HS
-
-**ST**: STM32, ARM7, ARM9, Cortex-M3/M4/M7
-
-**Tl**: C5xxx, C6xxx, Stellaris, Sitara, Tiva-C
-
-**Wave Computing**: MIPS32 4K, 24K, 34K, 1004K, MIPS64 5K, microAptiv, interAptiv, proAptiv, M-Class
-
-**Xilinx**: MicroBlaze, PowerPC 405, ZYNQ, ZYNQ UltraSCALE

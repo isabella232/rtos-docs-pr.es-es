@@ -6,26 +6,18 @@ ms.author: philmea
 ms.date: 6/9/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: acee58d9c48cb7a66993aaa5dc4a565dfe96234d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e786e5bf1f434ec9543823dee8784b677a2b371f
+ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815617"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108171393"
 ---
 # <a name="overview-of-azure-rtos-threadx"></a>Información general sobre Azure RTOS ThreadX
 
 Azure RTOS ThreadX es el sistema operativo en tiempo real (RTOS) avanzado de nivel industrial de Microsoft diseñado específicamente para aplicaciones profundamente insertadas en tiempo real de IoT. Azure RTOS ThreadX proporciona recursos avanzados de programación, comunicación, sincronización, temporización, administración de memoria y administración de interrupciones. Además, Azure RTOS ThreadX tiene muchas características avanzadas, como su arquitectura picokernel™, la programación preemption-threshold™, event-chaining™, la generación de perfiles de ejecución, las métricas de rendimiento y el seguimiento de eventos del sistema. En combinación con su excelente facilidad de uso, Azure RTOS ThreadX es la opción ideal para las aplicaciones insertadas más exigentes. En 2017, Azure RTOS ThreadX presumía de más de 6200 millones de implementaciones en una amplia gama de productos, incluidos dispositivos de consumo, electrónica médica y equipos de control industrial.
 
 ## <a name="api-protocols"></a>Protocolos de API
-
-### <a name="azure-rtos-threadx-api"></a>API de Azure RTOS ThreadX
-
-* API intuitivas y coherentes
-* Convención de nomenclatura sustantivo-verbo
-* Todas las API tienen *tx_* al inicio para identificarlas fácilmente como pertenecientes a Azure RTOS ThreadX
-* Las API de bloqueo tienen un tiempo de espera de subprocesos opcional
-* Muchas API están directamente disponibles desde los ISR de la aplicación
 
 ### <a name="azure-rtos-threadx-services"></a>Servicios de Azure RTOS ThreadX
 
@@ -183,7 +175,7 @@ Azure RTOS ThreadX presume de más de 6200 millones de implementaciones en tod
 
 Azure RTOS ThreadX requiere un área de instrucciones increíblemente pequeña de 2 KB y 1 KB de RAM para su superficie mínima. Esto se debe en gran medida a su arquitectura picokernel™ sin superposición y al escalado automático. El escalado automático significa que solo los servicios (y la infraestructura de apoyo) que usa la aplicación se incluyen en la imagen final en tiempo de vínculo.
 
-Estas son algunas de las características de tamaño típicas de Azure RTOS ThreadX:
+Estas son algunas de las características de tamaño típicas de Azure RTOS ThreadX.
 
 |Servicio de Azure RTOS ThreadX  |Tamaño típico en bytes  |
 |---------|---------|
@@ -220,39 +212,11 @@ Estas son algunas características de rendimiento típicas de Azure RTOS ThreadX
 
     **Cifras de rendimiento basadas en procesador típico que se ejecuta a 200 MHz*.
 
-## <a name="pre-certified-by-tuv-and-ul-to-many-safety-standards"></a>Certificado previamente por TUV y UL para varios estándares de seguridad
-
-Azure RTOS ThreadX y Azure RTOS ThreadX SMP han sido certificados por SGS-TUV Saar para su uso en sistemas críticos para la seguridad, de acuerdo con IEC-61508 SIL 4, IEC-62304 clase de seguridad de SW C, ISO 26262 SIL D y EN 50128. La certificación confirma que Azure RTOS ThreadX y Azure RTOS ThreadX SMP se pueden usar en el desarrollo de software relacionado con la seguridad para los niveles de integridad de seguridad más altos de IEC-61508, IEC-62304, ISO 26262 y EN 50128 para la "Seguridad funcional de los sistemas eléctricos, electrónicos y electrónicos programables relacionados con la seguridad". SG-TUV Saar, que es una sociedad conjunta entre las empresas alemanas SGS-Group y TUV Saarland, se ha convertido en la empresa líder independiente acreditada para probar, auditar, comprobar y certificar software insertado para sistemas relacionados con la seguridad en todo el mundo. El estándar de seguridad industrial IEC 61508 y todos los estándares que se derivan de él, incluidos IEC-62304, ISO 26262 y EN 50128, se usan para garantizar la seguridad funcional de los dispositivos médicos eléctricos, electrónicos y electrónicos programables relacionados con la seguridad, los sistemas de control de procesos, la maquinaria industrial, los automóviles y los sistemas de control de ferrocarriles.
-
-:::image type="content" source="media/overview-threadx/partener-logo-sgs-tuv-saar-2.png" alt-text="Certificación SG TUV SAAR":::
-
-Azure RTOS ThreadX y Azure RTOS ThreadX SMP han sido reconocidos por UR por su conformidad con los estándares de seguridad para software de componentes programables UL 60730-1 anexo H, CSA E60730-1 anexo H, IEC 60730-1 anexo H, UL 60335-1 anexo R, IEC 60335-1 anexo R y UL 1998. UL es una empresa global e independiente especializada en la seguridad en la ciencia con más de un siglo de experiencia aportando innovaciones en soluciones de seguridad que abarcan desde la adopción pública de electricidad hasta los avances en sostenibilidad, energías renovables y nanotecnología.
-
-:::image type="content" source="media/overview-threadx/cru-logo-certification.png" alt-text="Certificación UL":::
-
-Los artefactos (certificado, manual de seguridad, informe de pruebas, etc.) asociados a las certificaciones TUV y UL están disponibles para su venta.
-
-## <a name="eal4-common-criteria-security-certification"></a>Certificación de seguridad EAL4 + Common Criteria
-
-Azure RTOS ha logrado la certificación de seguridad EAL4 + Common Criteria. El objetivo de la evaluación (TOE) cubre Azure RTOS ThreadX, Azure RTOS NetX-Duo, Azure RTOS NetX Secure TLS y Azure RTOS NetX MQTT. Representa los protocolos de IoT más habituales que requieren sensores, dispositivos, enrutadores perimetrales y puertas de enlace profundamente insertados.
-
-:::image type="content" border="false" source="media/overview-threadx/eal-logo-certification.png" alt-text="Certificación EAL":::
-
-El recurso de evaluación de seguridad de TI usado para la certificación de seguridad de Azure RTOS es Brightsight BV y la entidad de certificación es SERTIT.
-
-## <a name="simple-easy-to-use"></a>Simple y fácil de usar
-
-Azure RTOS ThreadX es muy fácil de usar. Las API de Azure RTOS ThreadX son intuitivas y muy funcionales. Los nombres de API se componen de palabras reales y no de la sopa de letras de nombres muy abreviados que son tan comunes en otros productos RTOS. Todas las API de Azure RTOS ThreadX tienen `tx_` al inicio y siguen una convención de nomenclatura sustantivo-verbo. Además, existe una coherencia funcional en la API. Por ejemplo, todas las API que se suspenden tienen un tiempo de espera opcional que funciona de forma idéntica para las API.
-
-Es fácil compilar una aplicación de Azure RTOS ThreadX. La aplicación debe incluir *tx_api.h*, llamar a `tx_kernel_enter` desde Main, definir la función `tx_application_define` y crear un subproceso, definir la función de punto de entrada de subproceso y vincularse a la biblioteca de Azure RTOS ThreadX (normalmente *tx.a*).
-
-Azure RTOS ThreadX también presume del mayor volumen de documentación disponible. 
-
 ## <a name="advanced-technology"></a>Tecnología avanzada
 
 Azure RTOS ThreadX es una tecnología avanzada cuya característica más notable es la programación de umbral de prevención. Esta característica es exclusiva de Azure RTOS ThreadX y ha sido objeto de una extensa investigación académica. Por ejemplo, vea [Scheduling Fixed-Priority Tasks with Preemption Threshold](https://www.cs.utah.edu/~regehr/reading/open_papers/preempt_thresh.pdf), de Yun Wang, Universidad Concordia, y Manas Saksena, Universidad de Pittsburgh.
 
-Tenga en cuenta las capacidades de Azure RTOS ThreadX:
+Considere las funcionalidades de Azure RTOS ThreadX.
 
 * Recursos multitarea completos y generales
   * Subprocesos, temporizadores de aplicación, colas de mensajes, semáforos de recuento, exclusiones mutuas, marcas de eventos, bloques de memoria de bloques y de bytes
@@ -307,27 +271,6 @@ Los módulos habilitan la actualización de campos, la corrección de errores y 
 
 Los módulos también tienen un espacio de direcciones completamente independiente de Azure RTOS ThreadX. De esta manera, Azure RTOS ThreadX puede colocar la protección de memoria (mediante MPU o MMU) en torno al módulo, de forma que el acceso accidental fuera del módulo no pueda dañar ningún otro componente de software.
 
-## <a name="fastest-time-to-market"></a>Tiempo de comercialización más rápido
-
-Azure RTOS ThreadX es fácil de instalar, conocer, usar, depurar, comprobar, certificar y mantener. Como resultado, Azure RTOS ThreadX ha sido el RTOS líder en cuanto a tiempo de comercialización durante los últimos siete años consecutivos, según las encuestas de Embedded Market Forecasters (EMF). Las encuestas muestran que el 70 % de los diseños que usan Azure RTOS ThreadX se comercializan a tiempo, lo que supera al resto de los RTOS.
-
-A continuación se indica el porqué del ventajoso tiempo de comercialización:
-
-* Documentación de calidad
-* Disponibilidad completa del código fuente
-* API fáciles de usar
-* Conjunto de características completo y avanzado
-* Amplia integración de herramientas de terceros: especialmente Embedded Workbench™ de IAR
-
-## <a name="royalty-free"></a>Libre de regalías
-
-No hay ningún costo asociado al uso y las pruebas del código fuente ni a las licencias de producción si se implementa en dispositivos con licencia previa; todos los demás dispositivos necesitan una licencia anual sencilla.
-
-## <a name="full-highest-quality-source-code"></a>Código fuente completo y de máxima calidad
-
-Desde el principio, Azure RTOS ThreadX se diseñó para ser un RTOS de nivel industrial distribuido con código fuente de C completo. El código fuente de Azure RTOS ThreadX ha establecido el estándar de calidad y facilidad de comprensión. Además, la convención de tener una función por archivo facilita la navegación por el origen.
-
-Azure RTOS ThreadX se ajusta a estrictas convenciones de codificación, incluido el requisito de que cada línea de código de C tenga un comentario con sentido. Además, el origen de Azure RTOS ThreadX se ha certificado conforme a los estándares más altos.
 
 ## <a name="misra-compliant"></a>Conforme con MISRA
 
