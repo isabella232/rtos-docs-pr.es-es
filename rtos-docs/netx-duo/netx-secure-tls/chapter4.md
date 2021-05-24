@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 89761ec3438b1b16c1a603764bf7d4e1eac1b4ea
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 80ec22058ab64ed0c6258bb3d9364ec44f9a741b
+ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815353"
+ms.lasthandoff: 05/20/2021
+ms.locfileid: "110223399"
 ---
 # <a name="chapter-4---description-of-azure-rtos-netx-secure-services"></a>Capítulo 4: Descripción de los servicios de Azure RTOS NetX Secure
 
@@ -787,43 +787,6 @@ status =  nx_secure_tls_metadata_size_calculate(&nx_crypto_tls_ciphers,
 
 /* If status is NX_SUCCESS then crypto_metadata_size contains the size of the
    metadata buffer for the table nx_crypto_tls_ciphers.  */
-```
-
-### <a name="see-also"></a>Consulte también
-
-- nx_secure_tls_session_create
-
-## <a name="nx_secure_module_hash_compute"></a>nx_secure_module_hash_compute
-
-Calcular el valor del código hash de las rutinas de la biblioteca de NetX Secure
-
-### <a name="prototype"></a>Prototipo
-
-```C
-VOID nx_secure_module_hash_compute(VOID);
-```
-
-### <a name="description"></a>Descripción
-
-Este servicio inicializa el módulo de TLS de NetX Secure. Se le debe llamar antes de que se pueda acceder a otros servicios de NetX Secure.
-
-### <a name="parameters"></a>Parámetros
-
-Ninguno
-
-### <a name="return-values"></a>Valores devueltos
-
-Ninguno
-
-### <a name="allowed-from"></a>Permitido desde
-
-Inicialización, subprocesos
-
-### <a name="example"></a>Ejemplo
-
-```C
-/* Initializes the TLS module. */
-Nx_secure_tls_initialize();
 ```
 
 ### <a name="see-also"></a>Consulte también
