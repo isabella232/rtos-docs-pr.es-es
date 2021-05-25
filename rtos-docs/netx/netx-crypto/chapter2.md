@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1616667c5efd73229ed69bcd4e5de5f80e5826f9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: cd736cf6bbe15e1f407d1812072a4308435c8007
+ms.sourcegitcommit: c2f5da5d6c7b230799f8fbd77885e9940acfbab4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815265"
+ms.lasthandoff: 05/21/2021
+ms.locfileid: "110236159"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-crypto"></a>Capítulo 2: Instalación y uso de Crypto de Azure RTOS NetX
 
@@ -36,12 +36,12 @@ Para que la criptografía de NetX se use en modo independiente, la distribución
 
 ## <a name="using-netx-crypto"></a>Uso de NetX Crypto
 
-El uso de NetX Crypto es fácil. Básicamente, el código de la aplicación debe incluir el *nx_crypto.h*.  Después de incluir *nx_crypto.h*, el código de la aplicación puede realizar las llamadas de función NetX Crypto especificadas más adelante en este manual.
+En este capítulo se describen la instalación, la configuración y el uso del componente Crypto de Azure RTOS NetX. Básicamente, el código de la aplicación debe incluir el *nx_crypto.h*.  Después de incluir *nx_crypto.h*, el código de la aplicación puede realizar las llamadas de función NetX Crypto especificadas más adelante en este manual.
 
 ## <a name="configuration-options"></a>Opciones de configuración
 
 Hay varias opciones de configuración para compilar NetX Crypto. A continuación, se muestra una lista de todas las opciones, donde se describe con detalle cada una de ellas:
 
 - **NX_CRYPTO_MAX_RSA_MODULUS_SIZE**: si se define, esta opción proporciona el módulo de RSA máximo esperado, en bits. El valor predeterminado es 4096 para un módulo de 4096 bits. Otros valores pueden ser 3072, 2048 o 1024 (no recomendado).
-- **NX_CRYPTO_FIPS**: si se define, esta opción habilita las características de seguridad adicionales necesarias para el uso conforme a FIPS. Esta opción no está habilitada para compilaciones no conformes a FIPS.
+- **NX_CRYPTO_SELF_TEST**: si se define, habilita las pruebas automáticas del módulo Crypto de NetX. El símbolo **NX_CRYPTO_FIPS** ahora está en desuso y se ha cambiado el nombre a **NX_CRYPTO_SELF_TEST**.
 - **NX_CRYPTO_STANDALONE_ENABLE**: si se define, permite usar NetX Crypto en modo independiente (sin Azure RTOS). De forma predeterminada, este símbolo no está definido.

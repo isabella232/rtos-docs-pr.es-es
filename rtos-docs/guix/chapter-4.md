@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 7a17ab0d2500d021bb9397dbf673427362c45173
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: b07e275468484ccc905655dcd13197de42b2ac86
+ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815021"
+ms.lasthandoff: 05/20/2021
+ms.locfileid: "110223416"
 ---
 # <a name="chapter-4---description-of-guix-services"></a>Capítulo 4: Descripción de los servicios GUIX
 
@@ -27,7 +27,7 @@ En la sección "Valores devueltos" de las siguientes descripciones de API, los v
 | gx_accordion_menu_position          | Colocar elementos de menú                                                                          |
 | gx_animation_canvas_define          | Proporcionar memoria a un controlador de animación para que un lienzo se use en animaciones posteriores |
 | gx_animation_create                  | Crear un controlador de animación                                                               |
-| gx_animation_delete                  | Eliminar un controlador de animación                                                               |
+| gx_animation_delete                  | Eliminar uno o varios controladores de animación |
 | gx_animation_drag_disable           | Deshabilitar enlace de animación de arrastre de pantalla                                                           |
 | gx_animation_drag_enable            | Habilitar enlace de animación de arrastre de pantalla                                                            |
 | gx_animation_landing_speed_set     | Establecer la velocidad de aterrizaje para la animación de arrastre de pantalla                                                  |
@@ -128,6 +128,12 @@ En la sección "Valores devueltos" de las siguientes descripciones de API, los v
 | gx_drop_list_open                        | Abrir lista desplegable                                                        |
 | gx_drop_list_pixelmap_set               | Establecer mapa de píxeles en lista desplegable                                             |
 | gx_drop_list_popup_set                  | Establecer emergente en lista desplegable                                                |
+| gx_generic_scroll_wheel_children_position | Colocar los elementos secundarios de la rueda del mouse genérica |
+| gx_generic_scroll_wheel_create| Crear widget de la rueda del mouse genérica |
+| gx_generic_scroll_wheel_draw | Dibujar widget de la rueda del mouse genérica |
+| gx_generic_scroll_wheel_event_process| Procesar evento de la rueda del mouse genérica|
+| gx_generic_scroll_wheel_row_height_set| Establecer el alto de fila de la rueda del mouse genérica|
+| gx_generic_scroll_wheel_total_rows_set| Establecer las filas totales de la rueda del mouse genérica |
 | gx_horizontal_list_children_position    | Colocar widgets secundarios en la lista horizontal                          |
 | gx_horizontal_list_create                | Crear lista horizontal                                                |
 | gx_horizontal_list_event_process        | Procesar evento de la lista horizontal                                      |
@@ -382,7 +388,7 @@ En la sección "Valores devueltos" de las siguientes descripciones de API, los v
 | gx_text_scroll_wheel_event_process      | Procesar evento de rueda del mouse de texto                        |
 | gx_text_scroll_wheel_font_set          | Asignar las fuentes de la rueda del mouse de texto                         |
 | gx_text_scroll_wheel_text_color_set   | Asignar los colores de texto de la rueda del mouse de texto                   |
-| gx_tree_view_create                    | Crear una vista de árbol                          |
+| gx_tree_view_create                    | Creación de una vista de árbol                          |
 | gx_tree_view_draw                      | Dibujar vista de árbol                              |
 | gx_tree_view_event_process            | Procesar evento de vista de árbol                     |
 | gx_tree-view_indentation_set           | Establecer sangría de la vista de árbol                   |
@@ -911,7 +917,7 @@ gx_system_animation_get(&animation);
 
 if (animation)
 {
-    status = gx_animation_create(&animation);
+    status = gx_animation_create(animation);
 }
 
 /* If status is GX_SUCCESS the new animation controller was successfully created and initialized. */
@@ -922,6 +928,79 @@ if (animation)
 
 - gx_animation_canvas_define
 - gx_animation_delete
+- gx_animation_drag_disable
+- gx_animation_drag_enable
+- gx_animation_start
+- gx_animation_landing_speed_set
+- gx_animation_stop
+- gx_system_animation_get
+- gx_system_animation_free
+
+## <a name="gx_animation_delete"></a>gx_animation_delete
+
+Eliminar uno o varios controladores de animación
+
+### <a name="prototype"></a>Prototipo
+
+```C
+UINT gx_animation_delete(GX_ANIMATION *animation, GX_WIDGET *parent);
+```
+
+### <a name="description"></a>Descripción
+
+Este servicio elimina una secuencia de animación si se establece el puntero de animación de entrada; de lo contrario, elimina todas las animaciones que pertenecen al widget primario especificado.
+
+### <a name="parameters"></a>Parámetros
+
+- **animation**: puntero a un bloque de control de animación.
+- **parent**: puntero al widget primario.
+
+
+### <a name="return-values"></a>Valores devueltos
+
+- **GX_SUCCESS**: (0x00) Eliminación correcta de los controladores de animación
+- **GX_PTR_ERROR** (0x07) Puntero no válido
+
+### <a name="allowed-from"></a>Permitido desde
+
+Inicialización y subprocesos
+
+### <a name="example"></a>Ejemplo
+
+- Eliminar una animación
+
+```C
+GX_ANIMATION *animation;
+
+/* Allocate an animaton control from system pool */
+gx_system_animation_get(&animation);
+
+if (animation)
+{
+    /* Create an animation.  */
+    gx_animation_create(animation);
+
+    /* Delete an animation.  */
+    status = gx_animation_delete(animation, GX_NULL);
+}
+
+/* If status is GX_SUCCESS the animation controller was successfully deleted and returned back to system animation pool. */
+
+```
+
+- Eliminar varias animaciones
+```C
+
+status = gx_animation_delete(GX_NULL, parent);
+
+/* If status is GX_SUCCESS all the animations belong to the parent were successfully deleted. */
+
+```
+
+### <a name="see-also"></a>Consulte también
+
+- gx_animation_canvas_define
+- gx_animation_create
 - gx_animation_drag_disable
 - gx_animation_drag_enable
 - gx_animation_start
@@ -978,13 +1057,14 @@ status = gx_animation_drag_disable(&animation, animation_parent);
 ### <a name="see-also"></a>Consulte también
 
 - gx_animation_canvas_define
-- gx__animation_create
+- gx_animation_create
+- gx_animation_delete
 - gx_animation_drag_enable
 - gx_animation_landing_speed_set
 - gx_animation_start
 - gx_animation_stop
 - gx_system_animation_get
-- gx__system_animation_free
+- gx_system_animation_free
 
 ## <a name="gx_animation_drag_enable"></a>gx_animation_drag_enable
 
@@ -1057,12 +1137,13 @@ status = gx_animation_drag_enable(&animation, animation_parent,
 ### <a name="see-also"></a>Consulte también
 
 - gx_animation_canvas_define
-- gx__animation_create
+- gx_animation_create
+- gx_animation_delete
 - gx_animation_drag_disable
-- gx__animation_landing_speed_set
+- gx_animation_landing_speed_set
 - gx_animation_start
 - gx_animation_stop
-- gx__system_animation_get
+- gx_system_animation_get
 - gx_system_animation_free
 
 ## <a name="gx_animation_landing_speed_set"></a>gx_animation_landing_speed_set
@@ -1107,12 +1188,13 @@ status = gx_animation_landing_peed_set(&my_animation, 20);
 ### <a name="see-also"></a>Consulte también
 
 - gx_animation_canvas_define
-- gx__animation_create
+- gx_animation_create
+- gx_animation_delete
 - gx_animation_slide_disable
-- gx__animation_slide_enable
+- gx_animation_slide_enable
 - gx_animation_start
 - gx_animation_stop
-- gx__system_animation_get
+- gx_system_animation_get
 - gx_system_animation_free
 
 ## <a name="gx_animation_start"></a>gx_animation_start
@@ -1237,11 +1319,12 @@ status = gx_animation_stop(&animation);
 ### <a name="see-also"></a>Consulte también
 
 - gx_animation_canvas_define
-- gx__animation_create
+- gx_animation_create
+- gx_animation_delete
 - gx_animation_drag_disable
-- gx__animation_drag_enable
+- gx_animation_drag_enable
 - gx_animation_start
-- gx__system_animation_get
+- gx_system_animation_get
 - gx_system_animation_free
 
 ## <a name="gx_binres_language_count_get"></a>gx_binres_language_count_get
@@ -6841,6 +6924,405 @@ status = gx_drop_list_popup_get(&drop_list, &vertical_list)
 - gx_drop_list_create
 - gx_drop_list_open
 - gx_drop_list_pixelmap_set
+
+## <a name="gx_generic_scroll_wheel_children_position"></a>gx_generic_scroll_wheel_children_position
+### <a name="position-children-for-the-generic-scroll-wheel"></a>Colocar los elementos secundarios de la rueda del mouse genérica
+
+### <a name="prototype"></a>Prototipo
+
+```C
+UINT gx_generic_scroll_wheel_children_position(
+    GX_GENERIC_SCROLL_WHEEL *wheel)
+```
+
+### <a name="description"></a>Descripción
+
+Esta función coloca los elementos secundarios de la rueda del mouse genérica según el alto de fila de la rueda del mouse genérica. Se llama a esta función de manera predeterminada cuando se muestra la rueda del mouse genérica.
+
+### <a name="parameters"></a>Parámetros
+
+- **wheel**: puntero al bloque de control de rueda del mouse genérica
+
+### <a name="return-values"></a>Valores devueltos
+
+- **GX_SUCCESS**: (0x00) Colocación correcta de los elementos secundarios de la rueda del mouse genérica
+- **GX_CALLER_ERROR** (0x11) Autor de la llamada de esta función no válido
+- **GX_PTR_ERROR** (0x07) Puntero no válido
+- **GX_INVALID_WIDGET** (0x12) Widget no válido
+
+### <a name="allowed-from"></a>Permitido desde
+
+Inicialización y subprocesos
+
+### <a name="example"></a>Ejemplo
+
+```C
+/* Position children in the generic scroll wheel. */
+status = gx_generic_scroll_wheel_children_position (&wheel);
+
+/* If status is GX_SUCCESS the children in the generic scroll wheel are positioned. */
+```
+
+### <a name="see-also"></a>Consulte también
+
+- gx_scroll_wheel_create
+- gx_scroll_wheel_event_process
+- gx_scroll_wheel_gradient_alpha_set
+- gx_scroll_wheel_selected_background_set
+- gx_scroll_wheel_selected_get
+- gx_scroll_wheel_selected_set
+- gx_generic_scroll_wheel_create
+- gx_generic_scroll_wheel_draw
+- gx_generic_scroll_wheel_event_process
+- gx_generic_scroll_wheel_row_height_set
+- gx_generic_scroll_wheel_total_rows_set
+
+## <a name="gx_generic_scroll_wheel_create"></a>gx_generic_scroll_wheel_create
+
+
+Crear rueda del mouse genérica
+
+### <a name="prototype"></a>Prototipo
+
+```C
+UINT gx_generic_scroll_wheel_create(
+    GX_GENERIC_SCROLL_WHEEL *wheel,
+    GX_CONST GX_CHAR *name,
+    GX_WIDGET *parent,
+    INT total_rows,
+    VOID (*callback)(GX_GENERIC_SCROLL_WHEEL *, GX_WIDGET *, INT),
+    ULONG style,
+    USHORT id,
+    GX_CONST GX_RECTANGLE *size);
+```
+
+### <a name="description"></a>Descripción
+
+Este servicio crea un widget de rueda del mouse genérica.
+
+Una rueda del mouse genérica es un tipo de widget de rueda del mouse que consta de widgets secundarios. También están disponibles otros tipos de widgets de rueda del mouse numérica. Consulte la API gx_scroll_wheel_create() para más información sobre la jerarquía de widgets de rueda del mouse, los tipos de widget y la derivación de widgets.
+
+GX_GENERIC_SCROLL_WHEEL se deriva de GX_SCROLL_WHEEL y admite todos los servicios gx_scroll_wheel.
+
+Todos los tipos de rueda del mouse generan eventos GX_EVENT_LIST_SELECT en su elemento primario cuando se desplaza la rueda del mouse.
+
+### <a name="parameters"></a>Parámetros
+
+- **wheel**: puntero al bloque de control de rueda del mouse genérica.
+- **name**: nombre lógico del widget de rueda del mouse genérica
+- **parent**: puntero al widget primario.
+- **total_rows**: filas totales de la rueda del mouse.
+- **callback**: función de devolución de llamada para crear una fila del widget. Puede ser GX_NULL si el número de filas totales coincide con el recuento de elementos secundarios. Se debe proporcionar para la reutilización del widget cuando el recuento de elementos secundarios sea menor que el número total de filas o cuando esté establecido el estilo GX_STYLE_WRAP. En este caso, asegúrese de que el recuento de elementos secundarios es 1 más que el número de filas visibles.
+- **style**: estilo de la rueda del mouse genérica. El **Apéndice D** contiene estilos generales predefinidos para todos los widgets, así como estilos específicos del widget.
+- **id**: identificador definido por la aplicación de la rueda del mouse genérica.
+- **size**: dimensiones del widget de rueda del mouse genérica.
+
+### <a name="return-values"></a>Valores devueltos
+
+- **GX_SUCCESS**: (0x00) Creación correcta de la rueda del mouse genérica
+- **GX_CALLER_ERROR** (0x11) Autor de la llamada de esta función no válido
+- **GX_PTR_ERROR** (0x07) Puntero no válido
+- **GX_ALREADY_CREATED** (0x13) El widget ya se ha creado
+- **GX_INVALID_SIZE** (0x19) Tamaño de bloque de control del widget no válido
+- **GX_INVALID_VALUE**: (0x22) Número de filas no válido
+- **GX_INVALID_WIDGET** (0x12) Widget primario no válido
+
+### <a name="allowed-from"></a>Permitido desde
+
+Inicialización y subprocesos
+
+### <a name="example"></a>Ejemplo
+
+```C
+
+/* Define visible rows.  */
+#define VISIBLE_ROWS 5
+
+/* Define row memory.  */
+GX_NUMERIC_PROMPT row_memory[VISIBLE_ROWS + 1];
+
+/* Define callback function.  */
+VOID row_create(GX_GENERIC_SCROLL_WHEEL *wheel, GX_WIDGET *widget, INT index)
+{
+GX_NUMERIC_PROMPT *row = (GX_PROMPT *)widget;
+GX_BOOL result;
+GX_RECTANGLE size;
+
+    gx_widget_created_test(widget, &result);
+
+    if(!result)
+    {
+        gx_numeric_prompt_create(row, "", wheel, 0, GX_STYLE_ENABLED, 0, &size);
+    }
+
+    gx_numeric_prompt_value_set(row, index);
+}
+
+/* Create "generic_wheel” with 20 rows.  */
+status = gx_generic_scroll_wheel_create(&generic_wheel, “generic_wheel”, &parent, 20, row_create,
+                                       GX_STYLE_ENABLED, WHEEL_ID, &size);
+
+/* If status is GX_SUCCESS the generic scroll wheel "generic_wheel”" has been created. */
+
+/* Create children for generic scroll wheel.  */
+for(index = 0; index <= VISIBLE_ROWS; index++)
+{
+    row_create(generic_wheel, (GX_WIDGET *)&row_memory[index], index);
+}
+```
+
+### <a name="see-also"></a>Consulte también
+
+- gx_scroll_wheel_create
+- gx_scroll_wheel_event_process
+- gx_scroll_wheel_gradient_alpha_set
+- gx_scroll_wheel_selected_background_set
+- gx_scroll_wheel_selected_get
+- gx_scroll_wheel_selected_set
+- gx_generic_scroll_wheel_children_position
+- gx_generic_scroll_wheel_draw
+- gx_generic_scroll_wheel_event_process
+- gx_generic_scroll_wheel_row_height_set
+- gx_generic_scroll_wheel_total_rows_set
+
+## <a name="gx_generic_scroll_wheel_draw"></a>gx_generic_scroll_wheel_draw
+### <a name="draw-window"></a>Dibujar ventana
+
+### <a name="prototype"></a>Prototipo
+
+```C
+VOID gx_generic_scroll_wheel_draw(GX_GENERIC_SCROLL_WHEEL *wheel);
+```
+
+### <a name="description"></a>Descripción
+
+Este servicio dibuja una rueda del mouse genérica. Normalmente, se llama a este servicio internamente durante la actualización del lienzo, pero también se le puede llamar desde las funciones de dibujo de la rueda del mouse genérica.
+
+### <a name="parameters"></a>Parámetros
+
+- **wheel**: puntero al bloque de control de rueda del mouse genérica.
+
+### <a name="return-values"></a>Valores devueltos
+
+- **None**
+
+### <a name="allowed-from"></a>Permitido desde
+
+Subprocesos
+
+### <a name="example"></a>Ejemplo
+
+```C
+/* Write a custom generic scroll wheel draw function. */
+
+VOID my_custom_generic_scroll_wheel_draw(GX_GENERIC_SCROLL_WHEEL *wheel)
+{
+    /* Call default generic scroll wheel draw. */
+    gx_generic_scroll_wheel_draw(wheel);
+
+    /* Add your own drawing here. */
+}
+```
+
+### <a name="see-also"></a>Consulte también
+
+- gx_scroll_wheel_create
+- gx_scroll_wheel_event_process
+- gx_scroll_wheel_gradient_alpha_set
+- gx_scroll_wheel_selected_background_set
+- gx_scroll_wheel_selected_get
+- gx_scroll_wheel_selected_set
+- gx_generic_scroll_wheel_children_position
+- gx_generic_scroll_wheel_create
+- gx_generic_scroll_wheel_event_process
+- gx_generic_scroll_wheel_row_height_set
+- gx_generic_scroll_wheel_total_rows_set
+
+## <a name="gx_generic_scroll_wheel_event_process"></a>gx_generic_scroll_wheel_event_process
+### <a name="process-generic-scroll-wheel-event"></a>Procesar evento de la rueda del mouse genérica
+
+### <a name="prototype"></a>Prototipo
+
+```C
+UINT gx_generic_scroll_wheel_event_process(
+    GX_GENERIC_SCROLL_WHEEL *wheel, 
+    GX_EVENT *event);
+```
+
+### <a name="description"></a>Descripción
+
+Este servicio procesa un evento para esta ventana.
+
+### <a name="parameters"></a>Parámetros
+
+- **wheel**: puntero al bloque de control de rueda del mouse genérica.
+- **event**: puntero al evento que se va a procesar.
+
+### <a name="return-values"></a>Valores devueltos
+
+- **GX_SUCCESS**: (0x00) Procesamiento correcto del evento de la rueda del mouse genérica
+- **GX_CALLER_ERROR** (0x11) Autor de la llamada de esta función no válido
+- **GX_PTR_ERROR** (0x07) Puntero no válido
+- **GX_INVALID_WIDGET** (0x12) Widget no válido
+
+### <a name="allowed-from"></a>Permitido desde
+
+Subprocesos
+
+### <a name="example"></a>Ejemplo
+
+```C
+/* Call generic generic scroll wheel event processing as part of custom event processing function. */
+
+UINT custom_generic_scroll_wheel_event_process(GX_GENERIC_SCROLL_WHEEL *wheel,
+                                               GX_EVENT *event)
+{
+    UINT status = GX_SUCCESS;
+
+    switch(event->gx_event_type)
+    {
+        case xyz:
+
+            /* Insert custom event handling here */
+            break;
+
+        default:
+
+            /* Pass all other events to the default generic scroll wheel
+            event processing */
+            status = gx_generic_scroll_wheel_event_process(wheel, event);
+            break;
+        }
+        return status;
+}
+```
+
+### <a name="see-also"></a>Consulte también
+
+- gx_scroll_wheel_create
+- gx_scroll_wheel_event_process
+- gx_scroll_wheel_gradient_alpha_set
+- gx_scroll_wheel_selected_background_set
+- gx_scroll_wheel_selected_get
+- gx_scroll_wheel_selected_set
+- gx_generic_scroll_wheel_children_position
+- gx_generic_scroll_wheel_create
+- gx_generic_scroll_wheel_draw
+- gx_generic_scroll_wheel_row_height_set
+- gx_generic_scroll_wheel_total_rows_set
+
+## <a name="gx_generic_scroll_wheel_row_height_set"></a>gx_generic_scroll_wheel_row_height_set
+
+
+Asignar el alto de cada fila de la rueda
+
+### <a name="prototype"></a>Prototipo
+
+```C
+UINT gx_generic_scroll_wheel_row_height_set(
+    GX_GENERIC_SCROLL_WHEEL *wheel,
+    GX_VALUE row_height);
+```
+
+### <a name="description"></a>Descripción
+
+Este servicio asigna el alto de fila para cada fila de la rueda del mouse.
+
+### <a name="parameters"></a>Parámetros
+
+- **wheel**: puntero al bloque de control de rueda del mouse genérica
+- **row_height**: valor del alto de la fila, en píxeles.
+
+### <a name="return-values"></a>Valores devueltos
+
+- **GX_SUCCESS** (0x00) Establecimiento correcto del alto de la rueda del mouse
+- **GX_CALLER_ERROR** (0x11) Autor de la llamada de esta función no válido
+- **GX_PTR_ERROR** (0x07) Puntero no válido
+- **GX_INVALID_WIDGET** (0x12) Widget no válido
+- **GX_INVALID_VALUE**: (0x22) Altura de fila no válida
+
+### <a name="allowed-from"></a>Permitido desde
+
+Inicialización y subprocesos
+
+### <a name="example"></a>Ejemplo
+
+```C
+status = gx_generic_scroll_wheel_row_height_set(&wheel, 40);
+
+/* if status == GX_SUCCESS the wheel row height has been set to 40
+pixels. */
+```
+
+### <a name="see-also"></a>Consulte también
+
+- gx_scroll_wheel_create
+- gx_scroll_wheel_event_process
+- gx_scroll_wheel_gradient_alpha_set
+- gx_scroll_wheel_selected_background_set
+- gx_scroll_wheel_selected_get
+- gx_scroll_wheel_selected_set
+- gx_generic_scroll_wheel_children_position
+- gx_generic_scroll_wheel_create
+- gx_generic_scroll_wheel_draw
+- gx_generic_scroll_wheel_event_process
+- gx_generic_scroll_wheel_total_rows_set
+
+## <a name="gx_generic_scroll_wheel_total_rows_set"></a>gx_generic_scroll_wheel_total_rows_set
+
+
+Asignar el total de las filas disponibles de la rueda del mouse
+
+### <a name="prototype"></a>Prototipo
+
+```C
+UINT gx_generic_scroll_wheel_total_rows_set(
+    GX_GENERIC_SCROLL_WHEEL *wheel,
+    INT total_rows);
+```
+
+### <a name="description"></a>Descripción
+
+Este servicio asigna o cambia el número total de filas de la rueda del mouse genérica.
+
+### <a name="parameters"></a>Parámetros
+
+- **wheel**: puntero al bloque de control de la rueda del mouse genérica.
+- **total_rows**: número total de filas de la rueda que se van a presentar al usuario.
+
+### <a name="return-values"></a>Valores devueltos
+
+- **GX_SUCCESS**: (0x00) Establecimiento correcto del total de filas de la rueda del mouse genérica
+- **GX_CALLER_ERROR** (0x11) Autor de la llamada de esta función no válido
+- **GX_PTR_ERROR** (0x07) Puntero no válido
+- **GX_INVALID_WIDGET** (0x12) Widget no válido
+- **GX_INVALID_VALUE**: (0x22) Número total de filas no válido
+
+### <a name="allowed-from"></a>Permitido desde
+
+Inicialización y subprocesos
+
+### <a name="example"></a>Ejemplo
+
+```C
+status = gx_generic_scroll_wheel_total_rows_set(&wheel, 20);
+
+/* if status == GX_SUCCESS the scroll wheel has been changed to
+display 20 total rows */
+```
+### <a name="see-also"></a>Consulte también
+
+- gx_scroll_wheel_create
+- gx_scroll_wheel_event_process
+- gx_scroll_wheel_gradient_alpha_set
+- gx_scroll_wheel_selected_background_set
+- gx_scroll_wheel_selected_get
+- gx_scroll_wheel_selected_set
+- gx_generic_scroll_wheel_children_position
+- gx_generic_scroll_wheel_create
+- gx_generic_scroll_wheel_draw
+- gx_generic_scroll_wheel_event_process
+- gx_generic_scroll_wheel_row_height_set
 
 ## <a name="gx_horizontal_list_children_position"></a>gx_horizontal_list_children_position
 
@@ -16460,9 +16942,9 @@ UINT gx_scroll_wheel_create(
 
 ### <a name="description"></a>Descripción
 
-Este servicio crea un widget de rueda del mouse genérica.
+Este servicio crea un widget de rueda del mouse de base.
 
-Una rueda del mouse genérica es el widget base para todos los tipos de widget de rueda del mouse, entre los que se incluye *gx_text_scroll_wheel***, que es la base para los widgets *gx_numeric_scroll_wheel*** y *gx_string_scroll_wheel***. El widget de rueda del mouse base proporciona el control de eventos, la animación del desplazamiento y el cálculo de la fila seleccionada para todos los tipos de widget de rueda del mouse.
+Una rueda del mouse de base es el widget de base para todos los tipos de widget de rueda del mouse, incluidos **gx_generic_scroll_wheel** y **gx_text_scroll_wheel**, que son la base de los widgets **gx_numeric_scroll_wheel** y **gx_string_scroll_wheel**. El widget de rueda del mouse base proporciona el control de eventos, la animación del desplazamiento y el cálculo de la fila seleccionada para todos los tipos de widget de rueda del mouse.
 
 Normalmente, las aplicaciones no crean una instancia de un widget de rueda del mouse genérica, ya que este tipo de widget no proporciona ninguna función de dibujo. Sin embargo, se proporciona acceso a esta API como ayuda para las aplicaciones que necesitan crear un tipo de widget de rueda del mouse personalizada.
 
@@ -21145,9 +21627,9 @@ Si se utiliza, este servicio se debe llamar después de gx_system_initialize(), 
 
 Los servicios GUIX que requieren una asignación de memoria en tiempo de ejecución y un servicio de desasignación incluyen:
 
-- La carga de recursos binarios desde un almacenamiento externo en el entorno de tiempo de ejecución de GUIX.
-- El descodificador de imágenes JPEG en tiempo de ejecución del software.
-- El descodificador de imágenes PNG en tiempo de ejecución del software.
+- Carga de recursos binarios del almacenamiento externo en el entorno de ejecución de GUIX.
+- Descodificador de imágenes JPEG en tiempo de ejecución de software.
+- Descodificador de imágenes PNG en tiempo de ejecución de software.
 - Uso de widgets de texto con GX_STYLE_TEXT_COPY.
 - Funciones de utilidad de cambio de tamaño y rotación de mapa de píxeles en tiempo de ejecución.
 - Asignación de bloque de control de widget y pantalla en tiempo de ejecución.
@@ -26655,7 +27137,7 @@ status = gx_widget_allocate(&button, sizeof(GX_TEXT_BUTTON));
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -26735,7 +27217,7 @@ status = gx_widget_attach(&my_parent, &my_widget);
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -26814,7 +27296,7 @@ VOID my_widget_draw(GX_WIDGET * widget)
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -26893,7 +27375,7 @@ status = gx_widget_back_attach(&my_parent, &my_widget);
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -26970,7 +27452,7 @@ status = gx_widget_back_move(&my_widget, &moved_flag);
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -27052,7 +27534,7 @@ status = gx_widget_block_move(&my_widget, &size, 20, 0);
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -27142,7 +27624,7 @@ VOID my_widget_draw(GX_WIDGET * widget)
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -27220,7 +27702,7 @@ status = gx_widget_border_style_set(&my_widget,
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -27299,7 +27781,7 @@ status = gx_widget_border_width_get(&my_widget, &my_width);
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -27376,7 +27858,7 @@ status = gx_widget_canvas_get(&my_widget, &my_canvas);
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -27457,7 +27939,7 @@ status = gx_widget_child_detect(&my_widget, &my_child, &detected);
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -27536,7 +28018,7 @@ VOID my_widget_draw(GX_WIDGET * widget)
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set
@@ -27616,7 +28098,7 @@ status = gx_widget_client_get(&my_widget, my_widget_width,
 - gx_widget_delete
 - gx_widget_detach
 - gx_widget_draw
-- gx_widget_draw_set
+- vgx_widget_draw_set
 - gx_widget_event_generate
 - gx_widget_event_process
 - gx_widget_event_process_set

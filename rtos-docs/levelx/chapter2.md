@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 575776875452cfc718401556a6440d787cb18893
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 34110e74e8ad0a6acd376c00c1284a3ea715c5f5
+ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815430"
+ms.lasthandoff: 05/20/2021
+ms.locfileid: "110223322"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-levelx"></a>Capítulo 2: Instalación y uso de Azure RTOS LevelX
 
@@ -80,6 +80,10 @@ LevelX se puede configurar en tiempo de compilación mediante las definiciones c
 - **LX_NOR_EXTENDED_CACHE_SIZE**: de forma predeterminada, este valor es 8, que representa un máximo de 8 sectores que se pueden almacenar en memoria caché en una instancia de NOR.
 - **LX_NOR_SECTOR_MAPPING_CACHE_SIZE**: de forma predeterminada, este valor es 16 y define el tamaño de la memoria caché de asignación de sectores lógicos. Los valores grandes mejoran el rendimiento, pero tienen un costo de memoria. El tamaño mínimo es 8 y todos los valores deben ser una potencia de 2.
 - **LX_THREAD_SAFE_ENABLE**: definido, esto hace que LevelX sea seguro para subprocesos mediante un objeto de exclusión mutua de ThreadX en toda la API.
+- **LX_STANDALONE_ENABLE**: si se define, permite usar LevelX en modo independiente (sin Azure RTOS). De forma predeterminada, este símbolo no está definido.
+
+> [!IMPORTANT]
+> Cuando se usa LevelX en modo independiente (se debe definir **LX_STANDALONE_ENABLE**), no se necesitan archivos ni bibliotecas de ThreadX. La característica Seguro para subprocesos de LevelX está deshabilitada en este modo.
 
 ## <a name="using-levelx"></a>Uso de LevelX
 
