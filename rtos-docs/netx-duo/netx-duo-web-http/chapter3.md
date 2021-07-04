@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 30168ad5a564b0f4c0a8c999046c5103385f4f90
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6bb2743f05c5b56331d1c0e948601ad23bf340d1
+ms.sourcegitcommit: 95f4ae0842a486fec8f10d1480203695faa9592d
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815377"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111875279"
 ---
 # <a name="chapter-3---description-of-http-services"></a>Capítulo 3: Descripción de los servicios HTTP
 
@@ -79,7 +79,7 @@ nx_web_http_client_connect(&my_client, &server_ip_address,
 /* Create a new GET request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_GET,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -94,7 +94,7 @@ status = nx_web_http_client_request_header_add(&my_client, "Server", 6,
 status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server by repeatedly
-    calling *nx_web_http_client_response_body_get* until the entire response is retrieved. *./
+    calling *nx_web_http_client_response_body_get* until the entire response is retrieved. */
 
 get_status = NX_SUCCESS;
 
@@ -1115,7 +1115,7 @@ Este servicio intenta asignar un paquete para HTTP(S) de cliente.
 - **client_ptr** Puntero al bloque de control del cliente HTTP.
 - **packet_ptr** Puntero al paquete asignado.
 - **wait_option** Define el tiempo de espera en tics si no hay paquetes disponibles en el grupo de paquetes. Las opciones de espera se definen de la siguiente forma:
-  - **NX_NO_WAIT** (0x00000000)
+  - **NX_NO_WAIT**: (0x00000000)
   - **NX_WAIT_FOREVER** (0xFFFFFFFF)
   - **TIMEOUT_IN_TICKS** (de 0x00000001 a 0xFFFFFFFE)
 
@@ -1853,7 +1853,8 @@ nx_web_http_client_secure_connect(&my_client, IP_ADDRESS(1,2,3,5),
 
 /* Create a PUT request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
-    NX_WEB_HTTP_METHOD_PUT, "https://192.168.1.150/test.txt ",
+    NX_WEB_HTTP_METHOD_PUT,
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_TRUE,
     NX_NULL, /* username */
@@ -1871,7 +1872,7 @@ nx_web_http_client_request_packet_allocate(&my_client,
 /* Set the chunked transfer. */
 status = nx_web_http_client_request_chunked_set(&my_client, 128, my_packet);
 
-/* At this point, user can fill the data into my_packet. *./
+/* At this point, user can fill the data into my_packet. */
 nx_packet_data_append(my_packet, data_ptr, data_size,
     packet_pool, NX_WAIT_FOREVER);
 
@@ -1935,7 +1936,7 @@ nx_web_http_client_secure_connect(&my_client, IP_ADDRESS(1,2,3,5),
 
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_GET,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -1951,7 +1952,7 @@ status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server
     by repeatedly calling *nx_web_http_client_response_body_get()*
-    until the entire response is retrieved. *./
+    until the entire response is retrieved. */
 
 get_status = NX_SUCCESS;
 
@@ -2042,7 +2043,7 @@ nx_web_http_client_request_initialize(&my_client,
 status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server by repeatedly
-    calling *nx_web_http_client_response_body_get()* until the entire response is retrieved. *./
+    calling *nx_web_http_client_response_body_get()* until the entire response is retrieved. */
 get_status = NX_SUCCESS;
 
 while(get_status != NX_WEB_HTTP_GET_DONE)
@@ -2061,11 +2062,13 @@ Inicializa una solicitud HTTP personalizada
 ### <a name="prototype"></a>Prototipo
 
 ```C
-UINT nx_web_http_client_request_initialize(
-    NX_WEB_HTTP_CLIENT *client_ptr,
-    UINT method, CHAR *resource, CHAR *host,
+UINT nx_web_http_client_request_initialize_extended(
+    NX_WEB_HTTP_CLIENT *client_ptr, UINT method,
+    CHAR *resource, UINT resource_length,
+    CHAR *host, UINT host_length,
     UINT input_size, UINT transfer_encoding_trunked,
-    CHAR *username, CHAR *password, UINT wait_option);
+    CHAR *username, UINT username_length,
+    CHAR *password, UINT password_length, UINT wait_option);
 ```
 
 ### <a name="description"></a>Descripción
@@ -2141,7 +2144,7 @@ status = nx_web_http_client_request_send(&my_client, 1000);
 
 
 /* At this point, we need to handle the response from the server by repeatedly
-    calling *nx_web_http_client_response_body_get()* until the entire response is retrieved. *./
+    calling *nx_web_http_client_response_body_get()* until the entire response is retrieved. */
 get_status = NX_SUCCESS;
 while(get_status != NX_WEB_HTTP_GET_DONE)
 {
@@ -2197,7 +2200,7 @@ nx_web_http_client_secure_connect(&my_client, IP_ADDRESS(1,2,3,5),
 /* Create a PUT request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_PUT,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     128, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -2212,7 +2215,7 @@ nx_web_http_client_request_packet_allocate(&my_client,
     &my_packet,
     NX_WAIT_FOREVER);
 
-/* At this point, user can fill the data into my_packet. *./
+/* At this point, user can fill the data into my_packet. */
 nx_packet_data_append(my_packet, data_ptr, data_size,
     packet_pool, NX_WAIT_FOREVER);
 
@@ -2270,7 +2273,7 @@ nx_web_http_client_secure_connect(&my_client, IP_ADDRESS(1,2,3,5),
 /* Create a new GET request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_GET,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -2282,7 +2285,7 @@ status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server by
     repeatedly calling *nx_web_http_client_response_body_get* until
-    the entire response is retrieved. *./
+    the entire response is retrieved. */
 
 get_status = NX_SUCCESS;
 
@@ -2513,7 +2516,7 @@ nx_web_http_client_secure_connect(&my_client, &server_ip_addr,
 /* Create a new GET request on the HTTP client instance. */
 nx_web_http_client_request_initialize(&my_client,
     NX_WEB_HTTP_METHOD_GET,
-    "https://192.168.1.150/test.txt ",
+    "https://192.168.1.150/test.txt ", "host.com",
     0, /* Used by PUT and POST only */
     NX_FALSE,
     NX_NULL, /* username */
@@ -2528,7 +2531,7 @@ status = nx_web_http_client_request_header_add(&my_client, "Server", 6,
 status = nx_web_http_client_request_send(&my_client, 1000);
 
 /* At this point, we need to handle the response from the server by repeatedly
-    calling *nx_web_http_client_response_body_get* until the entire response is retrieved. *./
+    calling *nx_web_http_client_response_body_get* until the entire response is retrieved. */
 
 get_status = NX_SUCCESS;
 
@@ -3907,7 +3910,7 @@ nx_web_http_server_response_packet_allocate(&my_server, &my_packet, NX_WAIT_FORE
 /* Set the chunked transfer. */
 status = nx_web_http_server_response_chunked_set(&my_server, 128, my_packet)
 
-/* At this point, user can fill the data into my_packet. *./
+/* At this point, user can fill the data into my_packet. */
 nx_packet_data_append(my_packet, data_ptr, data_size,
     packet_pool, NX_WAIT_FOREVER);
 
@@ -3972,10 +3975,10 @@ Los valores devueltos incluirán cualquier código de error de TLS que resulte d
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS** (0x00) La sesión de TLS se ha inicializado correctamente.
-- **NX_NOT_CONNECTED** (0X38) El socket TCP subyacente ya no está conectado.
-- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0X102) Un tipo de mensaje TLS/DTLS recibido es incorrecto.
-- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) No se admite el cifrado proporcionado por el host remoto.
+- **NX_SUCCESS**: (0x00) La sesión de TLS se ha inicializado correctamente.
+- **NX_NOT_CONNECTED**: (0x38) El socket TCP subyacente ya no está conectado.
+- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE**: (0x102) Un tipo de mensaje TLS recibido es incorrecto.
+- **NX_SECURE_TLS_UNSUPPORTED_CIPHER**: (0x106) No se admite el cifrado proporcionado por el host remoto.
 - **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) Error al procesar el mensaje durante el protocolo de enlace de TLS.
 - **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Un mensaje entrante no pudo realizar una comprobación hash de MAC.
 - **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) Error al enviar un socket TCP subyacente.
@@ -3983,11 +3986,11 @@ Los valores devueltos incluirán cualquier código de error de TLS que resulte d
 - **NX_SECURE_TLS_BAD_CIPHERSPEC** (0X10B) Un mensaje ChangeCipherSpec entrante era incorrecto.
 - **NX_SECURE_TLS_INVALID_SERVER_CERT** (0x10C) Un certificado TLS entrante no se puede usar para identificar el servidor DTLS remoto.
 - **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER** (0x10D) No se admite el cifrado de clave pública proporcionado por el host remoto.
-- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0X10E) El host remoto ha indicado que no hay conjuntos de aplicaciones de cifrado admitidos por la pila del servicio DTLS de NetX Secure.
-- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0X10F) Un mensaje DTLS recibido tenía una versión DTLS desconocida en el encabezado.
-- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0X110) Un mensaje DTLS recibido tenía una versión de DTLS conocida pero no admitida en su encabezado.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Error en una asignación interna de paquetes TLS.
-- **NX_SECURE_TLS_INVALID_CERTIFICATE** (0x112) El host remoto proporcionó un certificado no válido.
+- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS**: (0x10E) El host remoto ha indicado que no hay conjuntos de cifrado admitidos por la pila de TLS de NetX Secure.
+- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION**: (0x10F) Un mensaje TLS recibido tenía una versión de TLS desconocida en el encabezado.
+- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION**: (0x110) Un mensaje TLS recibido tenía una versión de TLS conocida pero no admitida en el encabezado.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED**: (0x111) Error en la asignación interna del paquete TLS.
+- **NX_SECURE_TLS_INVALID_CERTIFICATE**: (0x112) El host remoto proporcionó un certificado no válido.
 - **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) El host remoto envió una alerta que indica un error y finaliza la sesión de TLS.
 - **NX_PTR_ERROR** (0x07) Se ha intentado usar un puntero no válido.
 
