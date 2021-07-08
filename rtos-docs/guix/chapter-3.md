@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 53ffc900debd3bfaa1a38d792ddf294b2ce92461
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 2a53da048b18d35b6b15a4ad8d4138e1a2acd4e8
+ms.sourcegitcommit: 95f4ae0842a486fec8f10d1480203695faa9592d
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550310"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111875260"
 ---
 # <a name="chapter-3---functional-overview-of-guix"></a>Capítulo 3: Introducción funcional a GUIX
 
@@ -254,7 +254,9 @@ GUIX reside con el programa de la aplicación. Como resultado, el uso de memoria
 
 ### <a name="static-memory-usage"></a>Uso de memoria estática 
 
-La mayoría de las herramientas de desarrollo dividen la imagen del programa de la aplicación en cinco áreas básicas: *instrucciones*, *constantes*, *datos inicializados*, *datos sin inicializar* y la *pila de subprocesos de GUIX*. En la figura 2 del manual del usuario de ThreadX SMP se muestra un ejemplo de estas áreas de memoria.
+La mayoría de las herramientas de desarrollo dividen la imagen del programa de la aplicación en cinco áreas básicas: *instrucciones*, *constantes*, *datos inicializados*, *datos sin inicializar* y la *pila de subprocesos de GUIX*.  En la ilustración siguiente se muestra un posible diseño de estas áreas de memoria:
+
+![Diseño de memoria](./media/guix/user-guide/memory-area-example.png)
 
 Es importante entender que se trata solo de un ejemplo. El diseño de la memoria estática real es específico del procesador, las herramientas de desarrollo, el hardware subyacente y la propia aplicación.
 

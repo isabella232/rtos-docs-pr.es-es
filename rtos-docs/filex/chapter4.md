@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f70b8890be6b12f917ac1724a29559afab33b88d
-ms.sourcegitcommit: 0520b2afb6b7f8ae1ea48581e160459fc9292ca7
+ms.openlocfilehash: 39b31c1abae8613eb54382162504aaadc07ceebf
+ms.sourcegitcommit: 97f6724d6eee7b9c251a50c191911050c52b1c69
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108297503"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025928"
 ---
 # <a name="chapter-4--description-of-azure-rtos-filex-services"></a>Capítulo 4: Descripción de los servicios de Azure RTOS FileX
 
@@ -4120,6 +4120,9 @@ Este servicio da formato al medio proporcionado en un modo compatible con exFAT 
 - **hidden_sectors**: número de sectores ocultos antes del sector de arranque del medio. Esto es típico cuando hay varias particiones presentes.
 - **total_sectors**: número total de sectores en el medio.
 - **bytes_per_sector**: número de bytes por sector, que suele ser 512. FileX requiere que sea un múltiplo de 32.
+> [!IMPORTANT]
+> *Con referencia a la especificación, los bytes por sector solo pueden tomar los siguientes valores: 512, 1024, 2048 o 4096.*
+
 - **sectors_per_cluster**: número de sectores en cada clúster. El clúster es la unidad de asignación mínima en un sistema de archivos FAT.
 - **volumne_serial_number**: número de serie que se va a usar para este volumen.
 - **boundary_unit**: tamaño de alineación del área de datos física, en número de sectores.
@@ -4360,6 +4363,9 @@ Este servicio da formato al medio proporcionado en un modo compatible con FAT 12
 - **hidden_sectors**: número de sectores ocultos antes del sector de arranque del medio. Esto es típico cuando hay varias particiones presentes.
 - **total_sectors**: número total de sectores en el medio.
 - **bytes_per_sector**: número de bytes por sector, que suele ser 512. FileX requiere que sea un múltiplo de 32.
+> [!IMPORTANT]
+> *Con referencia a la especificación, los bytes por sector solo pueden tomar los siguientes valores: 512, 1024, 2048 o 4096.*
+
 - **sectors_per_cluster**: número de sectores en cada clúster. El clúster es la unidad de asignación mínima en un sistema de archivos FAT.
 - **heads**: número de encabezados físicos.
 - **sectors_per_track**: número de sectores por pista.

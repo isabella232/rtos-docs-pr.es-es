@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 6/9/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: e786e5bf1f434ec9543823dee8784b677a2b371f
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: 0fb861c2291046c2ac6edf1d03014996daa09a8e
+ms.sourcegitcommit: c1b00341e0c5ab71372f3d9cc4ee3bdd3702b805
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171393"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111988369"
 ---
 # <a name="overview-of-azure-rtos-threadx"></a>Información general sobre Azure RTOS ThreadX
 
@@ -271,7 +271,6 @@ Los módulos habilitan la actualización de campos, la corrección de errores y 
 
 Los módulos también tienen un espacio de direcciones completamente independiente de Azure RTOS ThreadX. De esta manera, Azure RTOS ThreadX puede colocar la protección de memoria (mediante MPU o MMU) en torno al módulo, de forma que el acceso accidental fuera del módulo no pueda dañar ningún otro componente de software.
 
-
 ## <a name="misra-compliant"></a>Conforme con MISRA
 
 El código fuente de Azure RTOS ThreadX y Azure RTOS ThreadX SMP es conforme con MISRA-C:2004 y MISRA-C:2012. MISRA-C es un conjunto de instrucciones de programación para sistemas críticos que usan el lenguaje de programación C. Las instrucciones de MISRA-C originales se destinaban principalmente a aplicaciones de automoción; sin embargo, en la actualidad, MISRA-C se considera una herramienta aplicable a cualquier aplicación crítica para la seguridad. Azure RTOS ThreadX es conforme con todas las normas requeridas y obligatorias de MISRA-C:2004 y MISRA-C:2012.
@@ -306,3 +305,7 @@ Azure RTOS ThreadX se ejecuta en los microprocesadores de 32 o 64 bits más p
 ## <a name="supports-most-popular-tools"></a>Compatible con las herramientas más populares
 
 Azure RTOS ThreadX es compatible con las herramientas de desarrollo insertadas más populares, incluido Embedded Workbench™ de IAR, que también tiene disponible el reconocimiento del kernel de Azure RTOS ThreadX más completo. La integración de herramientas adicionales incluye GNU (GCC), ARM DS-5/uVision®, Green Hills MULTI®, Wind River Workbench™, Imagination Codescape, Renesas e2studio, Metaware SeeCode™, NXP CodeWarrior, Lauterbach TRACE32®, TI Code-Composer Studio, CrossCore y todos los dispositivos análogos.
+
+## <a name="adaptation-layer-for-threadx"></a>Capa de adaptación de ThreadX
+
+Azure RTOS ThreadX es un sistema operativo en tiempo real (RTOS) avanzado, diseñado específicamente para aplicaciones profundamente insertadas. Para facilitar la migración de aplicaciones a Auzre RTOS, ThreadX proporciona [capas de adaptación](https://github.com/azure-rtos/threadx/tree/master/utility/rtos_compatibility_layers) para varias API de RTOS heredadas (FreeRTOS, POSIX, OSEK, etc.)

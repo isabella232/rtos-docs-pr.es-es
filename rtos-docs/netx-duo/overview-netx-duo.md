@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: e3fe3bcc602f409cc76f3be47aca865bf8116697
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: 6112ab5cb711ca1a5c83fd5cd4b43abc0302c6c5
+ms.sourcegitcommit: f9d8cf23becf96d5bd6d31dd54f89c48962fd09b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171342"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549344"
 ---
 # <a name="overview-of-azure-rtos-netx-duo"></a>Introducción a Azure RTOS NetX Duo
 
@@ -83,7 +83,7 @@ La pila de red TCP/IP insertada de Azure RTOS NetX Duo es la pila de red TCP/IP 
 * Compatibilidad con clientes
 * mDNS y DNS-SD solo están disponibles con Azure RTOS NetX Duo.
 
-### <a name="p0p3"></a>POP3
+### <a name="pop3"></a>POP3
 
 * Protocolo de oficina de correos versión 3 (POP3)
 * Mínimo 8,1 KB y una superficie de RAM de 1,4 KB
@@ -294,7 +294,30 @@ Azure RTOS NetX Duo es una tecnología avanzada que incluye:
 
 ## <a name="related-services"></a>Servicios relacionados
 
-El módulo de seguridad RTOS de Azure Security Center para IoT proporciona una solución de seguridad integral para dispositivos Azure RTOS. El módulo de seguridad de Azure RTOS ofrece detección de actividad de red malintencionada, creación de línea base del comportamiento del dispositivo basada en alertas personalizadas y ayuda a mejorar la higiene de la seguridad del dispositivo. Más información en [Información general: microagente de Defender para IoT de Defender para IoT para Azure RTOS (versión preliminar)](https://docs.microsoft.com/azure/asc-for-iot/iot-security-azure-rtos) o comience a trabajar con la guía de inicio rápido [Configuración del módulo de seguridad para Azure RTOS](https://docs.microsoft.com/azure/asc-for-iot/quickstart-azure-rtos-security-module).
+### <a name="azure-iot"></a>Azure IoT
+
+NetX Duo incluye [Azure IoT Middleware para Azure RTOS](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/docs/README.md), una biblioteca específica para plataformas que actúa como capa de enlace entre Azure RTOS y el SDK de Azure para C insertado, con el fin de facilitar la conectividad con los servicios de Azure IoT. Estos son los objetivos de Azure IoT Middleware:
+* Proporcionar las interfaces de cliente inteligentes (IoTHub_Client y DeviceProvisioning_Client) que los desarrolladores necesitan para sus aplicaciones.
+* Organizar la interacción entre el SDK de C insertado y la plataforma.
+* Proporcionar la inicialización de la plataforma Azure RTOS.
+* Compatibilidad con IoT Plug and Play.
+* Funcionalidades de seguridad.
+* Conocimiento de la limitación de recursos.
+* Compatibilidad de protocolos.
+
+![Servicios relacionados con Azure RTOS NetX Duo](./media/overview-netx-duo/related-services.png)
+
+### <a name="azure-defender"></a>Azure Defender
+
+El módulo de seguridad de Azure Defender para IoT proporciona una solución de seguridad completa para dispositivos Azure RTOS. El módulo de seguridad de Azure RTOS ofrece detección de actividad de red malintencionada, creación de línea base del comportamiento del dispositivo basada en alertas personalizadas y ayuda a mejorar la higiene de la seguridad del dispositivo. Más información en [Información general: microagente de Defender para IoT de Defender para IoT para Azure RTOS (versión preliminar)](https://docs.microsoft.com/azure/asc-for-iot/iot-security-azure-rtos) o comience a trabajar con la guía de inicio rápido [Configuración del módulo de seguridad para Azure RTOS](https://docs.microsoft.com/azure/asc-for-iot/quickstart-azure-rtos-security-module).
+
+### <a name="device-update-for-iot-hub"></a>Device Update para IoT Hub
+
+[Azure Device Update for IoT Hub](https://docs.microsoft.com/azure/iot-hub-device-update/understand-device-update) es un servicio que permite implementar actualizaciones inalámbricas (OTA) para sus dispositivos IoT. El módulo Device Update for IoT Hub es la implementación del agente de Device Update para IoT Hub en Azure RTOS NetX Duo. Proporciona API sencillas para que los generadores de dispositivos integren la funcionalidad de actualización de dispositivos en sus aplicaciones.
+
+Consulte los ejemplos de paneles clave de evaluación de semiconductores que incluyen las guías introductorias para aprender a configurar, crear e implementar las actualizaciones inalámbricas en los dispositivos.
+
+Y puede obtener más información sobre el uso de [Device Update for IoT Hub con Azure RTOS](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-azure-real-time-operating-system).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
