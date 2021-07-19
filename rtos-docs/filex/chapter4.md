@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 39b31c1abae8613eb54382162504aaadc07ceebf
-ms.sourcegitcommit: 97f6724d6eee7b9c251a50c191911050c52b1c69
+ms.openlocfilehash: c24259fb9b6b212dda99422e3ee1ad0e2fd970ce
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025928"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754886"
 ---
 # <a name="chapter-4--description-of-azure-rtos-filex-services"></a>Capítulo 4: Descripción de los servicios de Azure RTOS FileX
 
@@ -1137,7 +1137,7 @@ UCHAR            my_long_name[FX_MAX_LONG_NAME_LEN];
 /* Retrieve the long name associated with "TEXT~01.TXT". */
 
 status = fx_directory_long_name_get_extended(&my_media,
-    "TEXT~01.TXT", my_long_name), sizeof(my_long_name));
+    "TEXT~01.TXT", my_long_name, sizeof(my_long_name));
 
 /* If status is FX_SUCCESS the long name was successfully retrieved. */
 ```
