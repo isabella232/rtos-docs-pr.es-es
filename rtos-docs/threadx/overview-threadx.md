@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 6/9/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 0fb861c2291046c2ac6edf1d03014996daa09a8e
-ms.sourcegitcommit: c1b00341e0c5ab71372f3d9cc4ee3bdd3702b805
+ms.openlocfilehash: 938619170ef51d354fa970134328c17407ae846a
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111988369"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754869"
 ---
 # <a name="overview-of-azure-rtos-threadx"></a>Información general sobre Azure RTOS ThreadX
 
@@ -165,13 +165,7 @@ Azure RTOS ThreadX es el sistema operativo en tiempo real (RTOS) avanzado de niv
 * Seguimiento de nivel de sistema
 * Seguridad certificada para muchos estándares
 
-## <a name="most-deployed-rtos"></a>RTOS más implementado
-
-Azure RTOS ThreadX presume de más de 6200 millones de implementaciones en todo el mundo, de acuerdo con la principal empresa de inteligencia de mercado de M2M, VDC Research. La popularidad de Azure RTOS ThreadX se debe a sus ventajas de confiabilidad, calidad, tamaño, rendimiento, características avanzadas, facilidad de uso y tiempo de comercialización general.
-
-> *"Hemos seguido la trayectoria de crecimiento de THREADX en los mercados inalámbricos y de IoT desde la fundación de la empresa y estamos cada vez más impresionados de la adopción de THREADX por parte del sector".* – Chris Rommel, Vicepresidente Ejecutivo, VDC Research.
-
-## <a name="small-footprint"></a>Superficie pequeña
+## <a name="threadx-footprint"></a>Superficie de memoria de ThreadX
 
 Azure RTOS ThreadX requiere un área de instrucciones increíblemente pequeña de 2 KB y 1 KB de RAM para su superficie mínima. Esto se debe en gran medida a su arquitectura picokernel™ sin superposición y al escalado automático. El escalado automático significa que solo los servicios (y la infraestructura de apoyo) que usa la aplicación se incluyen en la imagen final en tiempo de vínculo.
 
@@ -187,7 +181,7 @@ Estas son algunas de las características de tamaño típicas de Azure RTOS Thre
 |Servicios de memoria de bloques  |550  |
 |Servicios de memoria de bytes  |900  |
 
-## <a name="fast-execution"></a>Ejecución rápida
+## <a name="threadx-execution-speed"></a>Velocidad de ejecución de ThreadX
 
 Azure RTOS ThreadX logra un cambio de contexto submicrosegundo en los procesadores más populares y, en general, es considerablemente más rápido que otros RTOS comerciales. Además de ser rápido, Azure RTOS ThreadX también es muy determinista. Consigue el mismo rendimiento rápido tanto si hay 200 subprocesos listos como si hay solo uno.
 
@@ -273,34 +267,9 @@ Los módulos también tienen un espacio de direcciones completamente independien
 
 ## <a name="misra-compliant"></a>Conforme con MISRA
 
-El código fuente de Azure RTOS ThreadX y Azure RTOS ThreadX SMP es conforme con MISRA-C:2004 y MISRA-C:2012. MISRA-C es un conjunto de instrucciones de programación para sistemas críticos que usan el lenguaje de programación C. Las instrucciones de MISRA-C originales se destinaban principalmente a aplicaciones de automoción; sin embargo, en la actualidad, MISRA-C se considera una herramienta aplicable a cualquier aplicación crítica para la seguridad. Azure RTOS ThreadX es conforme con todas las normas requeridas y obligatorias de MISRA-C:2004 y MISRA-C:2012.
+El código fuente de Azure RTOS ThreadX y Azure RTOS ThreadX SMP es compatible con MISRA-C:2004 y MISRA-C:2012. MISRA-C es un conjunto de instrucciones de programación para sistemas críticos que usan el lenguaje de programación C. Las instrucciones de MISRA-C originales se destinaban principalmente a aplicaciones de automoción; sin embargo, en la actualidad, MISRA-C se considera una herramienta aplicable a cualquier aplicación crítica para la seguridad. Azure RTOS ThreadX es conforme con todas las normas requeridas y obligatorias de MISRA-C:2004 y MISRA-C:2012.
 
 :::image type="content" source="media/overview-threadx/misra-logo-certification.png" alt-text="Certificación Misra":::
-
-## <a name="supports-most-popular-architectures"></a>Compatible con las arquitecturas más populares
-
-Azure RTOS ThreadX se ejecuta en los microprocesadores de 32 o 64 bits más populares, de serie, totalmente probado y totalmente compatible, lo que incluye lo siguiente:
-
-* Dispositivos analógicos: SHARC, Blackfin, CM4xx
-* Andes Core: RISC-V
-* Ambiqmicro: Apollo MCUs
-* ARM: ARM7, ARM9, ARM11, Cortex-M0/M3/M4/M7/A15/A5/A7/A8/A9/A5x 64-BI/A7x 64 bits/R4/R5, TrustZone ARMv8-M
-* Cadence: Xtensa, Diamond
-* CEVA: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0+, FM3, MF4, WICED WiFi
-* Cypress: RISC-V
-* EnSilica: eSi-RISC
-* Infineon: XMC1000, XMC4000, TriCore
-* Intel & Intel FPGA: x36/Pentium, XScale, NIOS II, Cyclone, Arria 10
-* Microchip: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/SV, PIC24/PIC32
-* Microsemi: RISC-V
-* NXP: LPC, ARM7, ARM9, PowerPC, 68K, i.MX, ColdFire, Kinetis Cortex-M3/M4
-* Renesas: SH, HS, V850, RX, RZ, Synergy
-* Silicon Labs: EFM32
-* Synopsys: ARC 600, 700, ARC EM, ARC HS
-* ST: STM32, ARM7, ARM9, Cortex-M3/M4/M7
-* Tl: C5xxx, C6xxx, Stellaris, Sitara, Tiva-C
-* Wave Computing: MIPS32 4K, 24K, 34K, 1004K, MIPS64 5K, microAptiv, interAptiv, proAptiv, M-Class
-* Xilinx: MicroBlaze, PowerPC 405, ZYNQ, ZYNQ UltraSCALE
 
 ## <a name="supports-most-popular-tools"></a>Compatible con las herramientas más populares
 

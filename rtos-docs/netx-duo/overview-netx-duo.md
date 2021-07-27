@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 6112ab5cb711ca1a5c83fd5cd4b43abc0302c6c5
-ms.sourcegitcommit: f9d8cf23becf96d5bd6d31dd54f89c48962fd09b
+ms.openlocfilehash: b40a57bf385ddcf623ff7cbe0d2e798c547227d7
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549344"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754903"
 ---
 # <a name="overview-of-azure-rtos-netx-duo"></a>Introducción a Azure RTOS NetX Duo
 
@@ -30,6 +30,7 @@ La pila de red TCP/IP insertada de Azure RTOS NetX Duo es la pila de red TCP/IP 
 * Mínimo 1,2 KB, 300 bytes de RAM
 
 ### <a name="http-https"></a>HTTP, HTTPS
+NetX Duo admite los siguientes protocolos HTTP/HTTPS.
 
 #### <a name="http-10"></a>HTTP 1.0
 
@@ -120,14 +121,8 @@ La pila de red TCP/IP insertada de Azure RTOS NetX Duo es la pila de red TCP/IP 
 * Compatibilidad con clientes
 * API de SNTP intuitivas: *nx_sntp_\**
 
-### <a name="azure-rtos-netx-duo-api"></a>API de Azure RTOS NetX Duo
+### <a name="legacy-code-support"></a>Compatibilidad con código heredado
 
-* API intuitivas y coherentes
-* Convención de nomenclatura sustantivo-verbo
-* Implementación rápida de la API sin copia
-* Todas las API comienzan por <i>nx_*</i> para identificarlas fácilmente como pertenecientes a Azure RTOS NetX
-* Las API de bloqueo tienen un tiempo de espera de subprocesos opcional
-* Consulte [Guía del usuario de Azure RTOS NetX Duo](about-this-guide.md) para más información.
 * Capa de BSD opcional para la portabilidad de código de sockets heredado
 
 ### <a name="igmp"></a>IGMP
@@ -261,7 +256,6 @@ Azure RTOS NetX Duo es seguro. Esta seguridad se proporciona mediante productos 
 
 Microsoft Azure RTOS proporciona a los OEM componentes para proteger la comunicación y crear código y aislamiento de datos mediante los mecanismos de protección de hardware MCU y MPU subyacentes. En última instancia, el fabricante de los dispositivos tiene la responsabilidad de asegurarse de que el dispositivo cumpla totalmente los requisitos de seguridad en constante evolución asociados a su caso de uso específico.
 
-
 ## <a name="interoperability-verification"></a>Comprobación de interoperabilidad
 
 NetX Duo se ajusta a los estándares RFC y ofrece una interoperabilidad completa con los dispositivos de la mayoría de los proveedores.
@@ -274,11 +268,32 @@ Azure RTOS NetX Duo es una de las pilas TCP/IP insertadas que han conseguido la 
 
 NetX Duo tiene una de las redes TCP/IP más completas para aplicaciones IoT con alto grado de inserción. Esta compatibilidad incluye los siguientes productos de protocolo de complementos.
 
-MQTT, CoAP, LWM2M, 6LoWPAN, SSL/TLS/DTLS, IPsec, AutoIP, DHCP, DNS, mDNS, DNS-SD, FTP, HTTP, IPsec, NAT, POP3, PPP, PPPoE, SMTP, SNMP v1/2/3, Telnet, TFTP
+* MQTT
+* CoAP
+* LWM2M
+* 6LoWPAN
+* SSL/TLS/DTLS
+* IPsec
+* AutoIP
+* DHCP
+* DNS
+* mDNS
+* DNS-SD
+* FTP
+* HTTP
+* IPsec
+* NAT
+* POP3
+* PPP
+* PPPoE
+* SMTP
+* SNMP v1/2/3
+* Telnet
+* TFTP
 
 ## <a name="advanced-technology"></a>Tecnología avanzada
 
-Azure RTOS NetX Duo es una tecnología avanzada que incluye:
+Azure RTOS NetX Duo es una tecnología avanzada que incluye los elementos siguientes.
 
 * Arquitectura Piconet™
 * Escalado automático
@@ -294,7 +309,13 @@ Azure RTOS NetX Duo es una tecnología avanzada que incluye:
 
 ## <a name="related-services"></a>Servicios relacionados
 
-### <a name="azure-iot"></a>Azure IoT
+NetX Duo proporciona los siguientes servicios adicionales.
+
+* Azure IoT Middleware
+* Azure Defender
+* Actualización de dispositivos para IoT Hub.
+
+### <a name="azure-iot-middleware"></a>Azure IoT Middleware
 
 NetX Duo incluye [Azure IoT Middleware para Azure RTOS](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/docs/README.md), una biblioteca específica para plataformas que actúa como capa de enlace entre Azure RTOS y el SDK de Azure para C insertado, con el fin de facilitar la conectividad con los servicios de Azure IoT. Estos son los objetivos de Azure IoT Middleware:
 * Proporcionar las interfaces de cliente inteligentes (IoTHub_Client y DeviceProvisioning_Client) que los desarrolladores necesitan para sus aplicaciones.

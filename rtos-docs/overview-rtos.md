@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: c902289b487c439da4ef5138319fe09d74a2347f
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: b099a5f18accfbe467a2a8fa680c0c76666a9ff3
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171282"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754920"
 ---
 # <a name="what-is-microsoft-azure-rtos"></a>¿Qué es Microsoft Azure RTOS?
 
@@ -27,43 +27,49 @@ La plataforma Azure RTOS es la colección de soluciones en tiempo de ejecución,
 
 ### <a name="azure-rtos-threadx"></a>Azure RTO ThreadX
 
-Azure RTOS ThreadX es un sistema operativo en tiempo real (RTOS) avanzado, diseñado específicamente para aplicaciones profundamente insertadas. Entre las múltiples ventajas que ofrece Azure RTOS ThreadX se encuentran las funciones avanzadas de programación, el envío de mensajes, la administración de interrupciones y los servicios de mensajería. Azure RTOS ThreadX tiene muchas características avanzadas, entre las que se incluyen la arquitectura picokernel, la programación de umbral de prioridad, el encadenamiento de eventos y un conjunto completo de servicios del sistema.
+Azure [RTOS ThreadX](threadx/overview-threadx.md) es un sistema operativo en tiempo real (RTOS) avanzado, diseñado específicamente para aplicaciones insertadas profundamente. Entre las múltiples ventajas que ofrece Azure RTOS ThreadX se encuentran las funciones avanzadas de programación, el envío de mensajes, la administración de interrupciones y los servicios de mensajería. Azure RTOS ThreadX tiene muchas características avanzadas, entre las que se incluyen la arquitectura picokernel, la programación de umbral de prioridad, el encadenamiento de eventos y un conjunto completo de servicios del sistema.
 
 ### <a name="azure-rtos-filex"></a>Azure RTO FileX
 
-Azure RTOS FileX es un sistema de archivos compatible con FAT de alto rendimiento. Está totalmente integrado con Azure RTOS ThreadX y está disponible para todos los procesadores compatibles. Al igual que Azure RTOS ThreadX, Azure RTOS FileX está diseñado para ocupar poca superficie de memoria y proporcionar un alto rendimiento, lo que lo convierte en una opción ideal para las actuales aplicaciones profundamente insertadas, que requieren operaciones de archivos. Azure RTOS FileX admite la mayoría de los soportes físicos, como el disco RAM, Azure RTOS USBX, tarjeta SD y memorias Flash NAND/NOR a través de Azure RTO LevelX.
+Azure [RTOS FileX](filex/overview-filex.md) es un sistema de archivos de alto rendimiento compatible con FAT. Está totalmente integrado con Azure RTOS ThreadX y está disponible para todos los procesadores compatibles. Al igual que Azure RTOS ThreadX, Azure RTOS FileX está diseñado para ocupar poca superficie de memoria y proporcionar un alto rendimiento, lo que lo convierte en una opción ideal para las actuales aplicaciones profundamente insertadas, que requieren operaciones de archivos. Azure RTOS FileX admite la mayoría de los soportes físicos, como el disco RAM, Azure RTOS USBX, tarjeta SD y memorias Flash NAND/NOR a través de Azure RTO LevelX.
 
 ### <a name="azure-rtos-guix"></a>Azure RTO GUIX
 
-Azure RTOS GUIX es un paquete de interfaz gráfica de usuario de calidad profesional creado para satisfacer las necesidades de los desarrolladores de sistemas insertados. A diferencia de las alternativas, Azure RTOS GUIX es pequeño, rápido y fácil de migrar a prácticamente cualquier configuración de hardware capaz de admitir la salida gráfica. Azure RTOS GUIX también ofrece un atractivo visual excepcional y una API intuitiva y potente para el desarrollo de interfaces de usuario a nivel de aplicación.
+Azure [RTOS GUIX](guix/overview-guix.md) es un paquete de interfaz gráfica de usuario de calidad profesional creado para satisfacer las necesidades de los desarrolladores de sistemas insertados. A diferencia de las alternativas, Azure RTOS GUIX es pequeño, rápido y fácil de migrar a prácticamente cualquier configuración de hardware capaz de admitir la salida gráfica. Azure RTOS GUIX también ofrece un atractivo visual excepcional y una API intuitiva y potente para el desarrollo de interfaces de usuario a nivel de aplicación.
 
 ### <a name="azure-rtos-netx"></a>Azure RTO NetX
 
-Azure RTOS NetX es una implementación de alto rendimiento de estándares de protocolos TCP/IP. Está totalmente integrado con Azure RTOS ThreadX y está disponible para todos los procesadores compatibles. Azure RTOS NetX tiene una arquitectura Piconet exclusiva. Combinado con una API de copia de cero, lo convierte en un ajuste perfecto para las aplicaciones profundamente incrustadas de hoy en día que requieren conectividad de red.
+Azure [RTOS NetX](netx/overview-netx.md) es una implementación de alto rendimiento de estándares de protocolos TCP/IP. Está totalmente integrado con Azure RTOS ThreadX y está disponible para todos los procesadores compatibles. Azure RTOS NetX tiene una arquitectura Piconet exclusiva. Combinado con una API de copia de cero, lo convierte en un ajuste perfecto para las aplicaciones profundamente incrustadas de hoy en día que requieren conectividad de red.
 
 ### <a name="azure-rtos-netx-duo"></a>Azure RTO NetX Duo
 
-Azure RTOS NetX Duo es una pila de red TCP/IP avanzada y de nivel industrial diseñada específicamente para aplicaciones de IoT y en tiempo real insertadas. Azure RTOS NetX Duo es una pila de red IPv4 e IPv6 dual, mientras que NetX es la pila de red IPv4 original, esencialmente un subconjunto de Azure RTOS NetX Duo.
+Azure [RTOS NetX](netx-duo/overview-netx-duo.md) Duo es una pila de red TCP/IP avanzada y de nivel industrial diseñada específicamente para aplicaciones de IoT y en tiempo real insertadas profundamente. Azure RTOS NetX Duo es una pila de red IPv4 e IPv6 dual, mientras que NetX es la pila de red IPv4 original, esencialmente un subconjunto de Azure RTOS NetX Duo.
 
 ### <a name="azure-rtos-usbx"></a>Azure RTO USBX
 
-Azure RTOS USBX es un host USB de alto rendimiento, un dispositivo y una pila insertada "on-the-go" (OTG). Está totalmente integrado con ThreadX y está disponible para todos los procesadores compatibles con Azure RTOS ThreadX. Al igual que Azure RTOS ThreadX, Azure RTOS USBX está diseñado para ocupar poca superficie de memoria y proporcionar un alto rendimiento, lo que lo convierte en una opción ideal para las aplicaciones profundamente insertadas, que requieren una interfaz con dispositivos USB.
+Azure [RTOS USBX](usbx/overview-usbx.md) es un host USB de alto rendimiento, un dispositivo y una pila insertada "on-the-go" (OTG). Está totalmente integrado con ThreadX y está disponible para todos los procesadores compatibles con Azure RTOS ThreadX. Al igual que Azure RTOS ThreadX, Azure RTOS USBX está diseñado para ocupar poca superficie de memoria y proporcionar un alto rendimiento, lo que lo convierte en una opción ideal para las aplicaciones profundamente insertadas, que requieren una interfaz con dispositivos USB.
 
 ### <a name="windows-tools"></a>Herramientas de Windows
 
-Azure RTOS GUIX Studio proporciona un entorno de diseño de aplicaciones GUI completo, lo que facilita la creación y el mantenimiento de todos los elementos gráficos de la GUI de la aplicación. Azure RTOS GUIX Studio genera automáticamente un código de C compatible con la biblioteca de Azure RTOS GUIX, listo para compilarse y ejecutarse en el destino.
+Azure [RTOS GUIX Studio](guix/about-guix-studio.md) proporciona un completo entorno de diseño de aplicaciones GUI, lo que facilita la creación y el mantenimiento de todos los elementos gráficos de la GUI de la aplicación. Azure RTOS GUIX Studio genera automáticamente un código de C compatible con la biblioteca de Azure RTOS GUIX, listo para compilarse y ejecutarse en el destino.
 
-Azure RTOS TraceX es la herramienta de análisis basada en host que proporciona a los desarrolladores una vista gráfica de los eventos del sistema en tiempo real y les permite visualizar y comprender mejor el comportamiento de sus sistemas en tiempo real.
+Azure [RTOS TraceX](tracex/overview-tracex.md) es una herramienta de análisis basada en host que proporciona a los desarrolladores una vista gráfica de los eventos del sistema en tiempo real y les permite visualizar y comprender mejor el comportamiento de sus sistemas en tiempo real.
 
 ## <a name="the-azure-rtos-advantage"></a>La ventaja de Azure RTOS
 Azure RTOS proporciona las siguientes ventajas con respecto a otros sistemas operativos en tiempo real.
+
+### <a name="most-deployed-rtos"></a>RTOS más implementado
+
+Azure RTOS tiene de más de 6200 millones de implementaciones en todo el mundo, de acuerdo con la principal empresa de inteligencia de mercado de M2M, VDC Research. La popularidad de Azure RTOS se debe a su confiabilidad, calidad, tamaño, rendimiento, características avanzadas, facilidad de uso y tiempo de comercialización general.
+
+> *"Hemos seguido la trayectoria de crecimiento de THREADX en los mercados inalámbricos y de IoT desde la fundación de la empresa y estamos cada vez más impresionados de la adopción de THREADX por parte del sector".* – Chris Rommel, Vicepresidente Ejecutivo, VDC Research.
 
 ### <a name="intuitive-and-consistent-api-design"></a>Diseño de API intuitivo y coherente
 
 * API intuitiva y coherente.
 * Convención de nomenclatura sustantivo-verbo.
-* Todas las API tienen un prefijo inicial, como *tx_* para ThreadX y *nx_* para FileX, para identificar fácilmente el componente de Azure RTOS al que pertenecen.
-* Las API de bloqueo tienen un tiempo de espera de subprocesos opcional
+* Todas las API tienen un prefijo inicial, como *tx_* en el caso de ThreadX y *nx_* en el de FileX, para identificar fácilmente el componente de Azure RTOS al que pertenecen.
+* Coherencia funcional en todas las API. Por ejemplo, todas las funciones de API que se suspenden tienen un tiempo de espera opcional que funciona de forma idéntica.
 * Muchas API están directamente disponibles desde los ISR de la aplicación.
 - Devoluciones de llamada de notificación de usuario opcionales para operaciones de archivos y soporte físico.
 * Modelo de programación basado en eventos (API).
@@ -73,7 +79,7 @@ Azure RTOS proporciona las siguientes ventajas con respecto a otros sistemas ope
 - Superficie de código pequeña.
 - Superficie de código escalable en función de los servicios usados.
 - Certificado previamente por TUV y UL para CEI 61508 SIL 4, CEI 62304 clase C, ISO 26262 ASIL D y EN 50128 SW-SIL4.
-- Ejecución rápida
+- Ejecución rápida Azure RTOS está diseñado pensando en la velocidad y tiene una capa mínima de llamadas a funciones internas, lo que ayudar a lograr el rendimiento más rápido posible.
 
 ### <a name="fastest-time-to-market"></a>Tiempo de comercialización más rápido
 
@@ -82,6 +88,7 @@ Azure RTOS es fácil de instalar, conocer, usar, depurar, comprobar, certificar 
 * Disponibilidad completa del código fuente.
 * API fácil de usar.
 * Conjunto de características completo y avanzado.
+* Documentación de calidad.
 
 ### <a name="one-simple-license"></a>Una licencia sencilla
 
@@ -121,47 +128,47 @@ El laboratorio de evaluación de la seguridad de la información que se usó par
 
 ### <a name="supports-most-popular-architectures"></a>Compatible con las arquitecturas más populares
 
-Azure RTOS se ejecuta en los microprocesadores de 32 y 64 bits más populares, de serie, totalmente probado y totalmente compatible, incluidas las siguientes arquitecturas avanzadas:
+Azure RTOS se ejecuta de serie en los microprocesadores de 32 y 64 bits más populares, se ha probado exhaustivamente y es totalmente compatible, incluidas las siguientes arquitecturas avanzadas.
 
-**Dispositivos analógicos**: SHARC, Blackfin, CM4xx
+- **Dispositivos analógicos**: SHARC, Blackfin, CM4xx
 
-**Andes Core**: RISC-V
+- **Andes Core**: RISC-V
 
-**Ambiqmicro**: Apollo MCU
+- **Ambiqmicro**: Apollo MCU
 
-**ARM**: ARM7, ARM9, ARM11, Cortex-M0/M3/M4/M7/A15/A5/A7/A8/A9/A5x 64-bi/A7x 64-bit/R4/R5, TrustZone ARMv8-M
+- **ARM**: ARM7, ARM9, ARM11, Cortex-M0/M3/M4/M7/A15/A5/A7/A8/A9/A5x 64-bi/A7x 64-bit/R4/R5, TrustZone ARMv8-M
 
-**Cadence**: Xtensa, Diamond
+- **Cadence**: Xtensa, Diamond
 
-**CEVA**: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0+, FM3, MF4, WICED WiFi
+- **CEVA**: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0+, FM3, MF4, WICED WiFi
 
-**Cypress**: RISC-V
+- **Cypress**: RISC-V
 
-**EnSilica**: eSi-RISC
+- **EnSilica**: eSi-RISC
 
-**Infineon**: XMC1000, XMC4000, TriCore
+- **Infineon**: XMC1000, XMC4000, TriCore
 
-**Intel; Intel FPGA**: x36/Pentium, XScale, NIOS II, Cyclone, Arria 10
+- **Intel; Intel FPGA**: x36/Pentium, XScale, NIOS II, Cyclone, Arria 10
 
-**Microchip**: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/SV, PIC24/PIC32
+- **Microchip**: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/SV, PIC24/PIC32
 
-**Microsemi**: RISC-V
+- **Microsemi**: RISC-V
 
-**NXP**: LPC, ARM7, ARM9, PowerPC, 68 K, i.MX, ColdFire, Kinetis Cortex-M3/M4
+- **NXP**: LPC, ARM7, ARM9, PowerPC, 68 K, i.MX, ColdFire, Kinetis Cortex-M3/M4
 
-**Renesas**: SH, HS, V850, RX, RZ, Synergy
+- **Renesas**: SH, HS, V850, RX, RZ, Synergy
 
-**Silicon Labs**: EFM32
+- **Silicon Labs**: EFM32
 
-**Synopsys**: ARC 600, 700, ARC EM, ARC HS
+- **Synopsys**: ARC 600, 700, ARC EM, ARC HS
 
-**ST**: STM32, ARM7, ARM9, Cortex-M3/M4/M7
+- **ST**: STM32, ARM7, ARM9, Cortex-M3/M4/M7
 
-**Tl**: C5xxx, C6xxx, Stellaris, Sitara, Tiva-C
+- **Tl**: C5xxx, C6xxx, Stellaris, Sitara, Tiva-C
 
-**Wave Computing**: MIPS32 4K, 24 K, 34 K, 1004 K, MIPS64 5K, microAptiv, interAptiv, proAptiv, M-Class
+- **Wave Computing**: MIPS32 4K, 24 K, 34 K, 1004 K, MIPS64 5K, microAptiv, interAptiv, proAptiv, M-Class
 
-**Xilinx**: MicroBlaze, PowerPC 405, ZYNQ, ZYNQ UltraSCALE
+- **Xilinx**: MicroBlaze, PowerPC 405, ZYNQ, ZYNQ UltraSCALE
 
 *Todas las cifras de tiempos y tamaños enumeradas son estimaciones y pueden ser diferentes en su plataforma de desarrollo.*
 

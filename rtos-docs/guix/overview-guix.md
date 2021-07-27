@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 8f4a1578fcabdabfb213ced9c6593f6cffc964aa
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: 0a6ac2c7a76893d516b9beae9b893c9764de60ba
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171410"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754937"
 ---
 # <a name="overview-of-azure-rtos-guix-and-azure-rtos-guix-studio"></a>Información general de Azure RTOS GUIX y Azure RTOS GUIX Studio
 
@@ -134,7 +134,7 @@ Cada referencia de Azure RTOS GUIX tiene un proyecto de Azure RTOS GUIX Studio c
 
 Genere todos los archivos de salida para generar el código C para Azure RTOS GUIX. A continuación, simplemente vuelva a compilar la aplicación de destino y ejecútela para observar el diseño de referencia modificado.
 
-### <a name="memory-footprint"></a>Superficie de memoria
+### <a name="guix-memory-footprint"></a>Superficie de memoria de GUIX
 
 Azure RTOS GUIX tiene una superficie mínima de 13,2 KB de FLASH y 4 KB de RAM para soporte básico, sin incluir la memoria necesaria para un lienzo.
 

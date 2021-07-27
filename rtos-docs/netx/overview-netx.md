@@ -6,18 +6,19 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 7c864c23f019e4841ddb3096fde663c8039baf44
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: 63fd212249da6154926684f9bc844d2c2a78e84e
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171325"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754852"
 ---
 # <a name="overview-of-azure-rtos-netx"></a>Introducción a Azure RTOS NetX
 
 Azure RTOS NetX es una pila de red insertada en IPv4 TCP/IP y de nivel industrial diseñada específicamente para aplicaciones de IoT, en tiempo real y profundamente insertadas. Azure RTOS NetX es la pila de red IPv4 original de Microsoft y es esencialmente un subconjunto de Azure RTOS. NetX proporciona aplicaciones insertadas con los principales protocolos de red, como IPv4, TCP y UDP, así como un conjunto completo de protocolos adicionales de nivel superior. Una pequeña superficie, una ejecución rápida y una facilidad de uso superior hacen que Azure RTOS NetX sea una opción ideal para las aplicaciones de IoT integradas más exigentes.
 
 ## <a name="api-protocols"></a>Protocolos de API
+Azure RTOS NetX proporciona compatibilidad con los siguientes protocolos.
 
 ### <a name="telnet"></a>TELNET
 
@@ -153,7 +154,7 @@ Azure RTOS NetX es una pila de red insertada en IPv4 TCP/IP y de nivel industria
 
 ## <a name="interoperability-verification"></a>Comprobación de interoperabilidad
 
-Azure RTOS NetX se ajusta a los estándares RFC y ofrece una interoperabilidad completa con los dispositivos de la mayoría de los proveedores. Azure RTOS NetX también emplea el estándar del sector IxANVL (Biblioteca de validación de red automatizada) para la implementación del protocolo TCP/IP principal de Azure RTOS NetX.
+Azure RTOS NetX se ajusta a los estándares de RFC y ofrece una interoperabilidad completa con los dispositivos de la mayoría de los proveedores. Azure RTOS NetX también emplea el estándar del sector IxANVL (Biblioteca de validación de red automatizada) para la implementación del protocolo TCP/IP principal de Azure RTOS NetX.
 
 ## <a name="advanced-technology"></a>Tecnología avanzada
 
