@@ -6,12 +6,12 @@ ms.author: kemaxwel
 ms.date: 9/30/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 3194a1b8c8965bf821631a8c34ac5e9961f8c8ff
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 374471df85c4cd0fffae5b5cc7ad31d2237877f2
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815470"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115178289"
 ---
 # <a name="chapter-8-notes-on-editing-specific-widget-types"></a>Capítulo 8: Notas sobre la edición de tipos de widgets específicos
 
@@ -118,3 +118,10 @@ Se puede especificar un desplazamiento dentro del fotograma de sprite en el que 
 El período de retraso especifica el tiempo de retraso antes de pasar al fotograma de sprite siguiente. Este valor se expresa en tics y, para la configuración predeterminada del temporizador de GUIX/THREADX, cada tic representa 50 ms.
 
 Cuando cambie los cambios en el cuadro de diálogo para editar fotogramas de sprite, GUIX Studio podrá generar toda la matriz de lista de fotogramas como parte de la generación de archivos de especificaciones de salida.
+
+### <a name="assign-a-sprite-widget-with-gif-resource"></a>Asignación de un widget de sprites con un recurso GIF
+Puede agregar un recurso GIF al grupo de recursos **Pixelmap** y asignar dicho recurso directamente al widget de sprites. Una vez establecido el recurso GIF, se generará automáticamente una lista de fotogramas; puede editar aún más cada fotograma de la lista mediante el cuadro de diálogo de edición de sprites:
+
+![Captura de pantalla del cuadro de diálogo para editar fotogramas de sprite de GUIX Studio para un recurso GIF.](./media/guix-studio/edit_sprite_gif_frames.jpg)
+
+**Figura 8.4**

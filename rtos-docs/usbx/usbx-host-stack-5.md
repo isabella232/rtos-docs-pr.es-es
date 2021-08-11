@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: bf5876042e08a59979adcd429917bfc3fbfdbc20
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2e9e2e0286300b3f79f7f9e6ad2d7fab96ba7337
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816466"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115177752"
 ---
 # <a name="chapter-5---usbx-host-classes-api"></a>Capítulo 5: API de clases de host de USBX
 
@@ -206,8 +206,8 @@ Esta función se usa para recibir un informe directamente del dispositivo sin de
 
 ### <a name="parameters"></a>Parámetros
 
-- **HID** Puntero a la instancia de la clase HID.
-- **client_report** Puntero al informe de cliente HID.
+- **HID**: puntero a la instancia de la clase HID.
+- **client_report**: puntero al informe de cliente HID.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -685,6 +685,9 @@ UINT ux_host_class_cdc_acm_read(
 ### <a name="description"></a>Descripción
 
 Esta función lee desde la interfaz cdc_acm. La llamada produce un bloqueo, y solo devuelve un resultado cuando hay un error o cuando se completa la transferencia.
+
+> [!Note]
+> Esta función lee datos masivos sin procesar del dispositivo, por lo que se mantiene en estado pendiente hasta que el búfer está lleno o el dispositivo finaliza la transferencia mediante un paquete corto (incluido el paquete de longitud cero). Para más información, consulte [**Consideraciones generales sobre la transferencia masiva**](usbx-device-stack-5.md#general-considerations-for-bulk-transfer).
 
 ### <a name="parameters"></a>Parámetros
 

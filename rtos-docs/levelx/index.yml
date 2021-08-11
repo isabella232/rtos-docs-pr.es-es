@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 07/10/2020
-  ms.openlocfilehash: 27ce4d34d53b2a6daec651dd83c648024aad0291
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: ea822259a774e57cb9e018a90a1985f291a4cbbd157b086753680f577e8cbc94
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: HT
   ms.contentlocale: es-ES
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797638"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116790554"
 landingContent:
 - title: Introducción a Azure RTOS LevelX
   linkLists:

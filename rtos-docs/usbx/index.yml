@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 5/19/2020
-  ms.openlocfilehash: 05ff41048304d3cb66b74cbf342de664e8ad88ab
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: da805afb17e7b9a77b5fc3a65be7ec36b3129080d6b5081e4b517076d3547fa0
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: HT
   ms.contentlocale: es-ES
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797691"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116796283"
 landingContent:
 - title: Introducción a Azure RTOS USBX
   linkLists:
