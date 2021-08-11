@@ -7,12 +7,12 @@ ms.date: 6/9/2021
 ms.service: rtos
 ms.topic: overview
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 8c0bec2bb3b699b3a8d39d85eb322f3bbd95515a
-ms.sourcegitcommit: 8b03df42920bdd544fb4195ab818043f6c71969e
+ms.openlocfilehash: 4b6c8df5133f16cf3ed4006c12433ac426453cb5
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114436753"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115178211"
 ---
 # <a name="overview-of-azure-rtos-threadx"></a>Información general sobre Azure RTOS ThreadX
 
@@ -61,7 +61,7 @@ Estas son algunas características de rendimiento típicas de Azure RTOS ThreadX
 
 ## <a name="advanced-technology"></a>Tecnología avanzada
 
-Azure RTOS ThreadX es notable por su programación del umbral de adelantamiento. Esta característica es exclusiva de Azure RTOS ThreadX y ha sido objeto de una extensa investigación académica. Puede conocer más información en el documento [Scheduling Fixed-Priority Tasks with Preemption Threshold](https://www.cs.utah.edu/~regehr/reading/open_papers/preempt_thresh.pdf), de Yun Wang, Universidad Concordia, y Manas Saksena, Universidad de Pittsburgh.
+Azure RTOS ThreadX es notable por su programación del umbral de adelantamiento. Esta característica es exclusiva de Azure RTOS ThreadX y ha sido objeto de una extensa investigación académica. Puede conocer más información en el documento [Scheduling Fixed-Priority Tasks with Preemption Threshold](https://ieeexplore.ieee.org/document/811269), de Yun Wang, Universidad Concordia, y Manas Saksena, Universidad de Pittsburgh.
 
 Principales funcionalidades de Azure RTOS ThreadX:
 

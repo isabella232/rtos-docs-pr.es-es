@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 05/19/2020
-  ms.openlocfilehash: bf7fd9f842c363b753f8acd52f54b9f8e462616c
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: 932479742f8aae7204bce3ca80afe13e7db0ec6a5a73cd3d1011dba1dd9a008c
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: HT
   ms.contentlocale: es-ES
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797650"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116782904"
 landingContent:
 - title: Introducción a Azure RTOS FileX
   linkLists:

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 65095e326bc6809eba6e9472e2d74325351354ca
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2b48491e3c601aeb68ecef00fd0f25d93cda6e64
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814997"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115177769"
 ---
 # <a name="appendix-h---guix-build-time-configuration-flags"></a>Apéndice H: marcas de configuración de tiempo de compilación de GUIX
 
@@ -28,10 +28,6 @@ GX_SYSTEM_TIMER_MS
 TX_TIMER_TICKS_PER_SECOND
 - Valor predeterminado: 100
 - Descripción: este valor define el número de frecuencias de interrupción del temporizador de TX. Dado que el temporizador de intervalo de ThreadX predeterminado es de 10 ms, el valor predeterminado se establece en una frecuencia de 100 Hz.
-
-GX_SYSTEM_TIMER_TICKS
-- Valor predeterminado: ((GX_SYSTEM_TIMER_MS * TX_TIMER_TICKS_PER_SECOND)/1000)
-- Descripción: este valor define el número de tics de temporizador de los sistemas RTOS subyacentes por tic del temporizador de GUIX. El valor predeterminado es 2, lo que significa que el intervalo del temporizador de GUIX es 2 intervalos de interrupción del temporizador de ThreadX o 20 ms de forma predeterminada.
 
 GX_DISABLE_MULTITHREAD_SUPPORT
 - Valor predeterminado: no definido

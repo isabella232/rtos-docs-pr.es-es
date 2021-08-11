@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 84f215ad990a2fe185a08f3876276528787ef8bc
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ea348d94e83863c0e2652df29f92d952f2242661
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815081"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115178024"
 ---
 # <a name="chapter-5---usbx-device-class-considerations"></a>Capítulo 5: Consideraciones acerca de la clase del dispositivo USBX
 
@@ -59,6 +59,12 @@ VOID tx_demo_hid_instance_deactivate(VOID *hid_instance)
 ```
 
 No se recomienda hacer nada en estas funciones, tan solo memorizar la instancia de la clase y sincronizar con el resto de la aplicación.
+
+## <a name="general-considerations-for-bulk-transfer"></a>Consideraciones generales sobre la transferencia masiva
+
+Según la especificación USB 2.0, un punto de conexión siempre debe transmitir cargas de datos con un campo de datos menor o igual que el valor de wMaxPacketSize notificado del punto de conexión. El tamaño de un paquete de datos se limita al valor de bMaxPacketSize. La transferencia se puede completar en los siguientes casos
+1. El punto de conexión ha transferido exactamente la cantidad de datos esperada
+2. Cuando un dispositivo o un punto de conexión de host recibe un paquete con un tamaño inferior al tamaño máximo del paquete (wMaxPacketSize). Este paquete corto indica que ya no queda ningún paquete de datos y que la transferencia se ha completado, o cuando los paquetes de datos que se van a transmitir son iguales a wMaxPacketSize, no se puede determinar el final de la transferencia. Para completar la transferencia, se debe enviar un paquete de longitud cero (ZLP). Los paquetes cortos y los de longitud cero significan el final de una transferencia masiva de datos. Las consideraciones anteriores se aplican a las API de transferencia masiva de datos sin procesar, por ejemplo, ux_device_class_cdc_acm_read().
 
 ## <a name="usb-device-storage-class"></a>Clase de almacenamiento de dispositivo USB
 
@@ -846,6 +852,9 @@ UINT ux_device_class_cdc_acm_read(
 ### <a name="description"></a>Descripción
 
 Se llama a esta función cuando una aplicación necesita leer la canalización de datos OUT (OUT desde el host, IN desde el dispositivo). Está bloqueando.
+
+> [!Note]
+> Esta función lee datos masivos sin procesar del host, por lo que se mantiene en estado pendiente hasta que el búfer está lleno o el host finaliza la transferencia mediante un paquete corto (incluido el paquete de longitud cero). Para más información, consulte la sección [**Consideraciones generales sobre la transferencia masiva**](#general-considerations-for-bulk-transfer).
 
 ### <a name="parameters"></a>Parámetros
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6bb2743f05c5b56331d1c0e948601ad23bf340d1
-ms.sourcegitcommit: 95f4ae0842a486fec8f10d1480203695faa9592d
+ms.openlocfilehash: 0357afe7f997c84a5d031ca71dc524e381734b4a
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111875279"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115178194"
 ---
 # <a name="chapter-3---description-of-http-services"></a>Capítulo 3: Descripción de los servicios HTTP
 
@@ -2313,7 +2313,7 @@ UINT nx_web_http_client_response_body_get(
 
 ### <a name="description"></a>Descripción
 
-Este servicio recupera el siguiente paquete de contenido del recurso solicitado por la llamada anterior a *nx_web_http_client_get_start()* o *nx_web_http_client_get_secure_start()* . Deben realizarse llamadas sucesivas a esta rutina hasta que se reciba el estado de devolución de NX_WEB_HTTP_GET_DONE.
+Este servicio recupera el siguiente paquete de contenido del recurso solicitado por la solicitud anterior. Deben realizarse llamadas sucesivas a esta rutina hasta que se reciba el estado de devolución de NX_WEB_HTTP_GET_DONE.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
