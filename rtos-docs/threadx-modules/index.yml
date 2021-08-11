@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 07/10/2020
-  ms.openlocfilehash: 40958716dfaa14813279fbce3b63d696e3dc21d2
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: 36fb45ffb348ce0807caffb9f6e8a09bae03a58ce51585e9f4e583e0f278796d
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: HT
   ms.contentlocale: es-ES
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797606"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116799105"
 landingContent:
 - title: Introducción a Azure RTOS ThreadX Modules
   linkLists:

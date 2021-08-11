@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 318e68ab5ab7d841057d65565dfda263597d03e4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 91377a663dfb605caa33ab019f437f2c3ed1adc7
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814941"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115178313"
 ---
 # <a name="chapter-5-guix-studio-screen-designer"></a>Capítulo 5: Diseñador de pantallas de GUIX Studio
 
@@ -137,7 +137,7 @@ Del mismo modo, los recursos de PixelMap se asignan al campo de PixelMap "normal
 
 ## <a name="using-templates"></a>Uso de plantillas
 
-Cualquier pantalla o colección de widgets secundarios que diseñe en Studio se puede usar como plantilla para nuevas pantallas y nuevos controles secundarios. El uso de una plantilla es similar a copiar y pegar un widget, excepto que cualquier elemento derivado de una plantilla se modifica automáticamente cuando se modifica la plantilla en la que se basa. No se permite modificar las propiedades del widget de plantilla cuando se trabaja con una pantalla derivada o una instancia heredada de la plantilla. Sin embargo, al modificar las propiedades de la plantilla de cualquier modo, todas las instancias que hacen referencia a esa plantilla se actualizan automáticamente, ya que se derivan de esa plantilla.
+Cualquier pantalla o colección de widgets secundarios que diseñe en Studio se puede usar como plantilla para nuevas pantallas y nuevos controles secundarios. Puede basar una plantilla en un widget de tipo ventana, que es el caso de uso normal, o en cualquier otro tipo de widget. El uso de una plantilla es similar a copiar y pegar un widget, excepto que cualquier elemento derivado de una plantilla se modifica automáticamente cuando se modifica la plantilla en la que se basa. No se permite modificar las propiedades del widget de plantilla cuando se trabaja con una pantalla derivada o una instancia heredada de la plantilla. Sin embargo, al modificar las propiedades de la plantilla de cualquier modo, todas las instancias que hacen referencia a esa plantilla se actualizan automáticamente, ya que se derivan de esa plantilla.
 
 Otra ventaja de usar plantillas para elementos repetidos es que el archivo de especificaciones generadas por Studio normalmente tendrá un tamaño menor que si se repiten los elementos repetidos cada vez que se usan.
 
