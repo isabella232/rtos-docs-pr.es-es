@@ -6,18 +6,18 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f439cf66e6619652ae8ab9097b2de5e584d78c59
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 56343d563833f30ca0d48f594b547f37fa264b8961a7cd75b0786aac4791d065
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814613"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797218"
 ---
 # <a name="chapter-1---introduction-to-the-azure-rtos-netx-duo-point-to-point-protocol-ppp"></a>Capítulo 1: Introducción al Protocolo punto a punto (PPP) de Azure RTOS NetX Duo
 
 Normalmente, las aplicaciones de NetX se conectan a la red física real a través de Ethernet. Esto proporciona un acceso a la red rápido y eficaz. Sin embargo, hay situaciones en las que la aplicación no tiene acceso Ethernet. En tales casos, la aplicación todavía puede conectarse a la red a través de una interfaz serie conectada directamente a otro miembro de la red. El protocolo de software más común que se usa para administrar este tipo de conexión es el Protocolo punto a punto (PPP).
 
-Aunque la comunicación en serie es relativamente sencilla, el PPP es bastante complejo. El PPP se compone en realidad de varios protocolos, como el Protocolo de control de vínculos (LCP), el Protocolo de control de protocolo de Internet (IPCP), el Protocolo de autenticación de contraseña (PAP) y el Protocolo de autenticación por desafío mutuo (CHAP). El LCP es el protocolo principal de PPP. Aquí es donde los componentes básicos del vínculo se negocian dinámicamente en un modo de punto a punto. Una vez que las características básicas del vínculo se han negociado correctamente, se usa PAP o CHAP para asegurarse de que un homólogo conectado sea válido. Si ambos elementos homólogos son válidos, se usa IPCP para negociar las direcciones IP usadas por estos. Una vez que IPCP se completa, PPP puede enviar y recibir paquetes IP.
+Aunque la comunicación en serie es relativamente sencilla, el PPP es bastante complejo. El PPP se compone en realidad de varios protocolos, como el Protocolo de control de vínculos (LCP), el Protocolo de control de protocolo de Internet (IPCP), el Protocolo de autenticación de contraseña (PAP) y el Protocolo de autenticación por desafío mutuo (CHAP). El LCP es el protocolo principal de PPP. Aquí es donde los componentes básicos del vínculo se negocian dinámicamente en un modo de punto a punto. Una vez que las características básicas del vínculo se han negociado correctamente, se usa PAP o CHAP para asegurarse de que un elemento del mismo nivel conectado sea válido. Si ambos elementos homólogos son válidos, se usa IPCP para negociar las direcciones IP usadas por estos. Una vez que IPCP se completa, PPP puede enviar y recibir paquetes IP.
 
 NetX considera a PPP principalmente como un controlador de dispositivo. La función *nx_ppp_driver* se proporciona a la función de creación de IP de NetX, *nx_ip_create*. De lo contrario, NetX no tiene ningún conocimiento directo de PPP.
 
@@ -25,7 +25,7 @@ NetX considera a PPP principalmente como un controlador de dispositivo. La funci
 
 El paquete de PPP de NetX requiere que la aplicación proporcione un controlador de comunicación en serie. El controlador debe admitir caracteres de 8 bits y también puede emplear el control de flujo de software. Es responsabilidad de la aplicación inicializar el controlador, lo que debe hacerse antes de crear la instancia de PPP.
 
-Para enviar paquetes de PPP, se debe proporcionar una rutina de bytes de salida del controlador serie a PPP (especificada en la función *nx_ppp_create*). Se llama repetidamente a esta rutina de bytes de salida del controlador serie para transmitir todo el paquete de PPP. Es responsabilidad del controlador de serie almacenar en búfer el resultado. En el lado de recepción, el controlador serie de la aplicación debe llamar a la función *nx_ppp_byte_receive* de PPP siempre que llegue un nuevo byte. Esto se suele hacer desde dentro del contexto de una rutina de servicio de interrupción (ISR). La función *nx_ppp_byte_receive* coloca el byte de entrada en un búfer circular y alerta al subproceso de recepción de PPP de su presencia.
+Para enviar paquetes de PPP, se debe proporcionar una rutina de bytes de salida del controlador serie a PPP (especificada en la función *nx_ppp_create*). Se llama repetidamente a esta rutina de bytes de salida del controlador serie para transmitir todo el paquete de PPP. Es responsabilidad del controlador serie almacenar en búfer el resultado. En el lado de recepción, el controlador serie de la aplicación debe llamar a la función *nx_ppp_byte_receive* de PPP siempre que llegue un nuevo byte. Esto se suele hacer desde dentro del contexto de una rutina de servicio de interrupción (ISR). La función *nx_ppp_byte_receive* coloca el byte de entrada en un búfer circular y alerta al subproceso de recepción de PPP de su presencia.
 
 ## <a name="ppp-over-ethernet-communication"></a>Comunicación de PPP a través de Ethernet
 
@@ -39,11 +39,11 @@ PPP emplea tramas de AHDLC (un subconjunto de HDLC) para encapsular todos los da
 
 |**Marca**|**Addr**|**Ctrl**|**Información**|**CRC**|**Marca**|
 |--------|--------|--------|---------------|-------|--------|
-|7E |FF|03|[0-1502 bytes]|2 bytes.| 7E|
+|7E |FF|03|0-1502 bytes|2 bytes.| 7E|
 
 Cada marco de PPP tiene este aspecto general. Los dos primeros bytes del campo de información contienen el tipo de protocolo de PPP. Los valores válidos se definen de la siguiente forma:
 
-- C021:  LCP
+- C021: LCP
 - 8021: IPCP
 - C023: PAP
 - C223: CHAP
@@ -68,7 +68,7 @@ PAP es un protocolo relativamente sencillo que se basa en el suministro de un no
 
 CHAP es un protocolo de autenticación más complejo que PAP. El autenticador de CHAP proporciona a su homólogo un nombre y un valor. A continuación, el homólogo usa el nombre proporcionado para buscar un "secreto" compartido entre las dos entidades. Después, se realiza un cálculo sobre el identificador, el valor y el "secreto". El resultado de este cálculo se devuelve en la respuesta. Si es correcto, PPP puede continuar con la máquina de estados de IPCP. De lo contrario, si el resultado es incorrecto, se rechaza la conexión.
 
-Otro aspecto interesante de CHAP es que puede producirse a intervalos aleatorios después de que se haya establecido una conexión. Se utiliza para evitar que una conexión sea secuestrada una vez autenticada. Si se produce un error en un desafío en una de estos momentos aleatorios, la conexión finaliza inmediatamente.
+Otro aspecto interesante de CHAP es que puede producirse a intervalos aleatorios después de que se haya establecido una conexión. Se utiliza para evitar que una conexión sea secuestrada una vez autenticada. Si se produce un error en un desafío en uno de estos momentos aleatorios, la conexión finaliza inmediatamente.
 
 >[!NOTE]
 > Los dos lados de la interfaz pueden solicitar CHAP, pero CHAP se usa normalmente solo en una dirección.
@@ -83,4 +83,4 @@ Como se mencionó anteriormente, los paquetes de datos de IP de NetX residen en 
 
 ## <a name="ppp-rfcs"></a>RFC de PPP
 
-PPP de NetX es compatible con las RFC1332, RFC1334, RFC1661, RFC1994 y RFC relacionadas.
+PPP de NetX es compatible con RFC1332, RFC1334, RFC1661, RFC1994 y RFC relacionadas.

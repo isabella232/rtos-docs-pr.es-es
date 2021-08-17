@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 31900c7b822c88079e4b9fe28a8a388d20f819aa
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 32af483db1f97b45bfe3d334b8c79d984dedc8470a37ce1d4164331549b6954c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106549851"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116789055"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-netx-duo"></a>Capítulo 3: Componentes funcionales de Azure RTOS NetX Duo
 
@@ -180,7 +180,7 @@ También existe la opción de crear más de un grupo de paquetes. Por ejemplo, u
 ### <a name="packet-header-nx_packet"></a>Encabezado de paquete NX_PACKET   
 De manera predeterminada, NetX Duo coloca el encabezado del paquete inmediatamente antes del área de la carga del paquete. El grupo de memoria de paquetes es básicamente una serie de paquetes: encabezados seguidos inmediatamente por la carga del paquete. El encabezado del paquete (***NX_PACKET***) y el diseño del grupo de paquetes se muestran en la figura 3.
 
-En el caso del controlador de dispositivos de red que pueden realizar operaciones sin copia, normalmente la dirección inicial del área de la carga del paquete se programa en la lógica de DMA. Algunos motores de DMA tienen un requisito de alineación en el área de la carga. Para que la dirección inicial del área de carga se alinee correctamente con el motor DMA o la operación de caché, el usuario puede definir el símbolo ***NX_PACKET_ALIGNMENT***.
+En el caso de los controladores de dispositivos de red que pueden realizar operaciones sin copia, normalmente la dirección inicial del área de la carga del paquete se programa en la lógica de DMA. Algunos motores de DMA tienen un requisito de alineación en el área de la carga. Para que la dirección inicial del área de carga se alinee correctamente con el motor DMA o la operación de caché, el usuario puede definir el símbolo ***NX_PACKET_ALIGNMENT***.
 
 > [!WARNING]
 > *Es importante que el controlador de red use la función **nx_packet_transmit_release** cuando se complete la transmisión de un paquete. Esta función realiza una comprobación para asegurarse de que el paquete no forma parte de una cola de salida TCP antes de que se vuelva a colocar en el grupo disponible.*
@@ -191,7 +191,7 @@ En el caso del controlador de dispositivos de red que pueden realizar operacione
 
 Los campos del encabezado del paquete se definen de la siguiente manera. Tenga en cuenta que esta tabla no es una lista exhaustiva de todos los miembros de la estructura *NX_PACKET*.
 
-|Encabezado de paquete | Fin |
+|Encabezado de paquete | Propósito |
 |---|---|
 |***nx_packet_pool_owner***|Este campo apunta al grupo de paquetes que posee este paquete en particular. Cuando se libera el paquete, se libera a este grupo en particular. Con la propiedad del grupo dentro de cada paquete, es posible que un datagrama abarque varios paquetes de varios grupos de paquetes.|
 |***nx_packet_next** _|Este campo apunta al siguiente paquete dentro del mismo marco. Si es NULL, no hay paquetes adicionales que formen parte del marco. Este campo se usa para mantener los paquetes fragmentados hasta que se pueda volver a ensamblar todo el paquete. Se quita si se define _*_NX_DISABLE_PACKET_CHAIN_**.|
@@ -281,10 +281,10 @@ Cada host de Internet tiene un identificador único de 32 bits que se conoce co
 
 |Clase|Intervalo|
 |---|---|
-|A |0.0.0.0 a 127.255.255.255|
-|B |128.0.0.0 a 191.255.255.255|
-|C |192.0.0.0 a 223.255.255.255|
-|D |224.0.0.0 a 239.255.255.255|
+|A |De 0.0.0.0 a 127.255.255.255|
+|B |De 128.0.0.0 a 191.255.255.255|
+|C |De 192.0.0.0 a 223.255.255.255|
+|D |De 224.0.0.0 a 239.255.255.255|
 |E |240.0.0.0 a 247.255.255.255|
 
 ![Diagrama de la estructura de direcciones IPv4.](./media/user-guide/ipv4-address-structure.png)
@@ -316,12 +316,12 @@ Para que cualquier paquete IPv4 se envíe a Internet, debe tener un encabezado I
 
 Los campos del encabezado IPv4 se definen de la siguiente manera:
 
-|Campo&nbsp;de encabezado&nbsp;IPv4 |Fin |
+|Campo&nbsp;de encabezado&nbsp;IPv4 |Propósito |
 |---|---|
 |***4-bit version*** |Este campo contiene la versión de IP que representa este encabezado. En el caso de IP versión 4, que es lo que admite NetX Duo, el valor de este campo es 4. |
 |***Longitud del encabezado de 4 bits*** |Este campo especifica el número de palabras de 32 bits del encabezado IP. Si no hay palabras de opción presentes, el valor de este campo es 5. |
 |***Tipo de servicio (TOS) de 8 bits*** |Este campo especifica el tipo de servicio solicitado para este paquete IP. Las solicitudes válidas son las siguientes:<br />- Normal: 0x00 <br />- Retraso mínimo: 0x00<br />- Datos máximos: 0x08<br />- Confiabilidad máxima: 0x04<br />- Costo mínimo: 0x02 |
-|***Longitud total de 16 bits*** |Este campo contiene la longitud total del datagrama IP en bytes, incluido el encabezado IP. Un datagrama IP es la unidad básica de información que se encuentra en una red de Internet con TCP/IP. Contiene una dirección de origen y una de destino, además de los datos. Dado que es un campo de 16 bits, el tamaño máximo de un datagrama IP es de 65 535 bytes.|
+|***Longitud total de 16 bits*** |Este campo contiene la longitud total del datagrama IP en bytes, incluido el encabezado IP. Un datagrama IP es la unidad básica de información que se encuentra en una red de Internet con TCP/IP. Contiene una dirección de origen y de destino, además de los datos. Dado que es un campo de 16 bits, el tamaño máximo de un datagrama IP es de 65 535 bytes.|
 |***identificación de 16 bits*** |El campo es un número que se usa para identificar de forma única cada datagrama IP enviado desde un host. Normalmente, este número se incrementa después de enviar un datagrama IP. Es especialmente útil para ensamblar fragmentos de paquetes IP recibidos.|
 |***Marcas de 3 bits*** |Este campo contiene información de fragmentación de IP. El bit 14 es el bit "no fragmentar". Si se establece este bit, el datagrama IP saliente no se fragmentará. El bit 13 es el bit "más fragmentos". Si se establece este bit, hay más fragmentos. Si este bit está a cero, se trata del último fragmento del paquete IP.|
 |***Desplazamiento de fragmento de 13 bits*** |Este campo contiene los 13 bits superiores del desplazamiento del fragmento. Por este motivo, los desplazamientos de fragmentos solo se permiten en límites de 8 bytes. El primer fragmento de un datagrama IP fragmentado tendrá el bit "más fragmentos" establecido y tendrá un desplazamiento de 0.|
@@ -363,9 +363,9 @@ En el caso de sistemas con varias interfaces de red, NetX Duo elige una interfaz
 
 ### <a name="ip-receive"></a>Recepción de IP
 
-El procesamiento de recepción de IP se llama desde el controlador de red o desde el subproceso de IP interno (para procesar los paquetes de la cola de paquetes recibidos diferida). El procesamiento de recepción de IP examina el campo de protocolo e intenta enviar el paquete al componente de protocolo adecuado. Antes de que el paquete se envíe realmente, el encabezado IP se quita, para lo cual se avanza el puntero antepuesto después del encabezado IP.
+El procesamiento de recepción de IP se llama desde el controlador de red o desde el subproceso de IP interno (para procesar los paquetes de la cola de paquetes recibidos diferida). El procesamiento de recepción de IP examina el campo de protocolo e intenta enviar el paquete al componente de protocolo adecuado. Antes de que el paquete se envíe realmente, el encabezado IP se quita adelantando el puntero antepuesto después del encabezado IP.
 
-El procesamiento de recepción de IP también detecta paquetes IP fragmentados y realiza los pasos necesarios para volver a ensamblarlos si la fragmentación está habilitada. Si la fragmentación es necesaria pero no está habilitada, se elimina el paquete.
+El procesamiento de recepción de IP también detecta paquetes IP fragmentados y realiza los pasos necesarios para volver a ensamblarlos si está habilitada la fragmentación. Si la fragmentación es necesaria pero no está habilitada, se elimina el paquete.
 
 NetX Duo determina la interfaz de red adecuada en función de la interfaz especificada en el paquete. Si la interfaz del paquete es NULL, el valor predeterminado de NetX Duo es la interfaz principal. Esto se hace para garantizar la compatibilidad con controladores Ethernet de NetX Duo heredados.
 
@@ -375,7 +375,7 @@ Un paquete Raw IP es un marco IP que contiene una carga de protocolo de nivel su
 
 ### <a name="raw-ip-receive"></a>Recepción de IP sin formato
 
-Si está habilitado el procesamiento de paquetes Raw IP, la aplicación puede recibir paquetes Raw IP mediante el servicio ***nx_ip_raw_packet_receive** _. Todos los paquetes entrantes se procesan según el protocolo especificado en el encabezado IP. Si el protocolo especifica UDP, TCP, IGMP o ICMP, NetX Duo procesará el paquete con el controlador adecuado para el tipo de protocolo del paquete. Si el protocolo no es uno de los indicados y la recepción de Raw IP está habilitada, el paquete entrante se colocará en la cola de paquetes sin procesar en espera de que la aplicación lo reciba a través del servicio _*_nx_ip_raw_packet_receive_**. Además, los subprocesos de aplicación se pueden suspender con un tiempo de espera opcional mientras esperan un paquete Raw IP. El número de paquetes que se pueden poner en cola en la cola de paquetes sin procesar es limitado. El valor máximo se define en ***NX_IP_RAW_MAX_QUEUE_DEPTH**_, cuyo valor predeterminado es 20. Una aplicación puede cambiar el valor máximo mediante una llamada al servicio _ *_nx_ip_raw_receive_queue_max_set_**.
+Si está habilitado el procesamiento de paquetes IP sin formato, la aplicación puede recibir paquetes IP sin formato mediante el servicio ***nx_ip_raw_packet_receive** _. Todos los paquetes entrantes se procesan según el protocolo especificado en el encabezado IP. Si el protocolo especifica UDP, TCP, IGMP o ICMP, NetX Duo procesará el paquete con el controlador adecuado para el tipo de protocolo del paquete. Si el protocolo no es uno de los indicados y la recepción de Raw IP está habilitada, el paquete entrante se colocará en la cola de paquetes sin procesar en espera de que la aplicación lo reciba a través del servicio _*_nx_ip_raw_packet_receive_**. Además, los subprocesos de aplicación se pueden suspender con un tiempo de espera opcional mientras esperan un paquete Raw IP. El número de paquetes que se pueden poner en cola en la cola de paquetes sin procesar es limitado. El valor máximo se define en ***NX_IP_RAW_MAX_QUEUE_DEPTH**_, cuyo valor predeterminado es 20. Una aplicación puede cambiar el valor máximo mediante una llamada al servicio _ *_nx_ip_raw_receive_queue_max_set_**.
 
 Como alternativa, la biblioteca de NetX Duo puede compilarse con ***NX_ENABLE_IP_RAW_PACKET_FILTER*.** En este modo de funcionamiento, la aplicación proporciona una función de devolución de llamada que se invoca cada vez que se recibe un paquete con un tipo de protocolo no controlado. La lógica de recepción de IP reenvía el paquete a la rutina de filtro de recepción de paquetes sin procesar definida por el usuario. La rutina de filtro decide si se debe mantener el paquete sin procesar para futuros procesos. El valor devuelto de la rutina de devolución de llamada indica si el paquete se ha procesado mediante el filtro de recepción de paquetes sin procesar. Si la función de devolución de llamada procesa el paquete, el paquete debe liberarse cuando la aplicación termine de utilizarlo. De lo contrario, NetX Duo es responsable de liberar el paquete. Consulte **_nx_ip_raw_packet_filter_set_** para obtener más información sobre cómo usar la función de filtro de paquetes sin procesar.
 
@@ -395,7 +395,7 @@ Cada instancia de IP tiene un subproceso auxiliar. Este subproceso es responsabl
 
 ### <a name="thread-suspension"></a>Suspensión de subprocesos
 
-Los subprocesos de la aplicación se pueden suspender al intentar recibir paquetes Raw IP. Después de recibir un paquete sin formato, se asigna el nuevo paquete al primer subproceso suspendido y se reanuda dicho subproceso. Todos los servicios de NetX Duo para la recepción de paquetes tienen un tiempo de espera de suspensión opcional. Cuando se recibe un paquete o se agota el tiempo de espera, el subproceso de la aplicación se reanuda con el estado de finalización adecuado.
+Los subprocesos de la aplicación se pueden suspender al intentar recibir paquetes IP sin formato. Después de recibir un paquete sin formato, se asigna el nuevo paquete al primer subproceso suspendido y se reanuda dicho subproceso. Todos los servicios de NetX Duo para la recepción de paquetes tienen un tiempo de espera de suspensión opcional. Cuando se recibe un paquete o se agota el tiempo de espera, el subproceso de la aplicación se reanuda con el estado de finalización adecuado.
 
 ### <a name="ip-statistics-and-errors"></a>Estadísticas y errores de IP
 
@@ -458,11 +458,11 @@ El protocolo de resolución de direcciones (ARP) es responsable de asignar de fo
 
 ### <a name="arp-enable"></a>Habilitación de ARP
 
-Para que el protocolo ARP funcione correctamente, la aplicación debe habilitarlo primero con el servicio ***nx_arp_enable***. Este servicio configura varias estructuras de datos para el procesamiento de ARP, incluida la creación de un área de memoria caché de ARP desde la memoria suministrada al servicio de habilitación de ARP.
+Para que ARP funcione correctamente, primero se debe habilitar desde la aplicación con el servicio ***nx_arp_enable***. Este servicio configura varias estructuras de datos para el procesamiento de ARP, incluida la creación de un área de memoria caché de ARP desde la memoria suministrada al servicio de habilitación de ARP.
 
 ### <a name="arp-cache"></a>Memoria caché de ARP
 
-La memoria caché de ARP se puede ver como una matriz de estructuras de datos de asignaciones de ARP internas. Cada estructura interna es capaz de mantener la relación entre una dirección IP y una dirección de hardware físico. Además, cada estructura de datos tiene punteros de vínculo para que pueda formar parte de varias listas de vínculos.
+La memoria caché de ARP se puede ver como una matriz de estructuras de datos de asignaciones de ARP internas. Cada estructura interna es capaz de mantener la relación entre una dirección IP y una dirección de hardware físico. Además, cada estructura de datos tiene punteros de vínculo para que pueda formar parte de varias listas vinculadas.
 
 La aplicación puede buscar una dirección IP desde la memoria caché de ARP proporcionando una dirección MAC de hardware mediante el servicio ***nx_arp_ip_address_find** _ si la asignación existe en la tabla de ARP. De forma similar, el servicio _ *_nx_arp_hardware_address_find_** devuelve la dirección MAC correspondiente a una dirección IP determinada.
 
@@ -511,7 +511,7 @@ Los formatos de las solicitudes y respuestas de ARP para Ethernet se muestran en
 
 **FIGURA 6. Formato de paquetes ARP**
 
-| Campo de&nbsp;solicitud/respuesta | Fin |
+| Campo de&nbsp;solicitud/respuesta | Propósito |
 |---|---|
 | ***Tamaño de protocolo*** | Este campo de 1 byte contiene el tamaño de la dirección IP, que es 4 para las direcciones IP. |
 | ***Código de la operación*** | Este campo de 2 bytes contiene la operación para este paquete ARP. Una solicitud ARP se especifica con el valor 0x0001, mientras que una respuesta de ARP se representa con el valor 0x0002. |
@@ -568,7 +568,7 @@ El formato de un paquete de solicitud RARP es casi idéntico al paquete ARP que 
 
 ### <a name="rarp-reply"></a>Respuesta de RARP
 
-Los mensajes de respuesta de RARP se reciben de la red y contienen la dirección IP que la red ha asignado para este host. El formato de un paquete de respuesta de RARP es casi idéntico al paquete ARP que se muestra en la figura 6. La única diferencia es que el campo de tipo de marco es 0x8035 y el valor del campo *Código de la operación* es 4, lo que designa una respuesta de RARP. Después de la recepción, se configura la dirección IP en la instancia de IP, se deshabilita la solicitud RARP periódica y la instancia de IP ahora está lista para la operación de red normal.
+Los mensajes de respuesta de RARP se reciben desde la red y contienen la dirección IP asignada por la red para este host. El formato de un paquete de respuesta de RARP es casi idéntico al paquete ARP que se muestra en la figura 6. La única diferencia es que el campo de tipo de marco es 0x8035 y el campo del *código de operación* es 4, lo que designa una respuesta de RARP. Después de la recepción, se configura la dirección IP en la instancia de IP, se deshabilita la solicitud RARP periódica y la instancia de IP ahora está lista para la operación de red normal.
 
 En el caso de hosts múltiples, la dirección IP se aplica a la interfaz de red que lo solicita. Si hay otras interfaces de red que aún solicitan una asignación de dirección IP, el servicio RARP periódico continúa hasta que se resuelven todas las solicitudes de direcciones IP de las interfaces.
 
@@ -623,7 +623,7 @@ Una solicitud de eco es un tipo de mensaje de ICMPv4 que se suele usar para comp
 
 A continuación se describe el formato de encabezado de ICMPv4:
 
-|Campo del encabezado |Fin |
+|Campo del encabezado |Propósito |
 |---|---|
 |**Tipo** |Este campo especifica el mensaje de ICMPv4 (bits del 31 al 24). Los más comunes son:<br />- 0: respuesta de eco<br />- 3: destino no accesible<br />- 8: solicitud de eco<br />- 11: tiempo superado<br />- 12: problema de parámetro |
 |**Código** |Este campo es específico del contexto del campo de tipo (bits del 23 al 16). En el caso de una solicitud o respuesta de eco, el código se establece en cero.|
@@ -662,10 +662,10 @@ Las aplicaciones que necesiten unirse a un grupo de multidifusión determinado p
 En un sistema de host múltiple, si el grupo de multidifusión es accesible mediante una interfaz específica, la aplicación debe usar el servicio ***nx_igmp_multicast_interface_join** _ en lugar de _*_nx_igmp_multicast_join_**, que está limitado a los grupos de multidifusión de la red principal.
 
 ### <a name="multicast-group-leave"></a>Salida de un grupo de multidifusión   
-Las aplicaciones que necesiten salir de un grupo de multidifusión al que se han unido anteriormente pueden hacerlo mediante una llamada al servicio ***nx_igmp_multicast_leave***. Este servicio reduce el recuento interno asociado con el número de veces que se han realizado uniones al grupo. Si no hay ninguna solicitud de unión pendiente para un grupo, se llama al controlador de red para deshabilitar la escucha de paquetes con la dirección Ethernet de este grupo de multidifusión.
+Las aplicaciones que necesiten salir de un grupo de multidifusión al que se han unido anteriormente pueden hacerlo llamando al servicio ***nx_igmp_multicast_leave***. Este servicio reduce el recuento interno asociado con el número de veces que se han realizado uniones al grupo. Si no hay ninguna solicitud de unión pendiente para un grupo, se llama al controlador de red para deshabilitar la escucha de paquetes con la dirección Ethernet de este grupo de multidifusión.
 
 ### <a name="multicast-loopback"></a>Bucle invertido de multidifusión    
-Es posible que una aplicación desee recibir tráfico de multidifusión procedente de uno de los orígenes del mismo nodo. Esto requiere que el componente de multidifusión de IP tenga habilitado el bucle invertido mediante el servicio ***nx_igmp_loopback_enable***.
+Es posible que una aplicación desee recibir tráfico de multidifusión originado en uno de los orígenes del mismo nodo. Esto requiere que el componente de multidifusión de IP tenga habilitado el bucle invertido mediante el servicio ***nx_igmp_loopback_enable***.
 
 ### <a name="igmp-report-message"></a>Mensaje de informe de IGMP      
 Cuando la aplicación se une a un grupo de multidifusión, se envía un mensaje de informe de IGMP mediante la red para indicar la intención del host de unirse a un grupo de multidifusión determinado. En la figura 8 se muestra el formato del mensaje de informe de IGMP. La dirección del grupo de multidifusión se usa para el mensaje de grupo en el mensaje de informe de IGMP y para la dirección IP de destino.
@@ -676,11 +676,11 @@ En la figura 8 siguiente, el encabezado IGMP contiene un campo de versión/tipo,
 
 **FIGURA 8. Mensaje de informe de IGMP**
 
-Un campo de tiempo, uno de suma de comprobación y otro de dirección de grupo de multidifusión. En el caso de los mensajes de IGMPv1, el campo de tiempo de respuesta máximo siempre se establece en cero, ya que no forma parte del protocolo IGMPv1. El campo de tiempo de respuesta máximo se establece cuando el host recibe un mensaje de IGMP de tipo consulta y se borra cuando un host recibe un mensaje de tipo informe de otro host, tal como se define en el protocolo IGMPv2.
+Un campo de tiempo, uno de suma de comprobación y otro de dirección de grupo de multidifusión. En el caso de los mensajes de IGMPv1, el campo de tiempo de respuesta máximo siempre se establece en cero, ya que no forma parte del protocolo IGMPv1. El campo de tiempo de respuesta máximo se establece cuando el host recibe un mensaje de IGMP de tipo consulta y se borra cuando un host recibe el mensaje de tipo informe de otro host, tal como se define en el protocolo IGMPv2.
 
 A continuación se describe el formato de encabezado IGMP:
 
-|Campo del encabezado|Fin|
+|Campo del encabezado|Propósito|
 |---|---|
 |**Versión** |Este campo especifica la versión de IGMP (bits del 31 al 28).|
 |**Tipo** |Este campo especifica el tipo de mensaje de IGMP (bits del 27 al 24).|
@@ -759,7 +759,7 @@ Consulte RFC 2464 (transmisión de paquetes IPv6 a través de la red Ethernet) 
 
 Hay algunas direcciones de multidifusión especiales para enviar mensajes de multidifusión a uno o varios hosts en IPv6:
 
-| Group (Grupo)  | Dirección   | Descripción  |
+| Grupo  | Dirección   | Descripción  |
 |---|---|---|
 |Grupo de todos los nodos |**FF02::1** |Todos los hosts de la red local|
 |Grupo de todos los enrutadores |**FF02::2** |Todos los enrutadores de la red local|
@@ -851,7 +851,7 @@ En la ilustración 9 se muestra el formato del encabezado IPv6 y en la tabla se 
 
 **FIGURA 9. Formato del encabezado IPv6**
 
-|Encabezado IP | Fin |
+|Encabezado IP | Propósito |
 |---|---|
 |Versión |Campo de 4 bits para la versión de IP. En el caso de las redes IPv6, el valor de este campo debe ser 6; en el caso de las redes IPv4, debe ser 4.|
 |Clase de tráfico |Campo de 8 bits que almacena la información de la clase de tráfico. NetX Duo no usa este campo.|
@@ -1078,7 +1078,7 @@ Se admiten los siguientes mensajes de error de ICMPv6 en NetX Duo:
 
 ## <a name="user-datagram-protocol-udp"></a>Protocolo de datagramas de usuario (UDP)
 
-El protocolo de datagramas de usuario (UDP) proporciona la forma más sencilla de transferencia de datos entre los miembros de la red (RFC 768). Los paquetes de datos de UDP se envían de un miembro de red a otro de la mejor forma posible; es decir, no hay ningún mecanismo integrado para la confirmación por parte del destinatario del paquete. Además, el envío de un paquete UDP no requiere que se establezca ninguna conexión de antemano. Debido a esto, la transmisión de paquetes UDP es muy eficaz.
+El protocolo de datagramas de usuario (UDP) proporciona la forma más sencilla de transferencia de datos entre los miembros de la red (RFC 768). Los paquetes de datos de UDP se envían de un miembro de red a otro de la mejor forma posible; es decir, no hay ningún mecanismo integrado para la confirmación por parte del destinatario del paquete. Además, el envío de un paquete UDP no requiere que se establezca una conexión de antemano. Debido a esto, la transmisión de paquetes UDP es muy eficaz.
 
 Para los desarrolladores que migran sus aplicaciones de NetX a NetX Duo solo hay algunos cambios básicos en la funcionalidad de UDP entre NetX y NetX Duo. Esto se debe a que IPv6 se ocupa principalmente del nivel de IP subyacente. Todos los servicios de UDP de NetX Duo se pueden usar para la conectividad IPv4 o IPv6.
 
@@ -1094,7 +1094,7 @@ UDP coloca un encabezado de paquete simple delante de los datos de la aplicació
 
 A continuación se describe el formato de encabezado UDP:
 
-|Campo del encabezado |Fin |
+|Campo del encabezado |Propósito |
 |---|---|
 |**Número de puerto de origen de 16 bits** |Este campo contiene el puerto desde el que se envía el paquete UDP. El intervalo de puertos UDP válidos va del 1 al 0xFFFF. |
 |**Número de puerto de destino de 16 bits** |Este campo contiene el puerto UDP al que se envía el paquete. El intervalo de puertos UDP válidos va del 1 al 0xFFFF. |
@@ -1102,7 +1102,7 @@ A continuación se describe el formato de encabezado UDP:
 |**Suma de comprobación de UDP de 16 bits** |Este campo contiene la suma de comprobación de 16 bits del paquete, incluidos el encabezado UDP, el área de datos del paquete y el pseudoencabezado IP. |
 
 ### <a name="udp-enable"></a>Habilitación de UDP   
-Para que la transmisión de paquetes UDP sea posible, la aplicación debe habilitar primero UDP mediante una llamada al servicio ***nx_udp_enable***. Una vez habilitado, la aplicación puede enviar y recibir paquetes UDP.  
+Antes de que sea posible la transmisión de paquetes UDP, la aplicación debe habilitar primero UDP mediante una llamada al servicio ***nx_udp_enable***. Una vez habilitado, la aplicación puede enviar y recibir paquetes UDP.  
 
 ### <a name="udp-socket-create"></a>Creación de sockets UDP    
 Los sockets UDP se crean durante la inicialización o en tiempo de ejecución mediante subprocesos de la aplicación. En el servicio ***nx_udp_socket_create*** se definen el tipo inicial de servicio, el período de vida y la profundidad de la cola de recepción. No hay ningún límite en el número de sockets UDP de una aplicación.
@@ -1139,12 +1139,12 @@ En el caso de los destinos de multidifusión o de difusión, la aplicación debe
 > *Los datos de la carga UDP que residen en la estructura NX_PACKET deben residir en un límite de palabra larga. La aplicación debe dejar espacio suficiente entre el puntero antepuesto y el puntero de inicio de datos de NetX Duo para colocar los encabezados del soporte físico, IP y UDP*.
 
 ### <a name="udp-packet-receive"></a>Recepción de paquetes UDP    
-Los subprocesos de la aplicación pueden recibir paquetes UDP de un socket determinado mediante una llamada a ***nx_udp_socket_receive***. La función de recepción del socket entrega el paquete más antiguo de la cola de recepción del socket. Si no hay paquetes en la cola de recepción, el subproceso de llamada se puede suspender (con un tiempo de espera opcional) hasta que llegue un paquete.
+Los subprocesos de la aplicación pueden recibir paquetes UDP desde un socket determinado mediante una llamada a ***nx_udp_socket_receive***. La función de recepción del socket entrega el paquete más antiguo de la cola de recepción del socket. Si no hay paquetes en la cola de recepción, el subproceso que realiza la llamada se puede suspender (con un tiempo de espera opcional) hasta que llegue un paquete.
 
 El procesamiento de paquetes de recepción de UDP (normalmente llamado desde el controlador de interrupciones de recepción del controlador de red) es responsable de colocar el paquete en la cola de recepción del socket UDP o de entregarlo al primer subproceso suspendido en espera de un paquete. Si el paquete está en cola, el procesamiento de recepción también comprueba la profundidad máxima de la cola de recepción asociada al socket. Si este paquete recién puesto en cola supera la profundidad de la cola, se descarta el paquete más antiguo de la cola.
 
 ### <a name="udp-receive-notify"></a>Notificación de recepción de UDP   
-Si el subproceso de la aplicación debe procesar los datos recibidos de más de un socket, se debe usar la función ***nx_udp_socket_receive_notify***. Esta función registra una función de devolución de llamada de paquetes de recepción para el socket. Cada vez que se recibe un paquete en el socket, se ejecuta la función de devolución de llamada.
+Si el subproceso de la aplicación debe procesar los datos recibidos desde más de un socket, se debe usar la función ***nx_udp_socket_receive_notify***. Esta función registra una función de devolución de llamada de paquetes de recepción para el socket. Cada vez que se recibe un paquete en el socket, se ejecuta la función de devolución de llamada.
 
 El contenido de la función de devolución de llamada es específico de la aplicación; sin embargo, lo más probable es que contenga lógica para notificar al subproceso de procesamiento que un paquete ahora está disponible en el socket correspondiente.
 
@@ -1152,7 +1152,7 @@ El contenido de la función de devolución de llamada es específico de la aplic
 Al recibir un paquete UDP, la aplicación puede encontrar el número de puerto y la dirección IP del remitente mediante el servicio ***nx_udp_packet_info_extract***. Si la devolución es correcta, este servicio proporciona información sobre la dirección IP del remitente, el número de puerto del remitente y la interfaz local a través de la cual se recibió el paquete.  
 
 ### <a name="thread-suspension"></a>Suspensión de subprocesos   
-Como se mencionó anteriormente, los subprocesos de la aplicación se pueden suspender al intentar recibir un paquete UDP en un puerto UDP determinado. Una vez que se recibe un paquete en ese puerto, se asigna al primer subproceso suspendido y, a continuación, se reanuda el subproceso. Existe un tiempo de espera opcional disponible cuando hay una suspensión en la recepción de un paquete UDP, una característica disponible para la mayoría de los servicios de NetX Duo.  
+Como se ha mencionado anteriormente, los subprocesos de la aplicación se pueden suspender al intentar recibir un paquete UDP en un puerto UDP determinado. Una vez que se recibe un paquete en ese puerto, se asigna al primer subproceso suspendido y, a continuación, se reanuda el subproceso. Existe un tiempo de espera opcional disponible cuando hay una suspensión en la recepción de un paquete UDP, una característica disponible para la mayoría de los servicios de NetX Duo.  
 
 ### <a name="udp-socket-statistics-and-errors"></a>Estadísticas y errores del socket UDP     
 Si se habilita, el software de socket UDP de NetX Duo realiza un seguimiento de varios errores y estadísticas que pueden ser útiles para la aplicación. Se mantienen las estadísticas y los informes de errores siguientes para cada instancia de IP/UDP:
@@ -1162,14 +1162,14 @@ Si se habilita, el software de socket UDP de NetX Duo realiza un seguimiento de 
 - Número total de paquetes UDP recibidos   
 - Número total de bytes UDP recibidos  
 - Número total de paquetes UDP no válidos  
-- Número total de paquetes de recepción de UDP eliminados  
+- Número total de paquetes UDP recibidos eliminados  
 - Número total de errores de suma de comprobación de recepción de UDP  
 - Paquetes de socket UDP enviados  
 - Bytes de socket UDP enviados  
 - Paquetes de socket UDP recibidos   
 - Bytes de socket UDP recibidos  
 - Paquetes de socket UDP puestos en cola  
-- Paquetes de recepción de socket UDP eliminados  
+- Paquetes de socket UDP recibidos eliminados  
 - Errores de suma de comprobación de socket UDP  
 
 Todos estos informes de errores y estadísticas están disponibles para la aplicación con el servicio ***nx_udp_info_get** _ para las estadísticas acumuladas de UDP en todos los sockets UDP y el servicio _ *_nx_udp_socket_info_get_** para las estadísticas de UDP en el socket UDP especificado.
@@ -1179,7 +1179,7 @@ Las características de cada socket UDP se encuentran en el bloque de control NX
 
 ## <a name="transmission-control-protocol-tcp"></a>Protocolo de control de transmisión (TCP)
 
-El Protocolo de control de transmisión (TCP) proporciona transferencia de datos de secuencia confiable entre dos miembros de la red (RFC 793). El miembro receptor comprueba y confirma todos los datos enviados desde un miembro de la red. Además, los dos miembros deben haber establecido una conexión antes de cualquier transferencia de datos. Todo esto produce una transferencia de datos confiable; sin embargo, requiere bastante más sobrecarga que la transferencia de datos UDP descrita previamente.
+El protocolo de control de transmisión (TCP) proporciona transferencia de datos de secuencia confiable entre dos miembros de la red (RFC 793). El miembro receptor comprueba y confirma todos los datos enviados desde un miembro de la red. Además, los dos miembros deben haber establecido una conexión antes de cualquier transferencia de datos. Todo esto produce una transferencia de datos confiable; sin embargo, requiere bastante más sobrecarga que la transferencia de datos UDP descrita previamente.
 
 Excepto en los casos en los que se indique, no hay ningún cambio en los servicios de API del protocolo TCP entre NetX y NetX Duo, ya que IPv6 se preocupa principalmente del nivel de IP subyacente. Todos los servicios de TCP de NetX Duo se pueden usar para conexiones IPv4 o IPv6.
 
@@ -1192,7 +1192,7 @@ En la transmisión, el encabezado TCP se coloca delante de los datos del usuario
 
 A continuación se describe el formato de encabezado TCP:
 
-|Campo de&nbsp;encabezado |Fin |
+|Campo de&nbsp;encabezado |Propósito |
 |------|------|
 | **Número de puerto de origen de 16 bits** | Este campo contiene el puerto por el que se envía el paquete TCP. El intervalo de puertos TCP válidos va del 1 al 0xFFFF. |
 | **Puerto de destino de 16 bits** | Este campo contiene el puerto al que se envía el paquete TCP. El intervalo de puertos TCP válidos va del 1 al 0xFFFF. |
@@ -1201,7 +1201,7 @@ A continuación se describe el formato de encabezado TCP:
 | **Longitud del encabezado de 4 bits** | Este campo contiene el número de palabras de 32 bits que hay en el encabezado TCP. Si no hay opciones en el encabezado TCP, el valor de este campo es 5. |
 | **Bits de código de 6 bits** |Este campo contiene los seis bits de código diferentes que se usan para indicar diversa información de control asociada a la conexión. Los bits de control se definen de la siguiente manera: <br \> - URG (21): datos de urgencia<br \> - ACK (20): el número de confirmación es válido<br \> - PSH (19): controlar estos datos inmediatamente<br \> - RST (18): restablecer la conexión<br \> - SYN (17): sincronizar los números de secuencia (se usa para establecer la conexión) <br \> - FIN (16): el remitente ha finalizado con la transmisión (se usa para la conexión) |
 |**Ventana de 16 bits** |Este campo se usa para el control de flujo. Contiene la cantidad de bytes que el socket puede recibir actualmente. Básicamente se usa para el control de flujo. El remitente es responsable de asegurarse de que los datos que se van a enviar se ajustan a la ventana anunciada del receptor. |
-|**Suma de comprobación de TCP de 16 bits** |Este campo contiene la suma de comprobación de 16 bits del paquete, incluidos el encabezado TCP, el área de datos del paquete y el pseudoencabezado IP. |
+|**Suma de comprobación de TCP de 16 bits** |Este campo contiene la suma de comprobación de 16 bits del paquete, incluidos el encabezado TCP, el área de datos del paquete y el encabezado pseudo IP. |
 |**Puntero urgente de 16 bits** |Este campo contiene el desplazamiento positivo del último byte de los datos urgentes. Este campo solo es válido si se establece en el encabezado el bit de código URG. |
 
 > [!NOTE]  
@@ -1263,12 +1263,12 @@ El cierre de la conexión se realiza mediante una llamada a ***nx_tcp_socket_dis
 
 Si todavía hay paquetes en la cola de transmisión del socket, NetX Duo realiza una suspensión durante el tiempo de espera especificado para permitir que se confirmen los paquetes. Si se agota el tiempo de espera, NetX Duo vacía la cola de transmisión del socket de cliente. 
 
-Para desenlazar el puerto del socket de cliente, la aplicación llama a ***nx_tcp_client_socket_unbind***. El socket se debe encontrar en estado CLOSED o en proceso de desconexión (por ejemplo, TIMED WAIT) antes de que se libere el puerto; de lo contrario, se devuelve un error.
+Para desenlazar el puerto del socket de cliente, la aplicación llama a ***nx_tcp_client_socket_unbind***. El socket se debe encontrar en estado CLOSED o en el proceso de desconexión (por ejemplo, TIMED WAIT) antes de que se libere el puerto; de lo contrario, se devuelve un error.
 
 Por último, si la aplicación ya no necesita el socket de cliente, llama a ***nx_tcp_socket_delete*** para eliminar el socket.
 
 ### <a name="tcp-server-connection"></a>Conexión del servidor TCP      
-El lado servidor de una conexión TCP es pasivo; es decir, el servidor espera a que un cliente inicie la solicitud de conexión. Para aceptar una conexión de cliente, primero se debe habilitar TCP en la instancia de IP mediante una llamada al servicio ***nx_tcp_enable** _. A continuación, la aplicación debe crear un socket TCP mediante el servicio _ *_nx_tcp_socket_create_**.  
+El lado servidor de una conexión TCP es pasivo; es decir, el servidor espera a que un cliente inicie la solicitud de conexión. Para aceptar una conexión de cliente, TCP debe estar habilitado antes en la instancia de IP mediante una llamada al servicio ***nx_tcp_enable** _. A continuación, la aplicación debe crear un socket TCP mediante el servicio _ *_nx_tcp_socket_create_**.  
 
 También se debe configurar el socket de servidor para la escucha de solicitudes de conexión. Esto se realiza mediante el servicio ***nx_tcp_server_socket_listen***. Este servicio coloca el socket de servidor en estado LISTEN y enlaza el puerto especificado del servidor al socket.
 
@@ -1320,36 +1320,36 @@ while(1)
 ```
 
 ### <a name="mss-validation"></a>Validación de MSS      
-El tamaño máximo de segmento (MSS) es la cantidad máxima de bytes que puede recibir un host TCP sin que el nivel de IP subyacente los fragmente. Durante la fase de establecimiento de la conexión TCP, ambos extremos intercambian su propio valor de MSS de TCP, por lo que el remitente no envía un segmento de datos TCP mayor que el valor de MSS del receptor. El módulo TCP de NetX Duo validará opcionalmente el valor de MSS anunciado de su nodo del mismo nivel antes de establecer una conexión. De forma predeterminada, NetX Duo no habilita este tipo de comprobación. Las aplicaciones que deseen realizar la validación de MSS definirán ***NX_ENABLE_TCP_MSS_CHECK** _ al compilar la biblioteca de NetX Duo y el valor mínimo se definirá en _*_NX_TCP_MSS_MINIMUM_*_. Las conexiones TCP entrantes con valores de MSS inferiores a _ *_NX_TCP_MSS_MINIMUM_** se anulan.
+El tamaño máximo de segmento (MSS) es la cantidad máxima de bytes que puede recibir un host TCP sin que la capa IP subyacente los fragmente. Durante la fase de establecimiento de la conexión TCP, ambos extremos intercambian su propio valor de MSS de TCP, por lo que el remitente no envía un segmento de datos TCP mayor que el valor de MSS del receptor. El módulo TCP de NetX Duo validará opcionalmente el valor de MSS anunciado de su nodo del mismo nivel antes de establecer una conexión. De forma predeterminada, NetX Duo no habilita este tipo de comprobación. Las aplicaciones que deseen realizar la validación de MSS definirán ***NX_ENABLE_TCP_MSS_CHECK** _ al compilar la biblioteca de NetX Duo y el valor mínimo se definirá en _*_NX_TCP_MSS_MINIMUM_*_. Las conexiones TCP entrantes con valores de MSS inferiores a _ *_NX_TCP_MSS_MINIMUM_** se anulan.
 
 ### <a name="stop-listening-on-a-server-port"></a>Detención de la escucha en un puerto del servidor    
-Si la aplicación ya no desea escuchar las solicitudes de conexión de cliente en un puerto del servidor que se especificó anteriormente mediante una llamada al servicio ***nx_tcp_server_socket_listen** _, la aplicación simplemente llama al servicio _ *_nx_tcp_server_socket_unlisten_**. Este servicio coloca cualquier socket en espera de una conexión en estado CLOSED y libera los paquetes de solicitud de conexión de cliente en cola. 
+Si la aplicación ya no desea escuchar las solicitudes de conexión de cliente en un puerto del servidor que se especificó anteriormente mediante una llamada al servicio ***nx_tcp_server_socket_listen** _, la aplicación simplemente llamará al servicio _ *_nx_tcp_server_socket_unlisten_**. Este servicio coloca cualquier socket en espera de una conexión en estado CLOSED y libera los paquetes de solicitud de conexión de cliente en cola. 
 
 ### <a name="tcp-window-size"></a>Tamaño de la ventana de TCP   
-Durante las fases de configuración y transferencia de datos de la conexión, cada puerto informa de la cantidad de datos que puede controlar, que se conoce como el tamaño de la ventana. A medida que se reciben y procesan los datos, el tamaño de esta ventana se ajusta de forma dinámica. En TCP, un remitente solo puede enviar la cantidad de datos que quepa en la ventana del receptor. En esencia, el tamaño de la ventana proporciona el control de flujo para la transferencia de datos en cada dirección de la conexión.   
+Durante las fases de configuración y transferencia de datos de la conexión, cada puerto informa de la cantidad de datos que puede controlar, llamada tamaño de la ventana. A medida que se reciben y procesan los datos, el tamaño de esta ventana se ajusta dinámicamente. En TCP, un remitente solo puede enviar una cantidad de datos que quepan en la ventana del receptor. En esencia, el tamaño de la ventana proporciona el control de flujo para la transferencia de datos en cada dirección de la conexión.   
 
 ### <a name="tcp-packet-send"></a>Envío de paquetes TCP     
-El envío de datos TCP se realiza fácilmente mediante una llamada a la función ***nx_tcp_socket_send***. Si el tamaño de los datos que se transmiten es mayor que el valor de MSS del socket o que el tamaño actual de la ventana de recepción del nodo del mismo nivel, lo que sea menor, la lógica interna de TCP divide los datos que caben en min (MSS, ventana de recepción del nodo del mismo nivel) para la transmisión. A continuación, este servicio crea un encabezado TCP delante del paquete (incluido el cálculo de la suma de comprobación). Si el tamaño de la ventana del receptor no es cero, el autor de llamada enviará tantos datos como pueda para llenar el tamaño de la ventana del receptor. Si el tamaño de la ventana de recepción llega a ser cero, el autor de llamada puede suspender y esperar a que el tamaño de la ventana del receptor aumente lo suficiente para que se envíe este paquete. En un momento dado, se pueden suspender varios subprocesos mientras intentan enviar datos mediante el mismo socket. 
+El envío de datos TCP se realiza fácilmente mediante una llamada a la función ***nx_tcp_socket_send***. Si el tamaño de los datos que se van a transmitir es mayor que el valor de MSS del socket o que el tamaño actual de la ventana de recepción del nodo del mismo nivel, lo que sea menor, la lógica interna de TCP divide los datos que caben en min(MSS, ventana de recepción del nodo del mismo nivel) para la transmisión. A continuación, este servicio crea un encabezado TCP delante del paquete (incluido el cálculo de la suma de comprobación). Si el tamaño de la ventana del receptor no es cero, el autor de llamada enviará tantos datos como pueda para llenar el tamaño de la ventana del receptor. Si el tamaño de la ventana de recepción se convierte en cero, el autor de llamada puede suspender y esperar a que el tamaño de la ventana del receptor aumente lo suficiente para que se envíe este paquete. En un momento dado, se pueden suspender varios subprocesos mientras intentan enviar datos mediante el mismo socket. 
 
 > [!WARNING]  
 > *Los datos de TCP que residen en la estructura NX_PACKET deben residir en un límite de palabra larga. Además, debe haber espacio suficiente entre el puntero antepuesto y el puntero de inicio de datos para colocar los encabezados del soporte físico, IP y TCP.*
 
 ### <a name="tcp-packet-retransmit"></a>Retransmisión de paquetes TCP      
-Los paquetes TCP transmitidos que se han enviado previamente en realidad se almacenan de forma interna hasta que se devuelve un mensaje ACK desde el otro lado de la conexión. Si los datos transmitidos no se confirman dentro del período de tiempo de espera, el paquete almacenado se vuelve a enviar y se establece el período de tiempo de espera siguiente. Cuando se recibe un mensaje ACK, finalmente se liberan todos los paquetes que están incluidos en el número de confirmación de la cola de transmisión interna.  
+Los paquetes TCP transmitidos previamente enviados realmente se almacenan internamente hasta que se devuelva un mensaje ACK desde el otro lado de la conexión. Si los datos transmitidos no se confirman dentro del período de tiempo de espera, el paquete almacenado se vuelve a enviar y se establece el período de tiempo de espera siguiente. Cuando se recibe un mensaje ACK, finalmente se liberan todos los paquetes que están incluidos en el número de confirmación de la cola de transmisión interna.  
 
 > [!WARNING]   
 > *La aplicación no reutilizará el paquete ni modificará su contenido después de que nx_tcp_socket_send() vuelva con NX_SUCCESS. Finalmente, el procesamiento interno de NetX Duo libera el paquete transmitido después de que el otro extremo confirme los datos*.
 
 ### <a name="tcp-keepalive"></a>TCP Keepalive     
-La característica TCP Keepalive permite a un socket detectar si su elemento del mismo nivel se desconecta o no sin la terminación adecuada (por ejemplo, el elemento del mismo nivel bloqueado), o bien impedir que determinadas funciones de supervisión de red finalicen una conexión durante períodos prolongados de inactividad. TCP Keepalive funciona enviando periódicamente un marco TCP sin datos y el número de secuencia establecido en uno menos que el número de secuencia actual. Al recibir este marco de TCP Keepalive, el destinatario, si sigue activo, responde con un mensaje ACK para su número de secuencia actual. De este modo, se completa la transacción de Keepalive.  
+La característica KeepAlive de TCP permite a un socket detectar si su nodo del mismo nivel se desconecta sin la terminación adecuada (por ejemplo, un nodo bloqueado) o impedir que determinadas funciones de supervisión de red finalicen una conexión durante períodos prolongados de inactividad. KeepAlive de TCP funciona enviando periódicamente un marco TCP sin datos y con el número de secuencia establecido en uno menos que el número de secuencia actual. Al recibir este marco de KeepAlive de TCP, el destinatario, si sigue activo, responde con un mensaje ACK para su número de secuencia actual. Esto completa la transacción de KeepAlive.  
 
 De forma predeterminada, la característica Keepalive no está habilitada. Para usar esta característica, la biblioteca de NetX Duo debe compilarse con ***NX_ENABLE_TCP_KEEPALIVE** _ definido. El símbolo _ *_NX_TCP_KEEPALIVE_INITIAL_** especifica el número de segundos de inactividad antes de que se inicie el marco Keepalive.  
 
 ### <a name="tcp-packet-receive"></a>Recepción de paquetes TCP   
-El procesamiento de paquetes de recepción TCP (llamado desde el subproceso auxiliar de IP) es responsable de controlar las distintas acciones de conexión y desconexión, así como de transmitir el procesamiento de confirmación. Además, el procesamiento de paquetes de recepción TCP es responsable de colocar los paquetes con los datos de recepción en la cola de recepción del socket TCP correspondiente o de entregar el paquete al primer subproceso suspendido que espera un paquete.
+El procesamiento de paquetes de recepción TCP (llamado desde el subproceso auxiliar de IP) es responsable de administrar varias acciones de conexión y desconexión, así como de transmitir el procesamiento de confirmación. Además, el procesamiento de paquetes de recepción TCP es responsable de colocar los paquetes con los datos recibidos en la cola de recepción del socket TCP correspondiente o de entregar el paquete al primer subproceso suspendido a la espera de un paquete.
 
 ### <a name="tcp-receive-notify"></a>Notificación de recepción de TCP     
-Si el subproceso de la aplicación debe procesar los datos recibidos desde más de un socket, se debe usar la función ***nx_udp_socket_receive_notify***. Esta función registra una función de devolución de llamada de paquetes de recepción para el socket. Cada vez que se recibe un paquete en el socket, se ejecuta la función de devolución de llamada.  
+Si el subproceso de la aplicación debe procesar los datos recibidos desde más de un socket, se debe usar la función ***nx_tcp_socket_receive_notify***. Esta función registra una función de devolución de llamada de paquetes de recepción para el socket. Cada vez que se recibe un paquete en el socket, se ejecuta la función de devolución de llamada.  
 
 El contenido de la función de devolución de llamada es específico de la aplicación; sin embargo, la función probablemente contendría lógica para informar al subproceso de procesamiento de que está disponible un paquete en el socket correspondiente. 
 
@@ -1378,13 +1378,13 @@ Si se habilita, el software de socket TCP de NetX Duo realiza un seguimiento de 
 - Bytes de socket TCP recibidos   
 - Retransmisiones de paquetes de socket TCP    
 - Paquetes de socket TCP puestos en cola    
-- Errores de suma de comprobación de socket TCP    
-- Estado de socket TCP    
-- Profundidad de la cola de transmisión de socket TCP    
+- Errores de suma de comprobación del socket TCP    
+- Estado del socket TCP    
+- Profundidad de la cola de transmisión del socket TCP    
 - Tamaño de la ventana de transmisión del socket TCP    
-- Tamaño de la ventana de recepción de socket TCP    
+- Tamaño de la ventana de recepción del socket TCP    
 
-Todos estos informes de errores y estadísticas están disponibles para la aplicación con el servicio ***nx_tcp_info_get** _ para las estadísticas totales de TCP y el servicio _ *_nx_tcp_socket_info_get_** para las estadísticas TCP por socket.
+Todas estas estadísticas e informes de errores están disponibles para la aplicación con el servicio ***nx_tcp_info_get** _ para las estadísticas totales de TCP y con el servicio _ *_nx_tcp_socket_info_get_** para las estadísticas de TCP de cada socket.
 
 ### <a name="tcp-socket-control-block-nx_tcp_socket"></a>Bloque de control de socket TCP NX_TCP_SOCKET      
-Las características de cada socket TCP se encuentran en el bloque de control *NX_TCP_SOCKET* asociado, que contiene información útil, como el vínculo a la estructura de datos IP, la interfaz de conexión de red, el puerto enlazado y la cola de paquetes de recepción. Esta estructura se define en el archivo ***tx_api.h***.
+Las características de cada socket TCP se encuentran en el bloque de control *NX_TCP_SOCKET* asociado, que contiene información útil, como el vínculo a la estructura de datos IP, la interfaz de la conexión de red, el puerto enlazado y la cola de paquetes de recepción. Esta estructura se define en el archivo ***tx_api.h***.

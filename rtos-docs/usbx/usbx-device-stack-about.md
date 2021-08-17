@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: c8e9360c8b72adbc41f840a48e333668c489399e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 042398377766a3e73f72d4dbba0478ba707d378a379fd33de7808675eb96f257
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814338"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788769"
 ---
 # <a name="azure-rtos-usbx-device-stack-user-guide"></a>Manual del usuario de la pila del dispositivo Azure RTOS USBX
 
@@ -35,9 +35,9 @@ Para obtener información técnica relacionada con USB, consulte la especificaci
 
 ## <a name="customer-support-center"></a>Centro de soporte al cliente
 
-Envíe una incidencia de soporte técnico a través de Azure Portal si tiene alguna pregunta o necesita ayuda siguiendo los pasos que se describen a continuación. Proporcione la siguiente información en un mensaje de correo electrónico para que podamos resolver la solicitud de soporte técnico de forma más eficaz:
+Envíe una incidencia de soporte técnico por medio de Azure Portal si tiene alguna pregunta o necesita ayuda con estos pasos. Proporcione la siguiente información en un mensaje de correo electrónico para que podamos resolver la solicitud de soporte técnico de la forma más eficaz posible:
 
-1. Una descripción detallada del problema, incluida la frecuencia de repetición y si se puede reproducir de forma fiable.
+1. Una descripción detallada del problema, incluida la frecuencia con que se produce y si se puede reproducir de forma confiable.
 2. Una descripción detallada de los cambios en la aplicación o en Azure RTOS ThreadX que precedieron al problema.
 3. Contenido de la cadena de **_tx_version_id** que se encuentra en el archivo **_tx_port.h_** de la distribución. Esta cadena nos proporcionará información de valor sobre el entorno en tiempo de ejecución.
-4. El contenido de la RAM de la variable *_tx_build_options* **ULONG**. Esta variable nos proporcionará información sobre cómo se compiló la biblioteca de Azure RTOS ThreadX.
+4. El contenido de la RAM de la variable *_tx_build_options* **ULONG**. Esta variable nos proporciona información sobre cómo se ha compilado la biblioteca de Azure RTOS ThreadX.

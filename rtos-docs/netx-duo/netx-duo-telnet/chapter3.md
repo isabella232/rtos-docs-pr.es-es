@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 991ec53aaba052b4f42da6e5a541151953121e76
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 70bf4016793572d7327d12be182750316659c3c4260d2f7db8acddbba00c5601
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814529"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791999"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-telnet-services"></a>Capítulo 3: Descripción de los servicios de Telnet de Azure RTOS NetX Duo
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 201e8b7e245539c1780ace4c3af4bc063a8485b3
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: aed0b61e595666e834a269911a261b36d10f46069d587ee1be1ec64e143360e9
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814794"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790333"
 ---
 # <a name="chapter-2---installation-and-use-of-the-azure-rtos-netx-duo-dhcp-server"></a>Capítulo 2: Instalación y uso del servidor DHCP de Azure RTOS NetX Duo
 
@@ -326,7 +326,7 @@ Hay varias opciones de configuración para compilar el servidor DHCP de NetX Duo
 - **NX_DISABLE_ERROR_CHECKING**: esta opción quita la comprobación de errores DHCP básica. Normalmente se utiliza después de depurar la aplicación.
 - **NX_DHCP_SERVER_THREAD_PRIORITY**: esta opción especifica la prioridad del subproceso del servidor DHCP. De forma predeterminada, este valor especifica que el subproceso DHCP se ejecuta con la prioridad 2.
 - **NX_DHCP_TYPE_OF_SERVICE**: esta opción especifica el tipo de servicio necesario para las solicitudes UDP de DHCP. De forma predeterminada, este valor se define como NX_IP_NORMAL para indicar el servicio de paquetes IP normal.
-- **NX_DHCP_FRAGMENT_OPTION**: habilitación de fragmento para solicitudes UDP de DHCP. De forma predeterminada, este valor se establece en NX_DONT_FRAGMENT para deshabilitar la fragmentación de UDP.
+- **NX_DHCP_FRAGMENT_OPTION**: habilita los fragmentos para solicitudes UDP de DHCP. De forma predeterminada, este valor se establece en NX_DONT_FRAGMENT para deshabilitar la fragmentación de UDP.
 - **NX_DHCP_TIME_TO_LIVE**: especifica el número de enrutadores que un paquete puede pasar antes de que se descarte. El valor predeterminado es 0x80.
 - **NX_DHCP_QUEUE_DEPTH**: especifica el número de paquetes que el socket del servidor DHCP conserva antes de vaciar la cola. El valor predeterminado es 5.
 - **NX_DHCP_PACKET_ALLOCATE_TIMEOUT**: especifica el tiempo de espera en tics del temporizador para que el servidor DHCP de NetX espere a que se asigne un paquete de su grupo de paquetes. El valor predeterminado está establecido en NX_IP_PERIODIC_RATE.

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: fce781ac97ae75c4148614453eeb35c3064f8849
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: b58283a38a25ffdd438d7853999f3b6e390f280a947aa45101d8df86447bf3dd
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814458"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796728"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-bsd"></a>Capítulo 1: Introducción a Azure RTOS NetX BSD
 

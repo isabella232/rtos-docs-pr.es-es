@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c1b9c17bb1cea50cc45b15622e82112c144e21ad
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 3957075f2b2e83f70bbd5f267cac41f003eb7d93722a3b2247b2a33226b4dfc5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815357"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791761"
 ---
 # <a name="appendix-a---azure-rtos-netx-secure-returnerror-codes"></a>Apéndice A: Códigos de error y devolución de Azure RTOS NetX Secure
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 305c333bf3fb3f6fe76d661426c196afe25fbd5d
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: a0d18929f33f15a342e8fb8b3d01d4ce934d6ec7dc287707f960adb36fb4f44b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106549800"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788854"
 ---
 # <a name="chapter-5---azure-rtos-netx-duo-network-drivers"></a>Capítulo 5: Controladores de red de Azure RTOS NetX Duo
 
@@ -21,7 +21,7 @@ Este capítulo contiene una descripción de los controladores de red para Azure 
 
 La estructura NX_IP contiene todo lo necesario para administrar una única instancia de IP. Aquí se incluye información general sobre el protocolo TCP/IP, así como la rutina de entrada del controlador de red física específico de la aplicación. La rutina de entrada del controlador se define durante el servicio de ***nx_ip_create** _. Para agregar dispositivos adicionales a la instancia de IP, se usa el servicio _ *_nx_ip_interface_attach_**.
 
-La comunicación entre NetX Duo y el controlador de red de la aplicación se realiza a través de la estructura de la solicitud de **NX_IP_DRIVER**. Normalmente, esta estructura se define localmente en la pila del autor de la llamada y, por tanto, se libera después de que se devuelvan tanto el controlador como la función de llamada. La estructura se define como se indica a continuación.
+La comunicación entre NetX Duo y el controlador de red de la aplicación se realiza a través de la estructura de la solicitud de **NX_IP_DRIVER**. Normalmente, esta estructura se define localmente en la pila del autor de la llamada y, por tanto, se libera después de que se devuelvan tanto el controlador como la función de llamada. La estructura se define como se ve a continuación.
 
 ```c
 typedef struct NX_IP_DRIVER_STRUCT
@@ -72,24 +72,24 @@ Una vez que la aplicación llama a ***nx_ip_create***, el subproceso auxiliar de
 > *Se llama al controlador desde el subproceso auxiliar de IP que se creó para la instancia de IP. Por consiguiente, la rutina del controlador debe evitar realizar operaciones de bloqueo, ya que el subproceso auxiliar de IP podría detenerse y causar retrasos ilimitados en las aplicaciones que se basan en el subproceso de IP.*
 
 ### <a name="enable-link"></a>Habilitar vínculo   
-A continuación, el subproceso auxiliar de IP habilita la red física, para lo cual establece el comando driver en NX_LINK_ENABLE en la solicitud del controlador y envía la solicitud al controlador de red. Esto sucede poco después de que el subproceso auxiliar de IP complete la solicitud de inicialización. Habilitar el vínculo puede ser tan sencillo como establecer el campo *nx_interface_link_up* en la instancia de la interfaz. Pero también puede implicar la manipulación del hardware físico. Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de habilitación del vínculo.
+A continuación, el subproceso de la aplicación auxiliar IP habilita la red física mediante el establecimiento del comando driver en NX_LINK_ENABLE en la solicitud del controlador y el envío de la solicitud al controlador de red. Esto sucede poco después de que el subproceso auxiliar de IP complete la solicitud de inicialización. Habilitar el vínculo puede ser tan sencillo como establecer el campo *nx_interface_link_up* en la instancia de la interfaz. Pero también puede implicar la manipulación del hardware físico. Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de habilitación del vínculo.
 
 | Miembro de&nbsp;NX_IP_DRIVER       | Significado                      |
 | ------------------------- | ---------------------------- |
 | nx_ip_driver_command   | NX_LINK_ENABLE   |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP  |
+| nx_ip_driver_ptr       | Puntero a la instancia de IP.  |
 | nx_ip_driver_interface | Puntero a la instancia de interfaz |
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede habilitar la interfaz especificada, devolverá un estado de error distinto de cero. |
 
 ### <a name="disable-link"></a>Deshabilitar vínculo   
-NetX Duo realiza esta solicitud cuando el servicio ***nx_ip_delete** elimina una instancia de IP. O bien, una aplicación puede emitir este comando para deshabilitar temporalmente el vínculo a fin de ahorrar energía. Este servicio deshabilita la interfaz de red física en la instancia de IP. El procesamiento para deshabilitar el vínculo puede ser tan sencillo como borrar la marca _nx_interface_link_up* en la instancia de la interfaz. Pero también puede implicar la manipulación del hardware físico. Normalmente es una operación inversa de la operación ***Habilitar vínculo**_. Una vez que se deshabilita el vínculo, la aplicación solicita la operación _ *_Habilitar vínculo_** para habilitar la interfaz.
+NetX Duo realiza esta solicitud cuando el servicio ***nx_ip_delete** elimina una instancia de IP. O bien, una aplicación puede emitir este comando para deshabilitar temporalmente el vínculo a fin de ahorrar energía. Este servicio deshabilita la interfaz de red física en la instancia de IP. El procesamiento para deshabilitar el vínculo puede ser tan sencillo como borrar la marca _nx_interface_link_up * en la instancia de la interfaz. Pero también puede implicar la manipulación del hardware físico. Normalmente es una operación inversa de la operación ***Enable Link**_. Una vez que se deshabilita el vínculo, la aplicación solicita la operación _ *_Enable Link_** para habilitar la interfaz.
 
 Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de deshabilitación del vínculo.
 
 | Miembro de&nbsp;NX_IP_DRIVER     | Significado                      |
 | ------------------------- | ---------------------------- |
 | nx_ip_driver_command   | NX_LINK_DISABLE    |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP   |
+| nx_ip_driver_ptr       | Puntero a la instancia de IP.   |
 | nx_ip_driver_interface | Puntero a la instancia de interfaz   |
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede deshabilitar la interfaz especificada en la instancia de IP, devolverá un estado de error distinto de cero. |
 
@@ -101,12 +101,12 @@ Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de deshabilita
 | Miembro de&nbsp;NX_IP_DRIVER    | Significado                  |
 |------------------------|--------------------------|
 | nx_ip_driver_command   | NX_LINK_UNINITIALZE      |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP   |
+| nx_ip_driver_ptr       | Puntero a la instancia de IP.   |
 | nx_ip_driver_interface | Puntero a la instancia de interfaz |
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede anular la inicialización de la interfaz especificada en la instancia de IP, devolverá un estado de error distinto de cero. |
 
 ### <a name="packet-send"></a>Envío de paquetes   
-Esta solicitud se realiza durante el procesamiento de envío de IPv4 o IPv6 interno, que todos los protocolos de NetX Duo usan para transmitir paquetes (excepto ARP y RARP). Al recibir el comando de envío de paquetes, *nx_packet_prepend_ptr* apunta al principio del paquete que se va a enviar, que es el principio del encabezado de IPv4 o IPv6. *nx_packet_length* indica el tamaño total (en bytes) de los datos que se transmiten. Si *nx_packet_next* es válido, el datagrama de IP saliente se almacena en varios paquetes, y el controlador debe seguir el paquete encadenado y transmitir todo el marco. Tenga en cuenta que el área de datos válida de cada paquete encadenado se almacena entre *nx_packet_prepend_ptr* y *nx_packet_append_ptr*.
+Esta solicitud se realiza durante el procesamiento de envío de IPv4 o IPv6 interno, que todos los protocolos de NetX Duo usan para transmitir paquetes (excepto ARP y RARP). Al recibir el comando de envío de paquetes, *nx_packet_prepend_ptr* apunta al principio del paquete que se va a enviar, que es el principio del encabezado de IPv4 o IPv6. *nx_packet_length* indica el tamaño total (en bytes) de los datos que se transmiten. Si *nx_packet_next* es válido, el datagrama de IP saliente se almacena en varios paquetes, es necesario que el controlador siga el paquete encadenado y transmita todo el marco. Tenga en cuenta que el área de datos válida en cada paquete encadenado se almacena entre *nx_packet_prepend_ptr* y *nx_packet_append_ptr*.
 
 El controlador es responsable de construir un encabezado físico. Si se requiere la asignación de una dirección física a una dirección IP (como Ethernet), el nivel de IP ya resolvió la dirección MAC. La dirección MAC de destino se pasa desde la instancia de IP, almacenada en *nx_ip_driver_physical_address_msw y nx_ip_driver_physical_address_lsw*.
 
@@ -118,10 +118,10 @@ Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de envío del 
 | -----------------------------------| --------------------------------------|
 | nx_ip_driver_command            | NX_LINK_PACKET_SEND                |
 | nx_ip_driver_ptr                | Puntero a la instancia de IP                |
-| nx_ip_driver_packet             | Puntero al paquete que se va a enviar         |
-| nx_ip_driver_interface          | Puntero a la instancia de interfaz    |
-| nx_ip_driver_physical_address_msw | 32 bits de la dirección física más significativos (solo si se requiere asignación física) |
-| nx_ip_driver_physical_address_lsw | 32 bits de la dirección física menos significativos (solo si se requiere asignación física) |
+| nx_ip_driver_packet             | Puntero al paquete que se va a enviar.         |
+| nx_ip_driver_interface          | Puntero a la instancia de interfaz.    |
+| nx_ip_driver_physical_address_msw | 32 bits de dirección física más significativos (solo si se requiere asignación física) |
+| nx_ip_driver_physical_address_lsw | Los 32 bits de dirección física más significativos (solo si se necesita asignación física) |
 | nx_ip_driver_status             | Estado de finalización. Si el controlador no puede enviar el paquete, devolverá un estado de error distinto de cero. |
 
 ### <a name="packet-broadcastipv4-packets-only"></a>Difusión de paquetes (solo paquetes IPv4)  
@@ -134,7 +134,7 @@ Esta solicitud es casi idéntica a la solicitud de envío de paquetes. La única
 | nx_ip_driver_packet                | Puntero al paquete que se va a enviar                                                                            |
 | nx_ip_driver_physical_address_ms w | 0x0000FFFF (difusión)                                                                                   |
 | nx_ip_driver_physical_address_lsw  | 0xFFFFFFFF (difusión)                                                                                   |
-| nx_ip_driver_interface             | Puntero a la instancia de interfaz                                                                       |
+| nx_ip_driver_interface             | Puntero a la instancia de interfaz.                                                                       |
 | nx_ip_driver_status                | Estado de finalización. Si el controlador no puede enviar el paquete, devolverá un estado de error distinto de cero. |
 
 ### <a name="arp-send"></a>Envío de ARP  
@@ -147,7 +147,7 @@ Esta solicitud también es similar a la solicitud de envío de paquetes IP. La �
 | nx_ip_driver_packet                | Puntero al paquete que se va a enviar                                                                                |
 | nx_ip_driver_physical_address_ms w | 0x0000FFFF (difusión)                                                                                       |
 | nx_ip_driver_physical_address_lsw  | 0xFFFFFFFF (difusión)                                                                                       |
-| nx_ip_driver_interface             | Puntero a la instancia de interfaz                                                                           |
+| nx_ip_driver_interface             | Puntero a la instancia de interfaz.                                                                           |
 | nx_ip_driver_status                | Estado de finalización. Si el controlador no puede enviar el paquete ARP, devolverá un estado de error distinto de cero. |
 
 > [!IMPORTANT]  
@@ -156,15 +156,15 @@ Esta solicitud también es similar a la solicitud de envío de paquetes IP. La �
 *Aunque ARP se reemplazó por el protocolo de detección de equipos cercanos y el protocolo de detección de enrutadores en IPv6, los controladores de red Ethernet deben seguir siendo compatibles con los enrutadores y los nodos del mismo nivel de IPv4. Por lo tanto, los controladores deben seguir controlando los paquetes ARP*.
 
 ### <a name="arp-response-send"></a>Envío de respuesta ARP  
-Esta solicitud es casi idéntica a la solicitud de envío de paquetes ARP. La única diferencia es que los campos de dirección física de destino se pasan desde la instancia de IP. Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de envío de respuesta ARP.
+Esta solicitud es casi idéntica a la solicitud de paquetes ARP. La única diferencia es que los campos de dirección física de destino se pasan desde la instancia de IP. Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de envío de respuesta ARP.
 
 | Miembro de&nbsp;NX_IP_DRIVER                  | Significado                                  |
 | -------------------------------------- | -----------------------------------------|
 | nx_ip_driver_command                | NX_LINK_ARP_RESPONSE_SEND            |
 | nx_ip_driver_ptr                    | Puntero a la instancia de IP   |
-| nx_ip_driver_packet                 | Puntero al paquete que se va a enviar          |
-| nx_ip_driver_physical_address_msw | 32 bits de la dirección física más significativos |
-| nx_ip_driver_physical_address_lsw | 32 bits de la dirección física menos significativos |
+| nx_ip_driver_packet                 | Puntero al paquete que se va a enviar.          |
+| nx_ip_driver_physical_address_msw | 32 bits de dirección física más significativos |
+| nx_ip_driver_physical_address_lsw | 32 bits de dirección física menos significativos |
 | nx_ip_driver_interface              | Puntero a la instancia de interfaz |
 | nx_ip_driver_status                 | Estado de finalización. Si el controlador no puede enviar el paquete ARP, devolverá un estado de error distinto de cero. |
 
@@ -172,7 +172,7 @@ Esta solicitud es casi idéntica a la solicitud de envío de paquetes ARP. La ú
 > *Si no se necesita la asignación física, no es preciso implementar esta solicitud.*
 
 ### <a name="rarp-send"></a>Envío de RARP   
-Esta solicitud es casi idéntica a la solicitud de envío de paquetes ARP. Las únicas diferencias son el tipo de encabezado de paquete y los campos de dirección física no son necesarios, ya que el destino físico es siempre una dirección de difusión.
+Esta solicitud es casi idéntica a la solicitud de paquetes ARP. Las únicas diferencias son el tipo de encabezado de paquete y los campos de dirección física no son necesarios, ya que el destino físico es siempre una dirección de difusión.
 
 Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de envío de RARP.
 
@@ -183,21 +183,21 @@ Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de envío de R
 | nx_ip_driver_packet                | Puntero al paquete que se va a enviar                                                                                 |
 | nx_ip_driver_physical_address_ms w | 0x0000FFFF (difusión)                                                                                        |
 | nx_ip_driver_physical_address_lsw  | 0xFFFFFFFF (difusión)                                                                                        |
-| nx_ip_driver_interface             | Puntero a la instancia de interfaz                                                                            |
+| nx_ip_driver_interface             | Puntero a la instancia de interfaz.                                                                            |
 | nx_ip_driver_status                | Estado de finalización. Si el controlador no puede enviar el paquete RARP, devolverá un estado de error distinto de cero. |
 
 > [!IMPORTANT]  
 > *Las aplicaciones que requieren el servicio RARP deben implementar este comando*.
 
 ### <a name="multicast-group-join"></a>Unión a un grupo de multidifusión   
-Esta solicitud se realiza con los servicios ***nx_igmp_multicast_interface join** _ y _*_nx_ipv4_multicast_interface_join_*_ en IPv4, y con el servicio _ *_nxd_ipv6_multicast_interface_join_** en IPv6, así como con las distintas operaciones que requiere IPv6. El controlador de red toma la dirección del grupo de multidifusión suministrada y configura el soporte físico para aceptar los paquetes entrantes de dicha dirección. Tenga en cuenta que en el caso de los controladores que no admiten un filtro multidifusión, es posible que la lógica de recepción del controlador deba estar en modo promiscuo. En este caso, es posible que el controlador tenga que filtrar los marcos entrantes en función de la dirección MAC de destino, lo que reduce la cantidad de tráfico que se pasa a la instancia de IP. Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de unión al grupo de multidifusión.
+Esta solicitud se realiza con los servicios ***nx_igmp_multicast_interface join** _ y _*_nx_ipv4_multicast_interface_join_*_ en IPv4, y con el servicio _ *_nxd_ipv6_multicast_interface_join_** en IPv6, así como con las distintas operaciones que requiere IPv6. El controlador de red toma la dirección del grupo de multidifusión suministrada y configura el soporte físico para aceptar los paquetes entrantes de dicha dirección. Tenga en cuenta que en el caso de los controladores que no admiten un filtro multidifusión, es posible que la lógica de recepción del controlador esté en modo promiscuo. En este caso, es posible que el controlador tenga que filtrar los marcos entrantes en función de la dirección MAC de destino, lo que reduce la cantidad de tráfico que se pasa a la instancia de IP. Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de unión al grupo de multidifusión.
 
 | Miembro de&nbsp;NX_IP_DRIVER                  | Significado                                 |
 | -------------------------------------- | --------------------------------------- |
 | nx_ip_driver_command                | NX_LINK_MULTICAST_JOIN               |
 | nx_ip_driver_ptr                    | Puntero a la instancia de IP  |
-| nx_ip_driver_physical_address_msw | 32 bits de la dirección multidifusión física más significativos |
-| nx_ip_driver_physical_address_lsw | 32 bits de la dirección multidifusión física menos significativos |
+| nx_ip_driver_physical_address_msw | 32 bits de dirección multidifusión física más significativos |
+| nx_ip_driver_physical_address_lsw | 32 bits de dirección multidifusión física menos significativos |
 | nx_ip_driver_interface              | Puntero a la instancia de interfaz |
 | nx_ip_driver_status                 | Estado de finalización. Si el controlador no puede unirse al grupo de multidifusión, devolverá un estado de error distinto de cero. |
 
@@ -215,7 +215,7 @@ Esta solicitud se invoca mediante una llamada explícita a los servicios ***nx_i
 | nx_ip_driver_command            | NX_LINK_MULTICAST_LEAVE           |
 | nx_ip_driver_ptr                | Puntero a la instancia de IP   |
 | nx_ip_driver_physical_address_msw | 32 bits de la dirección multidifusión física más significativos |
-| nx_ip_driver_physical_address_lsw | 32 bits de la dirección multidifusión física menos significativos |
+| nx_ip_driver_physical_address_lsw | 32 bits de dirección multidifusión física menos significativos |
 | nx_ip_driver_interface              | Puntero a la instancia de interfaz |
 | nx_ip_driver_status                 | Estado de finalización. Si el controlador no puede dejar el grupo de multidifusión, devolverá un estado de error distinto de cero. |
 
@@ -228,8 +228,8 @@ Esta solicitud se invoca desde NetX Duo para el controlador de dispositivo, lo q
 | Miembro de&nbsp;NX_IP_DRIVER    | Significado                  |
 |------------------------|--------------------------|
 | nx_ip_driver_command   | NX_LINK_INTERFACE_ATTACH |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP   |
-| nx_ip_driver_interface | Puntero a la instancia de interfaz|
+| nx_ip_driver_ptr       | Puntero a la instancia de IP.   |
+| nx_ip_driver_interface | Puntero a la instancia de interfaz.|
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede desasociar la interfaz especificada en la instancia de IP, devolverá un estado de error distinto de cero. |
 
 ### <a name="detach-interface"></a>Desasociar interfaz    
@@ -238,8 +238,8 @@ Esta solicitud la invoca NetX Duo para el controlador de dispositivo, lo que per
 | Miembro de&nbsp;NX_IP_DRIVER    | Significado                                                                                                                                    |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | nx_ip_driver_command   | NX_LINK_INTERFACE_DETACH                                                                                                                   |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP                                                                                                                     |
-| nx_ip_driver_interface | Puntero a la instancia de interfaz                                                                                                         |
+| nx_ip_driver_ptr       | Puntero a la instancia de IP.                                                                                                                     |
+| nx_ip_driver_interface | Puntero a la instancia de interfaz.                                                                                                         |
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede asociar la interfaz especificada en la instancia de IP, devolverá un estado de error distinto de cero. |
 
 ### <a name="get-link-status"></a>Obtener estado del vínculo    
@@ -250,7 +250,7 @@ El estado del vínculo se encuentra en el campo *nx_interface_link_up* de la est
 | Miembro de&nbsp;NX_IP_DRIVER       | Significado                  |
 | --------------------------- | -------------------------|
 | nx_ip_driver_command     | NX_LINK_GET_STATUS    |
-| nx_ip_driver_ptr         | Puntero a la instancia de IP   |
+| nx_ip_driver_ptr         | Puntero a la instancia de IP.   |
 | nx_ip_driver_return_ptr | Puntero al destino en el que se va a colocar el estado. |
 | nx_ip_driver_interface   | Puntero a la instancia de interfaz   |
 | nx_ip_driver_status      | Estado de finalización. Si el controlador no puede obtener un estado concreto, devolverá un estado de error distinto de cero. |
@@ -264,7 +264,7 @@ Esta solicitud se realiza desde el servicio ***nx_ip_driver_direct_command***. E
 | Miembro de&nbsp;NX_IP_DRIVER   | Significado                   |
 | ------------------------| ------------------------- |
 | nx_ip_driver_command     | NX_LINK_GET_SPEED          |
-| nx_ip_driver_ptr         | Puntero a la instancia de IP                                                                                         |
+| nx_ip_driver_ptr         | Puntero a la instancia de IP.                                                                                         |
 | nx_ip_driver_return_ptr | Puntero al destino en el que se va a colocar la velocidad de la línea.                                                             |
 | nx_ip_driver_interface   | Puntero a la instancia de interfaz                                                                              |
 | nx_ip_driver_status      | Estado de finalización. Si el controlador no puede obtener información sobre la velocidad, devolverá un estado de error distinto de cero. |
@@ -278,7 +278,7 @@ Esta solicitud se realiza desde el servicio ***nx_ip_driver_direct_command***. E
 | Miembro de&nbsp;NX_IP_DRIVER   | Significado                                                                                                    |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | nx_ip_driver_command     | NX_LINK_GET_DUPLEX_TYPE                                                                                    |
-| nx_ip_driver_ptr         | Puntero a la instancia de IP                                                                                         |
+| nx_ip_driver_ptr         | Puntero a la instancia de IP.                                                                                         |
 | nx_ip_driver_return_ptr | Puntero al destino en el que se va a colocar el tipo dúplex.                                                            |
 | nx_ip_driver_interface   | Puntero a la instancia de interfaz                                                                              |
 | nx_ip_driver_status      | Estado de finalización. Si el controlador no puede obtener información sobre el dúplex, devolverá un estado de error distinto de cero. |
@@ -292,7 +292,7 @@ Esta solicitud se realiza desde el servicio ***nx_ip_driver_direct_command***. E
 | Miembro de&nbsp;NX_IP_DRIVER   | Significado                   |
 | --------------------------- | -------------------------------|
 | nx_ip_driver_command     | NX_LINK_GET_ERROR_COUNT   |
-| nx_ip_driver_ptr         | Puntero a la instancia de IP   |
+| nx_ip_driver_ptr         | Puntero a la instancia de IP.   |
 | nx_ip_driver_return_ptr | Puntero al destino en el que se va a colocar el número de errores. |
 | nx_ip_driver_interface   | Puntero a la instancia de interfaz|
 | nx_ip_driver_status      | Estado de finalización. Si el controlador no puede obtener el número de errores, devolverá un estado de error distinto de cero. |
@@ -306,9 +306,9 @@ Esta solicitud se realiza desde el servicio ***nx_ip_driver_direct_command***. E
 | Miembro de&nbsp;NX_IP_DRIVER       | Significado                        |
 | --------------------------- | -------------------------------|
 | nx_ip_driver_command     | NX_LINK_GET_RX_COUNT      |
-| nx_ip_driver_ptr         | Puntero a la instancia de IP  |
+| nx_ip_driver_ptr         | Puntero a la instancia de IP.  |
 | nx_ip_driver_return_ptr | Puntero al destino en el que se va a colocar el número de paquetes recibidos.   |
-| nx_ip_driver_interface   | Puntero a la interfaz de red física  |
+| nx_ip_driver_interface   | Puntero a la interfaz de red física.  |
 | nx_ip_driver_status      | Estado de finalización. Si el controlador no puede obtener el número de paquetes recibidos, devolverá un estado de error distinto de cero. |
 
 > [!IMPORTANT]  
@@ -320,8 +320,8 @@ Esta solicitud se realiza desde el servicio ***nx_ip_driver_direct_command***. E
 | Miembro de&nbsp;NX_IP_DRIVER   | Significado                   |
 | ----------------------- | ------------------------- |
 | nx_ip_driver_command | NX_LINK_GET_TX_COUNT  |
-| nx_ip_driver_ptr     | Puntero a la instancia de IP    |
-| nx_ip_driver_return_ptr | Puntero al destino en el que se va a colocar el número de paquetes transmitidos.  |
+| nx_ip_driver_ptr     | Puntero a la instancia de IP.    |
+| nx_ip_driver_return_ptr | Puntero al destino en el que se va a colocar el número de paquetes transmitidos  |
 | nx_ip_driver_interface   | Puntero a la instancia de interfaz   |
 | nx_ip_driver_status      | Estado de finalización. Si el controlador no puede obtener el número de paquetes transmitidos, devolverá un estado de error distinto de cero. |
 
@@ -334,7 +334,7 @@ Esta solicitud se realiza desde el servicio ***nx_ip_driver_direct_command***. E
 | Miembro de&nbsp;NX_IP_DRIVER       | Significado                       |
 | --------------------------- | ----------------------------- |
 | nx_ip_driver_command     | NX_LINK_GET_ALLOC_ERRORS  |
-| nx_ip_driver_ptr         | Puntero a la instancia de IP     |
+| nx_ip_driver_ptr         | Puntero a la instancia de IP.     |
 | nx_ip_driver_return_ptr | Puntero al destino en el que se va a colocar el número de errores de asignación.  |
 | nx_ip_driver_interface   | Puntero a la instancia de interfaz  |
 | nx_ip_driver_status      | Estado de finalización. Si el controlador no puede obtener los errores de asignación, devolverá un estado de error distinto de cero. |
@@ -348,7 +348,7 @@ Esta solicitud se realiza desde el subproceso auxiliar de IP en respuesta a la l
 | Miembro de&nbsp;NX_IP_DRIVER     | Significado                           |
 | ------------------------- | --------------------------------- |
 | nx_ip_driver_command   | NX_LINK_DEFERRED_PROCESSING    |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP            |
+| nx_ip_driver_ptr       | Puntero a la instancia de IP.            |
 | nx_ip_driver_interface | Puntero a la instancia de interfaz |
 
 ### <a name="set-physical-address"></a>Establecer la dirección física  
@@ -359,7 +359,7 @@ Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de comandos de
 | Miembro de&nbsp;NX_IP_DRIVER      | Significado                      |
 | -------------------------- | ---------------------------- |
 | nx_ip_driver_command    | NX_LINK_SET_PHYSICAL_ADDRESS  |
-| nx_ip_driver_ptr        | Puntero a la instancia de IP  |
+| nx_ip_driver_ptr        | Puntero a la instancia de IP.  |
 | nx_ip_driver_interface  | Puntero a la instancia de interfaz   |
 | nx_ip_driver_physical_ad dress_msw | 32 bits de la nueva dirección física más significativos  |
 | nx_ip_driver_physical_ad dress_lsw | 32 bits de la nueva dirección física menos significativos  |
@@ -371,7 +371,7 @@ Esta solicitud se realiza desde el servicio ***nx_ip_driver_direct_command***. E
 | Miembro de&nbsp;NX_IP_DRIVER       | Significado                       |
 | --------------------------- | ----------------------------- |
 | nx_ip_driver_command     | NX_LINK_USER_COMMAND       |
-| nx_ip_driver_ptr         | Puntero a la instancia de IP        |
+| nx_ip_driver_ptr         | Puntero a la instancia de IP.        |
 | nx_ip_driver_return_ptr | Definidas por el usuario       |
 | nx_ip_driver_interface   | Puntero a la instancia de interfaz    |
 | nx_ip_driver_status      | Estado de finalización. Si el controlador no puede ejecutar comandos de usuario, devolverá un estado de error distinto de cero. |
@@ -416,7 +416,7 @@ La cola de transmisión recomendada es una lista vinculada individualmente que t
 > [!CAUTION]  
 > *Dado que se accede a esta cola desde las partes de subproceso e interrupción del controlador, la protección de la interrupción debe colocarse alrededor de las manipulaciones de la cola*.
 
-La mayoría de las implementaciones de hardware físico generan una interrupción tras la finalización de la transmisión de paquetes. Cuando el controlador recibe una interrupción de este tipo, normalmente libera los recursos asociados al paquete que se está transmitiendo. Si la lógica de transmisión lee los datos directamente del búfer de NX_PACKET, el controlador debe usar el servicio de ***nx_packet_transmit_release*** para devolver el paquete asociado a la interrupción de retransmisión completada al grupo de paquetes disponible. Después, el controlador examina la cola de transmisión para buscar otros paquetes que están esperando a ser enviados. Los mismos paquetes de transmisión en cola que caben en los búferes de transmisión del hardware se quitan de la cola y se cargan en los búferes. Esto va seguido del inicio de otra operación de envío.
+La mayoría de las implementaciones de hardware físico generan una interrupción tras la finalización de la transmisión de paquetes. Cuando el controlador recibe una interrupción de este tipo, normalmente libera los recursos asociados al paquete que se está transmitiendo. Si la lógica de transmisión lee los datos directamente del búfer de NX_PACKET, el controlador debe usar el servicio de ***nx_packet_transmit_release*** para devolver el paquete asociado a la interrupción de retransmisión completada al grupo de paquetes disponible. Después, el controlador examina la cola de transmisión para buscar otros paquetes que están esperando a ser enviados. Como muchos de los paquetes de transmisión en cola que caben en los búferes de transmisión del hardware se quitan de la cola y se cargan en los búferes. Esto va seguido del inicio de otra operación de envío.
 
 En cuanto los datos de NX_PACKET se hayan movido al patrón FIFO del transmisor (o en caso de que un controlador admita la operación sin copia, se hayan transmitido los datos de NX_PACKET), el controlador debe mover el campo *nx_packet_prepend_ptr* al principio del encabezado IP antes de llamar a ***nx_packet_transmit_release** _. Recuerde ajustar el campo _nx_packet_length* en consecuencia. Si un marco de IP se compone de varios paquetes, solo es necesario liberar el principio de la cadena de paquetes.
 
@@ -429,7 +429,7 @@ NetX Duo supone que los encabezados IP (IPv4 e IPv6) y ARP están alineados en u
 > [!WARNING] 
 > *Consulte la sección "Encabezados Ethernet" a continuación para conocer las diferencias importantes entre los encabezados Ethernet IPv4 e IPv6*.
 
-Hay varias funciones del paquete de recepción disponibles en NetX Duo. Si el paquete recibido es un paquete ARP, se llama a _***nx_arp_packet_deferred_receive**_. Si el paquete recibido es un paquete RARP, se llama a _ _*_nx_rarp_packet_deferred_receive_*_. Hay varias opciones para controlar los paquetes IP entrantes. Si lo que se desea es lograr el control más rápido posible de los paquetes IP, se llama a _*_nx_ip_packet_receive_*_. Este enfoque es el que tiene la menor sobrecarga, pero requiere más procesamiento en el controlador de servicio de interrupción de recepción (ISR) del controlador. Para que el procesamiento de ISR sea mínimo, se llama a __ *_nx_ip_packet_deferred_receive_**.
+Hay varias funciones del paquete de recepción disponibles en NetX Duo. Si el paquete recibido es un paquete ARP, se llama a _***nx_arp_packet_deferred_receive**_. Si el paquete recibido es un paquete RARP, se llama a _ _*_nx_rarp_packet_deferred_receive_*_. Hay varias opciones para controlar los paquetes IP entrantes. Si lo que se desea es lograr el control más rápido posible de los paquetes IP, se llama a _*_nx_ip_packet_receive_*_. Este enfoque es el que tiene la menor sobrecarga, pero requiere más procesamiento en el controlador de servicio de interrupción de recepción (ISR) del controlador. Si lo que se necesita es que el procesamiento de ISR sea mínimo, se llama a __ *_nx_ip_packet_deferred_receive_**.
 
 Una vez que el nuevo paquete de recepción se ha creado correctamente, los búferes de recepción del hardware físico se configuran para recibir más datos. Esto podría requerir la asignación de paquetes de NetX Duo y la colocación de la dirección de la carga en el búfer de recepción de hardware, o puede que se limite a cambiar una configuración del búfer de recepción de hardware. Para minimizar las posibilidades de saturación, es importante que los búferes de recepción del hardware tengan búferes disponibles lo antes posible después de recibir un paquete.
 
@@ -444,7 +444,7 @@ Para usar el control de paquetes diferido, antes debe compilarse la biblioteca d
 ```c
 _nx_ip_packet_deferred_receive(ip_ptr, packet_ptr);
 ```
-La función de recepción diferida coloca el paquete de recepción representado por *packet_ptr* en un patrón FIFO (lista vinculada) y notifica al subproceso auxiliar de IP. Después de ejecutarse, la aplicación auxiliar de IP llama repetidamente a la función de control diferida para procesar cada paquete diferido. Normalmente, el procesamiento de los controladores diferidos incluye la eliminación del encabezado de la capa física del paquete (normalmente Ethernet) y su envío a una de estas funciones de recepción de NetX Duo:
+La función de recepción diferida coloca el paquete de recepción representado por *packet_ptr* en una FIFO (lista vinculada) y notifica al subproceso auxiliar de IP. Después de ejecutarse, la aplicación auxiliar de IP llama repetidamente a la función de control diferida para procesar cada paquete diferido. Normalmente, el procesamiento de los controladores diferidos incluye la eliminación del encabezado de la capa física del paquete (normalmente Ethernet) y su envío a una de estas funciones de recepción de NetX Duo:
 
 - ***_nx_ip_packet_receive***
 - ***_nx_arp_packet_deferred_receive***
@@ -497,8 +497,8 @@ La instancia de IP transmite los paquetes de red a través de uno de estos coman
 | Get-Help                         |  Descripción                                                   |
 | ------------------------------- | -------------------------------------------------------------- |
 | ***NX_LINK_PACKET_SEND***    | Se está transmitiendo un paquete IPv4 o IPv6.                   |
-| ***NX_LINK_ARP_SEND***       | Se está transmitiendo un paquete de solicitudes ARP o respuestas ARP.    |
-| ***NX_LINK_ARP_RARP_SEND*** | Se está transmitiendo un paquete de solicitudes o respuestas ARP inverso. |
+| ***NX_LINK_ARP_SEND***       | Se transmite un paquete de solicitudes ARP o respuestas ARP.    |
+| ***NX_LINK_ARP_RARP_SEND*** | Se transmite un paquete de solicitudes o respuestas ARP inverso. |
 
 Al procesar estos comandos, el controlador de red debe anteponer el encabezado del marco Ethernet adecuado y, después, enviarlo al hardware subyacente para su transmisión. Durante el proceso de transmisión, el controlador de red tiene la propiedad exclusiva del área del búfer de paquetes. Por consiguiente, una vez que se transmiten los datos (o una vez que los datos se han copiado en el búfer de transferencia interno del controlador), el controlador de red es responsable de liberar el búfer de paquetes, para lo cual en primer lugar mueve el puntero antepuesto más allá del encabezado Ethernet al encabezado de IP (y ajusta la longitud del paquete en consecuencia) y, después, llama al servicio ***nx_packet_transmit_release()*** para liberar el paquete. Si no se libera el paquete después de la transmisión de datos, se producirán pérdidas de paquetes.
 

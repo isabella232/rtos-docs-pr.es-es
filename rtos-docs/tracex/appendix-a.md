@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 65512850412b2eb8dc3c5c295e6a9c933abc7d44
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6aee59618e4c93018a05f991aba187ce30cf0494d1423217d675fb197dc257de
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815953"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796198"
 ---
 # <a name="appendix-a---sample-tx_porth"></a>Apéndice A: tx_port.h de ejemplo
 

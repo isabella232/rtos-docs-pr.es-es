@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: d730658c07f3cd7cec8c75a47818314bdc63f35a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6cbeff83d8e3812f13aa3f8f66d4013b70490d556911939186b4b43840aac50d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816357"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790690"
 ---
 # <a name="chapter-4---description-of-usbx-host-services"></a>Capítulo 4: Descripción de los servicios de host de USBX
 

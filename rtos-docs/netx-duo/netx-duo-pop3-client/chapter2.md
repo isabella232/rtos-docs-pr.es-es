@@ -6,16 +6,16 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6ef4b6ba7aadf77ab95a4a12235eda847f32f3d5
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5a3cbded6224617571941f58ffb6a08bde9575eba8791544182fb8499c14bf43
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814617"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797201"
 ---
 # <a name="chapter-2---installation-and-use-of-netx-duo-pop3-client"></a>Capítulo 2: Instalación y uso del cliente POP3 de NetX Duo
 
-El cliente POP3 de NetX incluye un archivo de origen, un archivo de encabezado y un archivo de demostración. Hay dos archivos adicionales para los servicios de síntesis de MD5. También hay un archivo PDF de guía de usuario (este documento).
+El cliente POP3 de NetX incluye un archivo de origen, un archivo de encabezado y un archivo de demostración. Hay dos archivos adicionales para los servicios de síntesis MD5. También hay un archivo PDF de guía de usuario (este documento).
 
 - **nxd_pop3_client. c** Archivo de código fuente de C para la API de cliente POP3 de NetX Duo
 - **nxd_pop3_client. h** Archivo de encabezado de C para la API de cliente POP3 de NetX Duo
@@ -34,9 +34,9 @@ Estos archivos deben compilarse de la misma manera que otros archivos de aplicac
 
 ## <a name="small-example-of-the-netx-duo-pop3-client"></a>Pequeño ejemplo del cliente POP3 de NetX Duo
 
-En la figura 1 que aparece a continuación se muestra un ejemplo de cómo usar los servicios del cliente POP3 de NetX Duo. En esta demostración se configuran las dos devoluciones de llamada para notificar la descarga de correo y la finalización de la sesión en las líneas 37 y 38. El grupo de paquetes del cliente POP3 se crea en la línea 76. La tarea de subprocesos de IP se crea en la línea 88. Tenga en cuenta que este grupo de paquetes también se usa para el grupo de paquetes del cliente POP3. TCP está habilitado en la tarea IP en la línea 107.
+En la figura 1 que aparece a continuación se muestra un ejemplo de cómo usar los servicios del cliente POP3 de NetX Duo. En esta demostración se configuran las dos devoluciones de llamada para notificar la descarga de correo y la finalización de la sesión en las líneas 37 y 38. El grupo de paquetes del cliente de POP3 se crea en la línea 76. La tarea de subprocesos de IP se crea en la línea 88. Tenga en cuenta que este grupo de paquetes también se usa para el grupo de paquetes del cliente de POP3. TCP está habilitado en la tarea IP en la línea 107.
 
-El cliente POP3 se crea en la línea 133 dentro de la función de entrada del subproceso de la aplicación, *demo_thread_entry*. Esto se debe a que el servicio *nx_pop3_client_create* también intenta establecer una conexión TCP con el servidor de POP3. Si se realiza correctamente, la aplicación consulta al servidor de POP3 el número de elementos en su maildrop en la línea 149 utilizando el servicio *nx_pop3_client_mail_items_get*.
+El cliente POP3 se crea en la línea 133 dentro de la función de entrada de subproceso de aplicación, *demo_thread_entry*. Esto se debe a que el servicio *nx_pop3_client_create* también intenta establecer una conexión TCP con el servidor de POP3. Si se realiza correctamente, la aplicación consulta al servidor de POP3 el número de elementos en su maildrop en la línea 149 utilizando el servicio *nx_pop3_client_mail_items_get*.
 
 Si hay uno o más elementos, la aplicación recorre en iteración el bucle while de cada elemento de correo para descargar el mensaje de correo. La solicitud RETR se realiza en la línea 149 en la llamada *nx_pop3_client_mail_item_get*. Si se realiza correctamente, la aplicación descarga paquetes mediante el servicio *nx_pop3_client_mail_item_message_get* en la línea 177 hasta que detecta que se ha recibido el último paquete del mensaje en la línea 196. Por último, la aplicación elimina el elemento de correo, suponiendo que se ha producido una descarga correcta en la línea 199 de la llamada *nx_pop3_client_mail_item_delete*. La RFC 1939 recomienda que los clientes de POP3 indiquen al servidor que elimine los elementos de correo descargados para evitar que el correo se acumule en el maildrop del cliente. De todos modos, el servidor puede hacerlo automáticamente.
 

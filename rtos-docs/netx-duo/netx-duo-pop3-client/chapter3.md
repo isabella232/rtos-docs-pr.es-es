@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1f7681c8f3fe161db8a37a82574ab7d5e9bf348e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c8608f3894eba4db557f0c67b1042f2c88362cb0ca4bf6034bff9ae591fe26bc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814614"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797184"
 ---
 # <a name="chapter-3---description-of-pop3-client-services"></a>Capítulo 3: Descripción de los servicios del cliente POP3
 
@@ -261,8 +261,8 @@ Este servicio realiza una solicitud RETR para recuperar un elemento de correo de
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS** (0x00) Elemento de correo recuperado correctamente
-- **NX_POP3_INVALID_MAIL_ITEM** (0xB2) Índice de elemento de correo no válido
+- **NX_SUCCESS** (0x00) Elemento de correo recuperado correctamente.
+- **NX_POP3_INVALID_MAIL_ITEM** (0xB2) Índice de elemento de correo no válido.
 - **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD** (0xB6) La carga de paquete de cliente es demasiado pequeña para la solicitud de POP3.
 - **NX_POP3_SERVER_ERROR_STATUS**: (0xB4) El servidor responde con el estado de error.
 - NX_POP3_CLIENT_INVALID_INDEX: (0xB8) Entrada de índice de correo no válida

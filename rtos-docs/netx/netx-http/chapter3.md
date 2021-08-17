@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c58d0e3d7eca86816a9d656bf2b92a896ffb96fc
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: eabb455b6e21b4fe51db944a0da12afa85ee390a78db633ee670de5aadcde07b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815194"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791523"
 ---
 # <a name="chapter-3---description-of-netx-http-services"></a>Capítulo 3: Descripción de los servicios de NetX HTTP
 
@@ -1254,7 +1254,7 @@ Este servicio crea una instancia de servidor HTTP que se ejecuta en el contexto 
 
 - **http_server_ptr** Puntero al bloque de control del servidor HTTP.
 - **http_server_name** Puntero al nombre del servidor HTTP.
-- **ip_ptr**: puntero a la instancia de IP creada anteriormente.
+- **ip_ptr** Puntero a la instancia de IP creada anteriormente.
 - **media_ptr** Puntero a la instancia de medios FileX creada anteriormente.
 - **stack_ptr** Puntero al área de la pila de subprocesos del servidor HTTP.
 - **stack_size** Puntero al tamaño de la pila de subprocesos del servidor HTTP.

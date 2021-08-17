@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 75b2b878cd084ca1c1cdd1eed4333d303fe32ad6
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7aee18642e480ec61488515164c8a6816753dca86eb8f6d146ea22d4956e037a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814550"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791676"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-sntp-client-services"></a>Capítulo 3: Descripción de los servicios del cliente SNTP de Azure RTOS NetX Duo
 

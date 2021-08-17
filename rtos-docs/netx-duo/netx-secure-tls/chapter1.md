@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8f4c7a97564cd2f702f9887181b36297b42fa492
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1d6b0f23d7353626f340fe0ab93ee1e04800edaaa1f00da49afd83f84339df86
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814509"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791608"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-secure"></a>Capítulo 1: Introducción a Azure RTOS NetX Secure
 

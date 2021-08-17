@@ -7,12 +7,12 @@ ms.date: 6/9/2021
 ms.service: rtos
 ms.topic: overview
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 4b6c8df5133f16cf3ed4006c12433ac426453cb5
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: 300307a82cfde9c74ec0a2499528898b384076676f75bd592fa2840bc5ac53a8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115178211"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796311"
 ---
 # <a name="overview-of-azure-rtos-threadx"></a>Información general sobre Azure RTOS ThreadX
 

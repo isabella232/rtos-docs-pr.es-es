@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 04207c5183d732ccb49200c117d7e85a4ff80e33
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d9063de460a09977ed4ee7a0a02ca578bdd116e9935394e600af75a74e8f34e1
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814877"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116789823"
 ---
 # <a name="appendix-b---azure-rtos-netx-duo-constants"></a>Apéndice B: constantes de Azure RTOS NetX Duo
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 0935295ef9f7255c0851e1f64013884dce4c52f1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 82a186505104983dbe6964f92e89c8e775d545eedb6495e27f21542d7660bf42
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814830"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791200"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-autoip-services"></a>Capítulo 3: Descripción de los servicios AutoIP de Azure RTOS NetX Duo
 
@@ -19,16 +19,16 @@ Este capítulo contiene una descripción de todos los servicios AutoIP de Azure 
 
 En la sección “Valores devueltos” de las siguientes descripciones de la API, los valores en **NEGRITA** no se ven afectados por la definición **NX_DISABLE_ERROR_CHECKING** que se usa para deshabilitar la comprobación de errores de la API, mientras que los valores que no están en negrita están completamente deshabilitados.
 
-- **nx_auto_ip_create**: *crea una instancia de AutoIP*
-- **nx_auto_ip_delete**: *elimina una instancia de AutoIP*
-- **nx_auto_ip_get_address**: *obtiene la dirección AutoIP actual*
-- **nx_auto_ip_set_interface**: *establece la interfaz IP que necesita una dirección AutoIP*
-- **nx_auto_ip_start**: *inicia el procesamiento de AutoIP*
-- **nx_auto_ip_stop**: *detiene el procesamiento de AutoIP*
+- **nx_auto_ip_create**: *crea una instancia de AutoIP*.
+- **nx_auto_ip_delete**: *elimina una instancia de AutoIP*.
+- **nx_auto_ip_get_address**: *obtiene la dirección AutoIP actual*.
+- **nx_auto_ip_set_interface**: *establece la interfaz IP que necesita una dirección AutoIP*.
+- **nx_auto_ip_start**: *inicia el procesamiento de AutoIP*.
+- **nx_auto_ip_stop**: *detiene el procesamiento de AutoIP*.
 
 ## <a name="nx_auto_ip_create"></a>nx_auto_ip_create
 
-Crea instancias de AutoIP
+Crea una instancia de AutoIP
 
 ### <a name="prototype"></a>Prototipo
 
@@ -80,7 +80,7 @@ nx_auto_ip_delete, nx_auto_ip_set_interface, nx_auto_ip_get_address, nx_auto_ip_
 
 ## <a name="nx_auto_ip_delete"></a>nx_auto_ip_delete
 
-Elimina instancias de AutoIP
+Elimina una instancia de AutoIP
 
 ### <a name="prototype"></a>Prototipo
 

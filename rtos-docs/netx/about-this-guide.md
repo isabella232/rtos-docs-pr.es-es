@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 01077e3315e87b918cdfd47423d8e0c1b6bbdbbd
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 7d77997e8c5bac598f382e1169a56727af09ab108f57c90cc6265df0691b5926
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550276"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796419"
 ---
 # <a name="about-the-azure-rtos-netx-user-guide"></a>Acerca de la guía del usuario de Azure RTOS NetX
 
@@ -50,7 +50,7 @@ A continuación se muestra una lista de los tipos de datos de llamada de servici
 | Tipo de datos | Descripción  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | **UINT**  | Entero sin signo básico. Este tipo debe admitir datos sin signo de 32 bits, pero se asigna al tipo de datos sin signo más conveniente. |
-| **ULONG** | Tipo entero largo sin signo. Este tipo debe admitir datos sin signo de 32 bits.                                                                      |
+| **ULONG** | Tipo largo sin signo. Este tipo debe admitir datos sin signo de 32 bits.                                                                      |
 | **VOID**  | Casi siempre equivale al tipo void del compilador.                                                                                 |
 | **CHAR**  | Suele ser un tipo de carácter de 8 bits estándar.                                                                                           |
 

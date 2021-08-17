@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 065e7a3e65b3cf8d7fcfb34bb9568a673791609a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e0152c1342b3edffd42f7442c51e7c5d62b199a5b38085dac06b4c0dbee9e9a8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814561"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790112"
 ---
 # <a name="appendix-a---azure-rtos-netx-duo-sntp-fatal-error-codes"></a>Apéndice A: Códigos de error irrecuperables de SNTP de Azure RTOS NetX Duo
 

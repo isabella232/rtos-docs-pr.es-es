@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: cf4c4cb0edb7deb7bd0f257f48949b5c7355426b
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: b24776c2eb25a53195ea4eb452497b23b933e4ab3f9f0a379ea64d8469c1c971
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814565"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790129"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-snmp-agent-services"></a>Capítulo 3: Descripción de los servicios del agente SNMP de Azure RTOS NetX Duo
 

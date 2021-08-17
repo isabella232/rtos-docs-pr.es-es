@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 30a2dc6284b413fe79ae6214e972b01d1321d031
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 99dd57b474f2f82aea2a7b2317a46c6b5a6150009ab33522ee6fbe4a3de6bf2c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814369"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788531"
 ---
 # <a name="appendix-a---azure-rtos-threadx-api-services"></a>Apéndice A: servicios de API de Azure RTOS ThreadX
 

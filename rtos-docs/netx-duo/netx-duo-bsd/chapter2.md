@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 582661bc66c51341fc098de9ff7b6fa2a7d746de
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 560621e528c8ce98013ce505ea1511f466317f4a087aa44cc0e70cb4d4b8ed1e
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814822"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788514"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-bsd"></a>Capítulo 2: Instalación y uso de BSD de Azure RTOS NetX Duo
 

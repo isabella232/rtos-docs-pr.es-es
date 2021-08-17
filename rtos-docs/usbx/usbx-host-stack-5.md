@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 2e9e2e0286300b3f79f7f9e6ad2d7fab96ba7337
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: 62750ab4a5540b243665a7a7d9000a0d60c4435313b6de2e1579ae7f1c20fe55
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115177752"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790673"
 ---
 # <a name="chapter-5---usbx-host-classes-api"></a>Capítulo 5: API de clases de host de USBX
 

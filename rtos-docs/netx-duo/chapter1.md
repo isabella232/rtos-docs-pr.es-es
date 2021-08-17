@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 91dfd0e62cb565f677faa7d52fe22abc1f0e19a1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c9b5e0ea82319bd369318cca753cf1db222ca29b0b4db3da150642ca007f1191
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814869"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116789872"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo"></a>Capítulo 1: Introducción a Azure RTOS NetX Duo
 
@@ -120,7 +120,7 @@ NetX Duo está escrito exclusivamente en ANSI C y está totalmente integrado con
 
 ## <a name="ipv6-ready-logo-certification"></a>Certificación del logotipo IPv6 Ready
 
-La certificación "IPv6 Ready" de NetX Duo se obtuvo mediante el paquete de prueba automática del protocolo básico IPv6 (fase 2) disponible en la organización IPv6 Ready. Consulte los siguientes sitios web del proyecto IPv6-Ready para más información sobre la plataforma de pruebas y los casos de prueba: [ **https://www.ipv6ready.org/** ](https://www.ipv6ready.org/)
+La certificación "IPv6 Ready" de NetX Duo se obtuvo mediante el paquete de prueba automática del protocolo básico IPv6 (fase 2) disponible en la organización IPv6 Ready. Consulte los siguientes sitios web del proyecto IPv6-Ready para más información sobre la plataforma de pruebas y los casos de prueba: [ **https://www.ipv6ready.org/**](https://www.ipv6ready.org/)
 
 El conjunto de pruebas automáticas del protocolo básico IPv6 (fase 2) valida que una pila IPv6 observa los requisitos establecidos en los siguientes RFC con pruebas exhaustivas:  
 Sección 1: RFC 2460  
@@ -131,7 +131,7 @@ Sección 5: RFC 4443
 
 ## <a name="ixanvl-test"></a>Prueba IxANVL
 
-NetX Duo se ha probado con IxANVL de IXIA. IxANVL es el estándar del sector para la validación automatizada de redes y protocolos. Puede encontrar más información sobre IxANVL en: [ **https://www.ixiacom.com/products/ixanvl** ](https://www.ipv6ready.org/)
+NetX Duo se ha probado con IxANVL de IXIA. IxANVL es el estándar del sector para la validación automatizada de redes y protocolos. Puede encontrar más información sobre IxANVL en: [ **https://www.ixiacom.com/products/ixanvl**](https://www.ipv6ready.org/)
 
 En particular, se han probado con IxANVL los siguientes módulos de NetX Duo:
 

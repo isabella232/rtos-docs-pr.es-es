@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4fdf1e46a7123c10d17e11d09c1b16c2f68f4a31
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 5a1bab2cb60ce5df6c0662eb1a31f542a3b1d7a87d4584d485cbd621e3342abc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550242"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791126"
 ---
 # <a name="chapter-4---usbx-pictbridge-implementation"></a>Capítulo 4: Implementación de USBX PictBridge
 
@@ -214,8 +214,8 @@ Se llama a esta función cuando el cliente de DPS necesita recuperar un bloque d
 
 ### <a name="parameters"></a>Parámetros
 
-- **pictbridge**: señalador a la instancia de clase pictbridge.
-- **object_buffer**: señalador al búfer del objeto
+- **pictbridge**: puntero que señala a la instancia de clase pictbridge.
+- **object_buffer**: puntero que señala al búfer del objeto
 - **object_offset**: lugar donde se empieza a leer el bloque de datos
 - **object_length**: longitud que se va a devolver
 - **actual_length**: longitud real devuelta
@@ -353,8 +353,8 @@ Se llama a esta función cuando el servidor de DPS necesita recuperar un bloque 
 
 ### <a name="parameters"></a>Parámetros
 
-- **pictbridge**: señalador a la instancia de clase pictbridge.
-- **object_buffer**: señalador al búfer del objeto
+- **pictbridge**: puntero que señala a la instancia de clase pictbridge.
+- **object_buffer**: puntero que señala al búfer del objeto
 - **object_offset**: lugar donde se empieza a leer el bloque de datos
 - **total_length**: longitud total del objeto
 - **length**: longitud de este búfer

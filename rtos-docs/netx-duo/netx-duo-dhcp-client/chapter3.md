@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f143a443221ae08848316a458a630a0790108198
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9c678772b6e6160dba9929af41e76c2580c06fb163bfccfdb6fcc46fa42ade82
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814798"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790350"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-dhcp-client-services"></a>Capítulo 3: Descripción de los servicios del cliente DHCP de Azure RTOS NetX Duo
 

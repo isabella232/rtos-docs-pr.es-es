@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 7dd3485f112bce379ab7d6b11a808605bca191a0
-ms.sourcegitcommit: 1d90854d1da01f4b65e54d732ee9190b57a531e1
+ms.openlocfilehash: dd694cb7d34df7ecae206c3dcaf7d75a20bd4bd4e26471bb94da4129897ef727
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105569004"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116786151"
 ---
 # <a name="chapter-4-guix-studio-resources"></a>Capítulo 4: Recursos de GUIX Studio
 

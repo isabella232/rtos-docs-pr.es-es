@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 40fbfa7319ca95af65c92b12582d4bbb05005dc0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6caf943f990f8fe5cbd2cd6139a1253fcaf47dc207141963e31a9e31864ef839
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814769"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791744"
 ---
 # <a name="chapter-4---azure-rtos-netx-duo-dhcpv6-client-services"></a>Capítulo 4: Servicios de cliente DHCPv6 de Azure RTOS NetX Duo
 

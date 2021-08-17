@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2270a2668884dbecc8368d4ee130e419afa92491
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 141197daa87b40ebe2ea34ff096a0b01b260e9296a33e3b678f11400d5d46ab6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814605"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797167"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-point-to-point-protocol-ppp"></a>Capítulo 2: Instalación y uso del Protocolo punto a punto (PPP) de Azure RTOS NetX Duo
 
@@ -82,7 +82,7 @@ Una vez que se inicia PPP, cualquier información que no sea de PPP se pasa a la
 
 Detener el PPP de NetX es bastante sencillo. Básicamente, todos los sockets creados deben desenlazarse y eliminarse. A continuación, elimine la instancia de IP a través del servicio *nx_ip_delete*. Una vez eliminada la instancia de IP, se debe llamar al servicio *nx_ppp_delete* para finalizar el proceso de detención de PPP. En este momento, la aplicación puede intentar restablecer la comunicación con el ISP.
 
-## <a name="small-example-system"></a>Pequeño sistema de ejemplo
+## <a name="small-example-system"></a>Sistema de ejemplo pequeño
 
 En la figura 1.1 a continuación se describe un ejemplo que muestra lo fácil que es usar el PPP de NetX. En este ejemplo, el archivo de inclusión de PPP *nx_ppp. h* se incluye en la línea 3. A continuación, se crea el PPP en *"tx_application_define*" en la línea 56. El bloque de control de PPP "*my_ppp*" se definió anteriormente como una variable global en la línea 9. 
 

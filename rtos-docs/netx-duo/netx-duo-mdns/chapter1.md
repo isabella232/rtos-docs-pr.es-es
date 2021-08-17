@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b46539ee4d502fa4c90fb3392e25cd3bee40dc5b
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7cde8e81809dcc74ee5d0b09d8e7a8d2ae96850cd84250a5bf003fdd5763925a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814670"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796453"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-mdnsdns-sd"></a>Capítulo 1: Introducción a mDNS y DNS-SD de Azure RTOS NetX Duo
 

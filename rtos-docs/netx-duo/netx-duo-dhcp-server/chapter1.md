@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 678b9ed77f07d0b526525c740f0fae7adc6d2c95
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a56f692059cbd3e2a72d64cf80ee90a917b80987add8130d3a1df70b3b0c3a71
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814797"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788480"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-dhcp-server"></a>Capítulo 1: Introducción al servidor DHCP de Azure RTOS NetX Duo
 
@@ -21,11 +21,11 @@ En NetX Duo, la dirección IP de la aplicación es uno de los parámetros propor
 
 El servicio básico usado para obtener una dirección IP dinámica de la red es el protocolo Reverse Address Recognition Protocol (RARP). Este protocolo es similar a ARP, con la excepción de que está diseñado para obtener una dirección IP para sí mismo en lugar de encontrar la dirección MAC para otro nodo de red. El mensaje RARP de bajo nivel se emite en la red local y es responsabilidad de un servidor de la red responder con una respuesta RARP, que contiene una dirección IP asignada dinámicamente.
 
-Aunque RARP proporciona un servicio para la asignación dinámica de direcciones IP, tiene varias limitaciones. La limitación más evidente es que RARP solo proporciona una asignación dinámica de la dirección IP. En la mayoría de los casos, es necesaria una mayor información para que un dispositivo pueda participar correctamente en una red. Además de una dirección IP, la mayoría de los dispositivos necesitan la máscara de red y la dirección IP de puerta de enlace. También es posible que se necesite la dirección IP de un servidor DNS y otra información de la red. RARP no tiene la capacidad de proporcionar esta información.
+Aunque RARP proporciona un servicio para asignar direcciones IP de forma dinámica, tiene varias limitaciones. La limitación más evidente es que RARP solo proporciona una asignación dinámica de la dirección IP. En la mayoría de los casos, es necesaria una mayor información para que un dispositivo pueda participar correctamente en una red. Además de una dirección IP, la mayoría de los dispositivos necesitan la máscara de red y la dirección IP de puerta de enlace. También es posible que se necesite la dirección IP de un servidor DNS y otra información de la red. RARP no tiene la capacidad de proporcionar esta información.
 
 ## <a name="rarp-alternatives"></a>Alternativas de RARP
 
-Con el fin de superar las limitaciones de RARP, los investigadores han desarrollado un mecanismo de asignación de direcciones IP más completo denominado protocolo de arranque (BOOTP). Este protocolo tiene la capacidad de asignar dinámicamente una dirección IP y también proporcionar información adicional sobre la red. Sin embargo, BOOTP tiene el inconveniente de estar diseñado para configuraciones de red estáticas. No permite la asignación de direcciones rápidas o automatizadas.
+Con el fin de superar las limitaciones de RARP, los investigadores han desarrollado un mecanismo para asignar direcciones IP más completo denominado protocolo de arranque (BOOTP). Este protocolo tiene la capacidad de asignar dinámicamente una dirección IP y también proporcionar información adicional sobre la red. Sin embargo, BOOTP tiene el inconveniente de estar diseñado para configuraciones de red estáticas. No permite asignar direcciones rápidas o automatizadas.
 
 Aquí es donde el protocolo de configuración dinámica de host (DHCP) es muy útil. DHCP está diseñado para ampliar la funcionalidad básica de BOOTP con el fin de incluir la asignación de servidor IP totalmente automatizada y la asignación de direcciones IP completamente dinámicas a través de la "concesión" de una dirección IP a un cliente durante un período de tiempo especificado. DHCP también se puede configurar para asignar direcciones IP de forma estática como BOOTP.
 

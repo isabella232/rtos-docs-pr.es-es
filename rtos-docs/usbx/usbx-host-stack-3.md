@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 17b8d884dd2c71d60e91f5fcec40c360060f4fe8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a3cbbb2e26d66d3db26144a47a1b6cbb11387c7b5b2ba5e19d35df026e5e3598
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816298"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790932"
 ---
 # <a name="chapter-3---functional-components-of-usbx-host-stack"></a>Capítulo 3: Componentes funcionales de la pila del host USBX
 

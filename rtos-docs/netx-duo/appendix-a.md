@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d093fbd8abe50ee1a21f62141329e84051c70006
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a5c4f209819935e771ca47c8ff9b8cf8e4872978e1b73d3ea24e590e792e2059
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815418"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790146"
 ---
 # <a name="appendix-a---azure-rtos-netx-duo-services"></a>Apéndice A: Servicios de Azure RTOS NetX Duo
 

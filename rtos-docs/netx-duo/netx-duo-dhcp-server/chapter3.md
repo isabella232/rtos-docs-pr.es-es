@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 33eb0b4bd98f808124b9a6a1f01950639243d612
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8496d9158c06e79ed86cb2f09ed9986a4eae5ed176352ff01c317df9f2399127
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814790"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788446"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-dhcp-server-services"></a>Capítulo 3: Descripción de los servicios del servidor DHCP de Azure RTOS NetX Duo
 
@@ -97,7 +97,7 @@ Este servicio crea un grupo específico de interfaces de red de direcciones IP d
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) Servidor DHCP creado correctamente.
+- **NX_SUCCESS**: (0x00) servidor DHCP creado correctamente.
 - **NX_DHCP_SERVER_BAD_INTERFACE_INDEX**: (0xA1) el índice no coincide con las direcciones.
 - **NX_DHCP_INVALID_IP_ADDRESS_LIST**: (0x99) entrada de dirección no válida.
 - NX_DHCP_INVALID_IP_ADDRESS: (0x9B) direcciones de inicio/fin ilógicas.

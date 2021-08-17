@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 14bdfab3d56476d52ba91f859cec4af4ab7f4bef
-ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
+ms.openlocfilehash: 99633db55a5d93eb32ce4fb5429f3fe2f9ab5137cffc30b27982f702cece1ca5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106377540"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791506"
 ---
 # <a name="chapter-3--threadx-apis-for-armv8-m"></a>Capítulo 3: API de ThreadX para ARMv8-M
 

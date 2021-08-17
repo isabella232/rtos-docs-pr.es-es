@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: aa66ad392171958e5d2cc765992fd1a9e41250a6
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 906ccb4fb69925f5244192f06521bf508bd15ced2076fb03031649fea638171c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815634"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116789985"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-threadx"></a>Capítulo 3: Componentes funcionales de Azure RTOS ThreadX
 
@@ -35,7 +35,7 @@ Este proceso continuo de ejecución y programación de subprocesos es el tipo m�
 
 ### <a name="interrupt-service-routines-isr"></a>Rutinas de servicio de interrupción (ISR)
 
-Las interrupciones son la piedra angular de los sistemas en tiempo real. Sin interrupciones, sería extremadamente difícil responder a tiempo a los cambios en el mundo exterior. Al detectar una interrupción, el procesador guarda información clave sobre la ejecución del programa actual (normalmente en la pila) y transfiere el control a un área de programas predefinida. Esta área de programas predefinida se suele denominar rutina de servicio de interrupción. En la mayoría de los casos, las interrupciones se producen durante la ejecución de subprocesos (o en el bucle de programación de subprocesos). Pero también se pueden producir dentro de una ISR en ejecución o un temporizador de aplicación.
+Las interrupciones son la piedra angular de los sistemas en tiempo real. Sin interrupciones, sería extremadamente difícil responder a los cambios en el mundo exterior de manera oportuna. Al detectar una interrupción, el procesador guarda información clave sobre la ejecución de programas actual (normalmente en la pila) y transfiere el control a un área de programas predefinida. Esta área de programas predefinida suele recibir el nombre de rutina de servicio de interrupción. En la mayoría de los casos, las interrupciones se producen durante la ejecución de subprocesos (o en el bucle de programación de subprocesos). Pero también se pueden producir dentro de una ISR en ejecución o un temporizador de aplicación.
 
 ![Tipos de ejecución de programa](./media/user-guide/types-program-execution.png)
 
@@ -43,7 +43,7 @@ Las interrupciones son la piedra angular de los sistemas en tiempo real. Sin int
 
 ### <a name="application-timers"></a>Temporizadores de aplicación
 
-Los temporizadores de aplicación son similares a las ISR, aunque la implementación de hardware (normalmente se usa una sola interrupción de hardware periódica) se oculta a la aplicación. Las aplicaciones usan estos temporizadores para ejecutar tiempos de espera, periódicos o servicios de guardián. Al igual que las ISR, los temporizadores de aplicación suelen interrumpir la ejecución de los subprocesos. Pero a diferencia de las ISR, los temporizadores de aplicación no se pueden interrumpir entre sí.
+Los temporizadores de aplicación son similares a las ISR, aunque la implementación de hardware (normalmente se usa una sola interrupción de hardware periódica) se oculta a la aplicación. Las aplicaciones emplean estos temporizadores para ejecutar tiempos de espera, servicios periódicos o de guardián. Al igual que las ISR, los temporizadores de aplicación suelen interrumpir la ejecución de subprocesos. Pero a diferencia de las ISR, los temporizadores de aplicación no se pueden interrumpir entre sí.
 
 ## <a name="memory-usage"></a>Uso de la memoria
 
@@ -77,7 +77,7 @@ Por ejemplo, imagine que un entorno de hardware de destino tiene memoria rápida
 
 ## <a name="initialization"></a>Inicialización
 
-Es importante comprender el proceso de inicialización. Aquí se configura el entorno de hardware inicial. Además, aquí es donde se proporciona la personalidad inicial a la aplicación.
+Es importante entender el proceso de inicialización. Aquí se configura el entorno de hardware inicial. Además, aquí es donde se proporciona la personalidad inicial a la aplicación.
 
 > [!NOTE]
 > *ThreadX intentará usar (siempre que sea posible) el proceso de inicialización completo de la herramienta de desarrollo. Esto permite que en el futuro sea más fácil hacer la actualización a nuevas versiones de las herramientas de desarrollo.*
@@ -90,9 +90,9 @@ Todos los microprocesadores tienen lógica de restablecimiento. Cuando se produc
 
 Una vez que se completa la inicialización de bajo nivel, el control se transfiere a la inicialización de alto nivel de la herramienta de desarrollo. Normalmente, es el lugar donde se configuran las variables globales y estáticas de C. Recuerde que sus valores iniciales se recuperan del área de constantes. El procesamiento de inicialización exacto es específico de la herramienta de desarrollo.
 
-### <a name="main-function"></a>Función "main"
+### <a name="main-function"></a>main (función)
 
-Una vez que se ha completado la inicialización de la herramienta de desarrollo, el control se transfiere a la función *main* proporcionada por el usuario. En este punto, la aplicación controla lo que ocurre a continuación. Para la mayoría de las aplicaciones, la función "main" simplemente llama a *tx_kernel_enter*, que es la entrada a ThreadX. Pero las aplicaciones pueden realizar el procesamiento preliminar (normalmente para la inicialización de hardware) antes de entrar en ThreadX.
+Una vez que se completa la inicialización de la herramienta de desarrollo, el control se transfiere a la función *main* proporcionada por el usuario. En este punto, la aplicación controla lo que ocurre a continuación. Para la mayoría de las aplicaciones, la función "main" simplemente llama a *tx_kernel_enter*, que es la entrada a ThreadX. Pero las aplicaciones pueden realizar el procesamiento preliminar (normalmente para la inicialización de hardware) antes de entrar en ThreadX.
 
 > [!IMPORTANT]
 > *La llamada a tx_kernel_enter no devuelve valores, por lo no debe colocar ningún procesamiento después.*
@@ -105,7 +105,7 @@ Cuando ***tx_application_define*** devuelve un valor, el control se transfiere a
 
 ### <a name="application-definition-function"></a>Función de definición de aplicación
 
-La función ***tx_application_define*** define todos los subprocesos, colas, semáforos, exclusiones mutuas, marcas de eventos, grupos de memoria y temporizadores de la aplicación inicial. También es posible crear y eliminar recursos del sistema desde subprocesos durante el funcionamiento normal de la aplicación. Pero aquí se definen todos los recursos iniciales de la aplicación.
+La función ***tx_application_define*** define todos los subprocesos, las colas, los semáforos, las exclusiones mutuas, las marcas de eventos, los grupos de memoria y los temporizadores iniciales de la aplicación. También es posible crear y eliminar recursos del sistema desde subprocesos durante el funcionamiento normal de la aplicación. Pero aquí se definen todos los recursos iniciales de la aplicación.
 
 La función ***tx_application_define** _ tiene un único parámetro de entrada que merece la pena mencionar. La dirección RAM _first-available* es el único parámetro de entrada de esta función. Normalmente se usa como punto de partida para las asignaciones de memoria iniciales en tiempo de ejecución de pilas de subprocesos, colas y grupos de memoria.
 
@@ -136,15 +136,15 @@ Comprender los distintos estados de procesamiento de los subprocesos es un facto
 
 Un subproceso está en un estado *listo* cuando está listo para su ejecución. Un subproceso listo no se ejecuta hasta que es el subproceso de prioridad más alta en estado listo. Cuando esto sucede, ThreadX ejecuta el subproceso, que cambia su estado a *en ejecución*.
 
-Si un subproceso de prioridad más alta está listo, el subproceso en ejecución vuelve a un estado *listo*. Después, se ejecuta el subproceso de alta prioridad recién preparado, que cambia su estado lógico a *en ejecución*. Esta transición entre los estados *listo* y *en ejecución* se produce cada vez que tiene lugar el adelantamiento de subprocesos.
+Si un subproceso de prioridad más alta está listo, el subproceso en ejecución vuelve a un estado *listo*. Después se ejecuta el subproceso de alta prioridad recién preparado, que cambia su estado lógico a *en ejecución*. Esta transición entre los estados *listo* y *en ejecución* se produce cada vez que tiene lugar el adelantamiento de subprocesos.
 
-En un momento dado, solo hay un subproceso en un estado *en ejecución*. Esto se debe a que un subproceso en el estado *en ejecución* tiene el control del procesador subyacente.
+En cualquier momento dado solo hay un subproceso en estado *en ejecución*. Esto se debe a que un subproceso en el estado *en ejecución* tiene el control del procesador subyacente.
 
-Los subprocesos en un estado *suspendido* no son válidos para la ejecución. Entre los motivos para estar en un estado *suspendido* se incluyen la suspensión de tiempo, mensajes de cola, semáforos, exclusiones mutuas, marcas de eventos, memoria y suspensión básica de subprocesos. Una vez que se elimina la causa de la suspensión, el subproceso se vuelve a colocar en un estado *listo*.
+Los subprocesos en estado *suspendido* no son aptos para ejecutarse. Entre los motivos para estar en estado *suspendido* se incluyen la suspensión por tiempo, mensajes de cola, semáforos, exclusiones mutuas, marcas de eventos, memoria y suspensión básica de subprocesos. Una vez que se elimina la causa de la suspensión, el subproceso se vuelve a colocar en estado *listo*.
 
-Un subproceso en un estado *completado* es el que ha completado su procesamiento y se ha devuelto desde su función de entrada. La función de entrada se especifica durante la creación del subproceso. No se puede volver a ejecutar un subproceso en un estado *completado*.
+Un subproceso en estado *completado* es el que ha completado su procesamiento y se ha devuelto desde su función de entrada. La función de entrada se especifica durante la creación del subproceso. No se puede volver a ejecutar un subproceso en estado *completado*.
 
-Un subproceso está en un estado *completado* porque otro subproceso o el propio subproceso ha llamado al servicio *tx_thread_terminate*. Un subproceso en un estado *completado* no se puede volver a ejecutar.
+Un subproceso está en estado *terminado* porque él mismo u otro subproceso ha llamado al servicio *tx_thread_terminate*. Un subproceso en un estado *completado* no se puede volver a ejecutar.
 
 > [!IMPORTANT]
 > *Si se quiere volver a iniciar un subproceso completado o finalizado, la aplicación debe eliminar primero el subproceso. Después, se podrá volver a crear y reiniciar.*
@@ -155,13 +155,13 @@ Es posible que para algunas aplicaciones sea una ventaja recibir notificaciones 
 
 ### <a name="thread-priorities"></a>Prioridades de subprocesos
 
-Como se ha mencionado antes, un subproceso es un segmento de programa semiindependiente con un propósito dedicado. Pero no todos los subprocesos se crean de la misma forma. El propósito dedicado de algunos subprocesos es mucho más importante que el de otros. Este tipo heterogéneo de importancia del subproceso es un sello de las aplicaciones en tiempo real insertadas.
+Como se ha mencionado antes, un subproceso es un segmento de programa semiindependiente con un fin concreto. Pero no todos los subprocesos se crean de la misma forma. El fin concreto de algunos subprocesos es mucho más importante que el de otros. Este tipo heterogéneo de importancia del subproceso es un sello de las aplicaciones en tiempo real insertadas.
 
-ThreadX determina la importancia de un subproceso al crearlo asignándole un valor numérico que representa su *prioridad*. El número máximo de prioridades de ThreadX se puede configurar de 32 a 1024 en incrementos de 32. El número máximo real de prioridades viene determinado por la constante **TX_MAX_PRIORITIES** durante la compilación de la biblioteca de ThreadX. Tener un número mayor de prioridades no aumenta significativamente la sobrecarga de procesamiento. Pero para cada grupo de niveles de prioridad 32 se necesitan 128 bytes de RAM adicionales para administrarlos. Por ejemplo, los niveles de prioridad 32 necesitan 128 bytes de RAM, los de prioridad 64 necesitan 256 bytes de RAM y los de prioridad 96, 384 bytes de RAM.
+ThreadX determina la importancia de un subproceso al crearlo asignándole un valor numérico que representa su *prioridad*. El número máximo de prioridades de ThreadX se puede configurar de 32 a 1024 en incrementos de 32. El número máximo real de prioridades viene determinado por la constante **TX_MAX_PRIORITIES** durante la compilación de la biblioteca de ThreadX. Tener un número mayor de prioridades no aumenta significativamente la sobrecarga de procesamiento. Pero para cada grupo de 32 niveles de prioridad se necesitan 128 bytes de RAM adicionales a fin de administrarlos. Por ejemplo, los niveles de prioridad 32 necesitan 128 bytes de RAM, los de prioridad 64 necesitan 256 bytes de RAM y los de prioridad 96, 384 bytes de RAM.
 
 De forma predeterminada, ThreadX tiene 32 niveles de prioridad, que van desde 0 hasta 31. Los valores numéricamente más pequeños implican una mayor prioridad. Por tanto, la prioridad 0 representa la prioridad más alta, mientras que la prioridad (**TX_MAX_PRIORITIES**-1) representa la más baja.
 
-Varios subprocesos pueden tener la misma prioridad, que se basa en la programación cooperativa o la segmentación de tiempo. Además, las prioridades de subprocesos se pueden cambiar durante el tiempo de ejecución.
+Varios subprocesos pueden tener la misma prioridad, que se basa en la programación cooperativa o la segmentación temporal. Además, las prioridades de los subprocesos se pueden cambiar durante el tiempo de ejecución.
 
 ### <a name="thread-scheduling"></a>Programación de subprocesos
 
@@ -184,30 +184,30 @@ Cuando se adelante un subproceso con segmentación temporal, se reanudará antes
 
 ### <a name="preemption"></a>Adelantamiento
 
-El adelantamiento es el proceso de interrumpir temporalmente un subproceso en ejecución en favor de un subproceso de mayor prioridad. Este proceso no es visible para el subproceso en ejecución. Cuando finaliza el subproceso de mayor prioridad, el control se transfiere de nuevo al lugar exacto donde ha tenido lugar el adelantamiento. Se trata de una característica muy importante en los sistemas en tiempo real porque facilita la respuesta rápida a los eventos de aplicación importantes. Aunque sea una característica muy importante, el adelantamiento también puede ser una fuente de diversos problemas, como colapsos, sobrecargas excesivas e inversión de prioridades.
+El adelantamiento es el proceso de interrumpir temporalmente un subproceso en ejecución en favor de uno con mayor prioridad. Este proceso no es visible para el subproceso en ejecución. Cuando finaliza el subproceso de mayor prioridad, el control se transfiere de nuevo a la ubicación exacta donde se produjo el adelantamiento. Se trata de una característica muy importante de los sistemas en tiempo real porque facilita la respuesta rápida a eventos de aplicación importantes. Aunque sea una característica muy importante, el adelantamiento también puede ser una fuente de diversos problemas, como colapsos, sobrecargas excesivas e inversión de prioridades.
 
 ### <a name="preemption-thresholdtrade"></a>Umbral de adelantamiento&trade;
 
 Para aliviar algunos de los problemas inherentes del adelantamiento, ThreadX proporciona una característica única y avanzada denominada *umbral de adelantamiento*.
 
-Un umbral de adelantamiento permite que un subproceso especifique un *límite* de prioridad para deshabilitar el adelantamiento. El adelantamiento todavía se puede permitir para los subprocesos que tienen prioridades más altas que el límite, mientras que no se permite para los de prioridades inferiores.
+Un umbral de adelantamiento permite que un subproceso especifique un *límite* de prioridad para deshabilitar el adelantamiento. Los subprocesos con prioridades más altas que el techo pueden seguir adelantándose, mientras que aquellos con prioridades inferiores no pueden hacerlo.
 
-Por ejemplo, imagine que un subproceso de prioridad 20 solo interactúa con un grupo de subprocesos con prioridades entre 15 y 20. Durante sus secciones críticas, el subproceso de prioridad 20 puede establecer su umbral de adelantamiento en 15, con lo que se evita el adelantamiento de todos los subprocesos con los que interactúa. Esto todavía permite que los subprocesos realmente importantes (con prioridades entre 0 y 14) adelanten a este subproceso durante su procesamiento de las secciones críticas, lo que da como resultado un procesamiento mucho más dinámico.
+Por ejemplo, imagine que un subproceso de prioridad 20 solo interactúa con un grupo de subprocesos con prioridades entre 15 y 20. Durante sus secciones críticas, el subproceso de prioridad 20 puede establecer su umbral de adelantamiento en 15, con lo que se evita el adelantamiento de todos los subprocesos con los que interactúa. Esto sigue permitiendo que los subprocesos realmente importantes (con prioridades entre 0 y 14) adelanten a este durante su procesamiento de secciones críticas, lo que da lugar a un procesamiento mucho más dinámico.
 
-Por supuesto, todavía es posible que un subproceso deshabilite todos los adelantamientos si establece su umbral de adelantamiento en 0. Además, el umbral de adelantamiento se puede cambiar durante el tiempo de ejecución.
+Por supuesto, sigue siendo posible que un subproceso deshabilite todo adelantamiento si establece su umbral de adelantamiento en 0. Además, el umbral de adelantamiento se puede cambiar durante el tiempo de ejecución.
 
 > [!NOTE]
 > *El uso del umbral de adelantamiento deshabilita la segmentación temporal para el subproceso especificado.*
 
 ### <a name="priority-inheritance"></a>Herencia de prioridades
 
-ThreadX también admite la herencia de prioridades opcional dentro de sus servicios de exclusión mutua descritos más adelante en este capítulo. La herencia de prioridades permite que un subproceso de prioridad inferior asuma temporalmente la de un subproceso de prioridad alta que espera una exclusión mutua propiedad del subproceso de prioridad inferior. Esta funcionalidad ayuda a la aplicación a evitar la inversión de prioridades no determinista eliminando el adelantamiento de las prioridades de subprocesos intermedias. Por supuesto, se puede usar el *umbral de adelantamiento* para lograr un resultado similar.
+ThreadX también admite la herencia de prioridades opcional dentro de sus servicios de exclusión mutua descritos más adelante en este capítulo. La herencia de prioridades permite que un subproceso de prioridad inferior asuma temporalmente la de un subproceso de prioridad alta que espera una exclusión mutua propiedad del subproceso de prioridad inferior. Esta capacidad ayuda a la aplicación a evitar la inversión de prioridades no determinista al eliminar el adelantamiento de prioridades de subprocesos intermedias. Por supuesto, se puede usar el *umbral de adelantamiento* para lograr un resultado similar.
 
 ### <a name="thread-creation"></a>Creación de subprocesos
 
-Los subprocesos de aplicación se crean durante la inicialización o la ejecución de otros subprocesos de aplicación. No existe límite en cuanto al número de subprocesos que puede crear una aplicación.
+Los subprocesos de aplicación se crean durante la inicialización o durante la ejecución de otros subprocesos de aplicación. No existe límite en cuanto al número de subprocesos que puede crear una aplicación.
 
-### <a name="thread-control-block-tx_thread"></a>TX_THREAD: bloque de control de subprocesos
+### <a name="thread-control-block-tx_thread"></a>Bloque de control de subprocesos TX_THREAD
 
 Las características de cada subproceso se encuentran en su bloque de control. Esta estructura se define en el archivo ***tx_api.h***.
 
@@ -243,8 +243,8 @@ En la mayoría de los casos, la aplicación desconoce el contenido del bloque de
 
 ### <a name="currently-executing-thread"></a>Subproceso en ejecución
 
-Como se ha mencionado antes, en un momento dado solo hay un subproceso en ejecución. Hay varias maneras de identificar el subproceso en ejecución, en función de cuál sea el que realice la solicitud.
-Un segmento de programa puede obtener la dirección del bloque de control del subproceso en ejecución llamando a ***tx_thread_identify***. Esto resulta útil en partes compartidas del código de la aplicación que se ejecutan desde varios subprocesos.
+Como se ha mencionado antes, en un momento dado solo hay un subproceso en ejecución. Hay varias maneras de identificar el subproceso en ejecución, en función del subproceso que realiza la solicitud.
+Un segmento de programa puede obtener la dirección del bloque de control del subproceso en ejecución mediante una llamada a ***tx_thread_identify***. Esto resulta útil en partes compartidas del código de la aplicación que se ejecutan desde varios subprocesos.
 
 En las sesiones de depuración, los usuarios pueden examinar el puntero de ThreadX interno ***_tx_thread_current_ptr***. Contiene la dirección del bloque de control del subproceso actualmente en ejecución. Si este puntero es NULL, no hay ningún subproceso de aplicación en ejecución; es decir, ThreadX espera en su bucle de programación a que un subproceso esté listo.
 
@@ -266,7 +266,7 @@ ThreadX define el tamaño mínimo de la pila, **TX_MINIMUM_STACK**. Una pila de 
 
 Pero para la mayoría de los subprocesos, el tamaño mínimo de la pila es demasiado pequeño y el usuario debe determinar el requisito de tamaño en el peor de los casos examinando el anidamiento de las llamadas de función y la asignación de variables locales. Por supuesto, siempre es mejor empezar con un área de pila más grande.
 
-Después de depurar la aplicación, se pueden ajustar los tamaños de la pila de subprocesos si la memoria es escasa. Un truco consiste en preestablecer todas las áreas de pila con un patrón de datos fácilmente identificable como (0xEFEF) antes de crear los subprocesos. Una vez que la aplicación se ha probado en profundidad, se pueden examinar las áreas de pila para ver la cantidad que se ha usado realmente; para ello, se busca el área de la pila en la que el patrón de datos sigue intacto. En la figura 7 se muestra un valor de pila preestablecido en 0xEFEF después de la ejecución exhaustiva de subprocesos.
+Después de depurar la aplicación, se pueden ajustar los tamaños de la pila de subprocesos si la memoria es escasa. Un buen truco es preestablecer todas las áreas de pila con un patrón de datos fácilmente identificable, como (0xEFEF), antes de crear los subprocesos. Una vez que la aplicación se ha probado en profundidad, se pueden examinar las áreas de pila para ver la cantidad que se ha usado realmente; para ello, se busca el área de la pila en la que el patrón de datos sigue intacto. En la figura 7 se muestra un valor de pila preestablecido en 0xEFEF después de la ejecución exhaustiva de subprocesos.
 
 **Área de memoria de la pila** (otro ejemplo)
 
@@ -279,7 +279,7 @@ Después de depurar la aplicación, se pueden ajustar los tamaños de la pila de
 
 ### <a name="memory-pitfalls"></a>Errores de memoria
 
-Los requisitos de pila para los subprocesos pueden ser considerables. Por tanto, es importante diseñar la aplicación para que tenga un número razonable de subprocesos. Además, se debe tener cuidado para evitar un uso excesivo de la pila dentro de los subprocesos. Se deben evitar los algoritmos recursivos y las estructuras de datos locales de gran tamaño.
+Los requisitos de la pila para los subprocesos pueden ser considerables. Por tanto, es importante diseñar la aplicación para que tenga un número razonable de subprocesos. Además, se debe tener cuidado para evitar un uso excesivo de la pila dentro de los subprocesos. Se deben evitar los algoritmos recursivos y las estructuras de datos locales de gran tamaño.
 
 En la mayoría de los casos, una pila desbordada hace que la ejecución de los subprocesos afecte a la memoria adyacente (normalmente antes) de su área de pila. Los resultados son imprevisibles, pero la mayoría de las veces provocan un cambio no natural en el contador de programas. Esto se suele denominar "analizar los pormenores". Por supuesto, la única manera de evitarlo es asegurarse de que todas las pilas de subproceso son lo suficientemente grandes.
 
@@ -289,7 +289,7 @@ ThreadX proporciona la capacidad de comprobar en tiempo de ejecución la existen
 
 ### <a name="reentrancy"></a>Reentrada
 
-Uno de los atractivos reales de multithreading es que se puede llamar a la misma función de C desde varios subprocesos. Esto proporciona una gran potencia y también ayuda a reducir el espacio de código. Pero es necesario que las funciones de C a las que se llama desde varios subprocesos sean *reentrantes*.
+Uno de los atractivos reales de multithreading es que se puede llamar a la misma función de C desde varios subprocesos. Esto proporciona una gran eficacia y también ayuda a reducir el espacio de código. Pero es necesario que las funciones de C a las que se llama desde varios subprocesos sean *reentrantes*.
 
 Básicamente, una función reentrante almacena en la pila actual la dirección de devolución del autor de la llamada y no se basa en las variables de C globales o estáticas que ha configurado antes. La mayoría de los compiladores colocan la dirección de devolución en la pila. Por tanto, los desarrolladores de aplicaciones solo deben preocuparse por el uso de las variables *globales* y *estáticas*.
 
@@ -297,25 +297,25 @@ Un ejemplo de una función no reentrante es la función de token de cadena ***st
 
 ### <a name="thread-priority-pitfalls"></a>Problemas de prioridad de subprocesos
 
-La selección de prioridades de subprocesos es uno de los aspectos más importantes del multithreading. En ocasiones, es muy tentador asignar prioridades en función de una noción percibida de la importancia del subproceso, en lugar de determinar lo que es exactamente necesario durante el tiempo de ejecución. El uso incorrecto de las prioridades de subproceso puede colapsar a otros subprocesos, crear la inversión de prioridades, reducir el ancho de banda de procesamiento y dificultar la comprensión del comportamiento en tiempo de ejecución de la aplicación.
+La selección de la prioridad de los subprocesos es uno de los aspectos más importantes de multithreading. En ocasiones, es muy tentador asignar prioridades en función de una noción percibida de la importancia del subproceso, en lugar de determinar lo que es exactamente necesario durante el tiempo de ejecución. El uso incorrecto de las prioridades de subproceso puede colapsar a otros subprocesos, crear la inversión de prioridades, reducir el ancho de banda de procesamiento y dificultar la comprensión del comportamiento en tiempo de ejecución de la aplicación.
 
-Como se ha mencionado antes, ThreadX proporciona un algoritmo de programación de adelantamiento basado en la prioridad. Los subprocesos de menor prioridad no se ejecutan hasta que no hay subprocesos de prioridad más alta listos para ejecutarse. Si un subproceso de prioridad más alta está siempre listo, los subprocesos de menor prioridad nunca se ejecutan. Esta condición se denomina *colapso de subprocesos*.
+Como se ha mencionado antes, ThreadX proporciona un algoritmo de programación de adelantamiento basado en la prioridad. Los subprocesos de menor prioridad no se ejecutan hasta que no hay subprocesos de prioridad más alta listos para ejecutarse. Si siempre hay un subproceso de prioridad más alta listo, los subprocesos de prioridad baja nunca se ejecutan. Esta condición se denomina *colapso de subprocesos*.
 
 La mayoría de los problemas de colapso de subprocesos se detectan pronto en la depuración y se pueden resolver asegurándose de que los subprocesos de prioridad más alta no se ejecutan de forma continuada. Como alternativa, se puede agregar lógica a la aplicación que genere gradualmente la prioridad de los subprocesos colapsados hasta que tengan la oportunidad de ejecutarse.
 
-Otro problema asociado a las prioridades de subprocesos es el de *inversión de prioridades*. La inversión de prioridades tiene lugar cuando se suspende un subproceso de prioridad superior porque otro de prioridad inferior tiene un recurso necesario. Evidentemente, en algunos casos es necesario que dos subprocesos de prioridad diferente compartan un recurso común. Si estos subprocesos son los únicos activos, el tiempo de inversión de prioridades está limitado por el tiempo que el subproceso de prioridad inferior mantiene el recurso. Esta condición es determinista y bastante normal. Pero si durante esta condición de inversión de prioridades se activan subprocesos de prioridad intermedia, el tiempo de inversión de prioridades deja de ser determinista y podría provocar un error en la aplicación.
+Otro problema asociado a las prioridades de los subprocesos es la *inversión de prioridades*. La inversión de prioridades tiene lugar cuando se suspende un subproceso de prioridad superior porque otro de prioridad baja tiene un recurso necesario. Evidentemente, en algunos casos es necesario que dos subprocesos de prioridad diferente compartan un recurso común. Si estos subprocesos son los únicos activos, el tiempo de inversión de prioridades está limitado por el tiempo que el subproceso de prioridad baja mantiene el recurso. Esta condición es determinista y bastante normal. Pero si durante esta condición de inversión de prioridades se activan subprocesos de prioridad intermedia, el tiempo de inversión de prioridades deja de ser determinista y podría provocar un error en la aplicación.
 
 Existen principalmente tres métodos distintos para evitar la inversión de prioridades no determinista en ThreadX. En primer lugar, las selecciones de prioridad de la aplicación y el comportamiento en tiempo de ejecución se pueden diseñar de forma que se impida el problema de inversión de prioridades. En segundo lugar, los subprocesos de menor prioridad pueden usar el *umbral de adelantamiento* para bloquear el adelantamiento de los subprocesos intermedios mientras comparten recursos con subprocesos de mayor prioridad. Por último, los subprocesos que usan objetos de exclusión mutua de ThreadX para proteger los recursos del sistema pueden usar la *herencia de prioridades* de exclusión mutua opcional para eliminar la inversión de prioridades no determinista.
 
 ### <a name="priority-overhead"></a>Sobrecarga de prioridades
 
-Una de las formas más infravaloradas de reducir la sobrecarga en el multithreading consiste en reducir el número de cambios de contexto. Como se ha mencionado antes, un cambio de contexto se produce cuando se favorece la ejecución de un subproceso de prioridad más alta antes que la del subproceso en ejecución. Merece la pena mencionar que los subprocesos de mayor prioridad pueden estar listos como resultado de eventos externos (como interrupciones) y llamadas de servicio realizadas por el subproceso en ejecución.
+Una de las formas más infravaloradas para disminuir la sobrecarga en multithreading es reducir el número de cambios de contexto. Como se ha mencionado antes, un cambio de contexto se produce cuando se favorece la ejecución de un subproceso de prioridad más alta sobre la del subproceso en ejecución. Merece la pena mencionar que los subprocesos de mayor prioridad pueden pasar a estar listos como resultado de eventos externos (por ejemplo, interrupciones) y de llamadas a servicios realizadas por el subproceso en ejecución.
 
-Para ilustrar los efectos que tienen las prioridades de subproceso en la sobrecarga del cambio de contexto, imagine un entorno de tres subprocesos: *subproceso_1*, *subproceso_2* y *subproceso_3*. Imagine además que todos los subprocesos están en un estado de suspensión en espera de un mensaje. Cuando el subproceso_1 recibe un mensaje, lo reenvía inmediatamente al subproceso_2. Después, el subproceso_2 reenvía el mensaje al subproceso_3. El subproceso_3 simplemente descarta el mensaje. Una vez que cada subproceso procesa su mensaje, retrocede y espera otro mensaje.
+Para ilustrar los efectos que tienen las prioridades de los subprocesos en la sobrecarga de cambios de contexto, imagine un entorno de tres subprocesos: *subproceso_1*, *subproceso_2* y *subproceso_3*. Imagine además que todos los subprocesos están en estado de suspensión en espera de un mensaje. Cuando subproceso_1 recibe un mensaje, lo reenvía inmediatamente a subproceso_2. Después, subproceso_2 reenvía el mensaje a subproceso_3. Subproceso_3 simplemente descarta el mensaje. Una vez que cada subproceso procesa su mensaje, retrocede y espera otro mensaje.
 
 El procesamiento necesario para ejecutar estos tres subprocesos varía considerablemente en función de sus prioridades. Si todos los subprocesos tienen la misma prioridad, solo se produce un cambio de contexto antes de la ejecución de cada uno. El cambio de contexto se produce cuando cada subproceso se suspende en una cola de mensajes vacía.
 
-Pero si el subproceso_2 tiene mayor prioridad que el subproceso_1, y el subproceso_3 tiene mayor prioridad que el subproceso_2, se duplica el número de cambios de contexto. Esto se debe a que se produce otro cambio de contexto dentro del servicio *tx_queue_send* cuando este detecta que un subproceso de prioridad más alta ya está listo.
+Pero si subproceso_2 tiene mayor prioridad que subproceso_1, y subproceso_3 tiene mayor prioridad que subproceso_2, se duplica el número de cambios de contexto. Esto se debe a que se produce otro cambio de contexto dentro del servicio *tx_queue_send* cuando este detecta que un subproceso de prioridad más alta ya está listo.
 
 El mecanismo de umbral de adelantamiento de ThreadX puede evitar estos modificadores de contexto adicionales y seguir permitiendo las selecciones de prioridad mencionadas anteriormente. Se trata de una característica importante porque permite varias prioridades de subproceso durante la programación, al tiempo que elimina algunos de los cambios de contexto no deseados entre ellos durante la ejecución de los subprocesos.
 
@@ -329,39 +329,39 @@ Número total del sistema general:
 
   - suspensiones de subprocesos
 
-  - adelantamientos de llamadas de servicio
+  - adelantamientos de llamadas a servicios
 
-  - adelantamientos de interrupción
+  - adelantamientos de interrupciones
 
-  - inversiones de prioridad
+  - inversiones de prioridades
 
   - segmentos temporales
 
-  - abandonos
+  - renuncias
 
   - tiempos de espera de subprocesos
 
-  - anulaciones de suspensión
+  - anulaciones de suspensiones
 
-  - devoluciones del sistema inactivas
+  - devoluciones de sistema inactivo
 
-  - devoluciones del sistema no inactivas
+  - devoluciones de sistema no inactivo
 
-Número total de cada subproceso:
+Número total en cada subproceso:
 
   - reanudaciones
 
   - suspensiones
 
-  - adelantamientos de llamadas de servicio
+  - adelantamientos de llamadas a servicios
 
-  - adelantamientos de interrupción
+  - adelantamientos de interrupciones
 
-  - inversiones de prioridad
+  - inversiones de prioridades
 
   - segmentos temporales
 
-  - abandonos de subproceso
+  - renuncias de subprocesos
 
   - tiempos de espera de subprocesos
 
@@ -369,7 +369,7 @@ Número total de cada subproceso:
 
 Esta información está disponible en tiempo de ejecución mediante los servicios ***tx_thread_performance_info_get** _ y _*_tx_thread_performance_system_info_get_**. La información de rendimiento de los subprocesos resulta útil para determinar si la aplicación se comporta de manera correcta. También es útil para optimizar la aplicación. Por ejemplo, es posible que un número relativamente alto de adelantos de llamada de servicio sugiera que la prioridad o el umbral de adelantamiento del subproceso son demasiado bajos. Además, un número relativamente bajo de devoluciones del sistema inactivas podría sugerir que los subprocesos de menor prioridad no se suspenden lo suficiente.
 
-### <a name="debugging-pitfalls"></a>Errores de depuración
+### <a name="debugging-pitfalls"></a>Problemas de depuración
 
 La depuración de aplicaciones multiproceso es algo más difícil, ya que el mismo código de programa se puede ejecutar desde varios subprocesos. En esos casos, es posible que no sea suficiente con un punto de interrupción. El depurador también debe ver el puntero del subproceso actual **_tx_thread_current_ptr** con un punto de interrupción condicional para comprobar si el subproceso que realiza la llamada es el que se va a depurar.
 
@@ -390,35 +390,35 @@ Cada cola de mensajes es un recurso público. ThreadX no aplica restricciones al
 
 ### <a name="creating-message-queues"></a>Creación de colas de mensajes
 
-Las colas de mensajes se crean durante la inicialización o en tiempo de ejecución mediante subprocesos de aplicación. No hay ningún límite en cuanto al número de colas de mensajes de una aplicación.
+Las colas de mensajes se crean durante la inicialización o durante el tiempo de ejecución por medio de subprocesos de aplicación. No hay ningún límite en cuanto al número de colas de mensajes de una aplicación.
 
 ### <a name="message-size"></a>Tamaño de los mensajes
 
-Cada cola de mensajes admite una serie de mensajes de tamaño fijo. Los tamaños de mensaje disponibles son de 1 a 16 palabras de 32 bits. El tamaño del mensaje se especifica cuando se crea la cola. Los mensajes de aplicación de más de 16 palabras se deben pasar mediante un puntero. Esto se logra creando una cola con un tamaño de mensaje de 1 palabra (suficiente para contener un puntero) y, después, enviando y recibiendo punteros de mensaje en lugar del mensaje completo.
+Cada cola de mensajes admite una serie de mensajes de tamaño fijo. Los tamaños de mensaje disponibles son de 1 a 16 palabras de 32 bits. El tamaño del mensaje se especifica cuando se crea la cola. Los mensajes de aplicación de más de 16 palabras se deben pasar mediante un puntero. Esto se logra mediante la creación de una cola con un tamaño de mensaje de 1 palabra (suficiente para contener un puntero) y, después, el envío y la recepción de punteros de mensaje en lugar del mensaje completo.
 
-### <a name="message-queue-capacity"></a>Capacidad de una cola de mensajes
+### <a name="message-queue-capacity"></a>Capacidad de la cola de mensajes
 
-El número de mensajes que puede contener una cola es una función del tamaño del mensaje y el tamaño del área de memoria suministrado durante la creación. Para calcular la capacidad total de mensajes de la cola, se divide el número de bytes de cada mensaje entre el número total de bytes del área de memoria proporcionada.
+El número de mensajes que puede contener una cola es una función de su tamaño de mensaje y el tamaño del área de memoria suministrada durante la creación. Para calcular la capacidad total de mensajes de la cola, se divide el número de bytes de cada mensaje entre el número total de bytes del área de memoria proporcionada.
 
-Por ejemplo, si se crea una cola de mensajes que admite un tamaño de mensaje de una palabra de 32 bits (4 bytes) con un área de memoria de 100 bytes, su capacidad es de 25 mensajes.
+Por ejemplo, si se crea una cola de mensajes que admite un tamaño de mensaje de una palabra de 32 bits (4 bytes) con un área de memoria de 100 bytes, su capacidad es de 25 mensajes.
 
 ### <a name="queue-memory-area"></a>Área de memoria de cola
 
 Como se ha mencionado anteriormente, el área de memoria para almacenar en búfer los mensajes se especifica durante la creación de la cola. Como sucede con otras áreas de memoria de ThreadX, se puede ubicar en cualquier parte del espacio de direcciones del destino.
 
-Se trata de una característica importante porque ofrece a la aplicación una gran flexibilidad. Por ejemplo, es posible que una aplicación coloque el área de memoria de una cola importante en memoria RAM de alta velocidad para mejorar el rendimiento.
+Se trata de una característica importante porque ofrece a la aplicación una gran flexibilidad. Por ejemplo, una aplicación puede colocar el área de memoria de una cola importante en la memoria RAM de alta velocidad para mejorar el rendimiento.
 
 ### <a name="thread-suspension"></a>Suspensión de subprocesos
 
-Los subprocesos de aplicación se pueden suspender al intentar enviar o recibir un mensaje de una cola. Normalmente, la suspensión de subprocesos implica esperar un mensaje de una cola vacía. Pero también es posible que un subproceso se suspenda al intentar enviar un mensaje a una cola completa.
+Los subprocesos de aplicación se pueden suspender mientras se intenta enviar o recibir un mensaje de una cola. Normalmente, la suspensión de subprocesos implica esperar un mensaje de una cola vacía. Pero también es posible que un subproceso se suspenda al intentar enviar un mensaje a una cola completa.
 
-Una vez que se resuelve la condición de la suspensión, el servicio solicitado se completa y se reanuda el subproceso en espera. Si se suspenden varios subprocesos en la misma cola, se reanudan en el orden en el que se hayan suspendido (FIFO).
+Una vez que se resuelve la condición de la suspensión, el servicio solicitado se completa y se reanuda el subproceso en espera. Si se suspenden varios subprocesos en la misma cola, se reanudan en el orden en el que se suspendieron (FIFO).
 
-Pero la reanudación de la prioridad también es posible si la aplicación llama a ***tx_queue_prioritize*** antes del servicio de cola que levanta la suspensión del subproceso. El servicio de clasificación por orden de prioridad de las colas coloca el subproceso de prioridad más alta al principio de la lista de suspensiones y deja todos los demás subprocesos suspendidos en el mismo orden FIFO.
+Pero la reanudación por prioridad también es posible si la aplicación llama a ***tx_queue_prioritize*** antes que al servicio de cola que anula la suspensión de subprocesos. El servicio de clasificación por orden de prioridad de la cola coloca el subproceso de mayor prioridad al principio de la lista de suspensión y deja a todos los demás subprocesos suspendidos en el mismo orden FIFO.
 
-También hay tiempos de espera disponibles para todas las suspensiones de cola. Básicamente, un tiempo de espera especifica el número máximo de tics de temporizador que el subproceso permanecerá suspendido. Si se agota el tiempo de espera, el subproceso se reanuda y el servicio devuelve el código de error adecuado.
+También hay tiempos de espera disponibles para todas las suspensiones de cola. Básicamente, un tiempo de espera especifica el número máximo de tics de temporizador que el subproceso permanece suspendido. Si se agota el tiempo de espera, el subproceso se reanuda y el servicio devuelve el código de error adecuado.
 
-### <a name="queue-send-notification"></a>Notificación de envío de cola
+### <a name="queue-send-notification"></a>Notificación de envío a cola
 
 Es posible que algunas aplicaciones se beneficien de recibir una notificación cada vez que un mensaje se coloca en una cola. ThreadX proporciona esta función por medio del servicio ***tx_queue_send_notify***. Este servicio registra la función de notificación de aplicación proporcionada con la cola especificada. Después, ThreadX invocará esta función de notificación de aplicación cada vez que se envíe un mensaje a la cola. El procesamiento exacto dentro de la función de notificación de aplicación viene determinado por la aplicación; pero normalmente consiste en reanudar el subproceso adecuado para procesar el nuevo mensaje.
 
@@ -426,9 +426,9 @@ Es posible que algunas aplicaciones se beneficien de recibir una notificación c
 
 Las funciones de notificación de ThreadX se pueden usar para encadenar varios eventos de sincronización. Esto suele ser útil cuando un único subproceso debe procesar varios eventos de sincronización.
 
-Por ejemplo, imagine que un único subproceso es responsable de procesar los mensajes de cinco colas diferentes y que también se debe suspender cuando no haya mensajes disponibles. Esto se consigue fácilmente registrando una función de notificación de aplicación para cada cola y agregando un semáforo de recuento adicional. En concreto, la función de notificación de aplicación ejecuta *tx_semaphore_put* cada vez que se le llama (el recuento de semáforos representa el número total de mensajes en las cinco colas). El subproceso de procesamiento se suspende en este semáforo por medio del servicio *tx_semaphore_get*. Cuando el semáforo está disponible (en este caso, cuando hay un mensaje disponible), se reanuda el subproceso de procesamiento. Después, solicita un mensaje a cada cola, procesa el mensaje encontrado y vuelve a ejecutar ***tx_semaphore_get*** para esperar al siguiente mensaje. La realización de esta tarea sin el encadenamiento de eventos es bastante difícil y es probable que necesite más subprocesos o código de aplicación adicional.
+Por ejemplo, imagine que un único subproceso es responsable de procesar los mensajes de cinco colas diferentes y que también se debe suspender cuando no haya mensajes disponibles. Esto se consigue fácilmente mediante el registro de una función de notificación de aplicación para cada cola y la adición de un semáforo de recuento adicional. En concreto, la función de notificación de aplicación ejecuta *tx_semaphore_put* cada vez que se la llama (el recuento del semáforo representa el número total de mensajes de las cinco colas). El subproceso de procesamiento se suspende en este semáforo por medio del servicio *tx_semaphore_get*. Cuando el semáforo está disponible (en este caso, cuando hay un mensaje disponible), se reanuda el subproceso de procesamiento. Después, solicita un mensaje a cada cola, procesa el mensaje encontrado y vuelve a ejecutar ***tx_semaphore_get*** para esperar al siguiente mensaje. La realización de esta tarea sin el encadenamiento de eventos es bastante difícil, y es probable que se necesiten más subprocesos o código de aplicación adicional.
 
-En general, el *encadenamiento de eventos* genera menos subprocesos, menos sobrecarga y requisitos de RAM más pequeños. También proporciona un mecanismo muy flexible para controlar los requisitos de sincronización de sistemas más complejos.
+En general, el *encadenamiento de eventos* genera menos subprocesos, menos sobrecarga y menos requisitos de RAM. También proporciona un mecanismo muy flexible para controlar los requisitos de sincronización de sistemas más complejos.
 
 ### <a name="run-time-queue-performance-information"></a>Información de rendimiento de colas en tiempo de ejecución
 ThreadX proporciona información opcional sobre el rendimiento de las colas en tiempo de ejecución. Si la biblioteca y la aplicación de ThreadX se compilan con ***TX_QUEUE_ENABLE_PERFORMANCE_INFO*** definido, ThreadX acumula la información siguiente.
@@ -439,7 +439,7 @@ Número total del sistema general:
 
   - mensajes recibidos
 
-  - suspensiones vacías de cola
+  - suspensiones de cola vacía
 
   - suspensiones llenas de cola
 
@@ -447,13 +447,13 @@ Número total del sistema general:
 
   - tiempos de espera de cola
 
-Número total de cada cola:
+Número total en cada cola:
 
   - mensajes enviados
 
   - mensajes recibidos
 
-  - suspensiones vacías de cola
+  - suspensiones de cola vacía
 
   - suspensiones llenas de cola
 
@@ -467,9 +467,9 @@ Esta información está disponible en tiempo de ejecución por medio de los serv
 
 Las características de cada cola de mensajes se encuentran en su bloque de control. Contiene información interesante, como el número de mensajes de la cola. Esta estructura se define en el archivo ***tx_api.h***.
 
-Los bloques de control de cola de mensajes se pueden ubicar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global definiéndolo fuera del ámbito de cualquier función.
+Los bloques de control de cola de mensajes también se pueden colocar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global mediante su definición fuera del ámbito de cualquier función.
 
-### <a name="message-destination-pitfall"></a>Error de destino del mensaje
+### <a name="message-destination-pitfall"></a>Problema de destino de mensajes
 
 Como se ha mencionado antes, los mensajes se copian entre el área de cola y las áreas de datos de la aplicación. Es importante asegurarse de que el destino de un mensaje recibido sea lo suficientemente grande como para contener todo el mensaje. De lo contrario, es probable que la memoria que sigue al destino del mensaje resulte dañada.
 
@@ -494,11 +494,11 @@ Los semáforos de recuento se usan normalmente para la *exclusión mutua*. Pero 
 
 ### <a name="event-notification"></a>Notificación de evento
 
-También es posible usar semáforos de recuento como notificación de eventos, en un modo de productor y consumidor. El consumidor intenta obtener el semáforo de recuento mientras el productor lo aumenta siempre que haya algo disponible. Estos semáforos suelen tener un valor inicial de 0 y no aumentarán hasta que el productor tenga algo preparado para el consumidor. Los semáforos que se usan para la notificación de eventos también se pueden beneficiar del uso de la llamada de servicio ***tx_semaphore_ceiling_put***. Este servicio garantiza que el recuento de semáforos nunca supere el valor proporcionado en la llamada.
+También es posible usar semáforos de recuento como notificación de eventos, a modo productor-consumidor. El consumidor intenta obtener el semáforo de recuento mientras el productor lo aumenta siempre que hay algo disponible. Estos semáforos suelen tener un valor inicial de 0 y no aumentan hasta que el productor tiene algo preparado para el consumidor. Los semáforos que se usan para la notificación de eventos también se pueden beneficiar del uso de la llamada al servicio ***tx_semaphore_ceiling_put***. Este servicio garantiza que el recuento del semáforo nunca supere el valor proporcionado en la llamada.
 
 ### <a name="creating-counting-semaphores"></a>Creación de semáforos de recuento
 
-Los semáforos de recuento se crean durante la inicialización o en tiempo de ejecución mediante subprocesos de aplicación. El recuento inicial del semáforo se especifica durante la creación. No hay ningún límite en cuanto al número de semáforos de recuento en una aplicación.
+Los semáforos de recuento se crean durante la inicialización o en tiempo de ejecución mediante subprocesos de aplicación. El recuento inicial del semáforo se especifica durante la creación. No hay ningún límite en cuanto al número de semáforos de recuento de una aplicación.
 
 ### <a name="thread-suspension"></a>Suspensión de subprocesos
 
@@ -506,7 +506,7 @@ Los subprocesos de aplicación se pueden suspender mientras se intenta realizar 
 
 Después de realizar una operación Put, se realiza la operación Get del subproceso suspendido y se reanuda. Si se suspenden varios subprocesos en el mismo semáforo de recuento, se reanudan en el orden en el que se hayan suspendido (FIFO).
 
-Pero la reanudación de la prioridad también es posible si la aplicación llama a ***tx_semaphore_prioritize*** antes de la llamada a Put del semáforo que levanta la suspensión del subproceso. El servicio de clasificación por orden de prioridad de los semáforos coloca el subproceso de prioridad más alta al principio de la lista de suspensiones y deja todos los demás subprocesos suspendidos en el mismo orden FIFO.
+Pero la reanudación por prioridad también es posible si la aplicación llama a ***tx_semaphore_prioritize*** antes de la llamada a Put del semáforo que anula la suspensión de subprocesos. El servicio de clasificación por orden de prioridad del semáforo coloca al subproceso de mayor prioridad al principio de la lista de suspensión y deja a todos los demás subprocesos suspendidos en el mismo orden FIFO.
 
 ### <a name="semaphore-put-notification"></a>Notificación Put de semáforo
 
@@ -516,9 +516,9 @@ Es posible que algunas aplicaciones se beneficien de recibir una notificación c
 
 Las funciones de notificación de ThreadX se pueden usar para encadenar varios eventos de sincronización. Esto suele ser útil cuando un único subproceso debe procesar varios eventos de sincronización.
 
-Por ejemplo, en lugar de suspender subprocesos independientes para un mensaje de cola, marcas de eventos y un semáforo, la aplicación puede registrar una rutina de notificación para cada objeto. Cuando se invoca, la rutina de notificación de aplicación puede reanudar un solo subproceso, que puede interrogar cada objeto para buscar y procesar el nuevo evento.
+Por ejemplo, en lugar de suspender subprocesos independientes para un mensaje de cola, marcas de evento y un semáforo, la aplicación puede registrar una rutina de notificación para cada objeto. Cuando se invoca, la rutina de notificación de aplicación puede reanudar un solo subproceso, que puede solicitar a cada objeto que busque y procese el nuevo evento.
 
-En general, el *encadenamiento de eventos* genera menos subprocesos, menos sobrecarga y requisitos de RAM más pequeños. También proporciona un mecanismo muy flexible para controlar los requisitos de sincronización de sistemas más complejos.
+En general, el *encadenamiento de eventos* genera menos subprocesos, menos sobrecarga y menos requisitos de RAM. También proporciona un mecanismo muy flexible para controlar los requisitos de sincronización de sistemas más complejos.
 
 ### <a name="run-time-semaphore-performance-information"></a>Información de rendimiento de semáforos en tiempo de ejecución
 
@@ -532,9 +532,9 @@ Número total del sistema general:
 
   - suspensiones de operaciones Get de semáforo
 
-  - tiempo de espera de operaciones Get de semáforo
+  - tiempos de espera de operaciones Get de semáforo
 
-Número total de cada semáforo:
+Número total en cada semáforo:
 
   - operaciones Put de semáforo
 
@@ -550,13 +550,13 @@ Esta información está disponible en tiempo de ejecución por medio de los serv
 
 Las características de cada semáforo de recuento se encuentran en su bloque de control. Contiene información como el recuento de semáforos actual. Esta estructura se define en el archivo ***tx_api.h***.
 
-Los bloques de control de semáforo se pueden ubicar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global definiéndolo fuera del ámbito de cualquier función.
+Los bloques de control de semáforos se pueden colocar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global mediante su definición fuera del ámbito de cualquier función.
 
 ### <a name="deadly-embrace"></a>Adopción letal
 
-Uno de los riesgos más interesantes y peligrosos asociados a los semáforos que se usan para la exclusión mutua es el de la *adopción letal*. Una adopción letal, o *interbloqueo*, es una condición en la que dos o más subprocesos se suspenden indefinidamente mientras intentan obtener semáforos que ya les pertenecen.
+Uno de los problemas más interesantes y peligrosos asociados a los semáforos que se usan para la exclusión mutua es la *adopción letal*. Una adopción letal, o *interbloqueo*, es una condición en la que dos o más subprocesos se suspenden indefinidamente mientras intentan obtener semáforos que ya son propiedad de cada uno.
 
-Esta condición se ilustra mejor en un ejemplo de dos subprocesos y dos semáforos. Imagine que el primer subproceso posee el primer semáforo y el segundo subproceso posee el segundo semáforo. Si el primer subproceso intenta obtener el segundo semáforo y, al mismo tiempo, el segundo subproceso intenta obtener el primer semáforo, los dos subprocesos entran en una condición de interbloqueo. Además, si estos subprocesos permanecen suspendidos de manera indefinida, sus recursos asociados también se bloquean de forma permanente. En la figura 8 se ilustra este ejemplo.
+Esta condición se ilustra mejor con un ejemplo de dos subprocesos y dos semáforos. Imagine que el primer subproceso posee el primer semáforo y el segundo subproceso posee el segundo semáforo. Si el primer subproceso intenta obtener el segundo semáforo y, al mismo tiempo, el segundo subproceso intenta obtener el primer semáforo, los dos subprocesos entran en una condición de interbloqueo. Además, si estos subprocesos permanecen suspendidos de manera indefinida, sus recursos asociados también se bloquean de forma permanente. En la figura 8 se ilustra este ejemplo.
 
 **Adopción letal** (ejemplo)
 
@@ -573,15 +573,15 @@ En el caso de los sistemas en tiempo real, los interbloqueos se pueden evitar si
 
 Otra dificultad asociada a los semáforos de exclusión mutua es la inversión de prioridades. Este tema se describe con más detalle en "[Problemas de prioridad de subprocesos](#thread-priority-pitfalls)".
 
-El problema básico se debe a una situación en la que un subproceso de prioridad baja tiene un semáforo que necesita un subproceso de prioridad superior. En sí mismo, esto es normal. Pero los subprocesos con prioridades entre ellos pueden provocar que la inversión de prioridades dure una cantidad de tiempo no determinista. Esto se puede controlar mediante la selección cuidadosa de las prioridades de los subprocesos, con el umbral de adelantamiento y la elevación temporal de la prioridad del subproceso que posee el recurso a la del subproceso de prioridad alta.
+El problema básico se debe a una situación en la que un subproceso de prioridad baja tiene un semáforo que necesita un subproceso de prioridad superior. En sí mismo, esto es normal. Pero los subprocesos con prioridades intermedias pueden provocar que la inversión de prioridades dure una cantidad de tiempo no determinista. Esto se puede controlar mediante la selección cuidadosa de las prioridades de los subprocesos, con el umbral de adelantamiento y la elevación temporal de la prioridad del subproceso que posee el recurso a la del subproceso de mayor prioridad.
 
 ## <a name="mutexes"></a>Mutexes
 
-Además de los semáforos, ThreadX también proporciona un objeto de exclusión mutua. Una exclusión mutua es básicamente un semáforo binario, lo que significa que solo un subproceso puede poseer una exclusión mutua a la vez. Además, el mismo subproceso puede realizar varias veces una operación Get de exclusión mutua correcta en una exclusión mutua de propiedad, 4 294 967 295 para ser exactos. En el objeto de exclusión mutua hay dos operaciones: ***tx_mutex_get** _ y _*_tx_mutex_put_**. La operación Get obtiene una exclusión mutua que no pertenece a otro subproceso, mientras que la operación Put libera una exclusión mutua obtenida previamente. Para que un subproceso libere una exclusión mutua, el número de operaciones Put debe ser igual al número de operaciones Get anteriores.
+Además de los semáforos, ThreadX también proporciona un objeto de exclusión mutua. Una exclusión mutua es básicamente un semáforo binario, lo que significa que solo un subproceso puede poseer una exclusión mutua a la vez. Además, el mismo subproceso puede realizar varias veces una operación Get de exclusión mutua correcta en una exclusión mutua en propiedad, 4 294 967 295 para ser exactos. En el objeto de exclusión mutua hay dos operaciones: ***tx_mutex_get** _ y _*_tx_mutex_put_**. La operación Get obtiene una exclusión mutua que no pertenece a otro subproceso, mientras que la operación Put libera una exclusión mutua obtenida previamente. Para que un subproceso libere una exclusión mutua, el número de operaciones Put debe ser igual al número de operaciones Get anteriores.
 
 Cada exclusión mutua es un recurso público. ThreadX no aplica restricciones al modo de usar las exclusiones mutuas.
 
-Las exclusiones mutuas de ThreadX se usan únicamente para la *exclusión mutua*. A diferencia de los semáforos de recuento, las exclusiones mutuas no se usan como un método para la notificación de eventos.
+Las exclusiones mutuas de ThreadX se usan únicamente para la *exclusión mutua*. A diferencia de los semáforos de recuento, las exclusiones mutuas no se usan como método para la notificación de eventos.
 
 ### <a name="mutex-mutual-exclusion"></a>Exclusión mutua de exclusiones mutuas
 
@@ -597,7 +597,7 @@ Los subprocesos de aplicación se pueden suspender mientras se intenta realizar 
 
 Una vez que el subproceso propietario realiza el mismo número de operaciones Put, se realiza la operación Get del subproceso suspendido, se le asigna la propiedad de la exclusión mutua y se reanuda el subproceso. Si se suspenden varios subprocesos en la exclusión mutua, se reanudan en el mismo orden en el que se hayan suspendido (FIFO).
 
-Pero la reanudación de la prioridad se realiza de forma automática si durante la creación se ha seleccionado la herencia de prioridades de exclusión mutua. La reanudación de la prioridad también es posible si la aplicación llama a ***tx_mutex_prioritize*** antes de la llamada a Put de la exclusión mutua que levanta la suspensión del subproceso. El servicio de clasificación por orden de prioridad de las exclusiones mutuas coloca el subproceso de prioridad más alta al principio de la lista de suspensiones y deja todos los demás subprocesos suspendidos en el mismo orden FIFO.
+Pero la reanudación por prioridad se realiza de forma automática si durante la creación se ha seleccionado la herencia de prioridad de exclusión mutua. La reanudación por prioridad también es posible si la aplicación llama a ***tx_mutex_prioritize*** antes de la llamada a Put de la exclusión mutua que anula la suspensión de subprocesos. El servicio de clasificación por orden de prioridad de las exclusiones mutuas coloca al subproceso de mayor prioridad al principio de la lista de suspensión y deja a todos los demás subprocesos suspendidos en el mismo orden FIFO.
 
 ### <a name="run-time-mutex-performance-information"></a>Información de rendimiento de exclusiones mutuas en tiempo de ejecución
 
@@ -613,11 +613,11 @@ Número total del sistema general:
 
 - tiempos de espera de operaciones Get de exclusión mutua
 
-- inversiones de prioridad de exclusión mutua
+- inversiones de prioridades de exclusión mutua
 
-- herencia de prioridades de exclusión mutua
+- herencia de prioridad de exclusión mutua
 
-Número total de cada exclusión mutua:
+Número total en cada exclusión mutua:
 
   - operaciones Put de exclusión mutua
 
@@ -627,7 +627,7 @@ Número total de cada exclusión mutua:
 
   - tiempos de espera de operaciones Get de exclusión mutua
 
-  - inversiones de prioridad de exclusión mutua
+  - inversiones de prioridades de exclusión mutua
 
   - herencia de prioridades de exclusión mutua
 
@@ -635,17 +635,17 @@ Esta información está disponible en tiempo de ejecución por medio de los serv
 
 ### <a name="mutex-control-block-tx_mutex"></a>TX_MUTEX: bloque de control de exclusión mutua
 
-Las características de cada exclusión mutua se encuentran en su bloque de control. Contiene información como el recuento de propiedad de la exclusión mutua actual junto con el puntero del subproceso propietario de la exclusión mutua. Esta estructura se define en el archivo ***tx_api.h***. Los bloques de control de exclusión mutua se pueden ubicar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global definiéndolo fuera del ámbito de cualquier función.
+Las características de cada exclusión mutua se encuentran en su bloque de control. Contiene información como el recuento de propiedad de la exclusión mutua actual junto con el puntero del subproceso propietario de la exclusión mutua. Esta estructura se define en el archivo ***tx_api.h***. Los bloques de control de exclusiones mutuas se pueden colocar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global mediante su definición fuera del ámbito de cualquier función.
 
 ### <a name="deadly-embrace"></a>Adopción letal
 
-Uno de los riesgos más interesantes y peligrosos asociados a la propiedad de la exclusión mutua es el de la *adopción letal*. Una adopción letal, o *interbloqueo*, es una condición en la que dos o más subprocesos se suspenden indefinidamente mientras intentan obtener una exclusión mutua que ya pertenece a los otros subprocesos. La descripción de los *interbloqueos* y sus correcciones también es totalmente válida para el objeto de exclusión mutua.
+Uno de los problemas más interesantes y peligrosos asociados a la propiedad de la exclusión mutua es la *adopción letal*. Una adopción letal, o *interbloqueo*, es una condición en la que dos o más subprocesos se suspenden indefinidamente mientras intentan obtener una exclusión mutua que ya pertenece a los otros subprocesos. La descripción de los *interbloqueos* y sus correcciones también es totalmente válida para el objeto de exclusión mutua.
 
 ### <a name="priority-inversion"></a>Inversión de prioridades
 
 Como se ha mencionado antes, un problema importante asociado a la exclusión mutua es el de la inversión de prioridades. Este tema se describe con más detalle en "[Problemas de prioridad de subprocesos](#thread-priority-pitfalls)".
 
-El problema básico se debe a una situación en la que un subproceso de prioridad baja tiene un semáforo que necesita un subproceso de prioridad superior. En sí mismo, esto es normal. Pero los subprocesos con prioridades entre ellos pueden provocar que la inversión de prioridades dure una cantidad de tiempo no determinista. A diferencia de los semáforos descritos anteriormente, el objeto de exclusión mutua de ThreadX tiene una *herencia de prioridades* opcional. La idea básica detrás de la herencia de prioridades es que, en un subproceso de prioridad inferior, su prioridad se aumenta temporalmente hasta que coincide con la de un subproceso de prioridad alta que quiere la misma exclusión mutua propiedad del subproceso de prioridad inferior. Cuando el subproceso de prioridad inferior libera la exclusión mutua, se restaura su prioridad original y la propiedad de la exclusión mutua se asigna al subproceso de prioridad más alta. Esta característica elimina la inversión de prioridades no determinista limitando la cantidad de inversión en el momento en que el subproceso de prioridad inferior mantiene la exclusión mutua. Por supuesto, las técnicas descritas anteriormente en este capítulo para controlar la inversión de prioridades no determinista también son válidas con las exclusiones mutuas.
+El problema básico se debe a una situación en la que un subproceso de prioridad baja tiene un semáforo que necesita un subproceso de prioridad superior. En sí mismo, esto es normal. Pero los subprocesos con prioridades entre ellos pueden provocar que la inversión de prioridades dure una cantidad de tiempo no determinista. A diferencia de los semáforos descritos anteriormente, el objeto de exclusión mutua de ThreadX tiene una *herencia de prioridades* opcional. La idea básica detrás de la herencia de prioridades es que, en un subproceso de prioridad inferior, su prioridad se aumenta temporalmente hasta que coincide con la de un subproceso de prioridad alta que quiere la misma exclusión mutua propiedad del subproceso de prioridad inferior. Cuando el subproceso de prioridad baja libera la exclusión mutua, se restaura su prioridad original y la propiedad de la exclusión mutua se asigna al subproceso de mayor prioridad. Esta característica elimina la inversión de prioridades no determinista mediante el enlace de la cantidad de inversión al tiempo en que el subproceso de prioridad baja conserva la exclusión mutua. Por supuesto, las técnicas descritas anteriormente en este capítulo para controlar la inversión de prioridades no determinista también son válidas con las exclusiones mutuas.
 
 ## <a name="event-flags"></a>Marcas de eventos
 
@@ -653,9 +653,9 @@ Las marcas de eventos proporcionan una herramienta eficaz para la sincronizació
 
 Para establecer las marcas de eventos se realiza una operación AND/OR lógica entre las marcas de evento actuales y las nuevas. El tipo de operación lógica (OR o AND) se especifica en la llamada a ***tx_event_flags_set***.
 
-Existen opciones lógicas similares para la recuperación de marcas de eventos. Una solicitud GET puede especificar que todas las marcas de evento especificadas sean obligatorias (una operación AND lógica).
+Existen opciones lógicas similares para la recuperación de marcas de eventos. Una solicitud Get puede especificar que todas las marcas de eventos especificadas sean obligatorias (una operación AND lógica).
 
-Como alternativa, una solicitud GET puede especificar que cualquiera de las marcas de evento especificadas satisfará la solicitud (una operación OR lógica). El tipo de operación lógica asociada a la recuperación de marcas de eventos se especifica en la llamada a ***tx_event_flags_get***.
+Como alternativa, una solicitud Get puede especificar que cualquiera de las marcas de eventos especificadas satisfaga la solicitud (una operación OR lógica). El tipo de operación lógica asociada a la recuperación de marcas de eventos se especifica en la llamada a ***tx_event_flags_get***.
 
 > [!IMPORTANT]
 > *Las marcas de evento que satisfacen una solicitud GET se consumen, es decir, se establecen en cero si* *la solicitud especifica **TX_OR_CLEAR** *o* **TX_AND_CLEAR*** .
@@ -668,7 +668,7 @@ Los grupos de marcas de eventos se crean durante la inicialización o en tiempo 
 
 ### <a name="thread-suspension"></a>Suspensión de subprocesos
 
-Los subprocesos de aplicación se pueden suspender mientras se intenta obtener una combinación lógica de marcas de eventos de un grupo. Después de establecer una marca de evento, se revisan las solicitudes GET de todos los subprocesos suspendidos. Se reanudan todos los subprocesos que ahora tienen las marcas de evento necesarias.
+Los subprocesos de aplicación se pueden suspender mientras se intenta obtener una combinación lógica de marcas de eventos de un grupo. Después de establecer una marca de evento, se revisan las solicitudes Get de todos los subprocesos suspendidos. Se reanudan todos los subprocesos que ahora tienen las marcas de evento necesarias.
 
 > [!NOTE]
 > *Todos los subprocesos suspendidos de un grupo de marcas de evento se revisan cuando se establecen sus marcas de evento. Esto, por supuesto, presenta una sobrecarga adicional. Por tanto, se recomienda limitar el número de subprocesos que usan el mismo grupo de marcas de evento a un número razonable.*
@@ -681,9 +681,9 @@ Es posible que algunas aplicaciones se beneficien de recibir una notificación c
 
 Las funciones de notificación de ThreadX se pueden usar para "encadenar" varios eventos de sincronización. Esto suele ser útil cuando un único subproceso debe procesar varios eventos de sincronización.
 
-Por ejemplo, en lugar de suspender subprocesos independientes para un mensaje de cola, marcas de eventos y un semáforo, la aplicación puede registrar una rutina de notificación para cada objeto. Cuando se invoca, la rutina de notificación de aplicación puede reanudar un solo subproceso, que puede interrogar cada objeto para buscar y procesar el nuevo evento.
+Por ejemplo, en lugar de suspender subprocesos independientes para un mensaje de cola, marcas de evento y un semáforo, la aplicación puede registrar una rutina de notificación para cada objeto. Cuando se invoca, la rutina de notificación de aplicación puede reanudar un solo subproceso, que puede solicitar a cada objeto que busque y procese el nuevo evento.
 
-En general, el *encadenamiento de eventos* genera menos subprocesos, menos sobrecarga y requisitos de RAM más pequeños. También proporciona un mecanismo muy flexible para controlar los requisitos de sincronización de sistemas más complejos.
+En general, el *encadenamiento de eventos* genera menos subprocesos, menos sobrecarga y menos requisitos de RAM. También proporciona un mecanismo muy flexible para controlar los requisitos de sincronización de sistemas más complejos.
 
 ### <a name="run-time-event-flags-performance-information"></a>Información de rendimiento de marcas de eventos en tiempo de ejecución
 
@@ -691,21 +691,21 @@ ThreadX proporciona información opcional sobre el rendimiento de las marcas de 
 
 Número total del sistema general:
 
-  - operaciones SET de marcas de evento
+  - operaciones Set de marcas de eventos
 
-  - operaciones GET de marcas de evento
+  - operaciones Get de marcas de eventos
 
-  - suspensiones GET de marcas de evento
+  - suspensiones de operaciones Get de marcas de eventos
 
-  - tiempo de espera GET de marcas de evento
+  - tiempos de espera de operaciones Get de marcas de eventos
 
-Número total para cada grupo de marcas de evento:
+Número total en cada grupo de marcas de eventos:
 
-  - operaciones SET de marcas de evento
+  - operaciones Set de marcas de eventos
 
-  - operaciones GET de marcas de evento
+  - operaciones Get de marcas de eventos
 
-  - suspensiones GET de marcas de evento
+  - suspensiones de operaciones Get de marcas de eventos
 
   - tiempo de espera GET de marcas de evento
 
@@ -713,17 +713,17 @@ Esta información está disponible en tiempo de ejecución por medio de los serv
 
 ### <a name="event-flags-group-control-block-tx_event_flags_group"></a>TX_EVENT_FLAGS_GROUP: bloque de control de grupos de marcas de evento
 
-Las características de cada grupo de marcas de eventos se encuentran en el bloque de control. Contiene información como la configuración de las marcas de eventos actuales y el número de subprocesos suspendidos para los eventos. Esta estructura se define en el archivo ***tx_api.h***.
+Las características de cada grupo de marcas de eventos se encuentran en su bloque de control. Contiene información como la configuración actual de las marcas de eventos y el número de subprocesos suspendidos para eventos. Esta estructura se define en el archivo ***tx_api.h***.
 
-Los bloques de control de grupo de eventos se pueden ubicar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global definiéndolo fuera del ámbito de cualquier función.
+Los bloques de control de grupos de eventos se pueden colocar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global mediante su definición fuera del ámbito de cualquier función.
 
-### <a name="memory-block-pools"></a>Grupos de bloque de memoria
+### <a name="memory-block-pools"></a>Grupos de bloques de memoria
 
 En las aplicaciones en tiempo real, la asignación de memoria de una manera rápida y determinista siempre es un desafío. Con esto en mente, ThreadX proporciona la capacidad de crear y administrar varios grupos de bloques de memoria de tamaño fijo.
 
-Como los grupos de bloques de memoria se componen de bloques de tamaño fijo, nunca hay problemas de fragmentación. Por supuesto, la fragmentación provoca un comportamiento que es inherentemente no determinista. Además, el tiempo necesario para asignar y liberar un bloque de memoria de tamaño fijo es comparable al de la manipulación de listas vinculadas simples. Además, la asignación y desasignación de bloques de memoria se realiza al inicio de la lista disponible. Esto proporciona el procesamiento de la lista vinculada más rápido posible y puede ayudar a mantener el bloque de memoria real en la caché.
+Como los grupos de bloques de memoria se componen de bloques de tamaño fijo, nunca hay problemas de fragmentación. Por supuesto, la fragmentación provoca un comportamiento que es inherentemente no determinista. Además, el tiempo necesario para asignar y liberar un bloque de memoria de tamaño fijo es comparable al de la manipulación de la lista de vínculo simple. Además, la asignación y desasignación de bloques de memoria se realiza al inicio de la lista disponible. Esto proporciona el procesamiento de la lista de vínculo más rápido posible y puede ayudar a mantener el bloque de memoria real en caché.
 
-La falta de flexibilidad es el principal inconveniente de los grupos de memoria de tamaño fijo. El tamaño de bloque de un grupo debe ser lo suficientemente grande como para administrar los peores requisitos de memoria de sus usuarios. Por supuesto, es posible que se desperdicie memoria si se realizan muchas solicitudes de memoria de tamaño diferente en el mismo grupo. Una posible solución consiste en crear varios grupos de bloques de memoria diferentes que contengan bloques de memoria de diferente tamaño.
+La falta de flexibilidad es el principal inconveniente de los grupos de memoria de tamaño fijo. El tamaño de bloque de un grupo debe ser lo suficientemente grande como para controlar los requisitos de memoria de peor caso de sus usuarios. Por supuesto, es posible que se desperdicie memoria si se realizan muchas solicitudes de memoria de tamaño diferente al mismo grupo. Una posible solución es crear varios grupos de bloques de memoria diferentes que contengan bloques de memoria de diferente tamaño.
 
 Cada grupo de bloques de memoria es un recurso público. ThreadX no aplica restricciones al modo de usar los grupos.
 
@@ -731,7 +731,7 @@ Cada grupo de bloques de memoria es un recurso público. ThreadX no aplica restr
 
 Los grupos de bloques de memoria se crean durante la inicialización o en tiempo de ejecución mediante subprocesos de aplicación. No hay ningún límite en cuanto al número de grupos de bloques de memoria de una aplicación.
 
-### <a name="memory-block-size"></a>Tamaño del bloque de memoria
+### <a name="memory-block-size"></a>Tamaño de bloques de memoria
 
 Como se ha mencionado antes, los grupos de bloques de memoria contienen una serie de bloques de tamaño fijo. El tamaño del bloque, en bytes, se especifica durante la creación del grupo.
 
@@ -740,7 +740,7 @@ Como se ha mencionado antes, los grupos de bloques de memoria contienen una seri
 
 ### <a name="pool-capacity"></a>Capacidad del grupo
 
-El número de bloques de memoria de un grupo es una función del tamaño de bloque y el número total de bytes en el área de memoria proporcionado durante la creación. Para calcular la capacidad de un grupo, se divide el tamaño de bloque (incluido el relleno y los bytes de sobrecarga del puntero) entre el número total de bytes en el área de memoria proporcionada.
+El número de bloques de memoria de un grupo es una función del tamaño de bloque y el número total de bytes del área de memoria proporcionada durante la creación. Para calcular la capacidad de un grupo, se divide el tamaño de bloque (incluido el relleno y los bytes de sobrecarga del puntero) entre el número total de bytes en el área de memoria proporcionada.
 
 ### <a name="pools-memory-area"></a>Área de memoria del grupo
 
@@ -752,9 +752,9 @@ Esta es una característica importante debido a la gran flexibilidad que proporc
 
 Los subprocesos de aplicación se pueden suspender mientras se espera un bloque de memoria de un grupo vacío. Cuando se devuelve un bloque al grupo, el subproceso suspendido lo recibe y se reanuda.
 
-Si se suspenden varios subprocesos en el mismo grupo de bloques de memoria, se reanudan en el orden en el que se hayan suspendido (FIFO).
+Si se suspenden varios subprocesos en el mismo grupo de bloques de memoria, se reanudan en el orden en el que se suspendieron (FIFO).
 
-Pero la reanudación de la prioridad también es posible si la aplicación llama a ***tx_block_pool_prioritize*** antes de la llamada de liberación del bloque que levanta la suspensión del subproceso. El servicio de clasificación por orden de prioridad de los grupos de bloques coloca el subproceso de prioridad más alta al principio de la lista de suspensiones y deja todos los demás subprocesos suspendidos en el mismo orden FIFO.
+Pero la reanudación por prioridad también es posible si la aplicación llama a ***tx_block_pool_prioritize*** antes de la llamada de liberación del bloque que anula la suspensión de subprocesos. El servicio de clasificación por orden de prioridad de los grupos de bloques coloca el subproceso de mayor prioridad al principio de la lista de suspensión y deja a todos los demás subprocesos suspendidos en el mismo orden FIFO.
 
 ### <a name="run-time-block-pool-performance-information"></a>Información de rendimiento de un grupo de bloques en tiempo de ejecución
 
@@ -770,7 +770,7 @@ Número total del sistema general:
 
   - tiempos de espera de asignación
 
-Número total de cada grupo de bloques:
+Número total en cada grupo de bloques:
 
   - bloques asignados
 
@@ -784,9 +784,9 @@ Esta información está disponible en tiempo de ejecución por medio de los serv
 
 ### <a name="memory-block-pool-control-block-tx_block_pool"></a>TX_BLOCK_POOL: bloque de control de grupos de bloques de memoria
 
-Las características de cada grupo de bloques de memoria se encuentran en su bloque de control. Contiene información como el número de bloques de memoria disponibles y el tamaño del bloque de memoria. Esta estructura se define en el archivo ***tx_api.h***.
+Las características de cada grupo de bloques de memoria se encuentran en su bloque de control. Contiene información como el número de bloques de memoria disponibles y el tamaño de bloque de memoria. Esta estructura se define en el archivo ***tx_api.h***.
 
-Los bloques de control de grupos se pueden ubicar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global definiéndolo fuera del ámbito de cualquier función.
+Los bloques de control de grupos también se pueden colocar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global mediante su definición fuera del ámbito de cualquier función.
 
 ### <a name="overwriting-memory-blocks"></a>Sobrescritura de bloques de memoria
 
@@ -808,21 +808,21 @@ Los grupos de bytes de memoria se crean durante la inicialización o en tiempo d
 
 ### <a name="pool-capacity"></a>Capacidad del grupo
 
-El número de bytes asignados en un grupo de bytes de memoria es ligeramente menor que el que se ha especificado durante la creación. Esto se debe a que la administración del área de memoria libre genera cierta sobrecarga. Cada bloque de memoria libre del grupo necesita el equivalente de dos punteros de C de sobrecarga. Además, el grupo se crea con dos bloques, un bloque libre grande y uno pequeño asignado de forma permanente al final del área de memoria. Este bloque asignado se usa para mejorar el rendimiento del algoritmo de asignación. Elimina la necesidad de comprobar continuamente el final del área del grupo durante la combinación.
+El número de bytes que se pueden asignar en un grupo de bytes de memoria es ligeramente inferior al especificado durante la creación. Esto se debe a que la administración del área de memoria libre genera cierta sobrecarga. Cada bloque de memoria libre del grupo necesita el equivalente a dos punteros de C de sobrecarga. Además, el grupo se crea con dos bloques, un bloque libre grande y uno pequeño asignado de forma permanente al final del área de memoria. Este bloque asignado se usa para mejorar el rendimiento del algoritmo de asignación. Elimina la necesidad de comprobar continuamente el final del área del grupo durante la combinación.
 
-En tiempo de ejecución, la cantidad de sobrecarga en el grupo suele aumentar. Las asignaciones de un número impar de bytes se rellenan para garantizar la alineación adecuada del bloque de memoria siguiente. Además, la sobrecarga aumenta a medida que el grupo se vuelve más fragmentado.
+Durante el tiempo de ejecución, la cantidad de sobrecarga del grupo suele aumentar. Las asignaciones de un número impar de bytes se rellenan para garantizar la alineación adecuada del bloque de memoria siguiente. Además, la sobrecarga aumenta a medida que el grupo se vuelve más fragmentado.
 
 ### <a name="pools-memory-area"></a>Área de memoria del grupo
 
-El área de memoria de un grupo de bytes de memoria se especifica durante la creación. Como sucede con otras áreas de memoria de ThreadX, se puede ubicar en cualquier parte del espacio de direcciones del destino. Esta es una característica importante debido a la gran flexibilidad que proporciona. Por ejemplo, si el hardware de destino tiene un área de memoria de alta velocidad y otra de baja velocidad, el usuario puede administrar la asignación de memoria para las dos áreas creando un grupo en cada una de ellas.
+El área de memoria de un grupo de bytes de memoria se especifica durante la creación. Como sucede con otras áreas de memoria de ThreadX, se puede ubicar en cualquier parte del espacio de direcciones del destino. Esta es una característica importante debido a la gran flexibilidad que proporciona. Por ejemplo, si el hardware de destino tiene un área de memoria de alta velocidad y otra de baja velocidad, el usuario puede administrar la asignación de memoria de las dos áreas si crea un grupo en cada una de ellas.
 
 ### <a name="thread-suspension"></a>Suspensión de subprocesos
 
 Los subprocesos de aplicación se pueden suspender mientras se esperan bytes de memoria de un grupo. Cuando hay suficiente memoria contigua disponible, los subprocesos suspendidos reciben la memoria solicitada y se reanudan.
 
-Si se suspenden varios subprocesos en el mismo grupo de bytes de memoria, se les asigna memoria (se reanudan) en el orden en el que se hayan suspendido (FIFO).
+Si se suspenden varios subprocesos en el mismo grupo de bytes de memoria, se les asigna memoria (se reanudan) en el orden en el que se suspendieron (FIFO).
 
-Pero la reanudación de la prioridad también es posible si la aplicación llama a ***tx_byte_pool_prioritize*** antes de la llamada de liberación de bytes que levanta la suspensión del subproceso. El servicio de clasificación por orden de prioridad de los grupos de bytes coloca el subproceso de prioridad más alta al principio de la lista de suspensiones y deja todos los demás subprocesos suspendidos en el mismo orden FIFO.
+Pero la reanudación por prioridad también es posible si la aplicación llama a ***tx_byte_pool_prioritize*** antes de la llamada de liberación de bytes que anula la suspensión de subprocesos. El servicio de clasificación por orden de prioridad de los grupos de bytes coloca el subproceso de mayor prioridad al principio de la lista de suspensión y deja a todos los demás subprocesos suspendidos en el mismo orden FIFO.
 
 ### <a name="run-time-byte-pool-performance-information"></a>Información de rendimiento de un grupo de bytes en tiempo de ejecución
 
@@ -844,7 +844,7 @@ Número total del sistema general:
 
   - tiempos de espera de asignación
 
-Número total de cada grupo de bytes:
+Número total en cada grupo de bytes:
 
   - asignaciones
 
@@ -866,11 +866,11 @@ Esta información está disponible en tiempo de ejecución por medio de los serv
 
 Las características de cada grupo de bytes de memoria se encuentran en su bloque de control. Contiene información útil, como el número de bytes disponibles en el grupo. Esta estructura se define en el archivo ***tx_api.h***.
 
-Los bloques de control de grupos se pueden ubicar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global definiéndolo fuera del ámbito de cualquier función.
+Los bloques de control de grupos también se pueden colocar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global mediante su definición fuera del ámbito de cualquier función.
 
 ### <a name="nondeterministic-behavior"></a>Comportamiento no determinista
 
-Aunque los grupos de bytes de memoria proporcionan la asignación de memoria más flexible, también sufren un comportamiento no determinista. Por ejemplo, un grupo de bytes de memoria puede tener 2000 bytes de memoria disponibles, pero es posible que no pueda satisfacer una solicitud de asignación de 1000 bytes. Esto se debe a que no hay ninguna garantía de cuántos de los bytes libres son contiguos. Incluso si existe un bloque libre de 1000 bytes, no hay ninguna garantía sobre el tiempo que se puede tardar en encontrar el bloque. Es totalmente posible que sea necesario buscar en todo el grupo de memoria para encontrar el bloque de 1000 bytes.
+Aunque los grupos de bytes de memoria proporcionan la asignación de memoria más flexible, también sufren un comportamiento no determinista. Por ejemplo, un grupo de bytes de memoria puede tener 2000 bytes de memoria disponibles, pero es posible que no pueda satisfacer una solicitud de asignación de 1000 bytes. Esto se debe a que no hay ninguna garantía sobre cuántos de los bytes libres son contiguos. Incluso si existe un bloque libre de 1000 bytes, no hay ninguna garantía sobre el tiempo que se puede tardar en encontrar el bloque. Es totalmente posible que sea necesario buscar en todo el grupo de memoria para encontrar el bloque de 1000 bytes.
 
 > [!TIP]
 > *Como resultado del comportamiento no determinista de los grupos de bytes de memoria, por lo general se recomienda evitar el uso de servicios de bytes de memoria en áreas donde se necesita un comportamiento determinista y en tiempo real. Muchas aplicaciones realizan una asignación previa de su memoria necesaria durante la configuración de inicialización o en tiempo de ejecución.*
@@ -889,22 +889,22 @@ Cada temporizador de aplicación es un recurso público. ThreadX no aplica restr
 
 ### <a name="timer-intervals"></a>Intervalos de temporizador
 
-En ThreadX, los intervalos de tiempo se miden por interrupciones periódicas del temporizador. Cada interrupción del temporizador se denomina *tic* del temporizador. La aplicación especifica el tiempo real entre tics del temporizador, pero 10 ms es la norma en la mayoría de las implementaciones. La configuración del temporizador periódico normalmente se encuentra en el archivo de ensamblado ***tx_initialize_low_level***.
+En ThreadX, los intervalos de tiempo se miden por interrupciones periódicas del temporizador. Cada interrupción del temporizador se denomina *tic* del temporizador. La aplicación especifica el tiempo real entre tics de temporizador, pero 10 ms es la norma en la mayoría de las implementaciones. La configuración del temporizador periódico normalmente se encuentra en el archivo de ensamblado ***tx_initialize_low_level***.
 
-Merece la pena mencionar que el hardware subyacente debe tener la capacidad de generar interrupciones periódicas para que los temporizadores de la aplicación funcionen. En algunos casos, el procesador tiene una capacidad de interrupción periódica integrada. Si el procesador no tiene esta capacidad, el panel del usuario debe tener un dispositivo periférico que pueda generar interrupciones periódicas.
+Merece la pena mencionar que el hardware subyacente debe tener la capacidad de generar interrupciones periódicas para que los temporizadores de aplicación funcionen. En algunos casos, el procesador tiene una capacidad de interrupción periódica integrada. Si el procesador no tiene esta capacidad, el panel del usuario debe tener un dispositivo periférico que pueda generar interrupciones periódicas.
 
 > [!IMPORTANT]
 > *ThreadX todavía puede funcionar incluso sin un origen de interrupción periódico, pero se deshabilita todo el procesamiento relacionado con el temporizador. Esto incluye la segmentación temporal, los tiempos de espera de suspensión y los servicios de temporizador.*
 
 ### <a name="timer-accuracy"></a>Precisión del temporizador
 
-Las expiraciones del temporizador se especifican en términos de tics. El valor de expiración especificado se reduce en uno en cada tic del temporizador. Como un temporizador de aplicación se puede habilitar justo antes de una interrupción del temporizador (o tic), el tiempo de expiración real puede ser hasta un tic anterior.
+Las expiraciones del temporizador se especifican en tics. El valor de expiración especificado se reduce en uno en cada tic del temporizador. Como un temporizador de aplicación se puede habilitar justo antes de una interrupción del temporizador (o tic), el tiempo de expiración real puede ser hasta un tic anterior.
 
-Si la tasa de tics del temporizador es de 10 ms, los temporizadores de la aplicación pueden expirar hasta 10 ms antes. Esto es más importante para temporizadores de 10 ms que para los de 1 segundo. Evidentemente, el aumento de la frecuencia de interrupción del temporizador reduce este margen de error.
+Si la tasa de tics del temporizador es de 10 ms, los temporizadores de aplicación pueden expirar hasta 10 ms antes. Esto es más importante para temporizadores de 10 ms que para los de 1 segundo. Evidentemente, el aumento de la frecuencia de interrupción del temporizador reduce este margen de error.
 
 ### <a name="timer-execution"></a>Ejecución del temporizador
 
-Los temporizadores de aplicación se ejecutan en el orden en que se activan. Por ejemplo, si se crean tres temporizadores con el mismo valor de expiración y se activan, se garantiza que sus funciones de expiración correspondientes se ejecuten en el orden en el que se hayan activado.
+Los temporizadores de aplicación se ejecutan en el orden en que se activan. Por ejemplo, si se crean tres temporizadores con el mismo valor de expiración y se activan, se garantiza que sus funciones de expiración correspondientes se ejecuten en el orden en el que se han activado.
 
 ### <a name="creating-application-timers"></a>Creación de temporizadores de aplicación
 
@@ -926,7 +926,7 @@ Número total del sistema general:
 
 - ajustes de expiración
 
-Número total de cada temporizador de aplicación:
+Número total en cada temporizador de aplicación:
 
 - activaciones
 
@@ -940,15 +940,15 @@ Número total de cada temporizador de aplicación:
 
 Esta información está disponible en tiempo de ejecución por medio de los servicios ***tx_timer_performance_info_get** _ y _*_tx_timer_performance_system_info_get_**. La información de rendimiento de los temporizadores de aplicación resulta útil para determinar si la aplicación se comporta de manera correcta. También es útil para optimizar la aplicación.
 
-### <a name="application-timer-control-block-tx_timer"></a>TX_TIMER: bloque de control de temporizador de aplicación
+### <a name="application-timer-control-block-tx_timer"></a>Bloque de control de temporizador de aplicación TX_TIMER
 
-Las características de cada temporizador de aplicación se encuentran en su bloque de control. Contiene información útil, como el valor de identificación de expiración de 32 bits. Esta estructura se define en el archivo ***tx_api.h***.
+Las características de cada temporizador de aplicación se encuentran en su bloque de control. Contiene información útil, como el valor de identificación de expiración de 32 bits. Esta estructura se define en el archivo ***tx_api.h***.
 
-Los bloques de control de temporizador de aplicación se pueden ubicar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global definiéndolo fuera del ámbito de cualquier función.
+Los bloques de control de temporizador de aplicación se pueden colocar en cualquier parte de la memoria, pero es más común convertir el bloque de control en una estructura global definiéndolo fuera del ámbito de cualquier función.
 
 ### <a name="excessive-timers"></a>Temporizadores excesivos
 
-De forma predeterminada, los temporizadores de aplicación se ejecutan desde dentro de un subproceso del sistema oculto que se ejecuta con prioridad cero, que suele ser mayor que cualquier subproceso de aplicación. Por este motivo, el procesamiento dentro de los temporizadores de aplicación debe ser mínimo.
+De manera predeterminada, los temporizadores de aplicación se ejecutan desde dentro de un subproceso del sistema oculto que se ejecuta con prioridad cero, que suele ser mayor que cualquier subproceso de aplicación. Por este motivo, el procesamiento dentro de los temporizadores de aplicación debe ser mínimo.
 
 También es importante evitar, siempre que sea posible, temporizadores que expiren en cada tic del temporizador. Esa situación podría inducir una sobrecarga excesiva en la aplicación.
 
@@ -963,13 +963,13 @@ La aplicación puede leer o establecer este contador de 32 bits mediante llamad
 
 ## <a name="interrupts"></a>Interrupciones
 
-La respuesta rápida a los eventos asincrónicos es la función principal de las aplicaciones insertadas en tiempo real. La aplicación sabe que este evento está presente por medio de interrupciones de hardware.
+La respuesta rápida a los eventos asincrónicos es la función principal de las aplicaciones insertadas en tiempo real. La aplicación sabe que hay un evento de ese tipo presente por medio de interrupciones de hardware.
 
-Una interrupción es un cambio asincrónico en la ejecución del procesador. Normalmente, cuando se produce una interrupción, el procesador de *interrupciones* guarda una pequeña parte de la ejecución actual en la pila y transfiere el control al vector de interrupción adecuado. El vector de interrupción es básicamente la dirección de la rutina responsable de controlar la interrupción de tipo específica. El procedimiento de control de la interrupción exacta es específico del procesador.
+Una interrupción es un cambio asincrónico en la ejecución del procesador. Normalmente, cuando se produce una interrupción, el procesador de *interrupciones* guarda una pequeña parte de la ejecución actual en la pila y transfiere el control al vector de interrupción adecuado. El vector de interrupción es básicamente la dirección de la rutina responsable de controlar la interrupción de tipo específica. El procedimiento exacto de control de la interrupción es específico del procesador.
 
 ### <a name="interrupt-control"></a>Control de interrupción
 
-El servicio ***tx_interrupt_control*** permite a las aplicaciones habilitar y deshabilitar las interrupciones. Este servicio devuelve la posición de habilitación o deshabilitación de la interrupción anterior. Es importante mencionar que el control de interrupción solo afecta al segmento del programa actualmente en ejecución. Por ejemplo, si un subproceso deshabilita las interrupciones, solo permanecerán deshabilitadas durante la ejecución de ese subproceso.
+El servicio ***tx_interrupt_control*** permite a las aplicaciones habilitar y deshabilitar las interrupciones. Este servicio devuelve la posición de habilitación o deshabilitación de la interrupción anterior. Es importante mencionar que el control de interrupción solo afecta al segmento del programa en ejecución. Por ejemplo, si un subproceso deshabilita las interrupciones, solo permanecerán deshabilitadas durante la ejecución de ese subproceso.
 
 > [!NOTE]
 > *Una interrupción no enmascarable (NMI) es una interrupción que el hardware no puede deshabilitar. Estas interrupciones se pueden usar en las aplicaciones de ThreadX; pero no se permite que la rutina de control de NMI de la aplicación use la administración de contextos de ThreadX ni ningún servicio de API.*

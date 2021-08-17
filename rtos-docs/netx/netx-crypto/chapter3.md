@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4ecdbfe99daa000d109908f834b139dcaf321491
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8aa49c130dc2802e95620ccdd4f4d9398c3fd2e55f5896d004e47baa72829848
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814449"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796764"
 ---
 # <a name="chapter-3---functional-description-of-azure-rtos-netx-crypto"></a>Capítulo 3: Descripción funcional de Azure RTOS NetX Crypto
 

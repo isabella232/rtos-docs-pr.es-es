@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 6cf1b5bd5349efd97c3afc8a9e7f57f477f06f8f
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 719f27ef54091e2db9eefa982ce0c27561079b5b3a254d3fd09cc46d8f66f252
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815745"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788644"
 ---
 # <a name="chapter-4---azure-rtos-tracex-performance-analysis"></a>Capítulo 4: Análisis de rendimiento de Azure RTOS TraceX
 

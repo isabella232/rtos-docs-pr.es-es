@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 64a3c44f84b9ffca31d9e616d14d3d5d87c56bd7
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 1a0abe355f05492edb74635db2aa6607abbcf9de6b2693290b06b740d2b9286d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550327"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791064"
 ---
 # <a name="chapter-5---usbx-otg"></a>Capítulo 5: USBX OTG
 
@@ -24,7 +24,7 @@ Puede encontrar las funciones del driver de controlador regulares (host o dispos
 Hay cuatro categorías de funciones para un controlador del OTG además de las funciones habituales de host o de dispositivo.
 
 - Funciones específicas de VBUS
-- Inicio y detención del controlador
+- Inicio y detención de la controladora
 - Administrador de roles USB
 - Controladores de interrupciones
 
@@ -34,7 +34,7 @@ Cada controlador debe tener un administrador de VBUS para cambiar el estado de V
 
 ## <a name="start-and-stop-the-controller"></a>Inicio y detención del controlador
 
-A diferencia de una implementación USB normal, el OTG requiere que el host o la pila del dispositivo se activen y desactiven al cambiar el rol.
+A diferencia de una implementación USB normal, OTG requiere que la pila de hosts o de dispositivos se activen y desactiven al cambiar el rol.
 
 ## <a name="usb-role-manager"></a>Administrador de roles USB
 
@@ -42,19 +42,19 @@ El administrador de roles USB recibe comandos para cambiar el estado del USB. Ha
 
 | Estado                    | Value | Descripción                                           |
 | ------------------------ | ----- | ----------------------------------------------------- |
-| UX_OTG_IDLE            | 0     | El dispositivo está inactivo No está conectado a nada |
-| UX_OTG_IDLE_TO_HOST  | 1     | El dispositivo está conectado a un conector de tipo A             |
-| UX_OTG_IDLE_TO_SLAVE | 2     | El dispositivo está conectado a un conector de tipo B             |
-| UX_OTG_HOST_TO_IDLE  | 3     | El dispositivo host se ha desconectado                          |
-| UX_OTG_HOST_TO_SLAVE | 4     | Intercambio de roles de Host a Subordinado                          |
-| UX_OTG_SLAVE_TO_IDLE | 5     | El dispositivo subordinado está desconectado                          |
-| UX_OTG_SLAVE_TO_HOST | 6     | Intercambio de roles de Subordinado a Host                          |
+| UX_OTG_IDLE            | 0     | El dispositivo está inactivo. No está conectado a nada. |
+| UX_OTG_IDLE_TO_HOST  | 1     | El dispositivo está conectado a un conector de tipo A.             |
+| UX_OTG_IDLE_TO_SLAVE | 2     | El dispositivo está conectado a un conector de tipo B.             |
+| UX_OTG_HOST_TO_IDLE  | 3     | El dispositivo host se ha desconectado.                          |
+| UX_OTG_HOST_TO_SLAVE | 4     | Intercambio de roles de Host a Subordinado.                          |
+| UX_OTG_SLAVE_TO_IDLE | 5     | El dispositivo subordinado está desconectado.                          |
+| UX_OTG_SLAVE_TO_HOST | 6     | Intercambio de roles de Subordinado a Host.                          |
 
 ## <a name="interrupt-handlers"></a>Controladores de interrupciones
 
-Tanto los drivers de controlador de dispositivo como de host para el OTG necesitan diferentes controladores de interrupción para supervisar las señales más allá de las interrupciones USB tradicionales, en particular, las señales debidas a SRP y VBUS.
+Tanto los controladores de controladora de dispositivo como de host para OTG necesitan diferentes controladores de interrupción para supervisar señales además de las interrupciones USB tradicionales; en particular, las señales debidas a SRP y VBUS.
 
-Cómo inicializar un controlador OTG USB. Aquí se usa NXP LPC3131 como ejemplo.
+Veamos cómo se inicializa una controladora USB OTG. Aquí se usa NXP LPC3131 como ejemplo.
 
 ```C
 /* Initialize the LPC3131 OTG controller. */
@@ -64,7 +64,7 @@ status = ux_otg_lpc3131_initialize(0x19000000, lpc3131_vbus_function,
 
 En este ejemplo, se inicializa LPC3131 en el modo OTG pasando una función VBUS y una devolución de llamada para el cambio de modo (de host a subordinado o viceversa).
 
-La función de devolución de llamada simplemente debe registrar el nuevo modo y reactivar un subproceso pendiente para que actúe el nuevo estado.
+La función de devolución de llamada simplemente debe registrar el nuevo modo y reactivar un subproceso pendiente para que actúe en función del nuevo estado.
 
 ```C
 void tx_demo_change_mode_callback(ULONG mode) {

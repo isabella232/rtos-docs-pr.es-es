@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 40f09da31f5541208c3b2cc0eeb54850b3d71f7c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: b62ca837cadd5f7bee2686ab566ff133f1088ff7ba8b572e372e5051b7bbaab9
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815157"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791098"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-point-to-point-protocol-ppp"></a>Capítulo 2: Instalación y uso del protocolo punto a punto (PPP) de Azure RTOS NetX
 
@@ -21,10 +21,10 @@ Este capítulo contiene una descripción de varios problemas relacionados con la
 
 El paquete del protocolo punto a punto (PPP) de Azure RTOS NetX está disponible en <https://github.com/azure-rtos/netx>. El paquete incluye los siguientes archivos:
 
-- **nx_ppp.h**: archivo de encabezado de PPP para NetX.
-- **nx_ppp.c**: archivo de código fuente de C de PPP para NetX.
-- **nx_ppp.pdf**: archivo PDF de descripción de PPP para NetX.
-- **demo_netx_ppp.c**: demostración de PPP de NetX.
+- **nx_ppp. h**: Archivo de encabezado para PPP para NetX
+- **nx_ppp. c**: Archivo de origene de C para PPP para NetX
+- **nx_ppp.pdf**: Descripción en PDF de PPP para NetX
+- **demo_netx_ppp.c**: Demostración de PPP de NetX
 
 ## <a name="ppp-installation"></a>Instalación de PPP
 
@@ -32,11 +32,11 @@ Para usar PPP para NetX, la distribución completa que se ha mencionado anterior
 
 ## <a name="using-ppp"></a>Uso de PPP
 
-El uso de PPP para NetX es sencillo. Básicamente, el código de la aplicación debe incluir *nx_ppp.h* después de incluir *tx_api.h* y *nx_api.h*, con el fin de usar ThreadX y NetX, respectivamente. Después de incluir *nx_ppp.h*, el código de la aplicación puede realizar las llamadas de función PPP especificadas más adelante en esta guía. La aplicación también debe incluir *nx_ppp.c* en el proceso de compilación. Este archivo se debe compilar de la misma manera que otros archivos de aplicación y su formulario de objetos se debe vincular junto con los archivos de la aplicación. Esto es todo lo que se necesita para usar el protocolo PPP de NetX.
+El uso de PPP para NetX es sencillo. Básicamente, el código de la aplicación debe incluir *nx_ppp.h* después de incluir *tx_api.h* y *nx_api.h*, con el fin de usar ThreadX y NetX, respectivamente. Después de incluir *nx_ppp.h*, el código de la aplicación puede realizar las llamadas de función PPP especificadas más adelante en esta guía. La aplicación también debe incluir *nx_ppp.c* en el proceso de compilación. Este archivo se debe compilar de la misma manera que otros archivos de aplicación y su formulario de objetos se debe vincular junto con los archivos de la aplicación. Esto es todo lo que se necesita para usar el PPP de NetX.
 
 ## <a name="using-modems"></a>Uso de módems
 
-Si se necesita un módem para la conexión a Internet, hay que tener en cuenta algunas consideraciones especiales para poder usar el producto de PPP de NetX. Básicamente, el uso de un módem introduce lógica adicional de inicialización y lógica para la pérdida de comunicación. Además, la mayor parte de la lógica de módem adicional se realiza fuera del contexto del protocolo PPP de NetX. El flujo básico del uso de PPP de NetX con un módem es similar al siguiente:
+Si se necesita un módem para la conexión a Internet, es necesario tener en cuenta algunas consideraciones especiales para poder usar el producto de PPP de NetX. Básicamente, el uso de un módem introduce lógica adicional de inicialización y lógica para la pérdida de comunicación. Además, la mayor parte de la lógica de módem adicional se realiza fuera del contexto de PPP de NetX. El flujo básico del uso de PPP de NetX con un módem es similar al siguiente:
 
 1. Inicializar módem
 
@@ -60,7 +60,7 @@ Utilizando la rutina de salida en serie de bajo nivel de la aplicación, el mód
 
 Con la rutina de salida en serie de bajo nivel de la aplicación, se indica al módem que marque al ISP. Por ejemplo, lo siguiente es típico de una cadena ASCII que se usa para marcar a un ISP en el número 123-4567:
 
-“ATDT123456\r”
+"ATDT123456\r"
 
 ### <a name="wait-for-connection"></a>Esperar a la conexión
 
@@ -72,7 +72,7 @@ Una vez establecida la conexión, la aplicación debe esperar una solicitud de i
 
 ### <a name="start-netx-ppp"></a>Iniciar PPP de NetX
 
-En este punto, se puede iniciar el protocolo PPP de NetX. Esto se logra mediante una llamada al servicio *nx_ppp_create* seguido del servicio *nx_ip_create*. También es posible que se requieran servicios adicionales para habilitar PAP y configurar las direcciones IP de PPP. Consulte las siguientes secciones de esta guía para obtener más información.
+En este punto, se puede iniciar el PPP de NetX. Esto se logra mediante una llamada al servicio *nx_ppp_create* seguido del servicio *nx_ip_create*. También es posible que se requieran servicios adicionales para habilitar PAP y configurar las direcciones IP del PPP. Consulte las siguientes secciones de esta guía para obtener más información.
 
 ### <a name="loss-of-communication"></a>Pérdida de comunicación
 
@@ -80,14 +80,14 @@ Una vez que se inicia PPP, cualquier información que no sea de PPP se pasa a la
 
 ### <a name="stop-netx-ppp"></a>Detener PPP de NetX
 
-Detener el protocolo PPP de NetX es bastante sencillo. Básicamente, todos los sockets creados deben desenlazarse y eliminarse. A continuación, elimine la instancia de IP a través del servicio *nx_ip_delete*. Una vez eliminada la instancia de IP, se debe llamar al servicio *nx_ppp_delete* para finalizar el proceso de detención de PPP. En este momento, la aplicación puede intentar restablecer la comunicación con el ISP.
+Detener el PPP de NetX es bastante sencillo. Básicamente, todos los sockets creados deben desenlazarse y eliminarse. A continuación, elimine la instancia de IP a través del servicio *nx_ip_delete*. Una vez eliminada la instancia de IP, se debe llamar al servicio *nx_ppp_delete* para finalizar el proceso de detención de PPP. En este momento, la aplicación puede intentar restablecer la comunicación con el ISP.
 
 ## <a name="small-example-system"></a>Sistema de ejemplo pequeño
 
-En la figura 1.1 a continuación se describe un ejemplo que muestra lo fácil que es usar el protocolo PPP de NetX. En este ejemplo, el archivo de inclusión de PPP *nx_ppp.h* se incluye en la línea 3. A continuación, se crea el protocolo PPP en *"tx_application_define*" en la línea 56. El bloque de control de PPP "*my_ppp*" se definió anteriormente como una variable global en la línea 9. 
+En la figura 1.1 a continuación se describe un ejemplo que muestra lo fácil que es usar el PPP de NetX. En este ejemplo, el archivo de inclusión de PPP *nx_ppp. h* se incluye en la línea 3. A continuación, se crea el PPP en *"tx_application_define*" en la línea 56. El bloque de control de PPP "*my_ppp*" se definió anteriormente como una variable global en la línea 9. 
 
 >[!NOTE]
->El protocolo PPP debe crearse antes de crear la instancia de IP. Después de crear correctamente PPP e IP, el subproceso "*my_thread*" espera a que el vínculo de PPP esté activo en la línea 98. En la línea 104, tanto PPP como NetX están totalmente operativos.
+>El PPP debe crearse antes de crear la instancia de IP. Después de la creación correcta de PPP e IP, el subproceso "*my_thread*" espera a que el vínculo del PPP esté activo en la línea 98. En la línea 104, tanto PPP como NetX están totalmente operativos.
 
 El único elemento que no se muestra en este ejemplo es el ISR de recepción de bytes en serie de la aplicación. Deberá llamar a *nx_ppp_byte_receive* con "*my_ppp*" y el byte recibido como parámetros de entrada.
 
@@ -199,32 +199,32 @@ NX_PACKET   *my_packet;
 ```
 ## <a name="configuration-options"></a>Opciones de configuración
 
-Hay varias opciones de configuración para crear el protocolo PPP para NetX. En la lista siguiente se describe cada una de forma detallada:
+Hay varias opciones de configuración para crear el PPP para NetX. En la lista siguiente se describe cada una de forma detallada:
 
-- **NX_DISABLE_ERROR_CHECKING**: si está definida, esta opción quita la comprobación de errores básica de PPP. Normalmente se utiliza después de depurar la aplicación.
-- **NX_PPP_PPPOE_ENABLE**: si está definida, PPP puede transmitir paquetes a través de Ethernet.
-- **NX_PPP_BASE_TIMEOUT**: define la frecuencia del periodo (en tics del temporizador) con el que se reactiva la tarea del subproceso de PPP para comprobar los eventos de PPP. El valor predeterminado es 1*NX_IP_PERIODIC_RATE (100 tics).
-- **NX_PPP_DISABLE_INFO**: si está definida, la recopilación de información interna de PPP está deshabilitada.
-- **NX_PPP_DEBUG_LOG_ENABLE**: si está definida, se habilita el registro de depuración interno de PPP.
+- **NX_DISABLE_ERROR_CHECKING** Si está definida, esta opción quita la comprobación de errores básica de PPP. Normalmente se utiliza después de depurar la aplicación.
+- **NX_PPP_PPPOE_ENABLE** Si está definida, PPP puede transmitir paquetes a través de Ethernet.
+- **NX_PPP_BASE_TIMEOUT** Define la frecuencia del periodo (en tics del temporizador) con el que se reactiva la tarea del subproceso de PPP para comprobar los eventos de PPP. El valor predeterminado es 1*NX_IP_PERIODIC_RATE (100 tics).
+- **NX_PPP_DISABLE_INFO** Si está definida, la recopilación de información interna de PPP está deshabilitada.
+- **NX_PPP_DEBUG_LOG_ENABLE** Si está definida, se habilita el registro de depuración interno de PPP.
 - **NX_PPP_DEBUG_LOG_PRINT_ENABLE**: si está definida, se habilita el registro de depuración de PPP interno *printf* en *stdio*. Esto solo es válido si el registro de depuración también está habilitado.
-- **NX_PPP_DEBUG_LOG_SIZE**: tamaño del registro de depuración (número de entradas del registro de depuración). Al llegar a la última entrada, la captura de depuración vuelve a la primera entrada y sobrescribe cualquier dato capturado previamente. El valor predeterminado es 50.
+- **NX_PPP_DEBUG_LOG_SIZE** Tamaño del registro de depuración (número de entradas del registro de depuración). Al llegar a la última entrada, la captura de depuración vuelve a la primera entrada y sobrescribe cualquier dato capturado previamente. El valor predeterminado es 50.
 - **NX_PPP_DEBUG_FRAME_SIZE**: cantidad máxima de datos capturados de una carga de paquetes recibida y guardados en la salida de depuración. El valor predeterminado es 50.
-- **NX_PPP_DISABLE_CHAP**: si está definida, se quita la lógica interna de CHAP de PPP, incluida la lógica de síntesis de MD5.
+- **NX_PPP_DISABLE_CHAP** Si está definida, se quita la lógica interna de CHAP de PPP, incluida la lógica de síntesis de MD5.
 - **NX_PPP_DISABLE_PAP**: si está definida, se quita la lógica interna de PAP de PPP.
 - **NX_PPP_DNS_OPTION_DISABLE**: si está definida, la opción DNS se deshabilita en la respuesta IPCP.  De forma predeterminada, esta opción no está definida (la opción de DNS está establecida).
 - **NX_PPP_DNS_ADDRESS_MAX_RETRIES**: especifica el número de veces que el host de PPP solicitará una dirección de servidor DNS del homólogo en el estado de IPCP. Esto no tiene ningún efecto si se define NX_PPP_DNS_OPTION_DISABLE. El valor predeterminado es 2.
-- **NX_PPP_HASHED_VALUE_SIZE**: especifica el tamaño de las cadenas "hashed value" que se usan en la autenticación de CHAP. El valor predeterminado se establece en 16 bytes, pero se puede redefinir antes de la inclusión de *nx_ftp.h*.
-- **NX_PPP_MAX_LCP_PROTOCOL_RETRIES**: define el número máximo de reintentos si el protocolo PPP agota el tiempo de espera antes de enviar otro mensaje de solicitud de configuración de LCP. Cuando se alcanza este número, se anula el protocolo de enlace de PPP y el estado del vínculo se desactiva. El valor predeterminado es 20.
-- **NX_PPP_MAX_PAP_PROTOCOL_RETRIES**: define el número máximo de reintentos si el protocolo PPP agota el tiempo de espera antes de enviar otro mensaje de solicitud de autenticación de PAP. Cuando se alcanza este número, se anula el protocolo de enlace de PPP y el estado del vínculo se desactiva. El valor predeterminado es 20.
-- **NX_PPP_MAX_CHAP_PROTOCOL_RETRIES**: define el número máximo de reintentos si el protocolo PPP agota el tiempo de espera antes de enviar otro mensaje de desafío de CHAP. Cuando se alcanza este número, se anula el protocolo de enlace de PPP y el estado del vínculo se desactiva. El valor predeterminado es 20.
-- **NX_PPP_MAX_IPCP_PROTOCOL_RETRIES**: define el número máximo de reintentos si el protocolo PPP agota el tiempo de espera antes de enviar otro mensaje de solicitud de configuración de IPCP. Cuando se alcanza este número, se anula el protocolo de enlace de PPP y el estado del vínculo se desactiva. El valor predeterminado es 20.
-- **NX_PPP_MRU**: especifica la unidad de recepción máxima (MRU) para PPP. De forma predeterminada, este valor es 1500 bytes (el valor mínimo). La aplicación puede establecer esta definición antes de la inclusión de *nx_ppp.h*.
-- **NX_PPP_MINIMUM_MRU**: especifica el número mínimo de MRU recibido en un mensaje de solicitud de configuración de LCP. De forma predeterminada, este valor es 1500 bytes (el valor mínimo). La aplicación puede establecer esta definición antes de la inclusión de *nx_ppp.h*.
-- **NX_PPP_NAME_SIZE**: especifica el tamaño de las cadenas "name" usadas en la autenticación. El valor predeterminado se establece en 32 bytes, pero se puede redefinir antes de incluir *nx_ppp.h.
-- **NX_PPP_PASSWORD_SIZE**: especifica el tamaño de las cadenas "password" usadas en la autenticación. El valor predeterminado se establece en 32 bytes, pero se puede redefinir antes de la inclusión de *nx_ppp.h*.
-- **NX_PPP_PROTOCOL_TIMEOUT**: define la opción de espera (en segundos) para que la tarea PPP reciba una respuesta a un mensaje de solicitud de protocolo PPP. El valor predeterminado es 4 segundos.
-- **NX_PPP_RECEIVE_TIMEOUTS**: define el número de veces que la tarea de subprocesos PPP agota el tiempo de espera para recibir el siguiente carácter de una secuencia de mensajes de PPP. Después, PPP libera el paquete y comienza a esperar para recibir el siguiente mensaje de PPP. El valor predeterminado es 4.
-- **NX_PPP_SERIAL_BUFFER_SIZE**: especifica el tamaño del búfer de serie de caracteres de recepción. De forma predeterminada, este valor es 3000 bytes. La aplicación puede establecer esta definición antes de la inclusión de *nx_ppp.h*.
-- **NX_PPP_TIMEOUT**: define la opción de espera (en tics de temporizador) para asignar paquetes para transmitir datos, así como almacenar en búfer los datos de serie de PPP en paquetes para enviarlos a la capa de IP. El valor predeterminado es 4*NX_IP_PERIODIC_RATE (400 tics).
-- **NX_PPP_THREAD_TIME_SLICE**: opción de segmento de tiempo para los subprocesos de PPP. Este valor es TX_NO_TIME_SLICE de forma predeterminada. La aplicación puede establecer esta definición antes de la inclusión de *nx_ppp.h*.
-- **NX_PPP_VALUE_SIZE**: especifica el tamaño de las cadenas "value" que se usan en la autenticación de CHAP. El valor predeterminado se establece en 32 bytes, pero se puede redefinir antes de la inclusión de nx_ppp.h.
+- **NX_PPP_HASHED_VALUE_SIZE** Especifica el tamaño de las cadenas "hashed value" que se usan en la autenticación de CHAP. El valor predeterminado se establece en 16 bytes, pero se puede redefinir antes de la inclusión de *nx_ftp.h.*
+- **NX_PPP_MAX_LCP_PROTOCOL_RETRIES** Define el número máximo de reintentos si el PPP agota el tiempo de espera antes de enviar otro mensaje de solicitud de configuración de LCP. Cuando se alcanza este número, se anula el protocolo de enlace de PPP y el estado del vínculo se desactiva. El valor predeterminado es 20.
+- **NX_PPP_MAX_PAP_PROTOCOL_RETRIES** Define el número máximo de reintentos si el PPP agota el tiempo de espera antes de enviar otro mensaje de solicitud de autenticación de PAP. Cuando se alcanza este número, se anula el protocolo de enlace de PPP y el estado del vínculo se desactiva. El valor predeterminado es 20.
+- **NX_PPP_MAX_LCP_PROTOCOL_RETRIES** Define el número máximo de reintentos si el PPP agota el tiempo de espera antes de enviar otro mensaje de desafío de CHAP. Cuando se alcanza este número, se anula el protocolo de enlace de PPP y el estado del vínculo se desactiva. El valor predeterminado es 20.
+- **NX_PPP_MAX_IPCP_PROTOCOL_RETRIES** Define el número máximo de reintentos si el PPP agota el tiempo de espera antes de enviar otro mensaje de solicitud de configuración de IPCP. Cuando se alcanza este número, se anula el protocolo de enlace de PPP y el estado del vínculo se desactiva. El valor predeterminado es 20.
+- **NX_PPP_MRU** Especifica la unidad de recepción máxima (MRU) para PPP. De forma predeterminada, este valor es 1500 bytes (el valor mínimo). La aplicación puede establecer esta definición antes de la inclusión de *nx_ppp.h*.
+- **NX_PPP_MINIMUM_MRU** Especifica el número mínimo de MRU recibido en un mensaje de solicitud de configuración de LCP. De forma predeterminada, este valor es 1500 bytes (el valor mínimo). La aplicación puede establecer esta definición antes de la inclusión de *nx_ppp.h*.
+- **NX_PPP_NAME_SIZE** Especifica el tamaño de las cadenas "name" usadas en la autenticación. El valor predeterminado se establece en 32 bytes, pero se puede redefinir antes de incluir *nx_ppp.h.
+- **NX_PPP_PASSWORD_SIZE**: especifica el tamaño de las cadenas "password" usadas en la autenticación. El valor predeterminado se establece en 32 bytes, pero se puede redefinir antes de la inclusión de *nx_ppp. h.*
+- **NX_PPP_PROTOCOL_TIMEOUT** Define la opción de espera (en segundos) para que la tarea PPP reciba una respuesta a un mensaje de solicitud de protocolo PPP. El valor predeterminado es 4 segundos.
+- **NX_PPP_RECEIVE_TIMEOUTS** Define el número de veces que la tarea de subprocesos PPP agota el tiempo de espera para recibir el siguiente carácter de una secuencia de mensajes de PPP. Después, PPP libera el paquete y comienza a esperar para recibir el siguiente mensaje de PPP. El valor predeterminado es 4.
+- **NX_PPP_SERIAL_BUFFER_SIZE** Especifica el tamaño del búfer de serie de caracteres de recepción. De forma predeterminada, este valor es 3000 bytes. La aplicación puede establecer esta definición antes de la inclusión de *nx_ppp.h*.
+- **NX_PPP_TIMEOUT** Define la opción de espera (en tics de temporizador) para asignar paquetes para transmitir datos, así como almacenar en búfer los datos de serie de PPP en paquetes para enviarlos a la capa de IP. El valor predeterminado es 4*NX_IP_PERIODIC_RATE (400 tics).
+- **NX_PPP_THREAD_TIME_SLICE** Opción de segmento de tiempo para los subprocesos de PPP. Este valor es TX_NO_TIME_SLICE de forma predeterminada. La aplicación puede establecer esta definición antes de la inclusión de *nx_ppp.h*.
+- **NX_PPP_VALUE_SIZE** Especifica el tamaño de las cadenas "value" que se usan en la autenticación de CHAP. El valor predeterminado se establece en 32 bytes, pero se puede redefinir antes de la inclusión de nx_ppp. h.

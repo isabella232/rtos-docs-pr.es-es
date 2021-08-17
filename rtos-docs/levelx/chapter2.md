@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 34110e74e8ad0a6acd376c00c1284a3ea715c5f5
-ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
+ms.openlocfilehash: cfd2d616896e1797114e55abcaf1a7559685282f29c2d0dee8274d2a26ea8f0e
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/20/2021
-ms.locfileid: "110223322"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790316"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-levelx"></a>Capítulo 2: Instalación y uso de Azure RTOS LevelX
 

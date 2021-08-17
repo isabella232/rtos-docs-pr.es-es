@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 703071cd5a1d0677a3e995fccfe35d8b1dbbd9f3
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 09add7bb20a8e104ba41583c0dbf4d574b8e6c9e6b3a3deed71d8fa8c8942ce2
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814698"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796487"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-http-services"></a>Capítulo 3: Descripción de los servicios HTTP de NetX Duo para Azure RTOS
 
@@ -179,9 +179,9 @@ Este servicio está en desuso. Se recomienda a los desarrolladores migrar a *nx_
  - **input_size** Número de bytes en la entrada adicional opcional a la que apunta ```input_ptr```.
  - **username** Puntero al nombre de usuario opcional para la autenticación.
  - **password** Puntero a la contraseña opcional para la autenticación.
- - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud de inicio GET del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
+ - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud de inicio del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
 
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -260,11 +260,11 @@ Este servicio reemplaza a *nx_http_client_get_start()* . Requiere que el autor d
  - **input_ptr** Puntero a datos adicionales para la solicitud GET. Esto es opcional. Si es válido, la entrada especificada se coloca en el área de contenido del mensaje y se usa una solicitud POST en lugar de una operación GET.
  - **input_size** Número de bytes en la entrada adicional opcional a la que apunta ```input_ptr```.
  - **username** Puntero al nombre de usuario opcional para la autenticación.
- - **username_length** Longitud del nombre de usuario para la autenticación.
+ - **username_length** Longitud de cadena del nombre de usuario para la autenticación.
  - **password** Puntero a la contraseña opcional para la autenticación.
  - **password_length** Longitud de la contraseña opcional para la autenticación.
- - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud de inicio GET del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+ - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud de inicio del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -334,11 +334,11 @@ Este servicio está en desuso. Se recomienda a los desarrolladores migrar a *nxd
  - **input_ptr** Puntero a datos adicionales para la solicitud GET. Esto es opcional. Si es válido, la entrada especificada se coloca en el área de contenido del mensaje y se usa una solicitud POST en lugar de una operación GET.
  - **input_size** Número de bytes en la entrada adicional opcional a la que apunta ```input_ptr```.
  - **username** Puntero al nombre de usuario opcional para la autenticación.
- - **username_length** Longitud del nombre de usuario para la autenticación.
+ - **username_length** Longitud de cadena del nombre de usuario para la autenticación.
  - **password** Puntero a la contraseña opcional para la autenticación.
  - **password_length** Longitud de la contraseña opcional para la autenticación.
- - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud de inicio GET del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+ - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud de inicio del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -353,7 +353,7 @@ Este servicio está en desuso. Se recomienda a los desarrolladores migrar a *nxd
  - **NX_HTTP_FAILED** (0xE2) Parámetros de paquete no válidos.
  - **NX_HTTP_AUTHENTICATION_ERROR** (0xEB) Nombre o contraseña no válidos
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -419,11 +419,11 @@ Este servicio reemplaza a *nxd_http_client_get_start()* . Requiere que el autor 
  - **input_ptr** Puntero a datos adicionales para la solicitud GET. Esto es opcional. Si es válido, la entrada especificada se coloca en el área de contenido del mensaje y se usa una solicitud POST en lugar de una operación GET.
  - **input_size** Número de bytes en la entrada adicional opcional a la que apunta ```input_ptr```.
  - **username** Puntero al nombre de usuario opcional para la autenticación.
- - **username_length** Longitud del nombre de usuario para la autenticación.
+ - **username_length** Longitud de cadena del nombre de usuario para la autenticación.
  - **password** Puntero a la contraseña opcional para la autenticación.
  - **password_length** Longitud de la contraseña opcional para la autenticación.
  - **wait_option** Define cuánto tiempo esperará el servicio internamente para procesar el inicio del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -438,7 +438,7 @@ Este servicio reemplaza a *nxd_http_client_get_start()* . Requiere que el autor 
  - **NX_HTTP_FAILED** (0xE2) Parámetros de paquete no válidos.
  - **NX_HTTP_AUTHENTICATION_ERROR** (0xEB) Nombre o contraseña no válidos
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -493,7 +493,7 @@ Este servicio recupera el siguiente paquete de contenido del recurso solicitado 
  - **client_ptr** Puntero al bloque de control del cliente HTTP.
  - **packet_ptr** Destino del puntero de paquete que contiene el contenido parcial del recurso.
  - **wait_option** Define cuánto tiempo esperará el servicio a que se obtenga el paquete del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -507,7 +507,7 @@ Este servicio recupera el siguiente paquete de contenido del recurso solicitado 
  - **NX_HTTP_NOT_READY** (0xEA) El cliente HTTP no está en modo de obtención.
  - **NX_HTTP_BAD_PACKET_LENGTH** (0xED) Longitud de paquete no válida.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -555,9 +555,9 @@ Este servicio está en desuso. Se recomienda a los desarrolladores migrar a *nx_
  - **resource** Puntero a la cadena de dirección URL para el recurso solicitado.
  - **username** Puntero al nombre de usuario opcional para la autenticación.
  - **password** Puntero a la contraseña opcional para la autenticación.
- - **total_bytes** Bytes totales del recurso que se está enviando. Tenga en cuenta que la longitud combinada de todos los paquetes enviados a través de las llamadas subsiguientes a *nx_http_client_put_packet()* debe ser igual a este valor.
+ - **total_bytes** Bytes totales del recurso que se está enviando. Tenga en cuenta que la longitud combinada de todos los paquetes enviados a través de las llamadas subsiguientes a *nx_http_client_put_packet* debe ser igual a este valor.
  - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud PUT del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -567,11 +567,11 @@ Este servicio está en desuso. Se recomienda a los desarrolladores migrar a *nx_
 ### <a name="return-values"></a>Valores devueltos
 
  - **NX_SUCCESS** (0x00) Solicitud POST enviada correctamente.
- - **NX_HTTP_USERNAME_TOO_LONG** (0xF1) El nombre de usuario es demasiado largo para el búfer.
+ - **NX_HTTP_USERNAME_TOO_LONG** (0xF1) El nombre de usuario es demasiado grande para el búfer.
  - **NX_HTTP_NOT_READY** (0xEA) El cliente HTTP no está preparado.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
  - NX_SIZE_ERROR (0x09) Tamaño total de recurso no válido.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -618,12 +618,12 @@ Este servicio reemplaza a *nx_http_client_put_start()* . Requiere que el autor d
  - **resource** Puntero a la cadena de dirección URL para el recurso solicitado.
  - **resource_length** Longitud de la cadena de dirección URL para el recurso que se va a enviar al servidor.
  - **username** Puntero al nombre de usuario opcional para la autenticación.
- - **username_length** Longitud del nombre de usuario para la autenticación.
+ - **username_length** Longitud de cadena del nombre de usuario para la autenticación.
  - **password** Puntero a la contraseña opcional para la autenticación.
  - **password_length** Longitud de la contraseña opcional para la autenticación.
- - **total_bytes** Bytes totales del recurso que se está enviando. Tenga en cuenta que la longitud combinada de todos los paquetes enviados a través de las llamadas subsiguientes a *nx_http_client_put_packet()* debe ser igual a este valor.
+ - **total_bytes** Bytes totales del recurso que se está enviando. Tenga en cuenta que la longitud combinada de todos los paquetes enviados a través de las llamadas subsiguientes a *nx_http_client_put_packet* debe ser igual a este valor.
  - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud PUT del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -633,11 +633,11 @@ Este servicio reemplaza a *nx_http_client_put_start()* . Requiere que el autor d
 ### <a name="return-values"></a>Valores devueltos
 
  - **NX_SUCCESS** (0x00) Solicitud POST enviada correctamente.
- - **NX_HTTP_USERNAME_TOO_LONG** (0xF1) El nombre de usuario es demasiado largo para el búfer.
+ - **NX_HTTP_USERNAME_TOO_LONG** (0xF1) El nombre de usuario es demasiado grande para el búfer.
  - **NX_HTTP_NOT_READY** (0xEA) El cliente HTTP no está preparado.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
  - NX_SIZE_ERROR (0x09) Tamaño total de recurso no válido.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -684,9 +684,9 @@ Este servicio está en desuso. Se recomienda a los desarrolladores migrar a *nx_
  - **resource** Puntero a la cadena de dirección URL para el recurso que se va a enviar al servidor.
  - **username** Puntero al nombre de usuario opcional para la autenticación.
  - **password** Puntero a la contraseña opcional para la autenticación.
- - **total_bytes** Bytes totales del recurso que se está enviando. Tenga en cuenta que la longitud combinada de todos los paquetes enviados a través de las llamadas subsiguientes a *nx_http_client_put_packet()* debe ser igual a este valor.
+ - **total_bytes** Bytes totales del recurso que se está enviando. Tenga en cuenta que la longitud combinada de todos los paquetes enviados a través de las llamadas subsiguientes a *nx_http_client_put_packet* debe ser igual a este valor.
  - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud PUT del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -701,7 +701,7 @@ Este servicio está en desuso. Se recomienda a los desarrolladores migrar a *nx_
  - **NX_HTTP_FAILED** (0xE2) Error de cliente HTTP al comunicarse con el servidor HTTP.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
  - NX_SIZE_ERROR (0x09) Tamaño total de recurso no válido.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -761,12 +761,12 @@ Este servicio reemplaza a *nxd_http_client_put_start()* . Requiere que el autor 
  - **resource** Puntero a la cadena de dirección URL para el recurso solicitado.
  - **resource_length** Longitud de la cadena de dirección URL para el recurso que se va a enviar al servidor.
  - **username** Puntero al nombre de usuario opcional para la autenticación.
- - **username_length** Longitud del nombre de usuario para la autenticación.
+ - **username_length** Longitud de cadena del nombre de usuario para la autenticación.
  - **password** Puntero a la contraseña opcional para la autenticación.
  - **password_length** Longitud de la contraseña opcional para la autenticación.
- - **total_bytes** Bytes totales del recurso que se está enviando. Tenga en cuenta que la longitud combinada de todos los paquetes enviados a través de las llamadas subsiguientes a *nx_http_client_put_packet()* debe ser igual a este valor.
+ - **total_bytes** Bytes totales del recurso que se está enviando. Tenga en cuenta que la longitud combinada de todos los paquetes enviados a través de las llamadas subsiguientes a *nx_http_client_put_packet* debe ser igual a este valor.
  - **wait_option** Define cuánto tiempo esperará el servicio a la solicitud PUT del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -781,7 +781,7 @@ Este servicio reemplaza a *nxd_http_client_put_start()* . Requiere que el autor 
  - NX_HTTP_FAILED (0xE2) Error del cliente HTTP al comunicarse con el servidor HTTP.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
  - NX_SIZE_ERROR (0x09) Tamaño total de recurso no válido.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -836,7 +836,7 @@ Este servicio intenta enviar el siguiente paquete de contenido de recursos al se
  - **client_ptr** Puntero al bloque de control del cliente HTTP.
  - **packet_ptr** Puntero al siguiente contenido del recurso que se va a enviar al servidor HTTP.
  - **WAIT_OPTION** Define cuánto tiempo esperará el servicio internamente para procesar el paquete PUT del cliente HTTP. Las opciones de espera se definen de la siguiente forma:
-    - **valor de tiempo de espera** (de 0x00000001 a 0xFFFFFFFE)
+    - **time out value** (de 0x00000001 a 0xFFFFFFFE)
     - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
     Si se selecciona TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que el servidor HTTP responde a la solicitud.
@@ -853,7 +853,7 @@ Este servicio intenta enviar el siguiente paquete de contenido de recursos al se
  - **NX_HTTP_INCOMPLETE_PUT_ERROR** (0xEF) El servidor responde antes de que finalice PUT.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
  - NX_INVALID_PACKET (0x12) El paquete es demasiado pequeño para el encabezado TCP.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -913,7 +913,7 @@ status =  nx_http_client_set_connect_port(client_ptr, 114);
 
 ## <a name="nx_http_server_cache_info_callback_set"></a>nx_http_server_cache_info_callback_set
 
-Establecer la devolución de llamada para recuperar la antigüedad máxima y la fecha de la dirección URL
+Establece la devolución de llamada para recuperar la antigüedad máxima y la fecha de la dirección URL
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1158,7 +1158,7 @@ UINT nx_http_server_callback_generate_response_header_extended(
 
 Este servicio llama a la función interna *_nx_http_server_generate_response_header* cuando el servidor HTTP responde a las solicitudes GET, PUT y DELETE del cliente. Su uso está previsto en funciones de devolución de llamada de servidor HTTP cuando la aplicación de servidor HTTP está diseñando su respuesta al cliente.
 
-Este servicio reemplaza *nx_http_server_callback_generate_response_header()* . Esta versión proporciona información de longitud adicional a la función de devolución de llamada.
+Este servicio reemplaza a *nx_http_server_callback_generate_response_header()* . Esta versión proporciona información de longitud adicional a la función de devolución de llamada.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
@@ -1398,7 +1398,7 @@ Este servicio reemplaza a *nx_http_server_callback_response_send()* . Esta versi
  - **header** Puntero a la cadena de encabezado de respuesta.
  - **header_length** Longitud de la cadena de encabezado de respuesta.
  - **information** Puntero a la cadena de información.
- - **Information_length** Longitud de la cadena de información.
+ - **information_length** Longitud de la cadena de información.
  - **additional_info** Puntero a la cadena de información adicional.
  - **additional_info_length** Longitud de la cadena de información adicional.
 
@@ -1475,7 +1475,7 @@ Este servicio está en desuso. Se recomienda a los desarrolladores migrar a *nx_
  - **NX_HTTP_DATA_END** (0xE7) Fin del contenido de la solicitud.
  - **NX_WEB_HTTP_TIMEOUT** (0xE1) Tiempo de espera del servidor HTTP para obtener el siguiente paquete de contenido.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -1699,7 +1699,7 @@ UINT nx_http_server_delete(NX_HTTP_SERVER *http_server_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio elimina una instancia de servidor HTTP creada anteriormente.
+Este servicio elimina una instancia de cliente HTTP creada anteriormente.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
@@ -1709,7 +1709,7 @@ Este servicio elimina una instancia de servidor HTTP creada anteriormente.
 
  - **NX_SUCCESS**: (0x00) Servidor HTTP eliminado correctamente.
  - NX_PTR_ERROR (0x07) Puntero de servidor HTTP no válido.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -1750,7 +1750,7 @@ Para más información, consulte [*nx_web_http_server_get_entity_header*](#nx_ht
 
  - **server_ptr** Puntero al servidor HTTP.
  - **packet_pptr** Puntero a la ubicación del puntero de paquete. Tenga en cuenta que la aplicación no debe liberar este paquete.
- - **available_offset** Puntero para desplazar los datos de entidad desde el puntero de anteposición del paquete.
+ - **available_offset** Puntero para desplazar los datos de entidad desde el puntero antepuesto de paquete.
  - **available_length** Puntero a la longitud de los datos de entidad.
 
 ### <a name="return-values"></a>Valores devueltos
@@ -1817,7 +1817,7 @@ Este servicio recupera el encabezado de entidad en el búfer especificado. Inter
  - **NX_HTTP_TIMEOUT** **(0xE1)** Se agotó el tiempo para recibir el siguiente paquete del mensaje de cliente de varios paquetes.
  - NX_HTTP_ERROR (0xE0) Error de HTTP interno.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -1950,12 +1950,12 @@ UINT nx_http_server_invalid_userpassword_notify_set(
 
 ### <a name="description"></a>Descripción
 
-Este servicio establece la devolución de llamada invocada cuando se recibe un nombre de usuario y una contraseña no válidos en una solicitud de cliente GET, PUT o DELETE, ya sea mediante autenticación implícita o básica. El servidor HTTP se debe crear previamente.
+Este servicio establece la devolución de llamada invocada cuando se recibe un nombre de usuario y una contraseña no válidos en una solicitud GET, PUT o DELETE de cliente, ya sea mediante autenticación implícita o básica. El servidor HTTP se debe crear previamente.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
  - **server_ptr** Puntero al servidor HTTP.
- - **invalid_username_password_callback** Puntero a una devolución de llamada de aprobación/usuario no válido.
+ - **invalid_username_password_callback** Puntero a una devolución de llamada de aprobado/usuario no válido.
  - **resource** Puntero al recurso especificado por el cliente.
  - **client_address** Puntero a la dirección del cliente. Puede ser IPv4 o IPv6.
  - **request_type** Indica el tipo de solicitud de cliente. Puede ser:
@@ -2022,7 +2022,7 @@ Si la función de notificación de solicitud se registra con el servidor HTTP, l
 
 ### <a name="return-values"></a>Valores devueltos
 
- - **NX_SUCCESS**: (0x00) Asignación MIME de servidor HTTP establecida correctamente.
+ - **NX_SUCCESS**: (0x00) Asignación MIME del servidor HTTP establecida correctamente.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
 
 ### <a name="allowed-from"></a>Permitido desde
@@ -2164,7 +2164,7 @@ Este servicio intenta recuperar el parámetro de dirección URL HTTP especificad
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
- - **packet_ptr** Puntero al paquete de solicitud del cliente HTTP. Tenga en cuenta que la aplicación no debe liberar este paquete.
+ - **packet_ptr** Puntero al paquete de solicitud de cliente HTTP. Tenga en cuenta que la aplicación no debe liberar este paquete.
  - **param_number** Número lógico del parámetro que comienza en cero, de izquierda a derecha en la lista de parámetros.
  - **param_ptr** Área de destino para copiar el parámetro.
  - **max_param_size** Tamaño máximo del área de destino del parámetro.
@@ -2175,7 +2175,7 @@ Este servicio intenta recuperar el parámetro de dirección URL HTTP especificad
  - **NX_WEB_HTTP_NOT_FOUND** (0xE6) Parámetro especificado no encontrado.
  - **NX_HTTP_IMPROPERLY_TERMINATED_PARAM** (0xF3) Parámetro de solicitud no terminado correctamente.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -2196,7 +2196,7 @@ status =  nx_http_server_param_get(request_packet_ptr, 0, param_destination,
 
 ## <a name="nx_http_server_query_get"></a>nx_http_server_query_get
 
-Obtener consulta de la solicitud
+Obtiene la consulta de la solicitud
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2211,7 +2211,7 @@ Este servicio intenta recuperar la consulta de dirección URL HTTP especificada 
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
- - **packet_ptr** Puntero al paquete de solicitud del cliente HTTP. Tenga en cuenta que la aplicación no debe liberar este paquete.
+ - **packet_ptr** Puntero al paquete de solicitud de cliente HTTP. Tenga en cuenta que la aplicación no debe liberar este paquete.
  - **query_number** Número lógico del parámetro que comienza en cero, de izquierda a derecha en la lista de consultas.
  - **query_ptr** Área de destino en la que se va a copiar la consulta.
  - **max_query_size** Tamaño máximo del área de destino de la consulta.
@@ -2223,7 +2223,7 @@ Este servicio intenta recuperar la consulta de dirección URL HTTP especificada 
  - **NX_HTTP_NOT_FOUND** (0xE6) No se encontró la consulta especificada.
  - **NX_HTTP_NO_QUERY_PARSED** (0xF2) No hay ninguna consulta en la solicitud de cliente.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -2289,7 +2289,7 @@ UINT nx_http_server_stop(NX_HTTP_SERVER *http_server_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio detiene la instancia de servidor HTTP creada anteriormente. Se debe llamar a esta rutina antes de eliminar una instancia de servidor HTTP.
+Este servicio detiene la instancia de servidor HTTP creada anteriormente. Se debe llamar a esta rutina antes de eliminar una instancia del servidor HTTP.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
@@ -2299,7 +2299,7 @@ Este servicio detiene la instancia de servidor HTTP creada anteriormente. Se deb
 
  - **NX_SUCCESS** (0x00) Servidor detenido correctamente.
  - NX_PTR_ERROR (0x07) Entrada de puntero no válida.
- - NX_CALLER_ERROR (0x11) Autor de llamada de este servicio no válido.
+ - NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -2330,7 +2330,7 @@ UINT nx_http_server_type_get(NX_HTTP_SERVER *http_server_ptr,
 > [!NOTE]
 > Este servicio está en desuso. Se recomienda a los usuarios que usen el servicio *nx_http_server_type_get_extended()* .
 
-Este servicio extrae el tipo de solicitud HTTP en el búfer http_type_string y su longitud en el valor devuelto del nombre del búfer de entrada, normalmente la dirección URL. Si no se encuentra ninguna asignación MIME, se toma como valor predeterminado el tipo "texto/sin formato". En caso contrario, se compara el tipo extraído con las asignaciones MIME predeterminadas del servidor HTTP para buscar coincidencias. Los mapas MIME predeterminados del servidor HTTP de NetX Duo son:
+Este servicio extrae el tipo de solicitud HTTP en el búfer http_type_string y su longitud en el valor devuelto del nombre del búfer de entrada, normalmente la dirección URL. Si no se encuentra ninguna asignación MIME, se toma como valor predeterminado el tipo "texto/sin formato". En caso contrario, compara el tipo extraído con las asignaciones MIME predeterminadas del servidor HTTP para buscar coincidencias. Los mapas MIME predeterminados del servidor HTTP de NetX Duo son:
 
  - **html** texto/html
  - **htm** texto/html
@@ -2388,7 +2388,7 @@ UINT nx_http_server_type_get_extended(
 
 ### <a name="description"></a>Descripción
 
-Este servicio extrae el tipo de solicitud HTTP en el búfer *http_type_string* y su longitud en el valor devuelto por el *nombre* de búfer de entrada, normalmente la dirección URL. Si no se encuentra ninguna asignación MIME, se toma como valor predeterminado el tipo "texto/sin formato". En caso contrario, se compara el tipo extraído con las asignaciones MIME predeterminadas del servidor HTTP para buscar coincidencias. Los mapas MIME predeterminados del servidor HTTP de NetX Duo son:
+Este servicio extrae el tipo de solicitud HTTP en el búfer *http_type_string* y su longitud en el valor devuelto por el *nombre* de búfer de entrada, normalmente la dirección URL. Si no se encuentra ninguna asignación MIME, se toma como valor predeterminado el tipo "texto/sin formato". En caso contrario, compara el tipo extraído con las asignaciones MIME predeterminadas del servidor HTTP para buscar coincidencias. Los mapas MIME predeterminados del servidor HTTP de NetX Duo son:
 
  - **html** texto/html
  - **htm** texto/html
@@ -2404,7 +2404,7 @@ Este servicio reemplaza a *nx_http_server_type_get()* . Esta versión proporcion
 ### <a name="input-parameters"></a>Parámetros de entrada
 
  - **http_server_ptr** Puntero a la instancia de servidor HTTP.
- - **name** Puntero al búfer que se va a buscar.
+ - **name** Puntero al búfer para buscar.
  - **name_length** Longitud del búfer que se va a buscar.
  - **http_type_string** Puntero a la cadena de tipo HTML extraída.
  - **http_type_string_max_size** Tamaño del búfer de http_type_string.

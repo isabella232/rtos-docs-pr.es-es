@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 0a6ac2c7a76893d516b9beae9b893c9764de60ba
-ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
+ms.openlocfilehash: faa1bc0d4697a7b5e79430097c2921fd4dde4be9e6390398befc0b89074f2fe6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113754937"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790801"
 ---
 # <a name="overview-of-azure-rtos-guix-and-azure-rtos-guix-studio"></a>Información general de Azure RTOS GUIX y Azure RTOS GUIX Studio
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c7870f1984fe3104d30e3b9efd82010218acbe27
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7d453d9ee19b9bc7ca7809102f087f46fdde05dc62b756d9eb3f38f493805be4
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816462"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791160"
 ---
 # <a name="chapter-3---usbx-dpump-class-considerations"></a>Capítulo 3: Consideraciones acerca de la clase DPUMP de USBX
 

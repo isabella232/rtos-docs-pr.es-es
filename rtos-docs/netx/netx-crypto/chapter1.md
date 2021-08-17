@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 0bde9be472584308894cfd702ccd014578afe753
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1b5ee0336ba9e867a628dc5db4f0c029f68ff45c81d68ceb6299e3469d5e2b49
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814450"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796810"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-crypto"></a>Capítulo 1: Introducción a Azure RTOS NetX Crypto
 

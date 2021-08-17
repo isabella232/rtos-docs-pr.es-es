@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d721d8bd3e08d8cccdc13011807b4c5017c84173
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d08d3c07f7be016ece68ff2f58b9ac5ba93ded780105bce362674ed36b5b885d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814706"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792373"
 ---
 # <a name="chapter-3---description-of-ftp-services"></a>Capítulo 3: Descripción de los servicios FTP
 
@@ -273,7 +273,7 @@ status = nx_ftp_client_directory_create(&my_client, “my_dir”, 200);
 
 ## <a name="nx_ftp_client_directory_default_set"></a>nx_ftp_client_directory_default_set
 
-Establecer el directorio predeterminado en el servidor FTP
+Establecimiento el directorio predeterminado en el servidor FTP
 
 ### <a name="prototype"></a>Prototipo
 

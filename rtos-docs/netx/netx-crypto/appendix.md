@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4a5d3e985833c4c1b6f3ad7287f7f419455477e0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 934855b7fc84252d9c377388506e2984e393211ce86fc4d7feced839cdcc197c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815274"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796756"
 ---
 # <a name="appendix---azure-rtos-netx-crypto-cavs-test"></a>Apéndice: Prueba criptográfica CAVS de Azure RTOS NetX
 

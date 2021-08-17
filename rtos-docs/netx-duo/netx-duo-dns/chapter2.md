@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 75b85829f80462015d66e1623b880d5139349ce0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d18e6444f13f069347719901b24234aebe04cdc5cd6230212e0781a50ed245d1
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815386"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792016"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dns-client"></a>Capítulo 2: Instalación y uso del cliente DNS de Azure RTOS NetX Duo
 
@@ -59,7 +59,7 @@ ARP y UDP (que se usa por las redes IPv4) se habilitan en las líneas 129 y 141
 >[!NOTE]
 > En esta demostración se usa el controlador "ram" declarado en la línea 44 y utilizado en la llamada a *nx_ip_create*. Este controlador de RAM se distribuye con el código fuente de NetX Duo. Para ejecutar realmente el cliente DNS, la aplicación debe proporcionar un controlador de red físico real para transmitir y recibir paquetes del servidor DNS.
 
-La función de entrada de subproceso de cliente *thread_client_entry* se define debajo de la función *tx_application_define*. Cede inicialmente el control al sistema para permitir que el controlador de red inicialice el subproceso de la tarea de IP.
+La función de entrada de subproceso del cliente *thread_client_entry* se define debajo de la función *tx_application_define*. Cede inicialmente el control al sistema para permitir que el controlador de red inicialice el subproceso de la tarea de IP.
 
 A continuación, crea el cliente DNS en la línea 257, inicializa la caché de DNS en las líneas 267 a 278 y establece el grupo de paquetes creado previamente en la instancia del cliente DNS en las líneas 281 a 295. Después agrega el servidor DNS en las líneas 297 a 341.
 

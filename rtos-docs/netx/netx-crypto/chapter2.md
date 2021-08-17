@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3323af5eaf31ac9c167966522df6477c82e99fdc
-ms.sourcegitcommit: c98e5360c9cedbe773af5a44f5163f563c85b570
+ms.openlocfilehash: 6e04ea357c4e24f28d15f4f141bc001d4bbe8ac06bb641e10a7bd81653e60fda
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2021
-ms.locfileid: "110337013"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796775"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-crypto"></a>Capítulo 2: Instalación y uso de Crypto de Azure RTOS NetX
 

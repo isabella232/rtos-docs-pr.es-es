@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3426b0895e259bd70e758aae8b56349082a3a95a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: fda8c5b1bdb35e8312204374592e411a6a1e44f79a4a75a035a7886223c22b53
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815237"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796399"
 ---
 # <a name="chapter-1---introduction-to-the-azure-rtos-netx-dns-client"></a>Capítulo 1: Introducción al cliente DNS de Azure RTOS NetX
 

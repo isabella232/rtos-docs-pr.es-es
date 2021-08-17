@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 36d673c34479ec2d476eeaa094c0dc02714ee010
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 58b6e36fab4de02a9fb973894500a48f2656809ec2baa3dfc65fcd80ae33b832
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814762"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791844"
 ---
 # <a name="appendix-a--azure-rtos-netx-duo-dhcpv6-option-codes"></a>Apéndice A: Códigos de opciones DHCPv6 de Azure RTOS NetX Duo
 

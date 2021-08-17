@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9224a4df70b8199032066e30108250a3baeb65f5
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: da27039694c90f74a8b13dc556a367802f66c0ba7dd337f3e31ebab05641a9b1
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815253"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788786"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-dhcp-client"></a>Capítulo 2: Instalación y uso del cliente DHCP para NetX de Azure RTOS
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2432b291f2b3fa7d6d798b8b4c187dd20b97db6b
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: fd31c586a8b582215d2f0e54e3e543cd1127594599162ca93bbba69b07565f12
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815625"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791266"
 ---
 # <a name="chapter-5---device-drivers-for-azure-rtos-threadx"></a>Capítulo 5: Controladores de dispositivo para Azure RTOS ThreadX
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f5b2f2ef7b440e2f2ee8aa6a9bd6ed199eaf13fb
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 57a47e94701527096af24e1a4b49b3ecd704b3930f49549bbb97be2c716bcfe2
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814810"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790537"
 ---
 # <a name="chapter-1---introduction-to-the-azure-rtos-netx-duo-dhcp-client"></a>Capítulo 1: Introducción al cliente DHCP de Azure RTOS NetX Duo
 

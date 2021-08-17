@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9634adab3944c29f64d26dd688b5053dc1bd9bcb
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 10368edf3cdf15d32bddbd5bd943681b3ff3dd1aa1a7042d1b9bb2bf0e71699f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814730"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791913"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-dns-client-services"></a>Capítulo 3: Descripción de los servicios del cliente DNS de Azure RTOS NetX Duo
 
@@ -75,7 +75,7 @@ En la sección "Valores devueltos" de las siguientes descripciones de API, los v
 
 ## <a name="nx_dns_authority_zone_start_get"></a>nx_dns_authority_zone_start_get
 
-Buscar el inicio de la zona de autoridad del host de entrada
+Búsqueda del inicio de la zona de autoridad del host de entrada
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -240,7 +240,7 @@ status =  nx_dns_cache_initialize(&my_dns, &dns_cache, 2048);
 
 ## <a name="nx_dns_cache_notify_clear"></a>nx_dns_cache_notify_clear
 
-Borrar la función de notificación completa de la caché de DNS
+Borrado de la función de notificación completa de la caché de DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -275,7 +275,7 @@ status =  nx_dns_cache_notify_clear(&my_dns);
 
 ## <a name="nx_dns_cache_notify_set"></a>nx_dns_cache_notify_set
 
-Establecer la función de notificación completa de la caché de DNS
+Establecimiento de la función de notificación completa de la caché de DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -312,7 +312,7 @@ status =  nx_dns_cache_notify_set(&my_dns, cache_full_notify_cb);
 
 ## <a name="nx_dns_cname_get"></a>nx_dns_cname_get
 
-Buscar el nombre canónico del nombre de host de entrada
+Búsqueda del nombre canónico del nombre de host de entrada
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -375,7 +375,7 @@ Test CNAME: my_example.com
 
 ##  <a name="nx_dns_create"></a>nx_dns_create
 
-Crear una instancia de cliente DNS
+Creación de una instancia de cliente DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -418,7 +418,7 @@ status =  nx_dns_create(&my_dns, &my_ip, "My DNS");
 
 ## <a name="nx_dns_delete"></a>nx_dns_delete
 
-Eliminar una instancia de cliente DNS
+Eliminación de una instancia de cliente DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -456,7 +456,7 @@ status =  nx_dns_delete(&my_dns);
 
 ## <a name="nx_dns_domain_name_server_get"></a>nx_dns_domain_name_server_get
 
-Buscar los servidores de nombres autoritativos para la zona de dominio de entrada
+Búsqueda de los servidores de nombres autoritativos para la zona de dominio de entrada
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -571,7 +571,7 @@ hostname = ns4.www.my_example.com
 
 ## <a name="nx_dns_domain_mail_exchange_get"></a>nx_dns_domain_mail_exchange_get
 
-Buscar los intercambios de correo para el nombre de host de entrada
+Búsqueda de los intercambios de correo para el nombre de host de entrada
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -701,7 +701,7 @@ hostname = alt2.aspmx.l.www.my_example.com
 
 ## <a name="nx_dns_domain_service_get"></a>nx_dns_domain_service_get
 
-Buscar los servicios proporcionados por el nombre de host de entrada
+Búsqueda de los servicios proporcionados por el nombre de host de entrada
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -834,7 +834,7 @@ hostname = alt1.xmpp.l.www.my_example.com
 
 ## <a name="nx_dns_get_serverlist_size"></a>nx_dns_get_serverlist_size
 
-Devolver el tamaño de la lista de servidores del cliente DNS
+Devolución del tamaño de la lista de servidores del cliente DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -872,7 +872,7 @@ status =  nx_dns_get_serverlist_size (&my_dns, 5, &my_listsize);
 
 ## <a name="nx_dns_info_by_name_get"></a>nx_dns_info_by_name_get
 
-Devolver la dirección IP y el puerto del servidor DNS por nombre de host
+Devolución de la dirección IP y el puerto del servidor DNS por nombre de host
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -919,7 +919,7 @@ status =  nx_dns_info_by_name_get(&my_dns, “www.abc1234.com”, &ip_address, &
 
 ## <a name="nx_dns_ipv4_address_by_name_get"></a>nx_dns_ipv4_address_by_name_get
 
-Buscar la dirección IPv4 para el nombre de host de entrada
+Búsqueda de la dirección IPv4 para el nombre de host de entrada
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1127,7 +1127,7 @@ record 0: IP address: 2001:0db8:0000:f101: 0000: 0000: 0000:01003
 
 ## <a name="nx_dns_host_by_address_get"></a>nx_dns_host_by_address_get
 
-Buscar un nombre de host desde una dirección IP
+Búsqueda de un nombre de host desde una dirección IP
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1166,7 +1166,7 @@ Este servicio solicita la resolución de nombres de la dirección IP suministrad
 - **NX_DNS_PARAM_ERROR** (0xA8): entrada que no es de puntero no válida.
 - **NX_DNS_IPV6_NOT_SUPPORTED** (0XB3): no se puede procesar el registro con IPv6 deshabilitado.
 - NX_PTR_ERROR (0x07): entrada de puntero no válida.
-- NX_CALLER_ERROR (0x11): autor de llamada no válido de este servicio.
+- NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -1271,7 +1271,7 @@ else
 
 ## <a name="nx_dns_host_by_name_get"></a>nx_dns_host_by_name_get
 
-Buscar una dirección IP desde el nombre de host
+Búsqueda de una dirección IP desde el nombre de host
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1303,7 +1303,7 @@ Este servicio solicita la resolución de nombres del nombre suministrado de uno 
 - **NX_DNS_QUERY_FAILED** (0xA3): no se recibió ninguna respuesta a la consulta.
 - NX_DNS_PARAM_ERROR (0xA8): entrada que no es de puntero no válida.
 - NX_PTR_ERROR (0x07): entrada de puntero no válida.
-- NX_CALLER_ERROR (0x11): autor de llamada no válido de este servicio.
+- NX_CALLER_ERROR (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -1461,7 +1461,7 @@ IP address: 192.2.2.10
 
 ## <a name="nx_dns_host_text_get"></a>nx_dns_host_text_get
 
-Buscar la cadena de texto para el nombre de dominio de entrada
+Búsqueda de la cadena de texto para el nombre de dominio de entrada
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1535,7 +1535,7 @@ v=spf1 include:_www.my_example.com ip4:192.2.2.10/31 ip4:192.2.2.11/31 ~all
 
 ## <a name="nx_dns_packet_pool_set"></a>nx_dns_packet_pool_set
 
-Establecer el grupo de paquetes del cliente DNS
+Establecimiento del grupo de paquetes del cliente DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1589,7 +1589,7 @@ status =  nx_dns_packet_pool_set(&my_dns, &client_pool);
 
 ## <a name="nx_dns_server_add"></a>nx_dns_server_add
 
-Agregar dirección IP del servidor DNS
+Incorporación de dirección IP del servidor DNS
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1679,7 +1679,7 @@ status =  nxd_dns_server_add(&my_dns, &server_address);
 
 ## <a name="nx_dns_server_get"></a>nx_dns_server_get
 
-Devolver un servidor DNS IPv4 de la lista de clientes
+Devolución de un servidor DNS IPv4 de la lista de clientes
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1779,7 +1779,7 @@ status =  nxd_dns_server_get(&my_dns, 5, &my_server_addres);
 
 ## <a name="nx_dns_server_remove"></a>nx_dns_server_remove
 
-Quitar un servidor DNS IPv4 de la lista de clientes
+Eliminación de un servidor DNS IPv4 de la lista de clientes
 
 ### <a name="prototype"></a>Prototipo
 ```C
@@ -1866,7 +1866,7 @@ status =  nxd_dns_server_remove(&my_dns,&server_ADDRESS);
 
 ## <a name="nx_dns_server_remove_all"></a>nx_dns_server_remove_all
 
-Quitar todos los servidores DNS de la lista de clientes
+Eliminación de todos los servidores DNS de la lista de clientes
 
 ### <a name="prototype"></a>Prototipo
 ```C

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4d41da1e1e87e59c5c40674a58b288ac62ec8c78
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 0143b142a39bbda28ae20d41adf08119b8b2f8f99d510a456743b4f447802833
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814618"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797235"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-pop3"></a>Capítulo 1: Introducción a POP3 en Azure RTOS NetX
 
@@ -107,11 +107,11 @@ Si se produce un error en la autenticación de APOP, el cliente POP3 de NetX Duo
 
 ## <a name="the-pop3-client-maildrop"></a>Maildrop del cliente POP3
 
-El correo del cliente se almacena en un servidor POP3 en un buzón o "maildrop". Un maildrop de cliente en un servidor POP3 se representa como una lista de elementos de correo electrónico basada en 1. Es decir, para hacer referencia a cada correo, se recurre a su índice en la lista del maildrop con el primer elemento de correo en el índice 1 (distinto de cero). Los comandos de POP3 hacen referencia a elementos de correo específicos según su índice en esta lista.
+El correo del cliente se almacena en un servidor POP3 en un buzón o "maildrop". Un maildrop de cliente en un servidor POP3 se representa como una lista de elementos de correo electrónico basada en 1. Es decir, para hacer referencia a cada correo, se hace mediante su índice en la lista del maildrop con el primer elemento de correo en el índice 1 (no cero). Los comandos de POP3 hacen referencia a elementos de correo específicos según su índice en esta lista.
 
 ## <a name="the-pop3-protocol-state-machine"></a>Máquina de estados del protocolo POP3
 
-El protocolo POP3 requiere que tanto el cliente como el servidor mantengan el estado de la sesión POP3. En primer lugar, el cliente intenta conectarse al servidor POP3. Si se ejecuta correctamente, entra en el protocolo POP3 que tiene tres estados distintos que se definen en la RFC 1939. El estado inicial es el estado de autorización con el que debe identificarse en el servidor. En el estado de autorización, el cliente POP3 solo puede emitir los comandos USER y PASS, y en ese orden, o el comando APOP.
+El protocolo POP3 requiere que tanto el cliente como el servidor mantengan el estado de la sesión POP3. En primer lugar, el cliente intenta conectarse al servidor POP3. Si se ejecuta correctamente, entra en el protocolo POP3 que tiene tres estados distintos que se definen en RFC 1939. El estado inicial es el estado de autorización con el que debe identificarse en el servidor. En el estado de autorización, el cliente POP3 solo puede emitir los comandos USER y PASS, y en ese orden, o el comando APOP.
 
 Una vez que se autentica el cliente POP3, la sesión del cliente entra en el estado de transacción. En este estado, el cliente puede descargar correo y solicitar su eliminación. Los comandos que permite el estado de transacción son LIST, STAT, RETR, DELE, RSET y QUIT. Por lo general, el cliente POP3 envía un comando STAT seguido de una serie de comandos RETR (uno para cada elemento de correo en su maildrop).
 

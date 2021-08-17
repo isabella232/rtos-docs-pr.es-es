@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 32288d78ceffb74ab088a1d720dbac657f6d3ed4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 24b814e7c2b510093b809b70b02d9a11ed39996d114f2306e0993893799453cc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814382"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791965"
 ---
 # <a name="chapter-2---module-requirements"></a>Capítulo 2: requisitos de los módulos
 
@@ -144,7 +144,7 @@ En la siguiente tabla se muestra un ejemplo de mapa de bits de las propiedades. 
 | 0 | 0<br />1 | Ejecución en modo privilegiado<br />Ejecución en modo de usuario |
 | 1 | 0<br />1 | Sin protección de MPU<br />Protección de MPU (debe estar seleccionado el modo de usuario) |
 | 2 | 0<br />1 | Deshabilitar el acceso a la memoria compartida/externa<br />Habilitar el acceso a la memoria compartida/externa |
-| [23-3] | 0 | Reservado
+| [23-3] | 0 | Reservada
 | [31-24] | <br />0x01<br />0x02<br />0x03 | **Identificador de compilador**<br />IAR<br />ARM<br />GNU |
 
 

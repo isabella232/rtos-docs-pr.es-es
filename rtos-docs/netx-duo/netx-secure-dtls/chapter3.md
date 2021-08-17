@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 347bd83fa8c72ced2e8678a92ec5c5f8393c136d
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 7db319e45c6d1f4a2030734fc01fefc4f3907aebeec1b3f47a5bde57dd5bfcc4
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550208"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797098"
 ---
 # <a name="chapter-3-functional-description-of-azure-rtos-netx-secure-dtls"></a>Capítulo 3: Descripción funcional del servicio DTLS de Azure RTOS NetX Secure
 
@@ -46,7 +46,7 @@ Cualquier registro DTLS válido debe tener un encabezado DTLS, como se muestra e
 
 Los campos del encabezado de registro TLS se definen de la siguiente manera:
 
-| Campo de encabezado TLS | Fin  |
+| Campo de encabezado TLS | Propósito  |
 | ---------------- | --------- |
 | **Tipo de mensaje de 8 bits** | Este campo contiene el tipo de registro DTLS que se está enviando. Los tipos válidos son los siguientes:<br />- ChangeCipherSpec: 0x14<br />- Alert: 0x15<br />- Handshake: 0x16<br />- ApplicationData: 0x17<br /> |
 | **Versión del protocolo de 16 bits** | Este campo contiene la versión del protocolo DTLS. Los valores válidos son los siguientes:<br />- DTLS 1.1: 0xFEFD |
@@ -64,7 +64,7 @@ Cualquier registro de protocolo de enlace DTLS válido debe tener un encabezado 
 
 Los campos del encabezado de registro de protocolo de enlace DTLS se definen de la siguiente manera:
 
-| Campo de encabezado TLS | Fin  |
+| Campo de encabezado TLS | Propósito  |
 | ---------------- | ------------------------------------------------ |
 | **Tipo de mensaje de 8 bits** | Este campo contiene el tipo de registro DTLS que se está enviando. Los tipos válidos son los siguientes:<br />- ChangeCipherSpec: 0x14<br />- Alert: 0x15<br />- Handshake: 0x16<br />- ApplicationData: 0x17 |
 |  **Época de 16 bits** | Este campo contiene la “época” de DTLS, que es un contador que se incrementa cada vez que se cambia el estado de cifrado (por ejemplo, al generar nuevas claves de sesión). |

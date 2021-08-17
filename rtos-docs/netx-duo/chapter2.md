@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: ac41672959c0873d90bdafe0d6b959efdddf8ecc
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: 32a9efaac3c85d415316fba2e9536cc40939f1f6debcbe3e2fa588de613a694d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115178228"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788837"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo"></a>Capítulo 2: Instalación y uso de Azure RTOS NetX Duo
 
@@ -131,7 +131,7 @@ En las siguientes secciones se enumeran las opciones de configuración disponibl
 |NX_ARP_DEFEND_BY_REPLY | Si se define, permite a NetX Duo defender su dirección IP mediante el envío de una respuesta ARP.|
 |NX_ARP_DEFEND_INTERVAL| Define el intervalo, en segundos, en que el módulo ARP envía el siguiente paquete de defensa en respuesta a un mensaje ARP entrante que indica que hay una dirección en conflicto.|
 |NX_ARP_DISABLE_AUTO_ARP_ENTRY|  Se ha cambiado el nombre a ***NX_DISABLE_ARP_AUTO_ENTRY** _. Aunque aún se admite, se recomienda que los nuevos diseños utilicen _*_NX_DISABLE_ARP_AUTO_ENTRY_**.|
-|NX_ARP_EXPIRATION_RATE| Especifica el número de segundos durante los que las entradas ARP son válidas. El valor predeterminado cero deshabilita la expiración o el vencimiento de las entradas ARP y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir *_nx_api.h_**.|
+|NX_ARP_EXPIRATION_RATE| Especifica el número de segundos durante los que las entradas ARP son válidas. El valor predeterminado cero deshabilita la expiración o el vencimiento de las entradas ARP y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado. Para ello, debe definir el valor antes de incluir *_nx_api.h_**.|
 |NX_ARP_MAC_CHANGE_NOTIFICATION_ENABLE | Se ha cambiado el nombre a ***NX_ENABLE_ARP_MAC_CHANGE_NOTIFICATION** _. Aunque aún se admite, se recomienda que los nuevos diseños utilicen _*_NX_ENABLE_ARP_MAC_CHANGE_NOTIFICATION_**.|
 |NX_ARP_MAX_QUEUE_DEPTH | Especifica el número máximo de paquetes que se pueden poner en cola mientras se espera una respuesta ARP. El valor predeterminado es 4 y se define en ***nx_api.h***.|
 |NX_ARP_MAXIMUM_RETRIES | Especifica el número máximo de reintentos de ARP que se pueden realizar sin una respuesta ARP. El valor predeterminado es 18 y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado. Para ello, debe definir el valor antes de incluir *_nx_api.h_**.|

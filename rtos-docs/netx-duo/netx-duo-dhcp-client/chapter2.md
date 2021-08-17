@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8c3df64be337b557f492617c1ef20adc7c0f8d6e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 08f88f4501a7b44272111cbe5c14ee09474827b72a1239b334fb9d40e8093c51
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814802"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788497"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dhcp-client"></a>Capítulo 2: Instalación y uso del cliente DHCP de Azure RTOS NetX Duo
 
@@ -37,7 +37,7 @@ El uso de DHCP para NetX Duo es sencillo. Básicamente, el código de la aplicac
 
 Tenga en cuenta que como DHCP usa los servicios de UDP de NetX Duo, debe habilitarse UDP con la llamada a *nx_udp_enable* antes de utilizar DHCP.
 
-Para obtener una dirección IP asignada previamente, el cliente DHCP puede iniciar el proceso de DHCP con el mensaje de solicitud y la opción 50 "Requested IP Address" (dirección IP solicitada) en el servidor DHCP. El servidor DHCP responderá con un mensaje ACK si concede la dirección IP al cliente o un mensaje NACK si la rechaza. En el último caso, el cliente DHCP reinicia el proceso de DHCP en el estado de inicialización con un mensaje de detección y ninguna dirección IP solicitada. La aplicación host crea primero el cliente DHCP y, a continuación, llama al servicio de API *nx_dhcp_request_client_ip* para establecer la dirección IP solicitada antes de iniciar el proceso de DHCP con *nx_dhcp_start*. Se proporciona una aplicación DHCP de ejemplo en otra parte de este documento para obtener más detalles.
+Para obtener una dirección IP asignada previamente, el cliente DHCP puede iniciar el proceso de DHCP con el mensaje de solicitud y la opción 50 "Requested IP Address" (dirección IP solicitada) en el servidor DHCP. El servidor DHCP responderá con un mensaje ACK si concede la dirección IP al cliente o un mensaje NACK si la rechaza. En el último caso, el cliente DHCP reinicia el proceso de DHCP en el estado Init con un mensaje Discover y ninguna dirección IP solicitada. La aplicación host crea primero el cliente DHCP y, a continuación, llama al servicio de API *nx_dhcp_request_client_ip* para establecer la dirección IP solicitada antes de iniciar el proceso de DHCP con *nx_dhcp_start*. Se proporciona una aplicación DHCP de ejemplo en este documento para ofrecer más detalles.
 
 ## <a name="in-the-bound-state"></a>En estado enlazado
 
@@ -74,7 +74,7 @@ Por lo tanto, no se recomienda detener el cliente DHCP a menos que la aplicació
 
 ## <a name="using-the-dhcp-client-with-auto-ip"></a>Uso del cliente DHCP con IP automática
 
-El cliente DHCP de NetX Duo funciona simultáneamente con el protocolo de IP automática en las aplicaciones en las que ambos garantizan una dirección cuando no hay garantía de que un servidor DHCP esté disponible o responda. Si el host no puede detectar un servidor u obtener una dirección IP asignada, puede cambiar al protocolo de IP automática para obtener una dirección IP local. Sin embargo, antes de hacerlo, es aconsejable detener temporalmente el cliente DHCP mientras la IP automática pasa por las fases de "sondeo" y "defensa". Una vez asignada una dirección IP automática al host, se puede reiniciar el cliente DHCP y, si hay un servidor DHCP disponible, la dirección IP del host puede aceptar la dirección IP que ofrece el servidor DHCP mientras la aplicación se está ejecutando.
+El cliente DHCP de NetX Duo funciona simultáneamente con el protocolo de IP automática en las aplicaciones en las que ambos garantizan una dirección cuando no hay garantía de que un servidor DHCP esté disponible o responda. Si el host no puede detectar un servidor u obtener una dirección IP asignada, puede cambiar al protocolo de IP automática para obtener una dirección IP local. Aunque, antes de hacerlo, es aconsejable detener temporalmente el cliente DHCP mientras la IP automática pasa por las fases de "sondeo" y "defensa". Una vez asignada una dirección IP automática al host, se puede reiniciar el cliente DHCP y, si hay un servidor DHCP disponible, la dirección IP del host puede aceptar la dirección IP que ofrece el servidor DHCP mientras la aplicación se está ejecutando.
 
 La opción de IP automática de NetX Duo tiene una notificación de cambio de dirección para que el host supervise sus actividades en caso de un cambio de dirección IP.
 
@@ -218,15 +218,15 @@ UINT    status;
 ```
 ## <a name="multi-server-environments"></a>Entornos de varios servidores
 
-En redes en las que hay más de un servidor DHCP, el cliente DHCP acepta el primer mensaje de oferta del servidor DHCP recibido, avanza hasta el estado de solicitud y omite cualquier otra oferta recibida.
+En las redes en las que hay más de un servidor DHCP, el cliente DHCP acepta el primer mensaje Offer recibido del servidor DHCP, avanza hasta el estado Request y omite cualquier otra oferta recibida.
 
 ## <a name="arp-probes"></a>Sondeos ARP
 
-El cliente DHCP puede configurarse para enviar uno o más sondeos ARP después de la asignación de direcciones IP desde el servidor DHCP para comprobar que la dirección IP ya no está en uso. En la RFC 2131 se recomienda el paso de sondeo ARP, que es especialmente importante en entornos con más de un servidor DHCP. Si la aplicación host habilita la opción NX_DHCP_CLIENT_SEND_ARP_PROBE (consulte en la sección **Opciones de configuración** del capítulo dos las opciones adicionales de sondeo ARP), el cliente DHCP enviará un sondeo ARP "autodireccionado" y esperará durante el tiempo especificado para recibir una respuesta. Si no se recibe ninguna, el cliente DHCP avanza al estado Enlazado. Si se recibe una respuesta, el cliente DHCP supone que la dirección ya está en uso. Envía automáticamente un mensaje DECLINE al servidor y reinicializa el cliente para reiniciar los sondeos DHCP de nuevo desde el estado INIT. Así se reinicia la máquina de estados de DHCP y el cliente envía otro mensaje DISCOVER al servidor.
+El cliente DHCP puede configurarse para enviar uno o más sondeos ARP después de la asignación de direcciones IP del servidor DHCP para comprobar que la dirección IP aún no está en uso. En el RFC 2131 se recomienda el paso de sondeo ARP y es especialmente importante en entornos con más de un servidor DHCP. Si la aplicación host habilita la opción NX_DHCP_CLIENT_SEND_ARP_PROBE (consulte **Opciones de configuración** en el capítulo dos de las opciones adicionales de sondeo ARP), el cliente DHCP enviará un sondeo ARP "autodireccionado" y esperará durante el tiempo especificado para recibir una respuesta. Si no se recibe ninguna, el cliente DHCP avanza al estado Bound. Si se recibe una respuesta, el cliente DHCP supone que la dirección ya está en uso. Envía automáticamente un mensaje DECLINE al servidor y reinicializa el cliente para reiniciar los sondeos DHCP de nuevo desde el estado INIT. Así se reinicia la máquina de estado DHCP y el cliente envía otro mensaje DISCOVER al servidor.
 
 ## <a name="bootp-protocol"></a>Protocolo BOOTP
 
-El cliente DHCP también admite el protocolo BOOTP además del protocolo DHCP. Para habilitar esta opción y usar BOOTP en lugar de DHCP, la aplicación host debe establecer la opción de configuración NX_DHCP_BOOTP_ENABLE. La aplicación host todavía puede solicitar direcciones IP específicas en el protocolo BOOTP. Sin embargo, el cliente DHCP no admite la carga del sistema operativo host, ya que a veces se usa BOOTP para hacerlo.
+El cliente DHCP también admite el protocolo BOOTP además del protocolo DHCP. Para habilitar esta opción y usar BOOTP en lugar de DHCP, la aplicación host debe establecer la opción de configuración NX_DHCP_BOOTP_ENABLE. La aplicación host también puede solicitar direcciones IP específicas en el protocolo BOOTP. Sin embargo, el cliente DHCP no admite la carga del sistema operativo host, ya que a veces se usa BOOTP para hacerlo.
 
 ## <a name="dhcp-on-a-secondary-interface"></a>DHCP en una interfaz secundaria
 
@@ -369,27 +369,27 @@ NX_PACKET   *my_packet;
 
 ## <a name="dhcp-client-on-multiple-interfaces-simultaneously"></a>Cliente DHCP en varias interfaces simultáneamente
 
-Para ejecutar el cliente DHCP en varias interfaces, NX_MAX_PHYSICAL_INTERFACES en *nx_api.h* se debe establecer en el número de interfaces físicas conectadas al dispositivo. De forma predeterminada, este valor es 1 (es decir, la interfaz principal). Para registrar una interfaz adicional en la instancia de IP, use el servicio *nx_ip_interface_attach*. Consulte el manual del usuario de NetX Duo para obtener más detalles sobre cómo adjuntar interfaces secundarias.
+Para ejecutar el cliente DHCP en varias interfaces, se debe establecer NX_MAX_PHYSICAL_INTERFACES de *nx_api.h* en el número de interfaces físicas conectadas al dispositivo. De forma predeterminada, este valor es 1 (es decir, la interfaz principal). Para registrar una interfaz adicional en la instancia de IP, use el servicio *nx_ip_interface_attach*. Consulte el manual del usuario de NetX Duo para obtener más detalles sobre cómo adjuntar interfaces secundarias.
 
-El siguiente paso consiste en establecer NX_DHCP_CLIENT_MAX_RECORDS en *nxd_dhcp_client.h* en el número máximo de interfaces que se espera que ejecuten DHCP simultáneamente. Tenga en cuenta que NX_DHCP_CLIENT_MAX_RECORDS no tiene que ser igual a NX_MAX_PHYSICAL_INTERFACES. Por ejemplo, NX_MAX_PHYSICAL_INTERFACES puede ser 3 y NX_DHCP_CLIENT_MAX_RECORDS puede ser 2. En esta configuración, solo dos de las tres interfaces físicas pueden ejecutar DHCP al mismo tiempo, pero pueden ser cualesquiera de las tres interfaces físicas en cualquier momento. Los registros de cliente DHCP no tienen una asignación de uno a uno con las interfaces de red; es decir, el registro del cliente 1 no se correlaciona automáticamente con el índice de interfaz física 1.
+El siguiente paso consiste en establecer NX_DHCP_CLIENT_MAX_RECORDS en *nxd_dhcp_client.h* en el número máximo de interfaces que se espera que ejecuten DHCP simultáneamente. Tenga en cuenta que NX_DHCP_CLIENT_MAX_RECORDS no tiene que ser igual a NX_MAX_PHYSICAL_INTERFACES. Por ejemplo, NX_MAX_PHYSICAL_INTERFACES puede ser 3 y NX_DHCP_CLIENT_MAX_RECORDS puede ser 2. En esta configuración, solo dos interfaces (pueden ser cualquiera de las tres interfaces físicas en cualquier momento) de las tres interfaces físicas pueden ejecutar DHCP al mismo tiempo. Los registros de cliente DHCP no tienen una asignación de uno a uno con las interfaces de red, por ejemplo, el registro del cliente 1 no se correlaciona automáticamente con el índice de interfaz física 1.
 
 NX_DHCP_CLIENT_MAX_RECORDS también se puede establecer en un valor mayor que NX_MAX_PHYSICAL_INTERFACES, pero esto crearía registros de cliente no usados y sería un uso ineficaz de la memoria.
 
-Antes de poder iniciar DHCP en cualquier interfaz, la aplicación debe habilitar dichas interfaces mediante llamadas a *nx_dhcp_interface_enable*. Tenga en cuenta que la excepción es la interfaz principal, que se habilita automáticamente en la llamada a *nx_dhcp_create* (y que se puede deshabilitar mediante el servicio *nx_dhcp_interface_disable* que se describe a continuación).
+Antes de poder iniciar DHCP en cualquier interfaz, la aplicación debe habilitar las interfaces mediante una llamada a *nx_dhcp_interface_enable*. Tenga en cuenta que la excepción es la interfaz principal que se habilita automáticamente en la llamada a *nx_dhcp_create* (y que se puede deshabilitar mediante el servicio *nx_dhcp_interface_disable* que se describe a continuación).
 
 En cualquier momento, se puede deshabilitar una interfaz para DHCP o se puede detener DHCP en esa interfaz independientemente de otras interfaces que ejecuten DHCP.
 
-Como se ha mencionado anteriormente, para habilitar una interfaz específica para DHCP, use el servicio *nx_dhcp_interface_enable* y especifique el índice de interfaz física en el argumento de entrada. Se pueden habilitar hasta NX_DHCP_CLIENT_MAX_RECORDS interfaces con la única limitación de que el argumento de entrada del índice de interfaz sea menor que NX_MAX_PHYSICAL_INTERFACES.
+Como se mencionó anteriormente, para habilitar una interfaz específica para DHCP, use el servicio *nx_dhcp_interface_enable* y especifique el índice de interfaz física en el argumento de entrada. El número máximo de interfaces que se pueden habilitar es el valor de NX_DHCP_CLIENT_MAX_RECORDS con la única limitación de que el argumento de entrada del índice de interfaz sea menor que NX_MAX_PHYSICAL_INTERFACES.
 
 Para iniciar DHCP en una interfaz específica, utilice el servicio *nx_dhcp_interface_start*. Para iniciar DHCP en todas las interfaces habilitadas, use el servicio *nx_dhcp_start*. (Las interfaces que ya han iniciado DHCP no se verán afectadas por *nx_dhcp_start*).
 
-Para detener DHCP en una interfaz, use el servicio *nx_dhcp_interface_stop*. DHCP debe haberse iniciado ya en esa interfaz, de lo contrario se devuelve un estado de error. Para detener DHCP en todas las interfaces habilitadas, use el servicio *nx_dhcp_stop*. DHCP se puede detener independientemente de otras interfaces en cualquier momento.
+Para detener DHCP en una interfaz, use el servicio *nx_dhcp_interface_stop*. DHCP debe haberse iniciado ya en esa interfaz o se devolverá un estado de error. Para detener DHCP en todas las interfaces habilitadas, use el servicio *nx_dhcp_stop*. DHCP se puede detener independientemente de otras interfaces en cualquier momento.
 
-La mayoría de los servicios de cliente DHCP existentes tienen un equivalente de "interfaz"; por ejemplo, *nx_dhcp_interface_release* es el equivalente específico de interfaz de *nx_dhcp_release*. Si el cliente DHCP está configurado para una sola interfaz, realiza la misma acción.
+La mayoría de los servicios de cliente DHCP existentes tienen un equivalente de "interfaz"; por ejemplo, *nx_dhcp_interface_release* es el equivalente específico de la interfaz de *nx_dhcp_release.* Si el cliente DHCP está configurado para una sola interfaz, realizan la misma acción.
 
-Tenga en cuenta que los servicios de cliente DHCP que no son específicos de interfaz suelen aplicarse a todas las interfaces, pero no todos. En el último caso, el servicio que no es específico de interfaz se aplica a la primera interfaz habilitada para DHCP que se encuentra en la búsqueda en la lista de registros de interfaz del cliente DHCP. Consulte **Descripción de los servicios** en el capítulo 3 sobre cómo funciona un servicio que no es específico de interfaz cuando se habilitan varias interfaces para DHCP.
+Tenga en cuenta que los servicios de cliente DHCP que no son específicos de interfaz suelen aplicarse a todas las interfaces, pero no a todas. En el último caso, el servicio que no es específico de interfaz se aplica a la primera interfaz habilitada para DHCP que se encuentra en la búsqueda en la lista de registros de interfaz del cliente DHCP. Vea **Descripción de los servicios** en el capítulo tres sobre cómo funciona un servicio que no es específico de interfaz cuando se habilitan varias interfaces para DHCP.
 
-En la secuencia de ejemplo siguiente, la instancia de IP tiene dos interfaces de red y primero ejecuta DHCP en la interfaz secundaria. En algún momento posterior, inicia DHCP en la interfaz principal. A continuación, libera la dirección IP de la interfaz principal y reinicia DHCP en la interfaz principal:
+En la secuencia de ejemplo siguiente, la instancia de IP tiene dos interfaces de red y primero se ejecuta DHCP en la interfaz secundaria. En algún momento posterior, inicia DHCP en la interfaz principal. A continuación, libera la dirección IP en la interfaz principal y reinicia DHCP en la interfaz principal:
 
 ```c
 nx_dhcp_create(&my_dhcp_client); /* By default this enables primary interface for DHCP. */
@@ -407,7 +407,7 @@ nx_dhcp_interface_release(&my_dhcp_client, 0); /* Some time later… */
 nx_dhcp_interface_start(&my_dhcp_client, 0); /* DHCP is restarted on primary interface. */
 ```
 
-Para obtener una lista completa de los servicios específicos de la interfaz, consulte **Descripción de los servicios** en el capítulo 3.
+Para obtener una lista completa de los servicios específicos de interfaz, vea **Descripción de los servicios** en el capítulo tres.
 
 ## <a name="configuration-options"></a>Opciones de configuración
 

@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: e1ec852a97a6735a4a055706f55283950d3f8d6b
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1a89f8be7e21e416659b904f0ec5b2a3a8f666cdb9a861786e652a38564db48f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815934"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791557"
 ---
 # <a name="appendix-c---dos-command-line-utilities"></a>Apéndice C: Utilidades de línea de comandos de DOS
 

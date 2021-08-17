@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 007f1080a076730cfbcdedc9f063ac0c427a414c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: edf52cb2d7df293a4606d6c5b5b63075969933fb1a093a1d83b91b2709c08f0c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814662"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791727"
 ---
 # <a name="chapter-3---description-of-internal-service-cache"></a>Capítulo 3: Descripción de la caché de servicio interna
 

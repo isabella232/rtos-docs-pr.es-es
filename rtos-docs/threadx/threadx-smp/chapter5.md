@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: acfb54a25cc8bc27b7d0aaeff48956529d90c9e1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 706ad47b2c3e7b2979da7262a4de8d681f4fbc53cb1af59a798b34094734060b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816065"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792350"
 ---
 # <a name="chapter-5---device-drivers-for-azure-rtos-threadx-smp"></a>Capítulo 5: Controladores de dispositivo para Azure RTOS ThreadX SMP
 
@@ -180,7 +180,7 @@ Este ejemplo de un controlador de dispositivo simple refleja la idea básica de 
 Como se mencionó anteriormente, los controladores de dispositivo tienen requisitos tan únicos como sus aplicaciones. Es posible que algunas aplicaciones requieran una cantidad enorme de almacenamiento en el búfer de datos, mientras que otra aplicación puede requerir una ISR de controlador optimizada debido a una gran frecuencia de las interrupciones de dispositivo.
 
 ### <a name="io-buffering"></a>Almacenamiento en búfer de E/S 
-El almacenamiento en el búfer de datos de las aplicaciones insertadas en tiempo real requiere un planeamiento considerable. Parte del diseño viene determinado por el dispositivo de hardware subyacente. Si el dispositivo proporciona E/S de bytes básica, es probable que resulte adecuado un búfer circular simple. Sin embargo, si el dispositivo proporciona E/S en bloque, de DMA o de paquetes, es probable que esté justificado un esquema de administración de búferes. 
+El almacenamiento en el búfer de datos de las aplicaciones insertadas en tiempo real requiere un planeamiento considerable. Parte del diseño viene determinado por el dispositivo de hardware subyacente. Si el dispositivo proporciona E/S de bytes básica, es probable que resulte conveniente un búfer circular simple. Sin embargo, si el dispositivo proporciona E/S en bloque, de DMA o de paquetes, es probable que esté justificado un esquema de administración de búferes. 
 
 ### <a name="circular-byte-buffers"></a>Búferes de bytes circulares 
 Los búferes de bytes circulares se usan normalmente en controladores que administran un dispositivo de hardware serie simple como un UART. En estas situaciones, se suelen usan dos búferes circulares: uno para la entrada y otro para la salida.
@@ -285,7 +285,7 @@ La definición de tipo TX_IO_BUFFER consta de dos punteros. El puntero ***tx_nex
 ### <a name="buffered-io-advantage"></a>Ventaja de la entrada/salida almacenada en búfer 
 ¿Cuáles son las ventajas de un esquema de E/S en búfer? La mayor ventaja es que los datos no se copian entre los registros del dispositivo y la memoria de la aplicación. En vez de esto, el controlador proporciona al dispositivo una serie de punteros de búfer. La E/S del dispositivo físico emplea directamente la memoria de búfer suministrada.
 
-El uso del procesador para copiar paquetes de entrada o salida de información es extremadamente costoso y debe evitarse en cualquier situación de E/S con una capacidad de proceso elevada.
+El uso del procesador para copiar paquetes de entrada o salida de información es extremadamente costoso y debe evitarse en cualquier situación de E/S de alto rendimiento.
 
 Otra ventaja del enfoque de E/S almacenada en búfer es que las listas de entrada y salida no tienen condiciones de elemento completo. Todos los búferes disponibles pueden estar en cualquiera de las dos listas en un momento dado. Esto lo distingue de los búferes circulares de bytes simples presentados antes en el capítulo. Cada uno tenía un tamaño fijo que se determinaba en la compilación.
 
@@ -296,7 +296,7 @@ Los controladores de dispositivo con almacenamiento en búfer solo se ocupan de 
 
 **FIGURA 15. Listas de entrada y salida**
 
-Las aplicaciones interactúan con controladores con almacenamiento en búfer que tienen los mismos búferes de E/S. En la transmisión, el software de la aplicación proporciona al controlador uno o más búferes para transmitir. Cuando el software de la aplicación solicita una entrada, el controlador devuelve los datos de entrada en búferes de E/S.
+Las aplicaciones interactúan con controladores con almacenamiento en búfer que tienen los mismos búferes de E/S. En la transmisión, el software de la aplicación proporciona al controlador uno o varios búferes para transmitir. Cuando el software de la aplicación solicita una entrada, el controlador devuelve los datos de entrada en búferes de E/S.
 
 > [!IMPORTANT]
 > En algunas aplicaciones, puede ser útil crear una interfaz de entrada al controlador que requiera que la aplicación intercambie un búfer libre por un búfer de entrada del controlador. Esto podría aliviar parte del procesamiento de la asignación de búferes dentro del controlador.
