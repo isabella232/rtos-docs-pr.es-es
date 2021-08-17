@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9c10d6f0d2f36d2794ab1229081799f0032cada8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8c7f2de88b5d70646284d946fdb6fbc743f08b3486430befb4fcda1d7e23e9b9
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814626"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797289"
 ---
 # <a name="chapter-3---nat-configuration-options"></a>Capítulo 3: Opciones de configuración de NAT
 

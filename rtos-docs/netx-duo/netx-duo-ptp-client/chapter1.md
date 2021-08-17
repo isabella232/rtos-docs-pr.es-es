@@ -6,12 +6,12 @@ ms.author: v-condav
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 5beec64bd6d74e3bed06be15255d6bd4a940ba64
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: cf7210529121c8e49ff3cabbb7c673288b803f24760096396f32f33d4a9fb7e6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814590"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798051"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-ptp-client"></a>Capítulo 1: Introducción al cliente PTP de Azure RTOS NetX Duo
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f58a0c235f5c2cd108ba97afe676ffa9b66e715c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: df8c6b6920577ebfc18ed9252761401c30822c034e30d7ae95b25778707f53d5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814582"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797830"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-smtp-client"></a>Capítulo 1: Introducción al cliente SMTP de Azure RTOS NetX Duo
 

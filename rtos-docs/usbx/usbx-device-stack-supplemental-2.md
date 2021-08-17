@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 035492644a911eba3b1c62a79572bc7d4c55f6dd
-ms.sourcegitcommit: 1aeca2f91960856d8cc24fef65f909639e527599
+ms.openlocfilehash: 2a28196c8f0e29ad94ef9f2d65b143459bf0214f48c345e6bb0d4ea71d520dfd
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106082224"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802638"
 ---
 # <a name="chapter-2---usbx-device-class-considerations"></a>Capítulo 2: Consideraciones acerca de la clase del dispositivo USBX
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 90c24cad5e595087ba27178243f9dda0dab11029
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1174d7fdc470bc91278413d56948789cc210aab9d7389a5ecad5baf4f6ad7a7f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814602"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798085"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-point-to-point-protocol-ppp-services"></a>Capítulo 3: Descripción de los servicios de Protocolo punto a punto (PPP) de Azure RTOS NetX Duo
 

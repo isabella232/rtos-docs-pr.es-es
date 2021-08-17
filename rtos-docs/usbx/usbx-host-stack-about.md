@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 243b12c4757ee945def8fea01c0d4114e39312ce
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a41f1b386156be6f8fa773fe2b90bb873cff0fd0e8636bc4d3d8f75295bf7f19
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815606"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802556"
 ---
 # <a name="azure-rtos-usbx-host-stack-user-guide"></a>Manual del usuario de la pila del host Azure RTOS USBX
 

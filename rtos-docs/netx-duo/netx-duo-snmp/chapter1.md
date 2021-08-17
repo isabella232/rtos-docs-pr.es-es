@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 5760e35fdbe8d7b27e2ccc82abac37b1f6fb5118
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6bf18efacc5ff7773e038a5140fc886e978ebd1ca59cc9b861139b3ce2d9ada6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814574"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797878"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-snmp"></a>Capítulo 1: Introducción a SNMP de Azure RTOS NetX Duo
 

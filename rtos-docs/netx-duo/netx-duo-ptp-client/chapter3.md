@@ -6,12 +6,12 @@ ms.author: v-condav
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b4cdeca81c157934e35a219cd5535ec38f2c0746
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 686db68181e3712f9f6a09a9f471626eff610fd7f45ec5b83ba56f8b7aa378cc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814589"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798017"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-ptp-client-services"></a>Capítulo 3: Descripción de los servicios del cliente PTP de Azure RTOS NetX Duo
 
@@ -95,7 +95,7 @@ Este servicio elimina una instancia de cliente PTP.
 
 ### <a name="return-values"></a>Valores devueltos
 * **NX_SUCCESS** (0x00) Cliente eliminado correctamente
-* NX_PTR_ERROR (0x07) Parámetro no válido de puntero de entrada
+* NX_PTR_ERROR (0x07) Parámetro no válido de puntero de entrada.
 
 ### <a name="allowed-from"></a>Permitido desde
 Subprocesos
@@ -306,7 +306,7 @@ Este servicio inicia una instancia de cliente PTP creada anteriormente.
 * **NX_SUCCESS** (0x00) El cliente se inició correctamente
 * **NX_PTP_CLIENT_ALREADY_STARTED** (0xD02) El cliente PTP ya se ha iniciado
 * **status** Finalización del estado de las llamadas al servicio NetX Duo y ThreadX
-* NX_PTR_ERROR (0x07) Parámetro no válido de puntero de entrada
+* NX_PTR_ERROR (0x07) Parámetro no válido de puntero de entrada.
 
 ### <a name="allowed-from"></a>Permitido desde
 Subprocesos

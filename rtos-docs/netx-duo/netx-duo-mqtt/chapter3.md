@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9cbb65946c45bfbc476091f7c604346e839a42fc
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: cc08f7c0dceb84d5843e25384275557d2871e3546d90579aab006119a2d9980c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814650"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797524"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-mqtt-client-services"></a>Capítulo 3: Descripción de los servicios del cliente MQTT de Azure RTOS NetX Duo
 

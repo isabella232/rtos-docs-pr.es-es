@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: c3cbc945e33b87b6759c56ec1429d6bf57259bd9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8668f0867e205afdeab112dfedd257998a5f5b7ff256f27298072dde3e9019b0
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815714"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116803301"
 ---
 # <a name="chapter-7---azure-rtos-filex-trace-events"></a>Capítulo 7: Eventos de seguimiento de Azure RTOS FileX
 
@@ -169,7 +169,7 @@ Este evento representa un evento de lectura de entrada del directorio FileX inte
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="internal-directory-entry-write"></a>Escritura de entrada de directorio interno
@@ -186,7 +186,7 @@ Este evento representa un evento de escritura de entrada de directorio de FileX 
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="internal-io-driver-read"></a>Lectura del controlador de E/S interno 
@@ -237,7 +237,7 @@ Este evento representa un evento de vaciado de controlador de E/S FileX interno.
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="internal-io-driver-abort"></a>Anulación de controlador de E/S interno 
@@ -254,14 +254,14 @@ Este evento representa un evento de anulación de controlador de E/S de FileX in
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="internal-io-driver-initialize"></a>Inicialización de controlador de E/S interno 
 
-#### <a name="internal-io-driver-initialize"></a>Inicialización de controlador de E/S interno 
+#### <a name="internal-io-driver-initialize"></a>Inicialización de controlador de E/S interna 
 
-**Icono** ![Icono de inicialización de controlador de E/S interno](./media/user-guide/fx-events/image10.png)
+**Icono** ![Icono de inicialización de controlador de E/S interna](./media/user-guide/fx-events/image10.png)
 
 **Descripción** 
 
@@ -271,7 +271,7 @@ Este evento representa un evento de inicialización del controlador de E/S de Fi
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="internal-io-driver-boot-sector-read"></a>Lectura del sector de arranque del controlador de E/S interno 
@@ -327,9 +327,9 @@ Este evento representa un evento de escritura del sector de arranque del control
 
 ### <a name="internal-io-driver-un-initialize"></a>Anulación de inicialización de controlador de E/S interno 
 
-#### <a name="internal-io-driver-un-initialize"></a>Anulación de inicialización de controlador de E/S interno 
+#### <a name="internal-io-driver-un-initialize"></a>Anulación de inicialización del controlador de E/S interna 
 
-**Icono** ![Icono de anulación de inicialización de controlador de E/S interno](./media/user-guide/fx-events/image14.png)
+**Icono** ![Icono de anulación de inicialización del controlador de E/S interna](./media/user-guide/fx-events/image14.png)
 
 **Descripción** 
 
@@ -339,7 +339,7 @@ Este evento representa un evento de anulación de inicialización del controlado
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 </blockquote></td>
 
@@ -525,7 +525,7 @@ Este evento representa un evento de borrado de ruta de acceso local de directori
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="directory-local-path-get"></a>Obtención de ruta de acceso local de directorio 
@@ -996,7 +996,7 @@ Este evento representa un evento de anulación de elementos multimedia.
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="media-cache-invalidate"></a>Invalidación de caché de elementos multimedia
@@ -1013,7 +1013,7 @@ Este evento representa un evento de invalidación de caché de elementos multime
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="media-check"></a>Comprobación de elementos multimedia 
@@ -1054,7 +1054,7 @@ Este evento representa un evento de cierre de elementos multimedia.
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="media-flush"></a>Vaciado de elementos multimedia 
@@ -1071,7 +1071,7 @@ Este evento representa un evento de vaciado de elementos multimedia.
 
 - Campo de información 1: puntero a los elementos multimedia.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="media-format"></a>Formato de elementos multimedia 
@@ -1238,9 +1238,9 @@ Este evento representa un evento de inicialización del sistema.
 
 **Campos de información**
 
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="system-time-get"></a>Obtención de hora del sistema 

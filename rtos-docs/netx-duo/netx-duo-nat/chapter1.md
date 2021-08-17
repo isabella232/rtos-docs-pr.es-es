@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3d01aa6f68e21ea82f65a59a19c4f5c7958a6b92
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8639b87decd78f58a34fe6b8033a2427b560c872814abfdbbcb6057166412d0d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814633"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797472"
 ---
 # <a name="chapter-1---an-introduction-to-network-address-translation"></a>Capítulo 1: Introducción a la traducción de direcciones de red
 

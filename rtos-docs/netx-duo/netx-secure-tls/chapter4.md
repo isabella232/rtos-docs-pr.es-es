@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 80ec22058ab64ed0c6258bb3d9364ec44f9a741b
-ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
+ms.openlocfilehash: b10260778f7f5e1a5bd0a38aded2339008b066cca77f2439a5881d28a0489524
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/20/2021
-ms.locfileid: "110223399"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797762"
 ---
 # <a name="chapter-4---description-of-azure-rtos-netx-secure-services"></a>Capítulo 4: Descripción de los servicios de Azure RTOS NetX Secure
 
@@ -2628,7 +2628,7 @@ La opción de espera define cómo se comporta el servicio mientras el protocolo 
 - **NX_SECURE_TLS_HANDSHAKE_FAILURE**: (0x107) Error al procesar el mensaje durante el protocolo de enlace de TLS.
 - **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE**: (0x108) Un mensaje entrante no pudo realizar una comprobación del hash de MAC.
 - **NX_SECURE_TLS_TCP_SEND_FAILED**: (0x109) Error al enviar mediante un socket TCP subyacente.
-- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH**: (0x10A) Un mensaje entrante tenía un campo de longitud no válida.
+- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10A) Un mensaje entrante tenía un campo de longitud no válido.
 - **NX_SECURE_TLS_BAD_CIPHERSPEC**: (0x10B) Un mensaje ChangeCipherSpec entrante era incorrecto.
 - **NX_SECURE_TLS_INVALID_SERVER_CERT**: (0x10C) Un certificado TLS entrante no se puede usar para identificar el servidor TLS remoto.
 - **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER**: (0x10D) No se admite el cifrado de clave pública proporcionado por el host remoto.
@@ -2637,7 +2637,7 @@ La opción de espera define cómo se comporta el servicio mientras el protocolo 
 - **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION**: (0x110) Un mensaje TLS recibido tenía una versión de TLS conocida pero no admitida en el encabezado.
 - **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED**: (0x111) Error en la asignación interna del paquete TLS.
 - **NX_SECURE_TLS_INVALID_CERTIFICATE**: (0x112) El host remoto proporcionó un certificado no válido.
-- **NX_SECURE_TLS_ALERT_RECEIVED**: (0x114) El host remoto envió una alerta que indica un error y finaliza la sesión de TLS.
+- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) El host remoto envió una alerta que indica un error y finaliza la sesión de TLS.
 - **NX_SECURE_TLS_MISSING_CRYPTO_ROUTINE**: (0x13B) Una entrada de la tabla del conjunto de cifrado tenía un puntero de función NULL.
 - **NX_SECURE_TLS_INAPPROPRIATE_FALLBACK**: (0x146) Un mensaje ClientHello de TLS remoto incluía el SCSV de reserva y ha intentado un cambio a una versión de reserva.
 - **NX_PTR_ERROR**: (0x07) Se ha intentado usar un puntero no válido.

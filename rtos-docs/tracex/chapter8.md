@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: ce355d86d7db0b7e259ae58e306d990277b77a8f
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: f785b421ffc6d588080eb45a50dad949daf1ca6a9bf36770110f0450cd465bf1
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816289"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116805294"
 ---
 # <a name="chapter-8---azure-rtos-netx-trace-events"></a>Capítulo 8: Eventos de seguimiento de Azure RTOS NetX
 

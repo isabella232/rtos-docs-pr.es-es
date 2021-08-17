@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 89df0ab5f09be8ad50a27d23bae8b20d71caa0b4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6e37698ac6023b4cff6cb4fc05330a73b678ef3d2a813a706c9b821381e123db
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814665"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797575"
 ---
 # <a name="chapter-4---description-of-mdns-services"></a>Capítulo 4: Descripción de los servicios mDNS
 

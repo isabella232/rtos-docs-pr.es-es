@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 86f324935ba32aab010b81f825be0a6564983a2e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ba4d50048adba4ac992f6bbe90d236445546a5929ace74899833c686a90dadd9
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814577"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797847"
 ---
 # <a name="chapter-2---installation-and-use-of-netx-duo-smtp-client"></a>Capítulo 2: Instalación y uso del cliente SMTP de NetX Duo
 

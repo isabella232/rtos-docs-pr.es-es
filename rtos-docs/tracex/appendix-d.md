@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 30f6b5e329feeb2dca37dda391fd738aba587c9a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: afbbabbd04ac4c33a747bb0cce4a9f36ca2d197a819cb48d834429e29fe5572c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815869"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802402"
 ---
 # <a name="appendix-d---dumping-and-trace-buffer"></a>Apéndice D: Volcado y búfer de seguimiento
 

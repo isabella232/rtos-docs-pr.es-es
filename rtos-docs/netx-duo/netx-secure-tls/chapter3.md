@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c28ad0255f99986a4ddfe5faefad81e70840e5e0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 711195e60771ebd467c69df49ef7665f32e13a17c21ca839404e829449cf1401
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814510"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797978"
 ---
 # <a name="chapter-3---functional-description-of-azure-rtos-netx-secure"></a>Capítulo 3: Descripción funcional de Azure RTOS NetX Secure
 
@@ -695,13 +695,13 @@ En el servicio TLS de NetX Secure, no hay ninguna configuración especial para a
 El caso del servidor TLS para la autenticación de certificados de cliente es ligeramente más complejo que el caso del cliente TLS, ya que la característica es opcional. En este caso, el servidor TLS necesita solicitar específicamente un certificado de cliente TLS remoto y, seguidamente, procesar el mensaje CertificateVerify para comprobar que el cliente remoto es el propietario de la clave privada correspondiente. A continuación, el servidor debe comprobar que se puede realizar un seguimiento del certificado proporcionado por el cliente hasta un certificado del almacén local de certificados de confianza.
 
 En las instancias del servidor TLS de NetX Secure, la autenticación de certificados de cliente se controla mediante <br>
-los servicios *nx <span class="underline"> _</span>secure <span class="underline">_</span>tls <span class="underline"> _</span>session <span class="underline">_</span>client <span class="underline"> _</span>verify<span class="underline">_</span>enable* y<br>
-*nx <span class="underline"> _</span>secure <span class="underline">_</span>tls <span class="underline"> _</span>session <span class="underline">_</span>client <span class="underline"> _</span>verify<span class="underline">_</span>disable*.
+los servicios *nx <span class="underline"> _</span>secure <span class="underline">_</span>tls <span class="underline"> _</span>session <span class="underline">_</span>client <span class="underline"> _</span>verify <span class="underline">_</span>enable* y<br>
+*nx <span class="underline"> _</span>secure <span class="underline">_</span>tls <span class="underline"> _</span>session <span class="underline">_</span>client <span class="underline"> _</span>verify <span class="underline">_</span>disable*.
 
 Para habilitar la autenticación de certificados de cliente, una aplicación debe llamar a<br>
 *nx <span class="underline"> _</span>secure <span class="underline">_</span>tls <span class="underline"> _</span>session <span class="underline">_</span>client <span class="underline"> _</span>verify <span class="underline">_</span>enable* con la instancia de sesión del servidor TLS antes de llamar a *nx_secure_tls_session_start*. Tenga en cuenta que llamar a este servicio en una sesión de TLS que se usa para las conexiones de cliente TLS no tendrá ningún efecto.
 
-Cuando se habilita la autenticación de certificados de cliente, el servidor TLS solicitará un certificado de cliente TLS remoto durante el protocolo de enlace TLS. En el servidor TLS de NetX Secure, el certificado de cliente se compara con el almacén de certificados de confianza creados con *nx <span class="underline"> _</span>secure_tls <span class="underline">_</span>trusted <span class="underline"> _</span>certificate<span class="underline">_</span>add* siguiendo la cadena de emisor X.509. El cliente remoto debe proporcionar una cadena que conecte su certificado de identidad con un certificado en el almacén de confianza; de lo contrario, se producirá un error en el protocolo de enlace TLS. Además, si se produce un error en el procesamiento del mensaje CertificateVerify, también se producirá un error en el protocolo de enlace TLS.
+Cuando se habilita la autenticación de certificados de cliente, el servidor TLS solicitará un certificado de cliente TLS remoto durante el protocolo de enlace TLS. En el servidor TLS de NetX Secure, el certificado de cliente se compara con el almacén de certificados de confianza creados con *nx <span class="underline"> _</span>secure_tls <span class="underline">_</span>trusted <span class="underline"> _</span>certificate <span class="underline">_</span>add* siguiendo la cadena de emisor X.509. El cliente remoto debe proporcionar una cadena que conecte su certificado de identidad con un certificado en el almacén de confianza; de lo contrario, se producirá un error en el protocolo de enlace TLS. Además, si se produce un error en el procesamiento del mensaje CertificateVerify, también se producirá un error en el protocolo de enlace TLS.
 
 Los métodos de firma que se usan para el método CertificateVerify son fijos para la versión de TLS 1.0 y la versión TLS 1.1; se especifican mediante el servidor TLS en la versión TLS 1.2. En el caso de TLS 1.2, los métodos de firma admitidos generalmente siguen los métodos pertinentes suministrados en la tabla de métodos criptográficos, pero normalmente RSA con SHA-256 (consulte la sección “Criptografía el servicio TLS de NetX Secure” para obtener más información sobre cómo inicializar TLS con métodos criptográficos).
 
