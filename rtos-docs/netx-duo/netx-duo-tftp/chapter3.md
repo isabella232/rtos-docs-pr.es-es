@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 56f0d8edb991fff6ae30b6411e375ace58c544f7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: db7b7469bda02597db6428ecbf080b37a095413411eef2abefb1c4804d7bb1d3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814525"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799070"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-tftp-services"></a>Capítulo 3: Descripción de los servicios TFTP de Azure RTOS NetX Duo
 

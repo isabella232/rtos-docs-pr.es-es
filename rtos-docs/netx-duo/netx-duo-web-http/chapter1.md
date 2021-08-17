@@ -6,16 +6,16 @@ ms.author: philmea
 ms.date: 07/24/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c784843e4d3f11ee306e866223c0a19bfcba3b85
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e5f50419be3171d3df8544d1b34d603822f339785923f8a8199dc5b5ddcac281
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815382"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801764"
 ---
 # <a name="chapter-1---introduction-to-http-and-https"></a>Capítulo 1: Introducción a HTTP y HTTPS
 
-El Protocolo de transferencia de hipertexto (HTTP) es un protocolo diseñado para transferir contenido en la web. HTTP es un protocolo simple que emplea servicios de protocolo de control de transmisión (TCP) confiables para realizar su función de transferencia de contenido. Por este motivo, HTTP es un protocolo de transferencia de contenido de gran confiabilidad. HTTP es uno de los protocolos de aplicación más usados. Todas las operaciones en la web usan el protocolo HTTP.
+El Protocolo de transferencia de hipertexto (HTTP) es un protocolo diseñado para transferir contenido en la web. HTTP es un protocolo simple que emplea servicios del protocolo de control de transmisión (TCP) confiables para realizar su función de transferencia de contenido. Por este motivo, HTTP es un protocolo de transferencia de contenido de gran confiabilidad. HTTP es uno de los protocolos de aplicación más usados. Todas las operaciones en la web usan el protocolo HTTP.
 
 HTTPS es la versión segura del protocolo HTTP, que implementa HTTP mediante seguridad de la capa de transporte (TLS) para proteger la conexión TCP subyacente. Aparte de la configuración adicional necesaria para configurar TLS, HTTPS es básicamente idéntico a HTTP en su uso.
 

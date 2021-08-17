@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d5a402790387c2720db304fe93d74252494d7638
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 171f8577d252027548c24ec92f11f03c1fae768f1676f476256c13b8e8dc4175
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815169"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799088"
 ---
 # <a name="chapter-4---description-of-azure-rtos-netx-lwm2m-services"></a>Capítulo 4: Descripción de los servicios de Azure RTOS NetX LWM2M
 
@@ -510,7 +510,7 @@ Este servicio realiza una operación de lectura en una instancia de objeto del c
 - **object_id**: Id. de objeto.
 - **instance_id**: Id. de instancia de objeto.
 - **num_values**: El número de recursos que se van a leer.
-- **values_ptr**: Puntero a una matriz de NX_LWM2M_RESOURCE que contiene los id. de los recursos que se van a leer. En la devolución, la matriz se rellena con los tipos y valores correspondientes.
+- **values_ptr**: puntero a una matriz de NX_LWM2M_RESOURCE que contiene los identificadores de los recursos que se van a leer. En la devolución, la matriz se rellena con los tipos y valores correspondientes.
 
 ### <a name="return-values"></a>Valores devueltos
 

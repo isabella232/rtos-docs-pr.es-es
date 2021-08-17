@@ -6,18 +6,18 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: ad9f782942bcdbb2dc49a9c841d865d97bcb1d4e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 28f088409fdd5e2c075cbf90b21d3d260c811806066e74bffc395207cde0239c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815114"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802131"
 ---
 # <a name="about-the-azure-rtos-threadx-guide"></a>Acerca de la guía de Azure RTOS ThreadX
 
 En esta guía se proporciona información exhaustiva sobre Azure RTOS ThreadX, el kernel de alto rendimiento en tiempo real de Microsoft. 
 
-Está diseñada para el desarrollador de software insertado en tiempo real. El desarrollador debe estar familiarizado con las funciones del sistema operativo estándar en tiempo real y el lenguaje de programación C.
+Está diseñada para el desarrollador de software insertado en tiempo real. El desarrollador debe estar familiarizado con las funciones estándar del sistema operativo en tiempo real y el lenguaje de programación C.
 
 ## <a name="organization"></a>Organización
 
@@ -78,4 +78,4 @@ Envíe una incidencia de soporte técnico por medio de Azure Portal si tiene alg
 1. Una descripción detallada del problema, incluida la frecuencia con que se produce y si se puede reproducir de forma confiable.
 2. Una descripción detallada de los cambios en la aplicación o en Azure RTOS ThreadX que han precedido al problema.
 3. Contenido de la cadena *_tx_version_id* que se encuentra en el archivo *tx_port.h* de la distribución. Esta cadena nos proporciona información valiosa sobre el entorno en tiempo de ejecución.
-4. El contenido en la RAM de la variable **_tx_build_options** **ULONG**. Esta variable nos proporciona información sobre cómo se ha compilado la biblioteca de Azure RTOS ThreadX.
+4. El contenido de la RAM de la variable **_tx_build_options** **ULONG**. Esta variable nos proporciona información sobre cómo se ha compilado la biblioteca de Azure RTOS ThreadX.

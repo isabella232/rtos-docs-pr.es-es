@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 7f756f0e9f4ab1bddd6c28449dbd695e23758b16
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 24fb514b71f7812266de23ec6d485dca9769a2bef491fc773a90f9945885f3df
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815394"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784910"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-autoip"></a>Capítulo 1: Introducción a AutoIP de Azure RTOS NetX Duo
 
@@ -23,7 +23,7 @@ Para que funcione correctamente, el paquete AutoIP de Azure RTOS NetX Duo requie
 
 ## <a name="autoip-constraints"></a>Restricciones de AutoIP
 
-El protocolo AutoIP de NetX implementa los requisitos del estándar RFC3927. Pero se aplican las restricciones siguientes:
+El protocolo AutoIP de NetX implementa los requisitos del estándar RFC3927. Sin embargo, se aplican las restricciones siguientes:
 
 1. Si se usa el DHCP de NetX, el subproceso DHCP debe crearse con una prioridad más alta que el subproceso de instancia de IP NetX y el subproceso AutoIP.
 

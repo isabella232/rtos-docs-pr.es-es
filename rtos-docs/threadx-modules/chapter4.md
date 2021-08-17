@@ -6,12 +6,12 @@ description: Este artículo es un resumen de las API adicionales disponibles par
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b5804e2dbb8d08a272abc85a583576f43b7204c1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1c7590d0ccddc606a6cacdfeb3b3a99631e125554b524c4ce65c8154e65a20ee
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814378"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799139"
 ---
 # <a name="chapter-4---module-apis"></a>Capítulo 4: API de módulo
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d24c69cf6b8c2bb84b7155e49a54e8296ee662f0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 702499184b12484fa5862ba83ff3fadb8fccea31089b6bf8b71daf267e8c84a3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815242"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799530"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-dhcp-server-services"></a>Capítulo 3: Descripción de los servicios de servidor DHCP de Azure RTOS NetX
 
@@ -83,7 +83,7 @@ status = nx_dhcp_server_create(&dhcp_server, &server_ip, pointer,
 
 ## <a name="nx_dhcp_create_server_ip_address_list"></a>nx_dhcp_create_server_ip_address_list
 
-Crea un grupo de direcciones IP
+Crea un grupo de direcciones IP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -130,7 +130,7 @@ addresses_added indicates how many IP addresses were actually added to the list.
 
 ## <a name="nx_dhcp_clear_client_record"></a>nx_dhcp_clear_client_record
 
-Quita el registro del cliente de la base de datos del servidor
+Quita el registro del cliente de la base de datos del servidor.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -169,7 +169,7 @@ status = nx_dhcp_clear_client_record (&dhcp_server, &dhcp_client_ptr);
 
 ## <a name="nx_dhcp_set_interface_network_parameters"></a>nx_dhcp_set_interface_network_parameters
 
-Establece parámetros de red para opciones de DHCP
+Establece parámetros de red para opciones de DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -216,7 +216,7 @@ status = nx_dhcp_set_interface_network_parameters(&dhcp_server, iface_index,
 
 ## <a name="nx_dhcp_server_delete"></a>nx_dhcp_server_delete
 
-Elimina una instancia de servidor DHCP
+Elimina una instancia de servidor DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -226,7 +226,7 @@ UINT nx_dhcp_server_delete(NX_DHCP_SERVER *dhcp_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio elimina una instancia de cliente DHCP creada anteriormente.
+Este servicio elimina una instancia del servidor DHCP creada anteriormente.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
@@ -254,7 +254,7 @@ status = nx_dhcp_server_delete(&dhcp_server);
 
 ## <a name="nx_dhcp_server_start"></a>nx_dhcp_server_start
 
-Inicia el procesamiento del servidor DHCP
+Inicia el procesamiento del servidor DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -297,7 +297,7 @@ nx_dhcp_create, nx_dhcp_delete, nx_dhcp_release, nx_dhcp_state_change_notify, nx
 
 ## <a name="nx_dhcp_server_stop"></a>nx_dhcp_server_stop
 
-Detiene el procesamiento del servidor DHCP
+Detiene el procesamiento del servidor DHCP.
 
 ### <a name="prototype"></a>Prototipo
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: a40eef204f9d524abc1ca02e07785c98ff1aba53
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5846a47e9de16ad39f946640bcb0d7682630b5fa4dd6fb1b9012b2a83052b67a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814433"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783822"
 ---
 # <a name="appendix-b---azure-rtos-filex-constants"></a>Apéndice B Constantes de Azure RTOS FileX
 

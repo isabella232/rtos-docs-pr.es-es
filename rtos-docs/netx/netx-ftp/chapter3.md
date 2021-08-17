@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b05d03c45607c45acf32474cf8e40861532c5fae
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1aec01088236dcae359c0273a0206c10ea09201eb486478ebd678529413badae
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815201"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799462"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-ftp-services"></a>Capítulo 3: Descripción de los servicios de Azure RTOS NetX FTP
 

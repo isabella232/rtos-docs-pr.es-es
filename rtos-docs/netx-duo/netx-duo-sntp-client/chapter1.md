@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b3e1170197c6c4981060459104da80e354fac5db
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a284871d8da9b8d6d220e962de5d27483dafab201b68d64d5c794c1edab50153
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814554"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798833"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-sntp"></a>Capítulo 1: Introducción a SNTP de Azure RTOS NetX Duo 
 

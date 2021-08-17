@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 7c307bcefd54734b909bdcf7ae8fd19e1f1daca9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6fe310254d640a2ad77cfcac3b26e81d29ef28cbb6563c244b280e0d7f41ff81
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814362"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801824"
 ---
 # <a name="appendix-c---azure-rtos-threadx-data-types"></a>Apéndice C: tipos de datos de Azure RTOS ThreadX
 

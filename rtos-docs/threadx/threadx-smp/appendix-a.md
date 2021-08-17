@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: a246bf997bfb51136c6a3802fe6b099d6a9002a4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6ccaeeb152bbd623d2ea702a4a29dbbadb98dc5b252bba9977d553a056da6b2a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815614"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798850"
 ---
 # <a name="appendix-a---azure-rtos-threadx-smp-api-services"></a>Apéndice A: servicios de API de ThreadX SMP de Azure RTOS
 
@@ -98,7 +98,7 @@ UINT     tx_byte_pool_prioritize(TX_BYTE_POOL
 
 UINT     tx_byte_release(VOID *memory_ptr);
 ```
-## <a name="event-flags-services"></a>Servicios de marcas de evento
+## <a name="event-flags-services"></a>Servicios de marcas de eventos
 
 ```C
 UINT     tx_event_flags_create(TX_EVENT_FLAGS_GROUP
@@ -147,7 +147,7 @@ UINT     tx_event_flags_set_notify(TX_EVENT_FLAGS_GROUP
 ```C
 UINT     tx_interrupt_control(UINT new_posture);
 ```
-## <a name="mutex-services"></a>Servicios de exclusión mutua
+## <a name="mutex-services"></a>Servicios de Mutex
 
 ```C
 UINT     tx_mutex_create(TX_MUTEX *mutex_ptr, CHAR
@@ -181,7 +181,7 @@ UINT     tx_mutex_prioritize(TX_MUTEX *mutex_ptr);
 
 UINT     tx_mutex_put(TX_MUTEX *mutex_ptr);
 ```
-## <a name="queue-services"></a>Servicios de cola
+## <a name="queue-services"></a>Servicios de colas
 
 ```C
 UINT     tx_queue_create(TX_QUEUE *queue_ptr, CHAR
@@ -232,7 +232,7 @@ UINT     tx_queue_send(TX_QUEUE *queue_ptr, VOID
 UINT     tx_queue_send_notify(TX_QUEUE *queue_ptr, VOID
             (*queue_send_notify)(TX_QUEUE *));
 ```
-## <a name="semaphore-services"></a>Servicios de semáforo
+## <a name="semaphore-services"></a>Servicios de semáforos
 
 ```C
 UINT     tx_semaphore_ceiling_put(TX_SEMAPHORE

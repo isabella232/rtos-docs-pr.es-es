@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/24/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 99e649781588b56e72b509c2aa077c38423379d1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: fd8ab093d15c5413b0d5dac6d35b080674c3a332ec7a028fc462237135880d34
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814522"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783431"
 ---
 # <a name="chapter-2---installation-and-use-of-http-and-https"></a>Capítulo 2: Instalación y uso de HTTP y HTTPS
 

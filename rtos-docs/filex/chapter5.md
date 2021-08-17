@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8f2ef697f68a269b24a34147a4bc076b8a2b1660
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 163893119837a46479b3f346c2bd47d200de2af75232f91a23bbc3f64e20ea50
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550089"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782921"
 ---
 # <a name="chapter-5---io-drivers-for-azure-rtos-filex"></a>Capítulo 5: Controladores de E/S para Azure RTOS FileX
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1a0ab96a454bea9f56ced0d7aa8de5d481b284e9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: f68d6ac942c829dbf6eb9be334328b1b58a47ea370a73d37f471ec32cd46a360
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815161"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782394"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-pop3-client-services"></a>Capítulo 3: Descripción de los servicios de cliente Azure RTOS NetX POP3
 
@@ -139,7 +139,7 @@ UINT nx_pop3_client_mail_items_delete(NX_POP3_CLIENT *client_ptr,
 
 ### <a name="description"></a>Descripción
 
-Este servicio elimina el elemento de correo especificado de la maildrop del cliente. Está pensada para después de descargar el elemento de correo, aunque algunos servidores POP3 pueden eliminar elementos de correo automáticamente después de que el cliente los solicite.
+Este servicio elimina el elemento de correo especificado de la maildrop del cliente. Está pensado para después de descargar el elemento de correo, aunque algunos servidores POP3 pueden eliminar elementos de correo automáticamente después de que el cliente los solicite.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 

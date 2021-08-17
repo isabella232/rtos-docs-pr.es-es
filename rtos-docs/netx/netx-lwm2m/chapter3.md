@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f49a4f5f4c899dfa461a9d57a8b56e4503d6acd4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6424023a02aedf43c7433c9adc09231b8c146af13b9bddc15ebd1f2fc02e8c8a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815173"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784944"
 ---
 # <a name="chapter-3---functional-description-of-azure-rtos-netx-lwm2m"></a>Capítulo 3: Descripción funcional de Azure RTOS NetX LWM2M
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 18e7e075788623916de36cf911597230295b56c5
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7328b8c3537acac1ef02fced32b0c2731065aea0c6e2742a96f0644e9a8045f0
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816345"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798357"
 ---
 # <a name="chapter-6---usbx-cdc-ecm-class-usage"></a>Capítulo 6: Uso de la clase CDC-ECM de USBX
 

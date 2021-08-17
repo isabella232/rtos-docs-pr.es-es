@@ -6,12 +6,12 @@ ms.author: v-condav
 ms.date: 03/04/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 303b83bcc92797314b764353b770965c0170fb99
-ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
+ms.openlocfilehash: 085310acd5262226e9ff3af440a5f05268c7799e78eda81334a13b736222b95c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106377536"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801961"
 ---
 #  <a name="chapter-2--installing-threadx-support-for-armv8-m"></a>Capítulo 2: Instalación de la compatibilidad de ThreadX con ARMv8-M
 

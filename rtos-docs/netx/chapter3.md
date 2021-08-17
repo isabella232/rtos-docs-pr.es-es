@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: db23aa152b2765ac7cc9be098723fc5df0947484
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 4ebb002bc82d13210acf8db44cafb141d33a1b45fa8710295437e2dd15cbcf22
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815310"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784412"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-netx"></a>Capítulo 3: Componentes funcionales de Azure RTOS NetX
 
@@ -215,7 +215,7 @@ Cada host de Internet tiene un identificador único de 32 bits llamado direcci�
 
 | Clase | Intervalo                        |
 |-------|------------------------------|
-| Un     | De 0.0.0.0 a 127.255.255.255   |
+| A     | De 0.0.0.0 a 127.255.255.255   |
 | B     | De 128.0.0.0 a 191.255.255.255 |
 | C     | De 192.0.0.0 a 223.255.255.255 |
 | D     | De 224.0.0.0 a 239.255.255.255 |

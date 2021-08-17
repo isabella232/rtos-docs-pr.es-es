@@ -6,22 +6,22 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 86e132daf96f9039631234f10c8e239b61ad5126
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 35a7487720578ce8da578c490d96aa3c444ee818167b1bbd10833556e34b3dce
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815209"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799479"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-ftp"></a>Capítulo 1: Introducción a Azure RTOS NetX FTP
 
-El protocolo de transferencia de archivos (FTP) es un protocolo diseñado para las transferencias de archivos. FTP emplea servicios de protocolo de control de transmisión (TCP) de confianza para realizar su función de transferencia de archivos. Por este motivo, FTP es un protocolo de transferencia de archivos altamente fiable. FTP también es de alto rendimiento. La transferencia de archivos FTP real se realiza en una conexión FTP dedicada.
+El protocolo de transferencia de archivos (FTP) es un protocolo diseñado para las transferencias de archivos. FTP emplea servicios del Protocolo de control de transmisión (TCP) de confianza para realizar su función de transferencia de archivos. Por este motivo, FTP es un protocolo de transferencia de archivos altamente fiable. FTP también es de alto rendimiento. La transferencia de archivos FTP real se realiza en una conexión FTP dedicada.
 
 ## <a name="ftp-requirements"></a>Requisitos de FTP
 
 Para que funcione correctamente, el paquete Azure RTOS NetX FTP requiere que ya se haya creado una instancia de IP NetX. Además, TCP debe estar habilitado en la misma instancia de IP. La parte del cliente FTP del paquete NetX FTP no tiene ningún requisito adicional.
 
-La parte del servidor FTP del paquete NetX FTP tiene varios requisitos adicionales. En primer lugar, es necesario tener acceso completo al *conocido puerto 21* de TCP para controlar todas las solicitudes de comandos FTP del cliente y al *conocido puerto 20* para controlar todas las transferencias de datos FTP del cliente. El servidor FTP también está diseñado para su uso con el sistema de archivos incrustados FileX. Si FileX no está disponible, el usuario puede migrar las partes de FileX usadas a su propio entorno. Esto se describe en secciones posteriores de esta guía.
+La parte del servidor FTP del paquete FTP de NetX tiene varios requisitos adicionales. En primer lugar, es necesario tener acceso completo al *conocido puerto 21* de TCP para controlar todas las solicitudes de comandos FTP del cliente y al *conocido puerto 20* para controlar todas las transferencias de datos FTP del cliente. El servidor FTP también está diseñado para su uso con el sistema de archivos incrustados FileX. Si FileX no está disponible, el usuario puede migrar las partes de FileX usadas a su propio entorno. Esto se describe en secciones posteriores de esta guía.
 
 ## <a name="ftp-constraints"></a>Restricciones de FTP
 
@@ -34,11 +34,11 @@ El estándar FTP tiene muchas opciones relacionadas con la representación de da
 
 ## <a name="ftp-file-names"></a>Nombre de archivos FTP
 
-Los nombres de archivo FTP deben tener el formato del sistema de archivos de destino (normalmente, FileX). Deben ser cadenas ASCII terminadas en NULL, con información de ruta de acceso completa si es necesario. No hay ningún límite especificado para el tamaño de los nombres de archivo FTP en la implementación FTP de NetX. Sin embargo, el tamaño de carga del grupo de paquetes debe ser capaz de dar cabida a la ruta de acceso máxima y/o al nombre de archivo.
+Los nombres de archivo FTP deben tener el formato del sistema de archivos de destino (normalmente, FileX). Deben ser cadenas ASCII terminadas en NULL, con información de la ruta de acceso completa si es necesario. No hay ningún límite especificado para el tamaño de los nombres de archivo FTP en la implementación FTP de NetX. Sin embargo, el tamaño de carga del grupo de paquetes debe ser capaz de dar cabida a la ruta de acceso máxima o al nombre de archivo.
 
 ## <a name="ftp-client-commands"></a>Comandos de cliente FTP
 
-El FTP tiene un mecanismo sencillo para abrir conexiones y realizar operaciones de archivos y directorios. Básicamente, hay un conjunto de comandos FTP estándar que emite el cliente después de que una conexión se haya establecido correctamente en el *conocido puerto 21* de TCP. A continuación se muestran algunos de los comandos FTP básicos:
+FTP tiene un mecanismo sencillo para abrir conexiones y realizar operaciones de archivos y directorios. Básicamente, hay un conjunto de comandos FTP estándar que emite el cliente después de que una conexión se haya establecido correctamente en el *conocido puerto 21* de TCP. A continuación se muestran algunos de los comandos FTP básicos:
 
 ### <a name="ftp-command-and-meaning"></a>Comandos FTP y significado
 
@@ -98,7 +98,7 @@ Para deshabilitar el modo de transporte pasivo y volver al modo de transporte ac
 
 ## <a name="ftp-communication"></a>Comunicación FTP
 
-El servidor FTP emplea el *conocido puerto TCP 21* para el campo solicitudes de cliente. Los clientes FTP pueden utilizar cualquier puerto TCP disponible. La secuencia general de eventos FTP es la siguiente:
+El servidor FTP emplea el *conocido puerto TCP 21* para atender las solicitudes del cliente. Los clientes FTP pueden utilizar cualquier puerto TCP disponible. La secuencia general de eventos FTP es la siguiente:
 
 ### <a name="ftp-read-file-requests"></a>Solicitudes FTP de lectura de archivos
 

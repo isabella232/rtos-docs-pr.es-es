@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: e1bf85d363b07c81f226d494107eae9ba18114a7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a88dc75c3b01e8054f72b3e1475791f064eac0ded02b22ccd18dd46da8c7200a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814357"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785046"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-threadx"></a>Capítulo 2: Instalación y uso de Azure RTOS ThreadX
 
@@ -19,7 +19,7 @@ Este capítulo contiene una descripción de varios problemas relacionados con la
 
 ## <a name="host-considerations"></a>Consideraciones sobre el host
 
-El software insertado se suele desarrollar en equipos host con Windows o Linux (Unix). Una vez que la aplicación está compilada, vinculada y ubicada en el host, se descarga en el hardware de destino para su ejecución.
+El software insertado se suele desarrollar en equipos host con Windows o Linux (Unix). Una vez que la aplicación está compilada, vinculada y colocada en el host, se descarga en el hardware de destino para su ejecución.
 
 Normalmente, la descarga en el destino se realiza desde el depurador de la herramienta de desarrollo. Después de finalizar la descarga, el depurador es responsable de proporcionar el control de ejecución de destino (ir, detener, punto de interrupción, etc.), así como el acceso a la memoria y a los registros del procesador.
 

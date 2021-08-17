@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 05d7fe3df38c7e8a3480c8ea0d4922a109de9ede
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1a375975ef80cfb7b56466f5d91ed9a0ca00a20a38108e1b81f4fe8e5d85278d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815769"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802210"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-tracex"></a>Capítulo 2: Instalación y uso de Azure RTOS TraceX
 

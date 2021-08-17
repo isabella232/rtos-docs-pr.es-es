@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6703b10d8e0895984bb92d74d5dff809dca1a7f8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2f064fc65ef8445ea33590f23d5a040ed8b07c6c651ea4cf5c4aaef4b6c4fa7b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814393"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783856"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-filex"></a>Capítulo 2: Instalación y uso de Azure RTOS FileX
 

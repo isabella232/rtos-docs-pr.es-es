@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 80d6ba18f47ad2b017dfa32260c83ba074a6dbac
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 942250cf864fca3c35b97ae731549c070ac2f2f2ef3ef8897e5cbf1e705e7c6a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814478"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801813"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx"></a>Capítulo 2: instalación y uso de Azure RTOS NetX
 
@@ -19,11 +19,11 @@ Este capítulo contiene una descripción de varios problemas relacionados con la
 
 ## <a name="host-considerations"></a>Consideraciones sobre el host
 
-El desarrollo integrado se realiza normalmente en equipos host Windows o Linux (Unix). Una vez que la aplicación se compila, se vincula y se genera el archivo ejecutable en el host, se descarga en el hardware de destino para su ejecución.
+El desarrollo insertado se realiza normalmente en equipos host Windows o Linux (Unix). Una vez que la aplicación se compila, se vincula y se genera el archivo ejecutable en el host, se descarga en el hardware de destino para poder ejecutarse.
 
-Normalmente, la descarga de destino se realiza desde el depurador de la herramienta de desarrollo. Después de la descarga, el depurador es responsable de proporcionar el control de ejecución de destino (ir, detener, punto de interrupción, etc.), así como el acceso a los registros de memoria y del procesador.
+Normalmente, la descarga de destino se realiza desde el depurador de la herramienta de desarrollo. Después de la descarga, el depurador es responsable de proporcionar el control de ejecución de destino (ir, detener, punto de interrupción, etc.), así como el acceso a los registros de la memoria y del procesador.
 
-La mayoría de los depuradores de herramientas de desarrollo se comunican con el hardware de destino mediante conexiones de depuración en chip (OCD), como JTAG (IEEE 1149.1) y el modo de depuración en segundo plano (BDM). Los depuradores también se comunican con el hardware de destino mediante conexiones de emulación en el circuito (ICE). Las conexiones OCD e ICE proporcionan soluciones sólidas con una intrusión mínima en el software residente de destino.
+La mayoría de los depuradores de herramientas de desarrollo se comunican con el hardware de destino mediante conexiones de depuración en chip (OCD), como JTAG (IEEE 1149.1) y el modo de depuración en segundo plano (BDM). Los depuradores también se comunican con el hardware de destino mediante conexiones de emulación en el circuito (ICE). Las conexiones OCD e ICE proporcionan soluciones sólidas con una intrusión mínima en el software residente de destino.
 
 En cuanto a los recursos utilizados en el host, el código fuente de NetX se entrega en formato ASCII y requiere aproximadamente 1 MB de espacio en el disco duro del equipo host.
 
@@ -102,33 +102,33 @@ En las siguientes secciones se enumeran las opciones de configuración disponibl
 | X_DEBUG | Si se define, habilita la información de depuración de impresión opcional disponible en el controlador de red Ethernet de RAM. |
 | NX_DISABLE_ERROR_CHECKING | Si se define, quita la API de comprobación de errores básica de NetX y mejora el rendimiento. Los códigos de retorno de API no afectados al deshabilitar la comprobación de errores se muestran en negrita en la definición de la API. Esta definición se utiliza normalmente después de depurar la aplicación y cuando su uso mejora el rendimiento y reduce el tamaño del código. |
 | NX_DRIVER_DEFERRED_PROCESSING | Si se define, habilita el control diferido de paquetes de controladores de red. Esto permite que el controlador de red coloque un paquete en la instancia de IP y que se llame a la rutina de procesamiento real desde el subproceso de aplicación auxiliar de IP interna de NetX. |
-| NX_ENABLE_EXTENDED_NOTIFY_SUPPORT | Habilita más enlaces de devolución de llamada en la pila. Estas funciones de devolución de llamada las utiliza la capa de contenedor de BSD. De manera predeterminada, esta opción no está definida. |
+| NX_ENABLE_EXTENDED_NOTIFY_SUPPORT | Habilita más enlaces de devolución de llamada en la pila. Estas funciones de devolución de llamada las utiliza la capa de contenedor de BSD. De manera predeterminada, esta opción no se define. |
 | NX_ENABLE_SOURCE_ADDRESS_CHECK | Si se define, habilita la dirección de origen del paquete entrante que se va a comprobar. Esta opción está deshabilitada de manera predeterminada. |
-| NX_LITTLE_ENDIAN | Si se define, realiza el intercambio de bytes necesario en los entornos de little endian para asegurarse de que los encabezados de protocolo se encuentran en un formato de big endian adecuado. Tenga en cuenta que el valor predeterminado normalmente se configura en ***nx_port.h***. |
+| NX_LITTLE_ENDIAN | Si se define, realiza el intercambio de bytes necesario en los entornos de little endian para asegurarse de que los encabezados de protocolo se encuentran en el formato de big endian adecuado. Tenga en cuenta que el valor predeterminado normalmente se configura en ***nx_port.h***. |
 | NX_MAX_PHYSICAL_INTERFACES | Especifica el número total de interfaces de red físicas en el dispositivo. El valor predeterminado es 1 y se define en ***nx_api.h***. Un dispositivo debe tener al menos una interfaz física. Tenga en cuenta que no incluye la interfaz de bucle invertido. |
-| NX_PHYSICAL_HEADER | Especifica el tamaño en bytes del encabezado físico del marco. El valor predeterminado es 16 (basado en un marco Ethernet típico de 14 bytes alineado con el límite de 32 bits) y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_*_, como en _ *_nx_user.h_*.* |
+| NX_PHYSICAL_HEADER | Especifica el tamaño, en bytes, del encabezado físico del marco. El valor predeterminado es 16 (basado en un marco Ethernet típico de 14 bytes alineado con el límite de 32 bits) y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_*_, como en _ *_nx_user.h_*.* |
 
 ### <a name="arp-configuration-options"></a>Opciones de configuración de ARP  
 
 | Opción  | Descripción  |
 |---|---|
 | NX_ARP_DEFEND_BY_REPLY | Si se define, permite a NetX defender su dirección IP mediante el envío de una respuesta ARP. |
-| NX_ARP_DEFEND_INTERVAL | Define el intervalo, en segundos, el módulo ARP envía el siguiente paquete de defensa en respuesta a un mensaje ARP entrante que indica una dirección en conflicto. |
+| NX_ARP_DEFEND_INTERVAL | Define el intervalo, en segundos, en que el módulo ARP envía el siguiente paquete de defensa en respuesta a un mensaje ARP entrante que indica que hay una dirección en conflicto. |
 | NX_ARP_DISABLE_AUTO_ARP_ENTRY | Se ha cambiado el nombre a **NX_DISABLE_ARP_AUTO_ENTRY**. Aunque todavía se admite, se recomienda que los nuevos diseños utilicen **NX_DISABLE_ARP_AUTO_ENTRY**.
-| NX_ARP_EXPIRATION_RATE | Especifica el número de segundos durante los que las entradas ARP siguen siendo válidas. El valor predeterminado cero deshabilita la expiración o el vencimiento de las entradas ARP y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir *_nx_api.h_**.
+| NX_ARP_EXPIRATION_RATE | Especifica el número de segundos durante los que las entradas ARP son válidas. El valor predeterminado cero deshabilita la expiración o el vencimiento de las entradas ARP y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado. Para ello, debe definir el valor antes de incluir *_nx_api.h_**.
 | NX_ARP_MAC_CHANGE_NOTIFICATION_ENABLE | Se ha cambiado el nombre a **NX_ENABLE_ARP_MAC_CHANGE_NOTIFICATION**. Aunque todavía se admite, se recomienda que los nuevos diseños utilicen **NX_ENABLE_ARP_MAC_CHANGE_NOTIFICATION**. |
 | NX_ARP_MAX_QUEUE_DEPTH | Especifica el número máximo de paquetes que se pueden poner en cola mientras se espera una respuesta ARP. El valor predeterminado es 4 y se define en ***nx_api.h***. |
-| NX_ARP_MAXIMUM_RETRIES | Especifica el número máximo de reintentos de ARP realizados sin una respuesta ARP. El valor predeterminado es 18 y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
-| NX_ARP_UPDATE_RATE | Especifica el número de segundos entre los reintentos de ARP. El valor predeterminado es 10, que representa 10 segundos, y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
-| NX_DISABLE_ARP_AUTO_ENTRY | Si se define, deshabilita la entrada de información de solicitud ARP en la caché ARP. |
-| NX_DISABLE_ARP_INFO | Si se define, deshabilita la recopilación de información ARP. |
-| NX_ENABLE_ARP_MAC_CHANGE_NOTIFICATION | Si se define, permite que ARP invoque una función de notificación de devolución de llamada al detectar que se ha actualizado la dirección MAC. |
+| NX_ARP_MAXIMUM_RETRIES | Especifica el número máximo de reintentos de ARP que se pueden realizar sin una respuesta ARP. El valor predeterminado es 18 y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
+| NX_ARP_UPDATE_RATE | Especifica el número de segundos que pueden transcurrir entre reintentos de ARP. El valor predeterminado es 10, que representa 10 segundos, y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
+| NX_DISABLE_ARP_AUTO_ENTRY | Si se define, deshabilita la entrada de información de solicitud ARP en la caché de ARP. |
+| NX_DISABLE_ARP_INFO | Si se define, deshabilita la recopilación de información de ARP. |
+| NX_ENABLE_ARP_MAC_CHANGE_NOTIFICATION | Si se define, permite que ARP invoque una función de notificación de devolución de llamada al detectar que la dirección MAC se ha actualizado. |
 
 ### <a name="icmp-configuration-options"></a>Opciones de configuración de ICMP  
 
 | Opción  | Descripción  |
 |---|---|
-| NX_DISABLE_ICMP_INFO | Si se define, deshabilita la recopilación de información ICMP. |
+| NX_DISABLE_ICMP_INFO | Si se define, deshabilita la recopilación de información de ICMP. |
 | NX_DISABLE_ICMP_RX_CHECKSUM | Deshabilita el cálculo de la suma de comprobación ICMP en los paquetes ICMP recibidos. Esta opción es útil cuando el controlador de interfaz de red puede comprobar la suma de comprobación de ICMP y la aplicación no usa la característica de fragmentación de IP. De manera predeterminada, esta opción no está definida. |
 | NX_DISABLE_ICMP_TX_CHECKSUM | Deshabilita el cálculo de suma de comprobación ICMP en los paquetes ICMP transmitidos. Esta opción es útil donde el controlador de interfaz de red puede calcular la suma de comprobación de ICMP y la aplicación no usa la característica de fragmentación de IP. De manera predeterminada, esta opción no está definida. |
 
@@ -136,9 +136,9 @@ En las siguientes secciones se enumeran las opciones de configuración disponibl
 
 | Opción  | Descripción  |
 |---|---| 
-| NX_DISABLE_IGMP_INFO | Si se define, deshabilita la recopilación de información IGMP. |
+| NX_DISABLE_IGMP_INFO | Si se define, deshabilita la recopilación de información de IGMP. |
 | NX_DISABLE_IGMPV2 | Si se define, deshabilita la compatibilidad con IGMPv2 y NetX solo admite IGMPv1. De forma predeterminada, esta opción no está establecida y se define en ***nx_api.h***. |
-| NX_MAX_MULTICAST_GROUPS | Especifica el número máximo de grupos de multidifusión que se pueden combinar. El valor predeterminado es 7 y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir *_nx_api.h_**. |
+| NX_MAX_MULTICAST_GROUPS | Especifica el número máximo de grupos de multidifusión que se pueden combinar. El valor predeterminado es 7 y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado. Para ello, debe definir el valor antes de que se incluya _ *_nx_api.h_**. |
 
 ### <a name="ip-configuration-options"></a>Opciones de configuración de IP
 
@@ -168,20 +168,20 @@ alineación deseada. Esta característica es útil cuando los descriptores de b�
 
 | Opción  | Descripción  |
 |---|---|
-| NX_DISABLE_RARP_INFO | Si se define, deshabilita la recopilación de información RARP. |
+| NX_DISABLE_RARP_INFO | Si se define, deshabilita la recopilación de información de RARP. |
 
 ### <a name="tcp-configuration-options"></a>Opciones de configuración de TCP
 
 | Opción  | Descripción  |
 |---|---|
 | NX_DISABLE_RESET_DISCONNECT | Si se define, deshabilita el procesamiento de restablecimiento durante la desconexión cuando el valor de tiempo de espera proporcionado se especifica como **NX_NO_WAIT**. |
-| NX_DISABLE_TCP_INFO | Si se define, deshabilita la recopilación de información TCP. |
+| NX_DISABLE_TCP_INFO | Si se define, deshabilita la recopilación de información de TCP. |
 | NX_DISABLE_TCP_RX_CHECKSUM | Si se define, deshabilita la lógica de la suma de comprobación en los paquetes TCP recibidos. Esto solo es útil en situaciones en las que la capa de vínculo tiene un procesamiento de suma de comprobación o CRC confiables o el controlador de interfaz puede comprobar la suma de comprobación TCP en el hardware. |
 | NX_DISABLE_TCP_TX_CHECKSUM | Si se define, deshabilita la lógica de suma de comprobación para enviar paquetes TCP. Esto solo es útil en situaciones en las que el nodo de red receptor tiene deshabilitada la lógica de suma de comprobación TCP recibida o el controlador de red subyacente es capaz de generar la suma de comprobación TCP. |
 | NX_ENABLE_TCP_KEEPALIVE | Si se define, habilita el temporizador de Keepalive TCP opcional. La configuración predeterminada no está habilitada. |
 | NX_ENABLE_TCP_MSS_CHECKING | Si se define, habilita la comprobación del MSS del mismo nivel mínima antes de aceptar una conexión TCP. Para usar esta característica, debe definirse el símbolo **NX_ENABLE_TCP_MSS_MINIMUM**. De forma predeterminada, esta opción está activada. |
 NX_ENABLE_TCP_WINDOW_SCALING | Habilita la opción de escalado de ventana para las aplicaciones TCP. Si se define, la opción de escalado de la ventana se negocia durante la fase de conexión TCP y la aplicación puede especificar un tamaño de ventana superior a 64 K. La configuración predeterminada no está habilitada (no está definida). |
-| NX_MAX_LISTEN_REQUESTS | Especifica el número máximo de solicitudes de escucha del servidor. El valor predeterminado es 10 y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir *_nx_api.h_**. |
+| NX_MAX_LISTEN_REQUESTS | Especifica el número máximo de solicitudes de escucha del servidor. El valor predeterminado es 10 y se define en ***nx_api.h** _. La aplicación puede invalidar el valor predeterminado. Para ello, debe definir el valor antes de que se incluya _ *_nx_api.h_**. |
 | NX_TCP_ACK_EVERY_N_PACKETS | Especifica el número de paquetes TCP que se van a recibir antes de enviar una confirmación. Nota: Si **NX_TCP_IMMEDIATE_ACK** está habilitado, pero **NX_TCP_ACK_EVERY_N_PACKETS** no, este valor se establece automáticamente en 1 para la compatibilidad con versiones anteriores. |
 | NX_TCP_ACK_TIMER_RATE | Especifica cómo se divide el número de tics del sistema (NX_IP_PERIODIC_RATE) para calcular la velocidad del temporizador para el procesamiento de confirmación diferida de TCP. El valor predeterminado es 5, que representa 200 ms, y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
 | NX_TCP_ENABLE_KEEPALIVE | Se ha cambiado el nombre a **NX_ENABLE_TCP_KEEPALIVE**. Aunque todavía se admite, se recomienda que los nuevos diseños usen **NX_ENABLE_TCP_KEEPALIVE**. |
@@ -189,20 +189,20 @@ NX_ENABLE_TCP_WINDOW_SCALING | Habilita la opción de escalado de ventana para l
 | NX_TCP_FAST_TIMER_RATE | Especifica cómo se divide el número de tics internos de NetX (NX_IP_PERIODIC_RATE) para calcular la velocidad del temporizador de TCP rápido. El temporizador de TCP rápido se utiliza para controlar los distintos temporizadores de TCP, incluido el temporizador de confirmación retrasada. El valor predeterminado es 10, que representa 100 ms suponiendo que el temporizador de ThreadX se esté ejecutando a 10 ms. Este valor se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
 | NX_TCP_IMMEDIATE_ACK | Si se define, habilita el procesamiento de respuesta de confirmación inmediata de TCP opcional. Definir de este símbolo equivale a definir **NX_TCP_ACK_EVERY_N_PACKETS** como 1. |
 | NX_TCP_KEEPALIVE_INITIAL | Especifica el número de segundos de inactividad antes de que se active el temporizador de Keepalive. El valor predeterminado es 7200, que representa 2 horas, y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
-| NX_TCP_KEEPALIVE_RETRIES | Especifica cuántos reintentos Keepalive se permiten antes de que la conexión se considere interrumpida. El valor predeterminado es 10, que representa 10 reintentos, y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir *_nx_api.h_**. |
-| NX_TCP_KEEPALIVE_RETRY | Especifica el número de segundos entre los reintentos del temporizador de Keepalive, suponiendo que el otro lado de la conexión no responde. El valor predeterminado es 75, que representa 75 segundos entre reintentos, y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir *_nx_api.h_**. |
+| NX_TCP_KEEPALIVE_RETRIES | Especifica el número de reintentos de Keepalive que se permiten antes de que la conexión se considere interrumpida. El valor predeterminado es 10, que representa 10 reintentos, y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado. Para ello, debe definir el valor antes de que se incluya _ *_nx_api.h_**. |
+| NX_TCP_KEEPALIVE_RETRY | Especifica el número de segundos entre los reintentos del temporizador de Keepalive, suponiendo que el otro lado de la conexión no responda. El valor predeterminado es 75, que representa 75 segundos entre reintentos, y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado. Para ello, debe definir el valor antes de que se incluya _ *_nx_api.h_**. |
 | NX_TCP_MAX_OUT_OF_ORDER_PACKETS | Símbolo que define el número máximo de paquetes TCP no disponibles que se pueden mantener en la cola de recepción de sockets TCP. Este símbolo se puede usar para limitar el número de paquetes en cola en el socket de recepción TCP, lo que impide que se agote el grupo de paquetes. De forma predeterminada, este símbolo no está definido, por lo que no hay ningún límite en el número de paquetes no disponibles en cola en el socket TCP. |
-| NX_TCP_MAXIMUM_RETRIES | Especifica cuántos reintentos de transmisión de datos se permiten antes de que la conexión se considere interrumpida. El valor predeterminado es 10, que representa 10 reintentos, y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
-| NX_TCP_MAXIMUM_TX_QUEUE | Especifica la profundidad máxima de la cola de transmisión de TCP antes de que se suspendan o se rechacen las solicitudes de envío TCP. El valor predeterminado es 20, lo que significa que puede haber un máximo de 20 paquetes en la cola de transmisión en un momento dado. Nota: Los paquetes permanecen en la cola de transmisión hasta que se reciba una confirmación que abarque algunos o todos los datos del paquete desde el otro lado de la conexión. Esta constante se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
+| NX_TCP_MAXIMUM_RETRIES | Especifica el número de reintentos de transmisión de datos que se permiten antes de que la conexión se considere interrumpida. El valor predeterminado es 10, que representa 10 reintentos, y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
+| NX_TCP_MAXIMUM_TX_QUEUE | Especifica la profundidad máxima de la cola de transmisión de TCP antes de que se suspendan o se rechacen las solicitudes de envío TCP. El valor predeterminado es 20, lo que significa que el número máximo de paquetes que puede haber en la cola de transmisión en un momento dado es 20. Nota: Los paquetes permanecen en la cola de transmisión hasta que se reciba una confirmación que abarque algunos o todos los datos del paquete desde el otro lado de la conexión. Esta constante se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
 | X_TCP_MSS_CHECKING_ENABLED | Se ha cambiado el nombre a **NX_ENABLE_TCP_MSS_CHECKING**. Aunque todavía se admite, se recomienda que los nuevos diseños utilicen **NX_ENABLE_TCP_MSS_CHECKING**. |
 | NX_TCP_MSS_MINIMUM | Símbolo que define el valor mínimo de MSS que el módulo TCP de NetX acepta. Esta característica está habilitada por **NX_ENABLE_TCP_MSS_CHECK** |
-| NX_TCP_RETRY_SHIFT | Especifica cómo cambia el período de tiempo de espera de retransmisión entre los reintentos. Si este valor es 0, el tiempo de espera de retransmisión inicial es el mismo que el de los tiempos de espera de retransmisión subsiguientes. Si este valor es 1, cada retransmisión sucesiva es dos veces más larga. Si este valor es 2, cada tiempo de espera de retransmisión subsiguiente es cuatro veces mayor. El valor predeterminado es 0 y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
+| NX_TCP_RETRY_SHIFT | Especifica cómo cambia el tiempo de espera de retransmisión entre los reintentos. Si este valor es 0, el tiempo de espera de retransmisión inicial es el mismo los posteriores. Si este valor es 1, se duplica el tiempo de espera en cada retransmisión posterior. Si este valor es 2, el tiempo de espera de retransmisión de cada retransmisión posterior es cuatro veces mayor. El valor predeterminado es 0 y se define en ***nx_tcp.h** _. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _*_nx_api.h_**. |
 | NX_TCP_TRANSMIT_TIMER_RATE| Especifica cómo se divide el número de tics del sistema (**NX_IP_PERIODIC_RATE**) para calcular la velocidad del temporizador para el procesamiento de reintentos de transmisión de TCP. El valor predeterminado es 1, que representa un segundo, y se define en **_nx_tcp.h_ *_. La aplicación puede invalidar el valor predeterminado definiendo el valor antes de incluir _* _nx_api.h_**. |
 
 ### <a name="udp-configuration-options"></a>Opciones de configuración de UDP
 | Opción  | Descripción  |
 |---|---|
-| NX_DISABLE_UDP_INFO | Si se define, deshabilita la recopilación de información UCP. |
+| NX_DISABLE_UDP_INFO | Si se define, deshabilita la recopilación de información de UDP. |
 | NX_DISABLE_UDP_RX_CHECKSUM | Si se define, deshabilita el cálculo de la suma de comprobación UDP en los paquetes UDP entrantes. Esto resulta útil si el controlador de la interfaz de red puede comprobar la suma de comprobación del encabezado UDP en el hardware y la aplicación no habilita la lógica de fragmentación de IP. |
 | NX_DISABLE_UDP_TX_CHECKSUM | Si se define, deshabilita el cálculo de la suma de comprobación UDP en los paquetes UDP salientes. Esto resulta útil si el controlador de la interfaz de red puede calcular la suma de comprobación del encabezado UDP e insertar el valor en el encabezado IP antes de transmitir los datos y la aplicación no habilita la lógica de fragmentación de IP. |
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 49f4d8b2c358fda96fd65005f31dd2e73ce2e0b4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e14faa327110702d46edf342759c255537d58648611bb87309088dc821e211c3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815569"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784621"
 ---
 # <a name="appendix-e---guix-event-description"></a>Apéndice E: descripción de los eventos de GUIX
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: a94344a7079e3f0e3e451bc678c369fee543aef6
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: bb2e1d7f10d71ed01a040cea63e9e469855525d89dd6318f3147c61ed166ee4c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550174"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783084"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-filex"></a>Capítulo 3: Componentes funcionales de Azure RTOS FileX
 

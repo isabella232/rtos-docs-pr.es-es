@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8a614d22eca4fe693209751d72958b7d975c64c2
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 50902d37f823302910b1b219658dcbf1a41406f480c14795ffceea6e733a0848
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815250"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799547"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-dhcp-client-services"></a>Capítulo 3: Descripción de los servicios de cliente DHCP de Azure RTOS NetX
 
@@ -61,7 +61,7 @@ Servicios de cliente DHCP específicos de la interfaz:
 
 - **nx_dhcp_interface_disable**: *deshabilita la interfaz para ejecutar DHCP en la interfaz especificada*.
 
-- **nx_dhcp_interface_decline**: *envía un mensaje de rechazo al servidor en la interfaz especificada*.
+- **nx_dhcp_interface_decline**: *envía un mensaje DECLINE al servidor en la interfaz especificada*.
 
 - **nx_dhcp_interface_force_renew**: *envía un mensaje para forzar la renovación en la interfaz especificada*.
 
@@ -95,7 +95,7 @@ Servicios de cliente DHCP si se define NX_DHCP_CLIENT_RESORE_STATE:
 
 - **nx_dhcp_client_update_time_remaining**: *actualiza el tiempo restante en el estado actual de DHCP*.
 
-Servicios de cliente DHCP si se define NX_DHCP_CLIENT_RESORE_STATE:
+Servicios de cliente DHCP específicos de interfaz si se define NX_DHCP_CLIENT_RESORE_STATE:
 
 - **nx_dhcp_client_interface_get_record**: *crea un registro del estado del cliente DHCP en la interfaz especificada*.
 
@@ -105,7 +105,7 @@ Servicios de cliente DHCP si se define NX_DHCP_CLIENT_RESORE_STATE:
 
 ## <a name="nx_dhcp_create"></a>nx_dhcp_create
 
-Crea una instancia de DHCP
+Crea una instancia de DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -153,7 +153,7 @@ status =  nx_dhcp_create(&my_dhcp, &my_ip, "My-DHCP");
 
 ## <a name="nx_dhcp_interface_enable"></a>nx_dhcp_interface_enable
 
-Habilita la interfaz especificada para ejecutar DHCP 
+Habilita la interfaz especificada para ejecutar DHCP. 
 
 ### <a name="prototype"></a>Prototipo
 
@@ -167,7 +167,7 @@ Este servicio permite que la interfaz especificada ejecute DHCP. De forma predet
 
 Tenga en cuenta que la aplicación debe registrar primero esta interfaz con la instancia de IP mediante *nx_ip_interface_attach.*
 
-Además, debe haber un “registro” de interfaz de cliente DHCP disponible para agregar esta interfaz a la lista de interfaces habilitadas. De forma predeterminada NX_DHCP_CLIENT_MAX_RECORDS se define como 1. Establezca esta opción en el número máximo de interfaces que se espera que ejecute el cliente DHCP simultáneamente. Normalmente NX_DHCP_CLIENT_MAX_RECORDS será igual a NX_MAX_PHYSICAL_INTERFACES; sin embargo, si un dispositivo tiene más interfaces físicas de las que espera ejecutar el cliente DHCP, puede ahorrar memoria si establece NX_DHCP_CLIENT_MAX_RECORDS en un valor inferior a ese número. No hay una asignación uno a uno de las interfaces físicas con los registros de la interfaz de cliente DHCP.
+Además, debe haber un “registro” de interfaz de cliente DHCP disponible para agregar esta interfaz a la lista de interfaces habilitadas. De forma predeterminada, NX_DHCP_CLIENT_MAX_RECORDS se define como 1. Establezca esta opción en el número máximo de interfaces que se espera que ejecute el cliente DHCP simultáneamente. Normalmente NX_DHCP_CLIENT_MAX_RECORDS será igual a NX_MAX_PHYSICAL_INTERFACES; sin embargo, si un dispositivo tiene más interfaces físicas de las que espera ejecutar el cliente DHCP, puede ahorrar memoria si establece NX_DHCP_CLIENT_MAX_RECORDS en un valor inferior a ese número. No hay una asignación uno a uno de las interfaces físicas con los registros de la interfaz de cliente DHCP.
 
 La diferencia entre este servicio y *nx_dhcp_set_interface_index* es que el segundo establece una única interfaz para ejecutar DHCP, mientras que este servicio simplemente agrega la interfaz especificada a la lista de interfaces de cliente habilitadas para DHCP.
 
@@ -211,7 +211,7 @@ status = nx_dhcp_start(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_disable"></a>nx_dhcp_interface_disable
 
-Deshabilita la interfaz especificada para ejecutar DHCP 
+Deshabilita la interfaz especificada para ejecutar DHCP. 
 
 ### <a name="prototype"></a>Prototipo
 
@@ -311,7 +311,7 @@ status =  nx_dhcp_clear_broadcast_flag(&my_dhcp, NX_TRUE);
 
 ## <a name="nx_dhcp_interface_clear_broadcast_flag"></a>nx_dhcp_interface_clear_broadcast_flag
 
-Establece o borra la marca de difusión en la interfaz especificada
+Establece o borra la marca de difusión en la interfaz especificada.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -362,7 +362,7 @@ status =  nx_dhcp_interface_clear_broadcast_flag(&my_dhcp, iface_index, NX_TRUE)
 
 ## <a name="nx_dhcp_delete"></a>nx_dhcp_delete
 
-Elimina una instancia de DHCP
+Elimina una instancia de DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -372,11 +372,11 @@ UINT nx_dhcp_delete(NX_DHCP *dhcp_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio elimina una instancia de cliente DHCP creada anteriormente.
+Este servicio elimina una instancia del cliente DHCP creada anteriormente.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **dhcp_ptr** Puntero a la instancia de DHCP creada anteriormente.
+- **dhcp_ptr**: puntero a la instancia de DHCP creada anteriormente.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -399,9 +399,9 @@ status =  nx_dhcp_delete(&my_dhcp);
 /* If status is NX_SUCCESS the DHCP instance was successfully deleted. */
 ```
 
-## <a name="nx_dhcp_-force_renew"></a>nx_dhcp_ force_renew
+## <a name="nx_dhcp_-force_renew"></a>nx_dhcp_force_renew
 
-Envía un mensaje para forzar la renovación 
+Envía un mensaje para forzar la renovación. 
 
 ### <a name="prototype"></a>Prototipo
 
@@ -411,13 +411,13 @@ UINT nx_dhcp force_renew(NX_DHCP *dhcp_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio permite que la aplicación host envíe un mensaje para forzar la renovación en todas las interfaces habilitadas para DHCP. El cliente DHCP debe estar en un estado ENLAZADO. Esta función establece el estado en RENOVAR, de modo que el cliente DHCP intente renovar antes de que venza el tiempo de espera de T1.
+Este servicio permite que la aplicación host envíe un mensaje para forzar la renovación en todas las interfaces habilitadas para DHCP. El cliente DHCP debe estar en un estado BOUND. Esta función establece el estado en RENEW, de modo que el cliente DHCP intente renovar antes de que venza el tiempo de espera de T1.
 
 Si quiere enviar un mensaje para forzar la renovación en una interfaz específica cuando hay varias interfaces habilitadas para DHCP, use *nx_dhcp_interface_force_renew*.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **dhcp_ptr** Puntero a la instancia de DHCP creada anteriormente.
+- **dhcp_ptr**: puntero a la instancia de DHCP creada anteriormente.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -443,7 +443,7 @@ status =  nx_dhcp_force_renew(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_force_renew"></a>nx_dhcp_interface_force_renew
 
-Envía un mensaje para forzar la renovación en la interfaz especificada
+Envía un mensaje para forzar la renovación en la interfaz especificada.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -454,11 +454,11 @@ UINT nx_dhcp_interface_force_renew(NX_DHCP *dhcp_ptr,
 
 ### <a name="description"></a>Descripción
 
-Este servicio permite que la aplicación host envíe un mensaje para forzar la renovación en la interfaz de entrada, siempre y cuando esa interfaz se haya habilitado para DHCP (consulte *nx_dhcp_interface_enable*). El cliente DHCP de la interfaz especificada debe estar en un estado ENLAZADO. Esta función establece el estado en RENOVAR, de modo que el cliente DHCP intente renovar antes de que venza el tiempo de espera de T1.
+Este servicio permite que la aplicación host envíe un mensaje para forzar la renovación en la interfaz de entrada, siempre y cuando esa interfaz se haya habilitado para DHCP (consulte *nx_dhcp_interface_enable*). El cliente DHCP de la interfaz especificada debe estar en un estado BOUND. Esta función establece el estado en RENEW, de modo que el cliente DHCP intente renovar antes de que venza el tiempo de espera de T1.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **dhcp_ptr** Puntero a la instancia de DHCP creada anteriormente.
+- **dhcp_ptr**: puntero a la instancia de DHCP creada anteriormente.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -486,7 +486,7 @@ status =  nx_dhcp_interface_force_renew(&my_dhcp, 1);
 
 ## <a name="nx_dhcp_packet_pool_set"></a>nx_dhcp_packet_pool_set
 
-Establece el grupo de paquetes del cliente DHCP
+Establece el grupo de paquetes del cliente DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -536,7 +536,7 @@ status =  nx_dhcp_packet_pool_set(&my_dhcp, packet_pool_ptr);
 
 ## <a name="nx_dhcp_request_client_ip"></a>nx_dhcp_request_client_ip
 
-Establece la dirección IP solicitada para la instancia de DHCP
+Establece la dirección IP solicitada para la instancia de DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -660,7 +660,7 @@ Para reinicializar el cliente DHCP en una interfaz específica cuando hay varias
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **dhcp_ptr** Puntero a la instancia de DHCP creada anteriormente.
+- **dhcp_ptr**: puntero a la instancia de DHCP creada anteriormente.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -684,7 +684,7 @@ network parameters and DHCP client state. */
 
 ## <a name="nx_dhcp_interface_reinitialize"></a>nx_dhcp_interface_reinitialize
 
-Borra los parámetros de red del cliente DHCP en la interfaz especificada 
+Borra los parámetros de red del cliente DHCP en la interfaz especificada. 
 
 ### <a name="prototype"></a>Prototipo
 
@@ -731,7 +731,7 @@ network parameters and DHCP client state. */
 
 ## <a name="nx_dhcp_release"></a>nx_dhcp_release
 
-Libera la dirección IP concedida
+Libera la dirección IP concedida.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -749,7 +749,7 @@ Para volver a liberar una dirección en el servidor DHCP en una interfaz especí
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **dhcp_ptr** Puntero a la instancia de DHCP creada anteriormente.
+- **dhcp_ptr**: puntero a la instancia de DHCP creada anteriormente.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -776,7 +776,7 @@ status =  nx_dhcp_release(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_release"></a>nx_dhcp_interface_release
 
-Libera la dirección IP en la interfaz especificada
+Libera la dirección IP en la interfaz especificada.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -791,7 +791,7 @@ Este servicio libera la dirección IP obtenida de un servidor DHCP en la interfa
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **dhcp_ptr** Puntero a la instancia de DHCP creada anteriormente.
+- **dhcp_ptr**: puntero a la instancia de DHCP creada anteriormente.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -822,7 +822,7 @@ status =  nx_dhcp_interface_release(&my_dhcp, 1);
 
 ## <a name="nx_dhcp_decline"></a>nx_dhcp_decline
 
-Rechaza la dirección IP del servidor DHCP
+Rechaza la dirección IP del servidor DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -840,7 +840,7 @@ Este servicio reinicializa el cliente DHCP para que se pueda reiniciar mediante 
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **dhcp_ptr** Puntero a la instancia de DHCP creada anteriormente.
+- **dhcp_ptr**: puntero a la instancia de DHCP creada anteriormente.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -868,7 +868,7 @@ status =  nx_dhcp_decline(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_decline"></a>nx_dhcp_interface_decline
 
-Rechaza la dirección IP del servidor DHCP en la interfaz especificada
+Rechaza la dirección IP del servidor DHCP en la interfaz especificada.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -916,7 +916,7 @@ status =  nx_dhcp_interface_decline(&my_dhcp, 2);
 
 ## <a name="nx_dhcp_send_request"></a>nx_dhcp_send_request
 
-Envía un mensaje DHCP al servidor
+Envía un mensaje DHCP al servidor.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -964,7 +964,7 @@ status =  nx_dhcp_send_request(&my_dhcp, NX_DHCP_TYPE_DHCPINFORM);
 
 ## <a name="nx_dhcp_interface_send_request"></a>nx_dhcp_interface_send_request
 
-Envía un mensaje DHCP al servidor en una interfaz específica
+Envía un mensaje DHCP al servidor en una interfaz específica.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -978,7 +978,7 @@ UINT nx_dhcp_interface_send_request(NX_DHCP *dhcp_ptr,
 
 Este servicio envía un mensaje al servidor DHCP en la interfaz especificada si esa interfaz está habilitada para DHCP. Para enviar un mensaje RELEASE o DECLINE, la aplicación debe utilizar los servicios *nx_dhcp [_interface] _release*() o *nx_dhcp_interface_decline ()* , respectivamente.
 
-El cliente DHCP debe iniciarse para usar este servicio, salvo para enviar el tipo de mensaje INFORM_REQUEST.
+El cliente DHCP debe iniciarse para usar este servicio, salvo para enviar el tipo de mensaje DHCP INFORM REQUEST.
 
 Este servicio no está destinado a que la aplicación host “impulse” la máquina de estados del cliente DHCP.
 
@@ -1021,7 +1021,7 @@ status =  nx_dhcp_interface_send_request(&my_dhcp, 0, NX_DHCP_TYPE_DHCPINFORM);
 
 ## <a name="nx_dhcp_server_address_get"></a>nx_dhcp_server_address_get
 
-Obtiene la dirección IP del servidor DHCP del cliente DHCP
+Obtiene la dirección IP del servidor DHCP del cliente DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1034,7 +1034,7 @@ UINT nx_dhcp_server_address_get(NX_DHCP *dhcp_ptr,
 
 Este servicio recupera la dirección IP del servidor DHCP del cliente DHCP en la primera interfaz habilitada para DHCP que se encuentra en el registro del cliente DHCP. El autor de la llamada solo puede utilizar este servicio después de que el cliente DHCP se haya enlazado a una dirección IP asignada por el servidor DHCP. La aplicación host puede usar el servicio *nx_ip_status_check* para comprobar que la dirección IP está establecida o usar *nx_dhcp_state_change_notify* y consultar si el estado del cliente DHCP es NX_DHCP_STATE_BOUND. Consulte *nx_dhcp_state_change_notify* para obtener información sobre cómo establecer la función de devolución de llamada de cambio de estado.
 
-Para buscar el servidor DHCP en una interfaz específica cuando hay varias interfaces habilitadas para el cliente DHCP, use el servicio *nx_dhcp_interface_server_address_get*
+Para buscar el servidor DHCP en una interfaz específica cuando hay varias interfaces habilitadas para el cliente DHCP, use el servicio *nx_dhcp_interface_server_address_get*.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
@@ -1076,7 +1076,7 @@ UINT  status;
 
 ## <a name="nx_dhcp_interface_server_address_get"></a>nx_dhcp_interface_server_address_get
 
-Obtiene la dirección IP del servidor DHCP del cliente DHCP en la interfaz especificada
+Obtiene la dirección IP del servidor DHCP del cliente DHCP en la interfaz especificada.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1088,7 +1088,7 @@ UINT nx_dhcp_interface_server_address_get(NX_DHCP *dhcp_ptr,
 
 ### <a name="description"></a>Descripción
 
-Este servicio recupera la dirección IP del servidor DHCP del cliente DHCP en la interfaz especificada si dicha interfaz está habilitada para DHCP. El cliente DHCP debe estar en un estado ENLAZADO. Después de iniciar el cliente DHCP en esa interfaz, la aplicación host puede usar el servicio *nx_ip_status_check* para comprobar que la dirección IP está establecida o bien usar la devolución de llamada de cambio de estado del cliente DHCP y consultar si el estado del cliente DHCP es NX_DHCP_STATE_BOUND. Consulte *nx_dhcp_state_change_notify* para obtener más información sobre cómo establecer la función de devolución de llamada de cambio de estado.
+Este servicio recupera la dirección IP del servidor DHCP del cliente DHCP en la interfaz especificada si dicha interfaz está habilitada para DHCP. El cliente DHCP debe estar en un estado BOUND. Después de iniciar el cliente DHCP en esa interfaz, la aplicación host puede usar el servicio *nx_ip_status_check* para comprobar que la dirección IP está establecida o bien usar la devolución de llamada de cambio de estado del cliente DHCP y consultar si el estado del cliente DHCP es NX_DHCP_STATE_BOUND. Consulte *nx_dhcp_state_change_notify* para obtener más información sobre cómo establecer la función de devolución de llamada de cambio de estado.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
@@ -1140,7 +1140,7 @@ UINT  status;
 
 ## <a name="nx_dhcp_set_interface_index"></a>nx_dhcp_set_interface_index
 
-Establece la interfaz de red para la instancia de DHCP
+Establece la interfaz de red para la instancia de DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1188,7 +1188,7 @@ status =  nx_dhcp_set_interface_index(&my_dhcp, 1);
 
 ## <a name="nx_dhcp_start"></a>nx_dhcp_start
 
-Inicia el procesamiento de DHCP
+Inicia el procesamiento de DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1208,7 +1208,7 @@ Para iniciar DHCP en una interfaz específica cuando hay varias interfaces habil
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **dhcp_ptr** Puntero a la instancia de DHCP creada anteriormente.
+- **dhcp_ptr**: puntero a la instancia de DHCP creada anteriormente.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -1235,7 +1235,7 @@ status =  nx_dhcp_start(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_start"></a>nx_dhcp_interface_start
 
-Inicia el procesamiento de DHCP en la interfaz especificada
+Inicia el procesamiento de DHCP en la interfaz especificada.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1284,7 +1284,7 @@ status =  nx_dhcp_interface_start(&my_dhcp, 1);
 
 ## <a name="nx_dhcp_state_change_notify"></a>nx_dhcp_state_change_notify
 
-Establece la función de devolución de llamada de cambio de estado de DHCP
+Establece la función de devolución de llamada de cambio de estado de DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1345,7 +1345,7 @@ status =  nx_dhcp_state_change_notify(&my_dhcp, my_state_change);
 
 ## <a name="nx_dhcp_interface_state_change_notify"></a>nx_dhcp_interface_state_change_notify
 
-Establece la función de devolución de llamada de cambio de estado DHCP en la interfaz especificada
+Establece la función de devolución de llamada de cambio de estado DHCP en la interfaz especificada.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1399,7 +1399,7 @@ status =  nx_dhcp_interstate_state_change_notify(&my_dhcp,
 
 ## <a name="nx_dhcp_stop"></a>nx_dhcp_stop
 
-Detiene el procesamiento de DHCP
+Detiene el procesamiento de DHCP.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1415,7 +1415,7 @@ Para detener DHCP en una interfaz específica si hay varias interfaces habilitad
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **dhcp_ptr** Puntero a la instancia de DHCP creada anteriormente.
+- **dhcp_ptr**: puntero a la instancia de DHCP creada anteriormente.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -1442,7 +1442,7 @@ status =  nx_dhcp_stop(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_stop"></a>nx_dhcp_interface_stop
 
-Detiene el procesamiento de DHCP en la interfaz especificada
+Detiene el procesamiento de DHCP en la interfaz especificada.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1487,7 +1487,7 @@ status =  nx_dhcp_interface_stop(&my_dhcp, 1);
 
 ## <a name="nx_dhcp_user_option_retrieve"></a>nx_dhcp_user_option_retrieve
 
-Recupera una opción DHCP de la última respuesta del servidor
+Recupera una opción DHCP de la última respuesta del servidor.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1547,7 +1547,7 @@ status =  nx_dhcp_user_option_retrieve(&my_dhcp, NX_DHCP_OPTION_DNS_SVR,
 
 ## <a name="nx_dhcp_interface_user_option_retrieve"></a>nx_dhcp_interface_user_option_retrieve
 
-Recupera una opción de DHCP de la última respuesta del servidor en la interfaz especificada
+Recupera una opción de DHCP de la última respuesta del servidor en la interfaz especificada.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1610,7 +1610,7 @@ status =  nx_dhcp_interface_user_option_retrieve(&my_dhcp, 0, NX_DHCP_OPTION_DNS
 
 ## <a name="nx_dhcp_user_option_convert"></a>nx_dhcp_user_option_convert
 
-Convierte cuatro bytes en ULONG
+Convierte cuatro bytes en ULONG.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1649,7 +1649,7 @@ dns_ip=  nx_dhcp_user_option_convert(dns_ip_string);
 
 ## <a name="nx_dhcp_user_option_add_callback_set"></a>nx_dhcp_user_option_add_callback_set
 
-Establece la función de devolución de llamada para agregar opciones proporcionadas por el usuario
+Establece la función de devolución de llamada para agregar opciones proporcionadas por el usuario.
 
 ### <a name="prototype"></a>Prototipo
 

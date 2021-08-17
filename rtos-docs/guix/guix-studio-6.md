@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: f8868ec770aa8f7f35d2866b99e3eb8f501281a8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 78b1ec1eea3ec2fcae48c64ad15931f44f34538c876dc8a267c2b1a84234320a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815473"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785709"
 ---
 # <a name="chapter-6-guix-studio-generated-code"></a>Capítulo 6: Código generado por GUIX Studio
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f24d7366d27a8223b069a54ef7b93f6b3e38bf3a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 980348b5c50acfb82b2d8fda8786a1d48bf59c69e7949b6f62b64515b59bf42d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815154"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798765"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-point-to-point-protocol-ppp-services"></a>Capítulo 3: Descripción de los servicios de Protocolo punto a punto (PPP) de Azure RTOS NetX
 
@@ -35,13 +35,13 @@ En la sección "Valores devueltos" de las siguientes descripciones de API, los v
 - **nx_ppp_nak_authentication_notify**: *Notificar a la aplicación si se ha recibido un NAK de autenticación*
 - **nx_ppp_pap_enable**: *Habilitar la autenticación PAP*
 - **nx_ppp_ping_request**: *Enviar una solicitud de eco LCP*
-- **nx_ppp_raw_string_send**: *Enviar una cadena que no sea PPP*
+- **nx_ppp_raw_string_send**: *Enviar una cadena que no sea de PPP*
 - **nx_ppp_restart**: *Reiniciar el procesamiento de PPP*
 - **nx_ppp_start**: *Iniciar el procesamiento de PPP*
 - **nx_ppp_status_get**: *Obtener el estado actual de PPP*
 - **nx_ppp_stop**: *Detener el procesamiento de PPP*
 - **nx_ppp_packet_receive**: *Recibir un paquete de PPP*
-- **nx_ppp_packet_send_set**: *establecer la función de envío de paquetes de PPP*
+- **nx_ppp_packet_send_set**: *Establecer la función de envío de paquetes DE PPP*
 
 ## <a name="nx_ppp_byte_receive"></a>nx_ppp_byte_receive
 
@@ -59,14 +59,14 @@ Normalmente, se llama a este servicio desde la rutina de servicio de interrupci�
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **byte**: byte recibido del dispositivo serie.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **byte**: Byte recibido del dispositivo serie.
 
 ### <a name="return-values"></a>Valores devueltos
 
 - **NX_SUCCESS**: (0x00) Recepción correcta de bytes de PPP.
-- **NX_PPP_BUFFER_FULL**: (0xB1) El búfer serie de PPP ya está lleno.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_PPP_BUFFER_FULL**: (0xB1) El búfer de serie de PPP ya está lleno.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -98,15 +98,15 @@ Este servicio inicia un desafío CHAP después de que la conexión de PPP ya est
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
 
 ### <a name="return-values"></a>Valores devueltos
 
 - **NX_SUCCESS**: (0x00) Desafío de PPP iniciado correctamente.
 - **NX_PPP_FAILURE**: (0xB0) Desafío de PPP no válido, CHAP se habilitó solo para la respuesta.
 - **NX_NOT_IMPLEMENTED**: (0x80) La lógica de CHAP se deshabilitó a través de NX_PPP_DISABLE_CHAP.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
+- NX_CALLER_ERROR: (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -139,16 +139,16 @@ UINT nx_ppp_chap_enable(NX_PPP *ppp_ptr,
 
 Este servicio habilita el Protocolo de autenticación por desafío mutuo (CHAP) para la instancia de PPP especificada.
 
-Si se especifican los punteros de función "***get_challenge_values** _" y "_ *_get_verification_values_**", esta instancia de PPP requiere CHAP. De lo contrario, CHAP solo responde a las solicitudes de desafío del mismo nivel.
+Si se especifican los punteros de función "***get_challenge_values** _" y "_ *_get_verification_values_**", esta instancia de PPP requiere CHAP. De lo contrario, CHAP solo responde a las solicitudes de desafío del homólogo.
 
 Hay varios elementos de datos a los que se hace referencia a continuación en las funciones de devolución de llamada necesarias. Se espera que los elementos de datos *secret*, *name* y *system* sean cadenas terminadas en NULL con un tamaño máximo de NX_PPP_NAME_SIZE-1. Se espera que el elemento de datos *rand_value* sea una cadena terminada en NULL con un tamaño máximo de NX_PPP_VALUE_SIZE-1. El elemento de datos *id* es un tipo de carácter único sin signo.
 
 >[!NOTE]
-> Se debe llamar a esta función después de *nx_ppp_create*, pero antes de nx_ip_create o *nx_ip_interface_attach*.
+> Se debe llamar a esta función después de *nx_ppp_create* pero antes de nx_ip_create o *nx_ip_interface_attach*.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
 - **get_challenge_values**: Puntero a la función de aplicación para recuperar los valores usados para el desafío. Tenga en cuenta que los valores de *rand_value*, *id* y *secret* deben copiarse en los destinos proporcionados.
 - **get_responder_values**: Puntero a la función de aplicación que recupera los valores utilizados para responder a un desafío. Tenga en cuenta que los valores de *system*, *name* y *secret* deben copiarse en los destinos proporcionados.
 - **get_verification_values**: Puntero a la función de aplicación que recupera los valores utilizados para comprobar la respuesta del desafío. Tenga en cuenta que los valores de *system*,*name* y *secret* deben copiarse en los destinos proporcionados.
@@ -158,7 +158,7 @@ Hay varios elementos de datos a los que se hace referencia a continuación en la
 - **NX_SUCCESS** (0x00) CHAP de PPP habilitado correctamente.
 - **NX_NOT_IMPLEMENTED**: (0x80) La lógica de CHAP se deshabilitó a través de NX_PPP_DISABLE_CHAP.
 - NX_PTR_ERROR: (0x07) Puntero de PPP o puntero de función de devolución de llamada no válido. Tenga en cuenta que si se especifica *get_challenge_values*, también se debe proporcionar la función *get_verification_values*.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- NX_CALLER_ERROR: (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -275,14 +275,14 @@ Este servicio crea una instancia de PPP para la instancia de IP de NetX especifi
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
 - **nombre**: Nombre de esta instancia de PPP.
 - **ip_ptr**: Puntero al bloque de control para la instancia de IP que todavía no se ha creado.
 - **stack_memory_ptr**: Puntero al inicio del área de la pila del subproceso de PPP.
 - **stack_size**: Tamaño en bytes de la pila del subproceso.
 - **pool_ptr**: Puntero al grupo de paquetes predeterminado.
 - **thread_priority**: Prioridad de los subprocesos de PPP internos (1-31).
-- **ppp_invalid_packet_handler**: Puntero de función al controlador de la aplicación para todos los paquetes que no son de PPP. El PPP de NetX normalmente llama a esta rutina durante la inicialización. Aquí es donde la aplicación puede responder a los comandos del módem o, en el caso de Windows XP, la aplicación de PPP de NetX puede iniciar PPP respondiendo con "CLIENT SERVER" al "CLIENT" inicial enviado por Windows XP.
+- **ppp_invalid_packet_handler**: Puntero de función al controlador de la aplicación para todos los paquetes que no son de PPP. El PPP de NetX normalmente llama a esta rutina durante la inicialización. Aquí es donde la aplicación puede responder a los comandos del módem o, en el caso de Windows XP, la aplicación de PPP de NetX puede iniciar PPP respondiendo con "CLIENT SERVER” al "CLIENT" inicial enviado por Windows XP.
 - **ppp_byte_send**: Puntero de función a la rutina de salida de bytes de serie de la aplicación.
 
 
@@ -290,7 +290,7 @@ Este servicio crea una instancia de PPP para la instancia de IP de NetX especifi
 
 - **NX_SUCCESS** (0x00) Instancia de PPP creada correctamente.
 - NX_PTR_ERROR: (0x07) Puntero de función de salida de PPP, IP o bytes no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- NX_CALLER_ERROR: (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -323,13 +323,13 @@ Este servicio elimina la instancia de PPP creada anteriormente.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
 
 ### <a name="return-values"></a>Valores devueltos
 
 - **NX_SUCCESS**: (0x00) Instancia de PPP eliminada correctamente.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
+- NX_CALLER_ERROR: (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -367,7 +367,7 @@ Este servicio recupera la dirección IP de DNS proporcionada por el elemento del
 
 - **NX_SUCCESS**: (0x00) la dirección PPP se ha obtenido correctamente.
 - **NX_PPP_NOT_ESTABLISHED**: (0xB5) la instancia de PPP no ha completado la negociación con el elemento del mismo nivel.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -398,18 +398,18 @@ UINT nx_ppp_secondary_dns_address_get(NX_PPP *ppp_ptr, ULONG *dns_address_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio recupera la dirección IP secundaria de DNS proporcionada por el elemento del mismo nivel en el protocolo de enlace IPCP. Si el elemento del mismo nivel no proporcionó ninguna dirección IP, se devuelve una dirección IP de 0.
+Este servicio recupera la dirección IP secundaria de DNS proporcionada por el homólogo en el protocolo de enlace IPCP. Si el homólogo no proporcionó ninguna dirección IP, se devuelve una dirección IP de 0.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **dns_address_ptr**: destino de la dirección del servidor DNS secundario.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **dns_address_ptr**: Destino de la dirección del servidor DNS secundario.
 
 ### <a name="return-values"></a>Valores devueltos
 
 - **NX_SUCCESS**: (0x00) DNS obtenido correctamente.
-- **NX_PPP_NOT_ESTABLISHED**: (0xB5) la instancia de PPP no ha completado la negociación con el elemento del mismo nivel.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_PPP_NOT_ESTABLISHED**: (0XB5) La instancia de PPP no ha completado la negociación con el homólogo.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -438,18 +438,18 @@ UINT nx_ppp_dns_address_set(NX_PPP *ppp_ptr, ULONG dns_address);
 
 ### <a name="description"></a>Descripción
 
-Este servicio establece la dirección IP del servidor DNS. Si el elemento del mismo nivel envía una solicitud de opción de servidor DNS en el estado de IPCP, este host proporcionará la información.
+Este servicio establece la dirección IP del servidor DNS. Si el homólogo envía una solicitud de opción de servidor DNS en el estado de IPCP, este host proporcionará la información.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **dns_address**: dirección del servidor DNS.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **dns_address**: Dirección del servidor DNS.
 
 ### <a name="return-values"></a>Valores devueltos
 
 - **NX_SUCCESS**: (0x00) DNS establecido correctamente.
-- **NX_PPP_NOT_ESTABLISHED**: (0xB5) la instancia de PPP no ha completado la negociación con el elemento del mismo nivel.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_PPP_NOT_ESTABLISHED**: (0XB5) La instancia de PPP no ha completado la negociación con el homólogo.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -480,18 +480,18 @@ UINT nx_ppp_secondary_dns_address_set(NX_PPP *ppp_ptr, ULONG dns_address);
 
 ### <a name="description"></a>Descripción
 
-Este servicio establece la dirección IP del servidor DNS secundario. Si el elemento del mismo nivel envía una solicitud de opción de servidor DNS secundario en el estado de IPCP, este host proporcionará la información.
+Este servicio establece la dirección IP del servidor DNS secundario. Si el homólogo envía una solicitud de opción de servidor DNS secundario en el estado de IPCP, este host proporcionará la información.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **dns_address**: dirección del servidor DNS secundario.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **dns_address**: dirección del servidor DNS secundario
 
 ### <a name="return-values"></a>Valores devueltos
 
 - **NX_SUCCESS**: (0x00) DNS establecido correctamente. 
-- **NX_PPP_NOT_ESTABLISHED**: (0xB5) la instancia de PPP no ha completado la negociación con el elemento del mismo nivel.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_PPP_NOT_ESTABLISHED**: (0XB5) La instancia de PPP no ha completado la negociación con el homólogo.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -524,14 +524,14 @@ Este servicio recupera el índice de interfaz IP asociado a esta instancia de PP
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **index_ptr**: destino del índice de interfaz.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **index_ptr**: Destino del índice de interfaz.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) índice de PPP obtenido correctamente.
-- **NX_IN_PROGRESS**: (0X37) la instancia de PPP no ha completado la inicialización.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_SUCCESS**: (0x00) Índice de PPP obtenido correctamente.
+- **NX_IN_PROGRESS**: (0X37) La instancia de PPP no ha completado la inicialización.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -567,15 +567,15 @@ Este servicio configura las direcciones IP local y del mismo nivel para su uso e
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **local_ip_address**: dirección IP local.
-- **peer_ip_address**: dirección IP del elemento del mismo nivel.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **local_ip_address**: Dirección IP local.
+- **peer_ip_address**: Dirección IP del homólogo.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) dirección de PPP asignada correctamente.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- **NX_SUCCESS**: (0x00) Dirección de PPP asignada correctamente.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
+- NX_CALLER_ERROR: (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -609,13 +609,13 @@ Este servicio registra la devolución de llamada de notificación de inactividad
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **link_down_callback**: puntero de función de notificación de inactividad del vínculo de la aplicación. Si es NULL, se deshabilita la notificación de inactividad del vínculo.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **link_down_callback**: Puntero de función de notificación de inactividad del vínculo de la aplicación. Si es NULL, se deshabilita la notificación de inactividad del vínculo.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) devolución de llamada de notificación de vínculo inactivo registrada correctamente.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_SUCCESS**: (0x00) Devolución de llamada de notificación de vínculo inactivo registrada correctamente.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -655,13 +655,13 @@ Este servicio registra la devolución de llamada de notificación de actividad d
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **link_up_callback**: puntero de función de notificación de actividad del vínculo de la aplicación. Si es NULL, se deshabilita la notificación de actividad del vínculo.**
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **link_up_callback**: Puntero de función de notificación de actividad del vínculo de la aplicación. Si es NULL, se deshabilita la notificación de actividad del vínculo.**
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) devolución de llamada de notificación de vínculo activo registrada correctamente.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_SUCCESS**: (0x00) Devolución de llamada de notificación de vínculo activo registrada correctamente.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -702,13 +702,13 @@ Este servicio registra la devolución de llamada de notificación del NAK de aut
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
 - **nak_authentication_notify**: Puntero a la función a la que se llama cuando la instancia de PPP recibe un NAK de autenticación. Si es NULL, la notificación se deshabilita.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) devolución de llamada de notificación registrada correctamente.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_SUCCESS**: (0x00) Devolución de llamada de notificación registrada correctamente.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -746,25 +746,25 @@ UINT  nx_ppp_pap_enable(NX_PPP *ppp_ptr,
 
 ### <a name="description"></a>Descripción
 
-Este servicio habilita el Protocolo de autenticación de contraseña (PAP) para la instancia de PPP especificada. Si se especifica el puntero de función "***verify_login***", esta instancia de PPP requiere PAP. De lo contrario, PAP solo responde a los requisitos de PAP del elemento del mismo nivel que se especifican durante la negociación de LCP.
+Este servicio habilita el Protocolo de autenticación de contraseña (PAP) para la instancia de PPP especificada. Si se especifica el puntero de función "***verify_login***", esta instancia de PPP requiere PAP. De lo contrario, PAP solo responde a los requisitos de PAP del homólogo que se especifican durante la negociación de LCP.
 
 Hay varios elementos de datos a los que se hace referencia a continuación en las funciones de devolución de llamada necesarias. Se espera que el elemento de datos *name* sea una cadena terminada en NULL con un tamaño máximo de NX_PPP_NAME_SIZE-1. Se espera que el elemento de datos *password* sea una cadena terminada en NULL con un tamaño máximo de NX_PPP_PASSWORD_SIZE-1.
 
 >[!NOTE]
-> Se debe llamar a esta función después de *nx_ppp_create*, pero antes de *nx_ip_create* o *nx_ip_interface_attach*.
+> Se debe llamar a esta función después de *nx_ppp_create* pero antes de *nx_ip_create* o *nx_ip_interface_attach*.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **generate_login**: puntero a la función de aplicación que genera un elemento *name* y *password* para la autenticación por parte del elemento del mismo nivel. Tenga en cuenta que los valores de *name* y *password* deben copiarse en los destinos proporcionados.
-- **generate_login**: Puntero a la función de aplicación que verifica los elementos *name* y *password* proporcionados por el elemento del mismo nivel. Esta rutina debe comparar los elementos *name* y *password* proporcionados. Si esta rutina devuelve NX_SUCCESS, los elementos name y password son correctos y PPP puede continuar con el paso siguiente. De lo contrario, esta rutina devuelve NX_PPP_ERROR y PPP simplemente espera otro nombre y contraseña.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **generate_login**: Puntero a la función de aplicación que genera un elemento *name* y *password* para la autenticación por parte del homólogo. Tenga en cuenta que los valores de *name* y *password* deben copiarse en los destinos proporcionados.
+- **generate_login**: Puntero a la función de aplicación que verifica los elementos *name* y *password* proporcionados por el homólogo. Esta rutina debe comparar los elementos *name* y *password* proporcionados. Si esta rutina devuelve NX_SUCCESS, los elementos name y password son correctos y PPP puede continuar con el paso siguiente. De lo contrario, esta rutina devuelve NX_PPP_ERROR y PPP simplemente espera otro nombre y contraseña.
 
 ### <a name="return-values"></a>Valores devueltos
 
 - **NX_SUCCESS** (0x00) PAP de PPP habilitado correctamente.
 - **NX_NOT_IMPLEMENTED**: (0x80) La lógica de PAP se deshabilitó a través de NX_PPP_DISABLE_PAP.
-- NX_PTR_ERROR: (0x07) puntero de PPP o puntero de función de aplicación no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- NX_PTR_ERROR: (0x07) Puntero de PPP o puntero de función de aplicación no válido.
+- NX_CALLER_ERROR: (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -831,16 +831,16 @@ Este servicio es útil para las configuraciones PPP en las que no es posible son
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **data**: puntero a los datos que se van a enviar en la solicitud de eco.
-- **data_size**: tamaño de los datos que se van a enviar wait_option Tiempo de espera para enviar el mensaje de eco de LCP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **data**: Puntero a los datos que se van a enviar en la solicitud de eco.
+- **data_size**: Tamaño de los datos que se van a enviar wait_option. Tiempo de espera para enviar el mensaje de eco de LCP.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) solicitud de eco enviada correctamente.
-- **NX_PPP_NOT_ESTABLISHED**: (0xB5) conexión de PPP no establecida.
-- NX_PTR_ERROR: (0x07) puntero de PPP o puntero de función de aplicación no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- **NX_SUCCESS**: (0x00) Solicitud de eco enviada correctamente.
+- **NX_PPP_NOT_ESTABLISHED**: (0xB5) Conexión de PPP no establecida.
+- NX_PTR_ERROR: (0x07) Puntero de PPP o puntero de función de aplicación no válido.
+- NX_CALLER_ERROR (0x11): Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -883,14 +883,14 @@ Este servicio envía una cadena de ASCII que no es de PPP directamente a la inte
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **string_ptr**: puntero a la cadena que se va a enviar.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **string_ptr**: Puntero a la cadena que se va a enviar.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) cadena sin formato de PPP enviada correctamente.
-- NX_PTR_ERROR: (0x07) puntero PPP o puntero de cadena no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- **NX_SUCCESS** (0x00) Cadena sin formato de PPP enviada correctamente.
+- NX_PTR_ERROR: (0x07) Puntero PPP o puntero de cadena no válido.
+- NX_CALLER_ERROR: (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -922,13 +922,13 @@ Este servicio reinicia el procesamiento de PPP. Normalmente se le llama cuando e
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) reinicio de PPP iniciado correctamente.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- **NX_SUCCESS** (0x00) Reinicio de PPP iniciado correctamente.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
+- NX_CALLER_ERROR: (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -962,14 +962,14 @@ Este servicio inicia el procesamiento de PPP. Normalmente se le llama después d
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) inicio de PPP iniciado correctamente. 
+- **NX_SUCCESS** (0x00) Inicio de PPP iniciado correctamente. 
 - **NX_PPP_ALREADY_STARTED**: (0XB9) PPP ya iniciado.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
+- NX_CALLER_ERROR: (0x11) Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -999,8 +999,8 @@ Este servicio obtiene el estado actual de la instancia de PPP especificada.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **status_ptr**: destino del estado de PPP, los valores de estado posibles son los siguientes:
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **status_ptr**: Destino del estado de PPP, los valores de estado posibles son los siguientes:
     - **NX_PPP_STATUS_ESTABLISHED**
     - **NX_PPP_STATUS_LCP_IN_PROGRESS**
     - **NX_PPP_STATUS_LCP_FAILED**
@@ -1012,12 +1012,12 @@ Este servicio obtiene el estado actual de la instancia de PPP especificada.
     - **NX_PPP_STATUS_IPCP_FAILED**
 
 >[!NOTE]
-> El estado solo es válido si la API devuelve NX_SUCCESS. Además, si se devuelve cualquiera de los valores de estado *_FAILED, el procesamiento de PPP se detiene eficazmente hasta que la aplicación vuelva a iniciarlo.
+> El estado solo es válido si la API devuelve NX_SUCCESS. Además, si se devuelve cualquiera de los valores de estado *_FAILED, el procesamiento de PPP se detiene efectivamente hasta que la aplicación vuelva a iniciarlo.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) estado de PPP solicitado correctamente.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_SUCCESS**: (0x00) Estado de PPP solicitado correctamente.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -1052,14 +1052,14 @@ Este servicio detiene el procesamiento de PPP. El usuario también puede llamar 
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) inicio de PPP iniciado correctamente. 
+- **NX_SUCCESS** (0x00) Inicio de PPP iniciado correctamente. 
 - **NX_PPP_ALREADY_STOPPED**: (0XB8) PPP ya está detenido.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
-- NX_CALLER_ERROR: (0x11) autor de llamada no válido de este servicio.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
+- NX_CALLER_ERROR (0x11): Autor de llamada no válido de este servicio.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -1090,13 +1090,13 @@ Este servicio recibe el paquete de PPP.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **packet_ptr**: puntero al paquete de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **packet_ptr**: Puntero al paquete de PPP.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) estado de PPP solicitado correctamente.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_SUCCESS**: (0x00) Estado de PPP solicitado correctamente.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 
@@ -1130,13 +1130,13 @@ Este servicio establece la función de envío de paquetes de PPP.
 
 ### <a name="input-parameters"></a>Parámetros de entrada
 
-- **ppp_ptr**: puntero al bloque de control de PPP.
-- **nx_ppp_packet_send**: rutina para enviar el paquete de PPP.
+- **ppp_ptr**: Puntero al bloque de control de PPP.
+- **nx_ppp_packet_send**: Rutina para enviar el paquete de PPP.
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS**: (0x00) estado de PPP solicitado correctamente.
-- NX_PTR_ERROR: (0x07) puntero de PPP no válido.
+- **NX_SUCCESS**: (0x00) Estado de PPP solicitado correctamente.
+- NX_PTR_ERROR: (0x07) Puntero de PPP no válido.
 
 ### <a name="allowed-from"></a>Permitido desde
 

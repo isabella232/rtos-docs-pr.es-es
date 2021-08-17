@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 09/11/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: ccc55111d785d84cdb193c387830abbc03a15e7c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 0770d6beb8b2715a8e5dddf1bdf187c0cd1d5ffd74e7bea9b7ff9bdf1785d088
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815289"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801927"
 ---
 # <a name="chapter-5---netx-network-drivers"></a>Capítulo 5: Controladores de red de NetX
 
@@ -85,7 +85,7 @@ A continuación, el subproceso de la aplicación auxiliar IP habilita la red fí
 | Miembro de NX_IP_DRIVER    | Significado |
 |------------------------|------------------------------------------|
 | nx_ip_driver_command   | NX_LINK_ENABLE                                                                                                          |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP                                                                                                  |
+| nx_ip_driver_ptr       | Puntero a la instancia de IP.                                                                                                  |
 | nx_ip_driver_interface | Puntero a la instancia de interfaz                                                                                       |
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede habilitar la interfaz especificada, devolverá un estado de error distinto de cero. |
 
@@ -98,7 +98,7 @@ Esta solicitud la realiza NetX durante la eliminación de una instancia de IP po
 | Miembro de NX_IP_DRIVER    | Significado |
 |------------------------|--------------------------------------|
 | nx_ip_driver_command   | NX_LINK_DISABLE |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP |
+| nx_ip_driver_ptr       | Puntero a la instancia de IP. |
 | nx_ip_driver_interface | Puntero a la instancia de interfaz |
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede deshabilitar la interfaz especificada en la instancia de IP, devolverá un estado de error distinto de cero. |
 
@@ -112,7 +112,7 @@ Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de deshabilita
 | Miembro de NX_IP_DRIVER  | Significado                |
 |----------------------|------------------------|
 | nx_ip_driver_command | NX_LINK_UNINITIALZE    |
-| nx_ip_driver_ptr     | Puntero a la instancia de IP |
+| nx_ip_driver_ptr     | Puntero a la instancia de IP. |
 | nx_ip_driver_interface | Puntero a la instancia de interfaz |
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede anular la inicialización de la interfaz especificada en la instancia de IP, devolverá un estado de error distinto de cero. |
 
@@ -240,7 +240,7 @@ Esta solicitud se invoca desde NetX para el controlador de dispositivo, lo que p
 | Miembro de NX_IP_DRIVER    | Significado |
 |------------------------|-------------------------------------------------|
 | nx_ip_driver_command   | X_LINK_INTERFACE_ATTACH |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP |
+| nx_ip_driver_ptr       | Puntero a la instancia de IP. |
 | nx_ip_driver_interface | Puntero a la instancia de interfaz. |
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede desasociar la interfaz especificada en la instancia de IP, devolverá un estado de error distinto de cero.  |
 
@@ -252,7 +252,7 @@ Esta solicitud la invoca NetX para el controlador de dispositivo, lo que permite
 | Miembro de NX_IP_DRIVER    | Significado |
 |------------------------|---------------------------------------------------------|
 | nx_ip_driver_command   | NX_LINK_INTERFACE_DETACH |
-| nx_ip_driver_ptr       | Puntero a la instancia de IP |
+| nx_ip_driver_ptr       | Puntero a la instancia de IP. |
 | nx_ip_driver_interface | Puntero a la instancia de interfaz. |
 | nx_ip_driver_status    | Estado de finalización. Si el controlador no puede asociar la interfaz especificada en la instancia de IP, devolverá un estado de error distinto de cero. |
 

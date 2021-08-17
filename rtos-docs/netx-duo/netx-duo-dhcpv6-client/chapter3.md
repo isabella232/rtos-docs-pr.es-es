@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: e5396b1c04581b5f79d337462368c4718ba9bb16
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 129d1421215452448b1de4626fdeda530a5466bd63ed0c758676c3ad60f9d6fb
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814778"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782428"
 ---
 # <a name="chapter-3---azure-rtos-netx-duo-dhcpv6-configuration-options"></a>Capítulo 3: Opciones de configuración del servidor DHCPv6 de Azure RTOS NetX Duo
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: dd2cf736ac7caca616f3f305c0f6f6c84625ca0d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d98059088c89198e3564f3b920e97c7a2491cafea628d1586594eba1aeed0a30
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814745"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783567"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dhcpv6-server"></a>Capítulo 2: Instalación y uso del servidor DHCPv6 de Azure RTOS NetX Duo
 

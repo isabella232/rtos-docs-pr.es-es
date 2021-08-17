@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 03a10aeb65017befaf5e7b440046dbff9f9252ef
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8730dbfc49ed51716f32c118a25ebffc907b19a54d98d83ede4155f87fbecb7b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815526"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784173"
 ---
 # <a name="appendix-i---guix-information-structures"></a>Apéndice I: Estructuras de información de GUIX 
 
@@ -27,10 +27,7 @@ typedef struct GX_BIDI_TEXT_INFO_STRUCT
     GX_VALUE  gx_bidi_text_info_display_width;
 } GX_BIDI_TEXT_INFO;
 ```
-
-### <a name="members"></a>Miembros
-
-|                                    |                                                            |
+| Miembros | Descripción |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_bidi_text_info_text**               | Texto que se va a reordenar. |
 | **gx_bidi_text_info_font**               | Fuente utilizada para mostrar el texto, establézcala en GX_NULL si no se necesita salto de línea. |
@@ -49,9 +46,7 @@ typedef struct GX_BIDI_RESOLVED_TEXT_INFO_STRUCT
 } GX_BIDI_RESOLVED_TEXT_INFO;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                    |                                                            |
+| Miembros | Descripción |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_bidi_resolved_text_info_text**             | Puntero a la matriz de texto bidireccional reordenado. |
 | **gx_bidi_resolved_text_info_total_lines**      | Líneas totales de texto bidireccional resuelto para un párrafo. |
@@ -73,9 +68,8 @@ typedef struct GX_CIRCULAR_GAUGE_INFO_STRUCT
     GX_RESOURCE_ID  gx_circular_gauge_info_needle_pixelmap;
 } GX_CIRCULAR_GAUGE_INFO;
 ```
-### <a name="members"></a>Miembros
 
-|                                                  |                                              |
+| Miembros | Descripción |
 | ------------------------------------------------ | -------------------------------------------- |
 | **gx_circular_gauge_info_animation_steps**       | Pasos totales por los que se desplazará la aguja al pasar del ángulo de aguja actual a un ángulo de aguja recién asignado. |
 | **gx_circular_gauge_info_animation_delay**       | Número de tics del reloj de GUIX que se van a retrasar entre los pasos de la animación. |
@@ -112,9 +106,7 @@ typedef struct GX_LINE_CHART_INFO_STRUCT
 } GX_LINE_CHART_INFO;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                    |                                                            |
+| Miembros | Descripción |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_line_chart_min_val**          | Valor de datos mínimo, que se usa para calcular el escalado.
 | **gx_line_chart_max_val**          | Valor de datos máximo, que se usa para calcular el escalado. |
@@ -140,9 +132,7 @@ typedef struct GX_MOUSE_CURSOR_INFO_STRUCT
 } GX_MOUSE_CURSOR_INFO;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                    |                                                            |
+| Miembros | Descripción |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_mouse_cursor_image_id**       | Identificador de recurso de la imagen del mouse. |
 | **gx_mouse_cursor_hotspot_x**      | Desplazamiento desde la izquierda de la imagen del mouse hasta la zona activa de la imagen del mouse. |
@@ -160,9 +150,7 @@ typedef struct GX_PEN_CONFIGURATION_STRUCT
 }GX_PEN_CONFIGURATION;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                              |                                                  |
+| Miembros | Descripción |
 | -------------------------------------------- | ------------------------------------------------ |
 | **gx_pen_configuration_min_drag_dist**       | Distancia mínima de arrastre por cada tic del temporizador de GUIX para desencadenar un evento FLICK. Llamar a GX_FIXED_VAL_MAKE para crear un valor de tipo de datos de punto fijo |
 | **gx_pen_configuration_max_pen_speed_ticks** | Velocidad de arrastre máxima en tics del temporizador de GUIX para desencadenar un evento FLICK. | 
@@ -180,9 +168,7 @@ typedef struct GX_PIXELMAP_SLIDER_INFO_STRUCT
 } GX_PIXELMAP_SLIDER_INFO;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                                       |                                          |
+| Miembros | Descripción |
 | ----------------------------------------------------- | ---------------------------------------- |
 | **gx_pixelmap_slider_info_lower_background_pixelmap** | Identificador de recurso del mapa de píxeles para rellenar el fondo antes de la aguja. Si no se establece el mapa de píxeles de fondo superior, se usa para rellenar el fondo antes y después de la aguja. |
 | **gx_pixelmap_slider_info_upper_background_pixelmap** | Identificador de recurso del mapa de píxeles para rellenar el fondo después de la aguja. |
@@ -206,9 +192,7 @@ typedef struct GX_PROGRESS_BAR_INFO_STRUCT
 } GX_PROGRESS_BAR_INFO;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                              |                                                  |
+| Miembros | Descripción |
 | -------------------------------------------- | ------------------------------------------------ |
 | **gx_progress_bar_info_min_val**             | Valor mínimo notificado. |
 | **gx_progress_bar_info_max_val**             | Valor máximo notificado. |
@@ -242,9 +226,7 @@ typedef struct GX_RADIAL_PROGRESS_BAR_INFO_STRUCT
 } GX_RADIAL_PROGRESS_BAR_INFO;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                                   |                                              |
+| Miembros | Descripción |
 | ------------------------------------------------- | -------------------------------------------- |
 | **gx_radial_progress_bar_info_xcenter**           | Posición del widget en la coordenada X. |
 | **gx_radial_progress_bar_info_ycenter**           | Posición del widget en la coordenada Y.  |
@@ -281,9 +263,7 @@ typedef struct GX_RADIAL_SLIDER_INFO_STRUCT
 } GX_RADIAL_SLIDER_INFO;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                               |                                                  |
+| Miembros | Descripción |
 | --------------------------------------------- | ------------------------------------------------ |
 **gx_radial_slider_info_xcenter**               | Distancia desde la izquierda del widget de control deslizante hasta el centro de rotación de la aguja del control deslizante. |
 | **gx_radial_slider_info_ycenter**             | Distancia desde la parte superior del widget de control deslizante hasta el centro de rotación de la aguja del control deslizante. |
@@ -311,9 +291,7 @@ typedef struct GX_RECTANGLE_STRUCT
 } GX_RECTANGLE;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                  |                         |
+| Miembros | Descripción |
 | -------------------------------- | ------------------------|
 | **gx_rectangle_left**            | Izquierda del rectángulo.   |  
 | **gx_rectangle_top**             | Parte superior del rectángulo.    | 
@@ -334,9 +312,7 @@ typedef struct GX_RICH_TEXT_FONTS_STRUCT
 } GX_RICH_TEXT_FONTS;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                    |                                                            |
+| Miembros | Descripción |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_rich_text_fonts_normal_id**   | Identificador de recurso de la fuente de texto normal. |
 | **gx_rich_text_fonts_bold_id**     | Identificador de recurso de la fuente de texto en negrita. |
@@ -357,9 +333,7 @@ typedef struct GX_SCROLL_INFO_STRUCT
 } GX_SCROLL_INFO;
 ```
 
-### <a name="members"></a>Miembros
-
-|                         |                               |
+| Miembros | Descripción |
 | ----------------------- | ----------------------------- |
 | **gx_scroll_value**     | Posición de desplazamiento actual.       |
 | **gx_scroll_minimum**   | Posición mínima notificada.     |
@@ -389,9 +363,7 @@ typedef struct GX_SCROLLBAR_APPEARANCE_STRUCT
 } GX_SCROLLBAR_APPEARANCE;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                          |                                                       |
+| Miembros | Descripción |
 | ---------------------------------------- | ----------------------------------------------------- |
 | **gx_scroll_width**                      | Ancho del widget de barra de desplazamiento en píxeles. |
 | **gx_scroll_thumb_width**                | Ancho del botón de posición que se desliza en la barra de desplazamiento en píxeles. Normalmente, este valor es algunos píxeles menor que el ancho total de la barra de desplazamiento. |
@@ -426,9 +398,7 @@ typedef struct GX_SLIDER_INFO_STRUCT
 } GX_SLIDER_INFO;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                         |                                                        |
+| Miembros | Descripción |
 | --------------------------------------- | ------------------------------------------------------ |
 | **gx_slider_info_min_val**              | Valor mínimo notificado. |
 | **gx_slider_info_max_val**              | Valor máximo notificado. |
@@ -456,9 +426,7 @@ typedef struct GX_SPRITE_FRAME_STRUCT
 } GX_SPRITE_FRAME;
 ```
 
-### <a name="members"></a>Miembros
-
-|                                          |                                                       |
+| Miembros | Descripción |
 | ---------------------------------------- | ----------------------------------------------------- |
 | **gx_sprite_frame_pixelmap**             | Identificador de recurso del mapa de píxeles que se va a mostrar para este fotograma. Este identificador puede ser 0. |
 | **gx_sprite_frame_x_offset**             | Desplazamiento desde la izquierda del widget de sprite para mostrar el mapa de píxeles. |

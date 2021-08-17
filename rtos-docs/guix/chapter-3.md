@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2a53da048b18d35b6b15a4ad8d4138e1a2acd4e8
-ms.sourcegitcommit: 95f4ae0842a486fec8f10d1480203695faa9592d
+ms.openlocfilehash: 37c1103d6b690350b6fa0794b9c719f31a112ff3babf88f125d3735f8ef935b6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111875260"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785277"
 ---
 # <a name="chapter-3---functional-overview-of-guix"></a>Capítulo 3: Introducción funcional a GUIX
 
@@ -990,7 +990,7 @@ De manera predeterminada, una ventana raíz no puede moverse y, en el caso más 
 Si se puede mover una ventana raíz, no cambia su posición en el lienzo como haría una ventana secundaria, sino que mueve el propio lienzo.
 Esta característica permite a la ventana raíz de GUIX aprovechar el hardware compatible con varios búferes de cuadros con registros de desplazamiento de hardware.
 
-### <a name="background"></a>Fondo 
+### <a name="background"></a>Información previa 
 
 Los fondos de las ventanas son colores sólidos o imágenes de mapa de bits. Hay un fondo de ventana predeterminado en el nivel de sistema que proporciona el valor predeterminado para el conjunto inicial de ventanas. Por supuesto, cualquier fondo de ventana se puede cambiar a través de las API de GUIX.
 

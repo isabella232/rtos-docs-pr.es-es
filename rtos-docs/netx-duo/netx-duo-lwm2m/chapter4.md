@@ -6,12 +6,12 @@ ms.author: v-condav
 ms.date: 01/22/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 825a215ba756b39b6d76e6cc773c288e8b8aab01
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 0956cb43f4fcd87d5bd4d90b2288ce6f8d5295ee0be8b8a9f4719ad842e00b2a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814673"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783448"
 ---
 # <a name="chapter-4--description-of-lwm2m-client-services"></a>Capítulo 4: Descripción de los servicios del cliente LWM2M
 
@@ -172,9 +172,9 @@ UINT nx_lwm2m_client_create(
 
 ### <a name="description"></a>Descripción
 
-Este servicio crea una instancia de cliente LWM2M que se ejecuta en el contexto de su propio subproceso ThreadX.
+Este servicio crea una instancia de cliente de LWM2M que se ejecuta en el contexto de su propio subproceso ThreadX.
 
-El cliente LWM2M implementa los siguientes objetos OMA LWM2M: Security (0), Server (1), Access Control (2) y Device (3). La aplicación debe agregar las implementaciones de otros objetos.
+El cliente de LWM2M implementa los siguientes objetos OMA LWM2M: Security (0), Server (1), Access Control (2) y Device (3). La aplicación debe agregar las implementaciones de otros objetos.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -227,7 +227,7 @@ UINT nx_lwm2m_client_delete(NX_LWM2M_CLIENT *client_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio elimina una instancia de cliente LWM2M creada anteriormente.
+Este servicio elimina una instancia de cliente de LWM2M creada anteriormente.
 
 Esta llamada también elimina todas las sesiones asociadas actualmente al cliente.
 
@@ -350,7 +350,7 @@ UINT nx_lwm2m_client_device_error_reset(NX_LWM2M_CLIENT *client_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio elimina todas las instancias de recursos de código de error del objeto de dispositivo. Esto es equivalente a la ejecución del recurso Reset Error Code (12).
+Este servicio elimina todas las instancias de recursos de código de error del objeto de dispositivo. Esto es equivalente a la ejecución del código del recurso Reset Error Code (12).
 
 ### <a name="parameters"></a>Parámetros
 
@@ -389,7 +389,7 @@ UINT nx_lwm2m_client_device_resource_changed(
 
 ### <a name="description"></a>Descripción
 
-La aplicación usa el servicio para indicar al cliente LWM2M que un recurso del dispositivo de objeto ha cambiado. El cliente LWM2M enviará una notificación si un servidor LWM2M observa el recurso.
+La aplicación usa el servicio para indicar al cliente de LWM2M que un recurso del objeto de dispositivo ha cambiado. El cliente de LWM2M enviará una notificación si un servidor LWM2M observa el recurso.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -647,7 +647,7 @@ UINT **nx_lwm2m_client_object_add**(
 
 ### <a name="description"></a>Descripción
 
-Este servicio agrega una nueva implementación de objeto al cliente LWM2M.
+Este servicio agrega una nueva implementación de objeto al cliente de LWM2M.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -928,7 +928,7 @@ UINT nx_lwm2m_client_object_instance_next_get(
 
 ### <a name="description"></a>Descripción
 
-Este servicio devuelve el identificador de la siguiente instancia de objeto del objeto especificado. Si el id. de instancia actual se establece en NX_LWM2M_RESERVED_ID (65535), se devuelve el identificador de la primera instancia.
+Este servicio devuelve el id. de la siguiente instancia de objeto del objeto especificado. Si el id. de instancia actual se establece en NX_LWM2M_RESERVED_ID (65535), se devuelve el id. de la primera instancia.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -1010,7 +1010,7 @@ UINT nx_lwm2m_client_object_next_get(
 
 ### <a name="description"></a>Descripción
 
-Este servicio devuelve el identificador del siguiente objeto implementado por el cliente LWM2M. Si el id. de objeto actual se establece en NX_LWM2M_RESERVED_ID (65535), se devuelve el primer id. de objeto.
+Este servicio devuelve el id. del siguiente objeto implementado por el cliente de LWM2M. Si el id. de objeto actual se establece en NX_LWM2M_RESERVED_ID (65535), se devuelve el primer id. de objeto.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -1243,7 +1243,7 @@ UINT nx_lwm2m_client_resource_boolean_get(
 
 ### <a name="description"></a>Descripción
 
-El servicio recupera el valor de un recurso boolean.
+Este servicio recupera el valor de un recurso booleano.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -2236,7 +2236,7 @@ UINT nx_lwm2m_client_session_create(
 
 ### <a name="description"></a>Descripción
 
-Este servicio crea una nueva sesión de cliente LWM2M asociada a un cliente LWM2M existente. El cliente LWM2M usa la sesión para comunicarse con un servidor de arranque o un servidor LWM2M. 
+Este servicio crea una nueva sesión de cliente de LWM2M asociada a un cliente de LWM2M existente. El cliente de LWM2M usa la sesión para comunicarse con un servidor de arranque o un servidor LWM2M. 
 
 La aplicación debe proporcionar una función de devolución de llamada a la que se llamará cuando se actualice el estado de la sesión.
 
@@ -2276,9 +2276,9 @@ UINT nx_lwm2m_client_session_delete(NX_LWM2M_CLIENT_SESSION *session_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio elimina una sesión de cliente LWM2M.
+Este servicio elimina una sesión de cliente de LWM2M.
 
-Cuando se elimina un cliente LWM2M mediante una llamada a nx_lwm2m_client_delete también se eliminan todas las sesiones asociadas al cliente.
+Cuando se elimina un cliente de LWM2M mediante una llamada a nx_lwm2m_client_delete también se eliminan todas las sesiones asociadas al cliente.
 
 ### <a name="parameters"></a>Parámetros
 

@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 8f0ff03d112597371059d925f64b7511454e123c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9fefc43002d4e0d6df817ad56d79b3e41a3d649504be50f5a39f67c1896b2e9a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815757"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116800334"
 ---
 # <a name="chapter-6---azure-rtos-threadx-trace-events"></a>Capítulo 6: Eventos de seguimiento de Azure RTOS ThreadX
 
@@ -239,9 +239,9 @@ Este evento representa el procesamiento interno en ThreadX que realiza la operac
 Este evento representa la ejecución en un contexto de subproceso o un sistema inactivo. Se usa para mostrar los cambios subsiguientes en el contexto como resultado de una interrupción.
 
 **Campos de información**
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="block-allocate"></a>Asignación de bloques 
@@ -324,7 +324,7 @@ Este evento representa la obtención de información de rendimiento sobre un gru
 
 - Campo de información 1: puntero que señala al bloque de control del grupo de bloques.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="block-pool-performance-system-information-get"></a>Obtención de información de sistema del rendimiento del grupo de bloques
@@ -338,9 +338,9 @@ Este evento representa la obtención de información de rendimiento sobre un gru
 Este evento representa la obtención de información de rendimiento sobre un grupo de bloques de memoria mediante tx_block_pool_performance_system_info_get.
 
 **Campos de información**
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="block-pool-prioritize"></a>Priorización de grupo de bloques
@@ -438,7 +438,7 @@ Este evento representa la obtención de información del grupo de bytes mediante
 
 - Campo de información 1: puntero que señala al grupo de bytes correspondiente.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="byte-pool-performance-info-get"></a>Obtención de información de rendimiento del grupo de bytes 
@@ -455,7 +455,7 @@ Este evento representa la obtención de información de rendimiento del grupo de
 
 - Campo de información 1: puntero que señala al grupo de bytes correspondiente.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="byte-pool-performance-system-info-get"></a>Obtención de información de rendimiento del sistema del grupo de bytes 
@@ -470,9 +470,9 @@ Este evento representa la obtención de información de rendimiento del sistema 
 
 **Campos de información**
 
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="byte-pool-prioritize"></a>Priorización de grupos de bytes
@@ -573,7 +573,7 @@ Este evento representa la recuperación de información relacionada con un grupo
 
 - Campo de información 1: puntero que señala al grupo de marcas de evento.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="event-flags-performance-information-get"></a>Obtención de información de rendimiento de marcas de evento 
@@ -603,9 +603,9 @@ Este evento representa la recuperación de información de rendimiento relaciona
 Este evento representa la recuperación de información de rendimiento relacionada con un grupo de marcas de evento existente mediante tx_event_flags_performance_system_info_get.
 
 **Campos de información**
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="event-flags-set"></a>Establecimiento de marcas de evento 
@@ -639,7 +639,7 @@ Este evento representa el registro de una devolución de llamada de notificació
 
 - Campo de información 1: puntero que señala al grupo de marcas de evento.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="interrupt-control"></a>Control de interrupción 
@@ -725,7 +725,7 @@ Este evento representa la recuperación de información de exclusión mutua medi
 
 - Campo de información 1: puntero que señala a la exclusión mutua.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="mutex-performance-information-get"></a>Obtención de información de rendimiento de exclusión mutua 
@@ -742,7 +742,7 @@ Este evento representa la recuperación de información de rendimiento de exclus
 
 - Campo de información 1: puntero que señala a la exclusión mutua.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="mutex-performance-system-info-get"></a>Obtención de información de rendimiento del sistema de exclusión mutua
@@ -757,9 +757,9 @@ Este evento representa la recuperación de información de rendimiento del siste
 
 **Campos de información**
 
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="mutex-prioritize"></a>Priorización de exclusión mutua 
@@ -878,7 +878,7 @@ Este evento representa la obtención de información sobre una cola mediante tx_
 **Campos de información** 
 - Campo de información 1: puntero que señala a la cola.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="queue-performance-info-get"></a>Obtención de información de rendimiento de cola 
@@ -895,7 +895,7 @@ Este evento representa la obtención de información de rendimiento sobre una co
 
 - Campo de información 1: puntero que señala a la cola.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="queue-performance-system-info-get"></a>Obtención de información de rendimiento del sistema de cola 
@@ -910,9 +910,9 @@ Este evento representa la obtención de información de rendimiento del sistema 
 
 **Campos de información**
 
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="queue-prioritize"></a>Priorización de colas 
@@ -979,7 +979,7 @@ Este evento representa el envío de un mensaje a una cola mediante tx_queue_send
 
 - Campo de información 1: puntero que señala a la cola.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="semaphore-ceiling-put"></a>Colocación del límite superior del semáforo 
@@ -1064,7 +1064,7 @@ Este evento representa la obtención de información sobre un semáforo mediante
 
 - Campo de información 1: puntero que señala al semáforo.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="semaphore-performance-info-get"></a>Obtención de información de rendimiento de semáforos 
@@ -1081,7 +1081,7 @@ Este evento representa la obtención de información de rendimiento sobre un sem
 
 - Campo de información 1: puntero que señala al semáforo.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="semaphore-performance-system-info"></a>Obtención de información de rendimiento del sistema de semáforos 
@@ -1096,9 +1096,9 @@ Este evento representa la obtención de información de rendimiento sobre todos 
 
 **Campos de información** 
 
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="semaphore-prioritize"></a>Priorización de semáforos 
@@ -1148,7 +1148,7 @@ Este evento representa el registro de una devolución de llamada mediante tx_sem
 
 - Campo de información 1: puntero que señala al semáforo.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="thread-create"></a>Creación de subprocesos 
@@ -1214,9 +1214,9 @@ Este evento representa la obtención del puntero del subproceso actual mediante 
 
 **Campos de información**
 
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="thread-information-get"></a>Obtención de información de subprocesos 
@@ -1265,9 +1265,9 @@ Este evento representa la obtención de información de rendimiento sobre todos 
 
 **Campos de información** 
 
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="thread-preemption-change"></a>Cambio de adelantamiento de subprocesos 
@@ -1383,9 +1383,9 @@ Este evento representa el registro de una rutina de notificación de errores de 
 
 **Campos de información** 
 
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="thread-suspend"></a>Suspensión de subprocesos 
@@ -1487,7 +1487,7 @@ Este evento representa el establecimiento del número actual de tics del tempori
 
 - Campo de información 1: número nuevo de tics del temporizador.
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="timer-activate"></a>Activación del temporizador 
@@ -1504,7 +1504,7 @@ Este evento representa la activación del temporizador especificado mediante tx_
 
 - Campo de información 1: puntero que señala al temporizador
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="timer-change"></a>Cambio del temporizador 
@@ -1572,7 +1572,7 @@ Este evento representa la eliminación de un temporizador mediante tx_timer_dele
 
 - Campo de información 1: puntero que señala al temporizador
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="timer-information-get"></a>Obtención de información del temporizador 
@@ -1589,7 +1589,7 @@ Este evento representa la obtención de información del temporizador mediante t
 
 - Campo de información 1: puntero que señala al temporizador
 - Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
+- Campo de información 3: no se usa
 - Campo de información 4: sin usar.
 
 ### <a name="timer-performance-information-get"></a>Obtención de información de rendimiento del temporizador 
@@ -1622,7 +1622,7 @@ Este evento representa la obtención de toda la información de rendimiento de l
 
 **Campos de información**
 
-- Campo de información 1: sin usar.
-- Campo de información 2: sin usar.
-- Campo de información 3: sin usar.
-- Campo de información 4: sin usar.
+- Campo de información 1: no se usa
+- Campo de información 2: no se usa
+- Campo de información 3: no se usa
+- Campo de información 4: no se usa

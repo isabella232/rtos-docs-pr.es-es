@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9a3ea37b180ab57a8dcd269092638fa74589836a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8739603d4a387ff3f3f42c979bd00fcebe4f08efaab42ecade462adf1fb4906a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814697"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783499"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-http"></a>Capítulo 2: Instalación y uso de HTTP de NetX Duo para Azure RTOS
 
@@ -538,16 +538,16 @@ La primera tarea del subproceso del cliente HTTP es crear y formatear los medios
 Hay varias opciones de configuración para compilar HTTP para NetX Duo. A continuación, se muestra una lista de todas las opciones, donde se describe con detalle cada una de ellas. Los valores predeterminados se enumeran, pero se pueden redefinir antes de incluir *nxd_http_client.h* y *nxd_http_server.h*:
 
  - **NX_DISABLE_ERROR_CHECKING**: si está definida, esta opción quita la comprobación de errores básica de HTTP. Normalmente se utiliza después de depurar la aplicación.
- - **NX_HTTP_SERVER_PRIORITY**: prioridad del subproceso de servidor HTTP. De forma predeterminada, este valor se define como 16 para especificar la prioridad 16.
- - **NX_TFTP_NO_FILEX**: si está definida, esta opción proporciona un código auxiliar para las dependencias de FileX. Si esta opción está definida, el cliente HTTP funcionará sin ningún cambio. El servidor HTTP tendrá que modificarse o el usuario tendrá que crear unos cuantos servicios de FileX para que funcione correctamente.
- - **NX_HTTP_TYPE_OF_SERVICE** El tipo de servicio necesario para las solicitudes TCP HTTP. De forma predeterminada, este valor se define como NX_IP_NORMAL para indicar el servicio de paquetes IP normal.
+ - **NX_HTTP_SERVER_PRIORITY**: prioridad del subproceso de servidor HTTP. De manera predeterminada, este valor se define como 16 para especificar la prioridad 16.
+ - **NX_TFTP_NO_FILEX** Si está definida, esta opción proporciona un código auxiliar para las dependencias de FileX. Si esta opción está definida, el cliente HTTP funcionará sin ningún cambio. El servidor HTTP tendrá que modificarse o el usuario tendrá que crear unos cuantos servicios de FileX para que funcione correctamente.
+ - **NX_HTTP_TYPE_OF_SERVICE** Tipo de servicio necesario para las solicitudes HTTP TCP. De manera predeterminada, este valor se define como NX_IP_NORMAL para indicar el servicio de paquetes IP normal.
   - **NX_HTTP_SERVER_THREAD_TIME_SLICE** El número de tics de temporizador que el subproceso de servidor puede ejecutar antes de producir subprocesos con la misma prioridad. El valor predeterminado es 2.
- - **NX_HTTP_FRAGMENT_OPTION** Habilitar la fragmentación de solicitudes TCP de HTTP. De forma predeterminada, este valor es NX_DONT_FRAGMENT para deshabilitar la fragmentación de TCP de HTTP.
+ - **NX_HTTP_FRAGMENT_OPTION** Permite habilitar la fragmentación de solicitudes TCP de HTTP. De forma predeterminada, este valor es NX_DONT_FRAGMENT para deshabilitar la fragmentación de TCP de HTTP.
  - **NX_HTTP_SERVER_WINDOW_SIZE** Tamaño de la ventana del socket de servidor. De manera predeterminada, este valor es 2048 bytes.
  - **NX_TFTP_TIME_TO_LIVE** Especifica el número de enrutadores que este paquete puede pasar antes de que se descarte. El valor predeterminado se define en 0x80.
  - **NX_HTTP_SERVER_TIMEOUT** Especifica el número de tics de ThreadX para los que se suspenderán los servicios internos. El valor predeterminado se establece en 10 segundos (10 * NX_IP_PERIODIC_RATE).
- - **NX_HTTP_SERVER_TIMEOUT_ACCEPT** Especifica el número de tics de ThreadX para los que los servicios internos se suspenderán en las llamadas internas *nx_tcp_server_socket_accept()* . El valor predeterminado se establece en (10 * NX_IP_PERIODIC_RATE).
- - **NX_HTTP_SERVER_TIMEOUT_DISCONNECT** Especifica el número de tics de ThreadX con los que los servicios internos se suspenderán en las llamadas internas a *nx_tcp_socket_disconnect()* . El valor predeterminado se establece en 10 segundos (10 * NX_IP_PERIODIC_RATE).
+ - **NX_HTTP_SERVER_TIMEOUT_ACCEPT** Especifica el número de tics de ThreadX para los que los servicios internos se suspenderán en las llamadas internas *nx_tcp_server_socket_accept*. El valor predeterminado se establece en (10 * NX_IP_PERIODIC_RATE).
+ - **NX_HTTP_SERVER_TIMEOUT_DISCONNECT** Especifica el número de tics de ThreadX con los que los servicios internos se suspenderán en las llamadas internas a *nx_tcp_socket_disconnect*. El valor predeterminado se establece en 10 segundos (10 * NX_IP_PERIODIC_RATE).
  - **NX_HTTP_SERVER_TIMEOUT_RECEIVE** Especifica el número de tics de ThreadX con los que los servicios internos se suspenderán en las llamadas internas a *nx_tcp_socket_receive*. El valor predeterminado se establece en 10 segundos (10 * NX_IP_PERIODIC_RATE).
  - **NX_HTTP_SERVER_TIMEOUT_SEND** Especifica el número de tics de ThreadX con los que los servicios internos se suspenderán en las llamadas internas a *nx_tcp_socket_send*. El valor predeterminado se establece en 10 segundos (10 * NX_IP_PERIODIC_RATE).
  - **NX_HTTP_MAX_HEADER_FIELD** Especifica el tamaño máximo del campo de encabezado HTTP. El valor predeterminado es 256.

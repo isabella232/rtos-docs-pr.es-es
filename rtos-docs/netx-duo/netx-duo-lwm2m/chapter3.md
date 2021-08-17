@@ -6,12 +6,12 @@ ms.author: v-condav
 ms.date: 01/22/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 24b7ff66fb4d060075eb6bc81bed45b3479e18dc
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: be6d9d854ce89140ce749fbeb0364678077337bf19ddc1055d286d0f624e8bd5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814678"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783465"
 ---
 # <a name="chapter-3--functional-description-of-lwm2m-client"></a>Capítulo 3: Descripción funcional del cliente LWM2M
 
@@ -121,7 +121,7 @@ Se proporcionan las siguientes funciones para obtener la información y el valor
 
 ## <a name="object-implementation"></a>Implementación de objetos
 
-El cliente LWM2M implementa los siguientes objetos OMA LWM2M obligatorios: Security (0), Server (1), Access Control (2) y Device (3). La aplicación debe implementar otros objetos específicos del dispositivo.
+El cliente LWM2M implementa los siguientes objetos OMA LWM2M obligatorios: Seguridad (0), Servidor (1), Control de acceso (2) y Dispositivo (3). La aplicación debe implementar otros objetos específicos del dispositivo.
 
 Se usan dos estructuras de datos para definir un objeto: la estructura NX_LWM2M_CLIENT_OBJECT define la implementación del objeto (incluidos el id. de objeto y los métodos de objeto) y la estructura NX_LWM2M_CLIENT_OBJECT_INSTANCE contiene los datos de una instancia de objeto.
 

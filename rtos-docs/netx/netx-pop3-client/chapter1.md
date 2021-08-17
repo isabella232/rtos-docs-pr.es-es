@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 135530f11f8f54acd6d093a05332056dbdc32be3
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6abaa778da6203d0df367894165cb29ca629ab5e24403a35af1995f032cf0d4c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815166"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798816"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-pop3-client"></a>Capítulo 1: Introducción al cliente Azure RTOS NetX POP3
 

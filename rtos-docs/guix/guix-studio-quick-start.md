@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 7/20/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: eedd53867b56312b53f4e9509136ee856acabfd7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9ab4dfb2edd8990692ee3dc134207f43e4c757538dbc738f6f406bf40864bfb3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815461"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785431"
 ---
 # <a name="azure-rtos-guix-studio-quick-start-guide"></a>Guía de inicio rápido de Azure RTOS GUIX Studio
 

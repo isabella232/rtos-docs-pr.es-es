@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 60ecc96df07b1f77b9b448814c4420133f3e2afc
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: dabc1603423d8422ed6f8f540f8a06e80d14ec0098c886ca8731ac8ce981f15d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814358"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783414"
 ---
 # <a name="chapter-4---description-of-azure-rtos-threadx-services"></a>Capítulo 4: Descripción de los servicios de Azure RTOS ThreadX
 
@@ -19,7 +19,7 @@ Este capítulo contiene una descripción de todos los servicios de Azure RTOS Th
 
 ## <a name="tx_block_allocate"></a>tx_block_allocate
 
-Asignar un bloque de memoria de tamaño fijo
+Asigna un bloque de memoria de tamaño fijo.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -94,7 +94,7 @@ the allocated block of memory. */
 
 ## <a name="tx_block_pool_create"></a>tx_block_pool_create
 
-Crear un grupo de bloques de memoria de tamaño fijo
+Crea un grupo de bloques de memoria de tamaño fijo.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -167,7 +167,7 @@ because of the one overhead pointer associated with each block. */
 
 ## <a name="tx_block_pool_delete"></a>tx_block_pool_delete
 
-Eliminar un grupo de bloques de memoria
+Elimina un grupo de bloques de memoria.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -225,7 +225,7 @@ status = tx_block_pool_delete(&my_pool);
 
 ## <a name="tx_block_pool_info_get"></a>tx_block_pool_info_get
 
-Recuperar información acerca de un grupo de bloques
+Recupera información acerca de un grupo de bloques.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -300,7 +300,7 @@ valid. */
 
 ## <a name="tx_block_pool_performance_info_get"></a>tx_block_pool_performance_info_get
 
-Obtener información acerca del rendimiento de un grupo de bloques
+Obtiene información acerca del rendimiento de un grupo de bloques.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -372,7 +372,7 @@ status = tx_block_pool_performance_info_get(&my_pool, &allocates,
 
 ## <a name="tx_block_pool_performance_system_info_get"></a>tx_block_pool_performance_system_info_get
 
-Obtener información acerca del rendimiento del sistema de un grupo de bloques
+Obtiene información acerca del rendimiento de los grupos de bloques del sistema.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -439,7 +439,7 @@ successfully retrieved. */
 
 ## <a name="tx_block_pool_prioritize"></a>tx_block_pool_prioritize
 
-Clasificar por orden de prioridad la lista de suspensiones de un grupo de bloques.
+Da prioridad a un subproceso de un bloque del grupo en la lista de suspensiones.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -449,7 +449,7 @@ UINT tx_block_pool_prioritize(TX_BLOCK_POOL *pool_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio coloca el subproceso de prioridad más alta suspendido para un bloque de memoria de este grupo al principio de la lista de suspensiones. Todos los demás subprocesos permanecen en el mismo orden FIFO en el que se suspendieron.
+Este servicio coloca el subproceso de prioridad más alta suspendido de un bloque de memoria de este grupo al principio de la lista de suspensiones. Todos los demás subprocesos permanecen en el mismo orden FIFO en el que se suspendieron.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -494,7 +494,7 @@ next tx_block_release call will wake up this thread. */
 
 ## <a name="tx_block_release"></a>tx_block_release
 
-Liberar un bloque de memoria de tamaño fijo.
+Libera un bloque de memoria de tamaño fijo.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -554,7 +554,7 @@ to by memory_ptr has been returned to the pool. */
 
 ## <a name="tx_byte_allocate"></a>tx_byte_allocate
 
-Asignar bytes de memoria
+Asigna bytes de memoria.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -633,7 +633,7 @@ address of the allocated memory area. */
 
 ## <a name="tx_byte_pool_create"></a>tx_byte_pool_create
 
-Crear un grupo de bytes de memoria
+Crea un grupo de bytes de memoria.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -698,7 +698,7 @@ allocating memory. */
 
 ## <a name="tx_byte_pool_delete"></a>tx_byte_pool_delete
 
-Eliminar un grupo de bytes de memoria
+Elimina un grupo de bytes de memoria.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -755,7 +755,7 @@ status = tx_byte_pool_delete(&my_pool);
 
 ## <a name="tx_byte_pool_info_get"></a>tx_byte_pool_info_get
 
-Recuperar la información acerca de un grupo de bytes
+Recupera información acerca de un grupo de bytes.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -835,7 +835,7 @@ valid. */
 
 ## <a name="tx_byte_pool_performance_info_get"></a>tx_byte_pool_performance_info_get
 
-Obtener información acerca del rendimiento de un grupo de bytes
+Obtiene información acerca del rendimiento de un grupo de bytes.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -917,7 +917,7 @@ successfully retrieved. */
 
 ## <a name="tx_byte_pool_performance_system_info_get"></a>tx_byte_pool_performance_system_info_get
 
-Obtener información acerca del rendimiento del sistema de un grupo de bytes
+Obtiene información acerca del rendimiento de los grupos de bytes del sistema.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -994,7 +994,7 @@ successfully retrieved. */
 
 ## <a name="tx_byte_pool_prioritize"></a>tx_byte_pool_prioritize
 
-Clasificar por orden de prioridad la lista de suspensiones de un grupo de bytes
+Da prioridad a un subproceso de un grupo de bytes en la lista de suspensiones.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1003,7 +1003,7 @@ UINT tx_byte_pool_prioritize(TX_BYTE_POOL *pool_ptr);
 ```
 ### <a name="description"></a>Descripción
 
-Este servicio coloca el subproceso de prioridad más alta suspendido para la memoria de este grupo al principio de la lista de suspensiones. Todos los demás subprocesos permanecen en el mismo orden FIFO en el que se suspendieron.
+Este servicio coloca el subproceso de prioridad más alta suspendido en la memoria de este grupo al principio de la lista de suspensiones. Todos los demás subprocesos permanecen en el mismo orden FIFO en el que se suspendieron.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -1050,7 +1050,7 @@ if there is enough memory to satisfy its request. */
 
 ## <a name="tx_byte_release"></a>tx_byte_release
 
-Liberar bytes de vuelta al grupo de memoria.
+Libera bytes al grupo de memoria.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1060,7 +1060,7 @@ UINT tx_byte_release(VOID *memory_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio libera un área de memoria previamente asignada a su grupo asociado. Si hay uno o más subprocesos suspendidos en espera de memoria de este grupo, cada subproceso suspendido recibe memoria y se reanuda hasta que esta se agote o no haya más subprocesos suspendidos. Este proceso de asignación de memoria a los subprocesos suspendidos siempre comienza con el subproceso que se suspendió primero.
+Este servicio libera un área de memoria previamente asignada a su grupo asociado. Si hay uno o más subprocesos suspendidos en espera de memoria de este grupo, se asigna memoria a cada subproceso suspendido y estos se reanudan hasta que la memoria se agote o no haya más subprocesos suspendidos. Este proceso de asignación de memoria a los subprocesos suspendidos siempre comienza con el subproceso que se suspendió primero.
 
 > [!IMPORTANT]
 > *La aplicación debe impedir el uso del área de memoria una vez que se libera.*
@@ -1109,7 +1109,7 @@ memory_ptr has been returned to the pool. */
 
 ## <a name="tx_event_flags_create"></a>tx_event_flags_create
 
-Crear un grupo de marcas de eventos
+Crea un grupo de marcas de evento.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1121,7 +1121,7 @@ UINT tx_event_flags_create(
 
 ### <a name="description"></a>Descripción
 
-Este servicio crea un grupo de 32 marcas de eventos. Estas 32 marcas de eventos del grupo se inicializan en cero. Cada marca de evento se representa con un solo bit.
+Este servicio crea un grupo de 32 marcas de evento. Estas 32 marcas de evento del grupo se inicializan en cero. Cada marca de evento se representa con un solo bit.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -1168,7 +1168,7 @@ for get and set services. */
 
 ## <a name="tx_event_flags_delete"></a>tx_event_flags_delete
 
-Eliminar un grupo de marcas de eventos
+Elimina un grupo de marcas de evento.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1178,7 +1178,7 @@ UINT tx_event_flags_delete(TX_EVENT_FLAGS_GROUP *group_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio elimina el grupo de marcas de eventos especificado. Todos los subprocesos suspendidos en espera de eventos de este grupo se reanudan y se les asigna un estado de devolución TX_DELETED.
+Este servicio elimina el grupo de marcas de evento especificado. Todos los subprocesos suspendidos en espera de eventos de este grupo se reanudan y se les asigna un estado de devolución TX_DELETED.
 
 >[!IMPORTANT]
 > *La aplicación debe asegurarse de que se complete (o deshabilite) una devolución de llamada de notificación de establecimiento para este grupo de marcas de eventos antes de eliminarlo. Además, la aplicación debe impedir el uso futuro de un grupo de marcas de eventos eliminado.*
@@ -1228,7 +1228,7 @@ deleted. */
 
 ## <a name="tx_event_flags_get"></a>tx_event_flags_get
 
-Obtener marcas de eventos de un grupo de marcas de eventos
+Obtiene marcas de evento de un grupo de marcas de evento.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1243,7 +1243,7 @@ UINT tx_event_flags_get(
 
 ### <a name="description"></a>Descripción
 
-Este servicio recupera las marcas de eventos del grupo de marcas de eventos especificado. Cada grupo contiene 32 marcas de eventos. Cada marca se representa con un solo bit. Este servicio puede recuperar diversas combinaciones de marcas de eventos, según la selección de los parámetros de entrada.
+Este servicio recupera las marcas de evento del grupo de marcas de evento especificado. Cada grupo contiene 32 marcas de evento. Cada marca se representa con un solo bit. Este servicio puede recuperar diversas combinaciones de marcas de evento, según se seleccione mediante los parámetros de entrada.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -1458,7 +1458,7 @@ retrieved. */
 
 ## <a name="tx_event_flags_performance_system_info_get"></a>tx_event_flags_performance_system_info_get
 
-Recuperar información acerca del rendimiento del sistema.
+Recupera información acerca del rendimiento de todos los grupos de marcas de evento del sistema.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1521,7 +1521,7 @@ successfully retrieved. */
 
 ## <a name="tx_event_flags_set"></a>tx_event_flags_set
 
-Establecer marcas de eventos en un grupo de marcas de eventos.
+Establece marcas de evento en un grupo de marcas de evento.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1534,7 +1534,7 @@ UINT tx_event_flags_set(
 
 ### <a name="description"></a>Descripción
 
-Este servicio establece o borra las marcas de eventos de un grupo de marcas de eventos, en función de la opción Set especificada. Se reanudan todos los subprocesos suspendidos cuya solicitud de marcas de eventos se ha atendido.
+Este servicio establece o borra las marcas de evento de un grupo de marcas de evento, en función del valor especificado en set_option. Se reanudan todos los subprocesos suspendidos cuya solicitud de marcas de evento se haya atendido.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -1544,7 +1544,7 @@ Este servicio establece o borra las marcas de eventos de un grupo de marcas de e
   - **TX_AND** (0x02)
   - **TX_OR** (0x00)
 
-  Al seleccionar TX_AND, se especifica que se aplica **AND** a las marcas de eventos indicadas en las marcas de eventos actuales del grupo. Esta opción se usa a menudo para borrar las marcas de eventos de un grupo. En cambio, si se especifica TX_OR, se aplica **OR** a las marcas de eventos indicadas con el evento actual en el grupo.
+  Al seleccionar TX_AND, se especifica que se aplica **AND** a las marcas de eventos indicadas en las marcas de eventos actuales del grupo. Esta opción se usa a menudo para borrar las marcas de eventos de un grupo. En cambio, si se especifica TX_OR, se aplica **OR** al agregar las marcas de evento indicadas con el evento actual del grupo.
 
 ### <a name="return-values"></a>Valores devueltos
 - **TX_SUCCESS** (0x00): marcas de eventos establecidas correctamente.
@@ -1582,7 +1582,7 @@ has been resumed. */
 
 ## <a name="tx_event_flags_set_notify"></a>tx_event_flags_set_notify
 
-Notificar a la aplicación al establecer marcas de eventos.
+Notifica a la aplicación cuando se establecen marcas de evento.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1634,7 +1634,7 @@ void my_event_flags_set_notify(TX_EVENT_FLAGS_GROUP *group_ptr)
 
 ## <a name="tx_interrupt_control"></a>tx_interrupt_control
 
-Habilitar y deshabilitar interrupciones
+Habilita y deshabilita interrupciones.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1688,7 +1688,7 @@ Ninguno
 
 ## <a name="tx_mutex_create"></a>tx_mutex_create
 
-Crear una exclusión mutua
+Crea una exclusión mutua.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1701,13 +1701,13 @@ UINT tx_mutex_create(
 
 ### <a name="description"></a>Descripción
 
-Este servicio crea una exclusión entre subprocesos para la protección de los recursos.
+Este servicio crea una exclusión mutua entre subprocesos para la protección de los recursos.
 
 ### <a name="parameters"></a>Parámetros
 
 - **mutex_ptr**: puntero a un bloque de control de la exclusión mutua.
 - **name_ptr**: puntero al nombre de la exclusión mutua.
-- **priority_inherit**: especifica si esta exclusión mutua admite o no la herencia de prioridad. Si este valor es TX_INHERIT, se admite la herencia de prioridad. Sin embargo, si se especifica TX_NO_INHERIT, esta exclusión mutua no admite la herencia de prioridad.
+- **priority_inherit**: especifica si esta exclusión mutua admite o no la herencia de prioridad. Si este valor es TX_INHERIT, se admite la herencia de prioridad. Por el contrario, si se especifica TX_NO_INHERIT, la exclusión mutua no admite la herencia de prioridad.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -1751,7 +1751,7 @@ use. */
 
 ## <a name="tx_mutex_delete"></a>tx_mutex_delete
 
-Eliminar una exclusión mutua
+Elimina una exclusión mutua.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1810,7 +1810,7 @@ deleted. */
 
 ## <a name="tx_mutex_get"></a>tx_mutex_get
 
-Obtener la propiedad de una exclusión mutua
+Obtiene la propiedad de una exclusión mutua.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1879,7 +1879,7 @@ status = tx_mutex_get(&my_mutex, TX_WAIT_FOREVER);
 
 ## <a name="tx_mutex_info_get"></a>tx_mutex_info_get
 
-Recuperar información acerca de una exclusión mutua
+Recupera información acerca de una exclusión mutua.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -1896,7 +1896,7 @@ UINT tx_mutex_info_get(
 
 ### <a name="description"></a>Descripción
 
-Este servicio recupera información de la exclusión mutua especificada.
+Este servicio recupera información sobre la exclusión mutua especificada.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -1959,7 +1959,7 @@ valid. */
 
 ## <a name="tx_mutex_performance_info_get"></a>tx_mutex_performance_info_get
 
-Obtener información acerca del rendimiento de una exclusión mutua
+Obtiene información acerca del rendimiento de una exclusión mutua.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2036,7 +2036,7 @@ successfully retrieved. */
 
 ## <a name="tx_mutex_performance_system_info_get"></a>tx_mutex_performance_system_info_get
 
-Obtener información acerca del rendimiento del sistema de una exclusión mutua.
+Obtiene información acerca del rendimiento de las exclusiones mutuas del sistema.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2110,7 +2110,7 @@ successfully retrieved. */
 
 ## <a name="tx_mutex_prioritize"></a>tx_mutex_prioritize
 
-Clasificar por orden de prioridad la lista de suspensiones de una exclusión mutua
+Da la prioridad a una exclusión mutua en la lista de suspensiones.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2120,7 +2120,7 @@ UINT tx_mutex_prioritize(TX_MUTEX *mutex_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio coloca el subproceso de prioridad más alta suspendido para la propiedad de la exclusión mutua al principio de la lista de suspensiones. Todos los demás subprocesos permanecen en el mismo orden FIFO en el que se suspendieron.
+Este servicio coloca el subproceso de prioridad más alta suspendido para obtener la propiedad de la exclusión mutua al principio de la lista de suspensiones. Todos los demás subprocesos permanecen en el mismo orden FIFO en el que se suspendieron.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -2168,7 +2168,7 @@ up. */
 
 ## <a name="tx_mutex_put"></a>tx_mutex_put
 
-Liberar la propiedad de una exclusión mutua
+Libera la propiedad de una exclusión mutua.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2225,7 +2225,7 @@ count has been decremented and if zero, released. */
 
 ## <a name="tx_queue_create"></a>tx_queue_create
 
-Crear una cola de mensajes
+Crea una cola de mensajes.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2301,7 +2301,7 @@ message). */
 
 ## <a name="tx_queue_delete"></a>tx_queue_delete
 
-Eliminar una cola de mensajes
+Elimina una cola de mensajes.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2364,7 +2364,7 @@ deleted. */
 
 ## <a name="tx_queue_flush"></a>tx_queue_flush
 
-Vaciar los mensajes de la cola de mensajes
+Vacía los mensajes de la cola de mensajes.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2376,7 +2376,7 @@ UINT tx_queue_flush(TX_QUEUE *queue_ptr);
 
 Este servicio elimina todos los mensajes almacenados en la cola de mensajes especificada.
 
-Si la cola está llena, se descartan los mensajes de todos los subprocesos suspendidos. Cada subproceso suspendido se reanuda después con un estado de devolución que indica que el mensaje se envió correctamente. Si la cola está vacía, este servicio no hace nada.
+Si la cola se llena, se descartan los mensajes de todos los subprocesos suspendidos. Cada subproceso suspendido se reanuda después con un estado de devolución que indica que el mensaje se envió correctamente. Si la cola está vacía, este servicio no hace nada.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -2425,7 +2425,7 @@ empty. */
 
 ## <a name="tx_queue_front_send"></a>tx_queue_front_send
 
-Enviar un mensaje al principio de la cola
+Envía un mensaje al principio de la cola.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2438,7 +2438,7 @@ UINT tx_queue_front_send(
 
 ### <a name="description"></a>Descripción
 
-Este servicio envía un mensaje a la ubicación de inicio de la cola de mensajes especificada. El mensaje se **copia** al principio de la cola desde el área de memoria especificada por el puntero de origen.
+Este servicio envía un mensaje al principio de la cola de mensajes especificada. El mensaje se **copia** al principio de la cola desde el área de memoria especificada por el puntero de origen.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -2447,7 +2447,7 @@ Este servicio envía un mensaje a la ubicación de inicio de la cola de mensajes
 - **wait_option**  <br>Define el comportamiento del servicio si la cola de mensajes está llena. Las opciones de espera se definen de la siguiente forma:
   - **TX_NO_WAIT** (0x00000000): al seleccionar TX_NO_WAIT, se produce una devolución inmediata de este servicio con independencia de si se realizó correctamente o no. *Esta es la única opción válida si se llama al servicio desde un elemento distinto de un subproceso; por ejemplo, inicialización, temporizador o ISR.*
   - **TX_WAIT_FOREVER** (0xFFFFFFFF): al seleccionar TX_WAIT_FOREVER, el subproceso que realiza la llamada se suspende indefinidamente hasta que haya espacio en la cola.
-  - valor de tiempo de espera (0x00000001 a 0xFFFFFFFE): al seleccionar un valor numérico (1-0xFFFFFFFE), se especifica el número máximo de tics de temporizador que permanecerá suspendido esperando a que haya espacio en la cola.
+  - valor de tiempo de espera (0x00000001 a 0xFFFFFFFE): al seleccionar un valor numérico (1-0xFFFFFFFE), se especifica el número máximo de tics de temporizador que permanecerá suspendido a la espera de que haya espacio en la cola.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -2500,7 +2500,7 @@ of the specified queue. */
 
 ## <a name="tx_queue_info_get"></a>tx_queue_info_get
 
-Recuperar información acerca de una cola
+Recupera información acerca de una cola.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2583,7 +2583,7 @@ valid. */
 
 ## <a name="tx_queue_performance_info_get"></a>tx_queue_performance_info_get
 
-Obtener información acerca del rendimiento de una cola
+Obtiene información acerca del rendimiento de una cola.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2664,7 +2664,7 @@ successfully retrieved. */
 
 ## <a name="tx_queue_performance_system_info_get"></a>tx_queue_performance_system_info_get
 
-Obtener información acerca del rendimiento del sistema de una cola
+Obtiene información acerca del rendimiento de las colas del sistema.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2741,7 +2741,7 @@ successfully retrieved. */
 
 ## <a name="tx_queue_prioritize"></a>tx_queue_prioritize
 
-Clasificar por orden de prioridad la lista de suspensiones de una cola
+Da prioridad a una cola en la lista de suspensiones.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2751,7 +2751,7 @@ UINT tx_queue_prioritize(TX_QUEUE *queue_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio coloca el subproceso de prioridad más alta suspendido para un mensaje (o para colocar un mensaje) en esta cola al principio de la lista de suspensiones.
+Este servicio coloca el subproceso de prioridad más alta suspendido de un mensaje (o para colocar un mensaje) de esta cola al principio de la lista de suspensiones.
 
 Todos los demás subprocesos permanecen en el mismo orden FIFO en el que se suspendieron.
 
@@ -2803,7 +2803,7 @@ to this queue will wake up this thread. */
 
 ## <a name="tx_queue_receive"></a>tx_queue_receive
 
-Obtener un mensaje de la cola de mensajes
+Obtiene un mensaje de la cola de mensajes.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2881,7 +2881,7 @@ status = tx_queue_receive(&my_queue, my_message,
 
 ## <a name="tx_queue_send"></a>tx_queue_send
 
-Enviar un mensaje a la cola de mensajes
+Envía un mensaje a la cola de mensajes.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -2953,7 +2953,7 @@ queue. */
 
 ## <a name="tx_queue_send_notify"></a>tx_queue_send_notify
 
-Notificar a la aplicación al enviar un mensaje a la cola
+Notifica a la aplicación cuando se envía un mensaje a la cola.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3016,7 +3016,7 @@ void my_queue_send_notify(TX_QUEUE *queue_ptr)
 
 ## <a name="tx_semaphore_ceiling_put"></a>tx_semaphore_ceiling_put
 
-Colocar una instancia en el semáforo de recuento con límite superior
+Coloca una instancia en un semáforo de recuento con límite superior.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3073,7 +3073,7 @@ incremented. */
 
 ## <a name="tx_semaphore_create"></a>tx_semaphore_create
 
-Crear un semáforo de recuento
+Crea un semáforo de recuento.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3086,7 +3086,7 @@ UINT tx_semaphore_create(
 
 ### <a name="description"></a>Descripción
 
-Este servicio crea un semáforo de recuento para la sincronización entre subprocesos. El recuento inicial del semáforo se especifica como un parámetro de entrada.
+Este servicio crea un semáforo de recuento para la sincronización entre subprocesos. Se especifica como parámetro de entrada el recuento inicial del semáforo.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -3139,7 +3139,7 @@ use. */
 
 ## <a name="tx_semaphore_delete"></a>tx_semaphore_delete
 
-Eliminar un semáforo de recuento
+Elimina un semáforo de recuento.
 
 ### <a name="prototype"></a>Prototipo
 ```c
@@ -3199,7 +3199,7 @@ deleted. */
 
 ## <a name="tx_semaphore_get"></a>tx_semaphore_get
 
-Obtener una instancia del semáforo de recuento
+Obtiene una instancia del semáforo de recuento.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3268,7 +3268,7 @@ an instance of the semaphore. */
 
 ## <a name="tx_semaphore_info_get"></a>tx_semaphore_info_get
 
-Recuperar información acerca de un semáforo
+Recupera información acerca de un semáforo.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3347,7 +3347,7 @@ valid. */
 
 ## <a name="tx_semaphore_performance_info_get"></a>tx_semaphore_performance_info_get
 
-Obtener información acerca del rendimiento del semáforo
+Obtiene información acerca del rendimiento del semáforo.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3420,7 +3420,7 @@ successfully retrieved. */
 
 ## <a name="tx_semaphore_performance_system_info_get"></a>tx_semaphore_performance_system_info_get
 
-Obtener información acerca del rendimiento del sistema de un semáforo
+Obtiene información acerca del rendimiento de los semáforos del sistema.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3489,7 +3489,7 @@ successfully retrieved. */
 
 ## <a name="tx_semaphore_prioritize"></a>tx_semaphore_prioritize
 
-Clasificar por orden de prioridad la lista de suspensiones de un semáforo
+Da prioridad a un semáforo en la lista de suspensiones.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3544,7 +3544,7 @@ wake up this thread. */
 
 ## <a name="tx_semaphore_put"></a>tx_semaphore_put
 
-Colocar una instancia en el semáforo de recuento
+Coloca una instancia en el semáforo de recuento.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3604,7 +3604,7 @@ it was given the semaphore instance and resumed. */
 
 ## <a name="tx_semaphore_put_notify"></a>tx_semaphore_put_notify
 
-Notificar a la aplicación cuando se coloque el semáforo
+Notifica a la aplicación cuando se coloca el semáforo.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3667,7 +3667,7 @@ void my_semaphore_put_notify(TX_SEMAPHORE *semaphore_ptr)
 
 ## <a name="tx_thread_create"></a>tx_thread_create
 
-Crear un subproceso de aplicación
+Crea un subproceso de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3687,7 +3687,7 @@ UINT tx_thread_create(
 
 ### <a name="description"></a>Descripción
 
-Este servicio crea un subproceso de aplicación que inicia la ejecución en la función de entrada de tarea especificada. La pila, la prioridad, el umbral de adelantamiento y la porción de tiempo se encuentran entre los atributos especificados por los parámetros de entrada. Además, también se especifica el estado de ejecución inicial del subproceso.
+Este servicio crea un subproceso de aplicación que inicia la ejecución en la función de entrada de tarea especificada. Entre los atributos especificados por los parámetros de entrada se encuentran la pila, la prioridad, el umbral de adelantamiento y la porción de tiempo. Además, también se especifica el estado de ejecución inicial del subproceso.
 
 **Parámetros**
 
@@ -3699,7 +3699,7 @@ Este servicio crea un subproceso de aplicación que inicia la ejecución en la f
 - **stack_size**: número de bytes en el área de memoria de la pila. El área de la pila del subproceso debe ser lo suficientemente grande como para controlar el uso de la variable local y el anidamiento de llamadas de función en el peor de los casos.
 - **priority**: prioridad numérica del subproceso. Los valores válidos oscilan entre 0 y (TX_MAX_PRIORITES-1), donde un valor de 0 representa la prioridad más alta.
 - **preempt_threshold**: nivel de prioridad más alto (0 a (TX_MAX_PRIORITIES-1)) de adelantamiento deshabilitado. Solo se permite que prioridades superiores a este nivel adelanten a este subproceso. Este valor debe ser menor o igual que la prioridad especificada. Un valor igual a la prioridad del subproceso deshabilita el umbral de adelantamiento.
-- **time_slice**: número de tics de temporizador que este subproceso puede ejecutar antes de que otros subprocesos preparados con la misma prioridad tengan la posibilidad de ejecutarse. Tenga en cuenta que, si se usa el umbral de adelantamiento, se deshabilitan las porciones de tiempo. Los valores de porción de tiempo válidos oscilan entre 1 y 0xFFFFFFFF (ambos incluidos). Un valor de **TX_NO_TIME_SLICE** (un valor de 0) deshabilita las porciones de tiempo de este subproceso.
+- **time_slice**: número de tics de temporizador que este subproceso puede ejecutar antes de que otros subprocesos preparados con la misma prioridad tengan la posibilidad de ejecutarse. Tenga en cuenta que, si se usa el umbral de adelantamiento, se deshabilitan las porciones de tiempo. Los valores de porción de tiempo válidos se sitúan entre 1 y 0xFFFFFFFF (ambos incluidos). Un valor de **TX_NO_TIME_SLICE** (un valor de 0) deshabilita las porciones de tiempo de este subproceso.
 
   > [!NOTE]
   > *El uso de porciones de tiempo provoca una ligera sobrecarga del sistema. Dado que solo son útiles en los casos en los que varios subprocesos comparten la misma prioridad, no se debe asignar una porción de tiempo a los subprocesos que tienen una prioridad única.*
@@ -3787,7 +3787,7 @@ VOID my_thread_entry (ULONG initial_input)
 
 ## <a name="tx_thread_delete"></a>tx_thread_delete
 
-Eliminar un subproceso de aplicación
+Elimina un subproceso de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3858,7 +3858,7 @@ deleted. */
 
 ## <a name="tx_thread_entry_exit_notify"></a>tx_thread_entry_exit_notify
 
-Notificar a la aplicación la entrada y salida de un subproceso
+Notifica a la aplicación la entrada y salida de un subproceso.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -3934,7 +3934,7 @@ void my_entry_exit_notify(TX_THREAD *thread_ptr, UINT condition)
 
 ## <a name="tx_thread_identify"></a>tx_thread_identify
 
-Recuperar un puntero al subproceso que se está ejecutando actualmente
+Recupera un puntero al subproceso que se está ejecutando actualmente.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4003,7 +4003,7 @@ interrupt occurred. */
 
 ## <a name="tx_thread_info_get"></a>tx_thread_info_get
 
-Recuperar información acerca de un subproceso
+Recupera información acerca de un subproceso.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4112,7 +4112,7 @@ valid. */
 
 ## <a name="tx_thread_performance_info_get"></a>tx_thread_performance_info_get
 
-Obtener información acerca del rendimiento de un subproceso
+Obtiene información acerca del rendimiento de un subproceso.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4215,7 +4215,7 @@ successfully retrieved. */
 
 ## <a name="tx_thread_performance_system_info_get"></a>tx_thread_performance_system_info_get
 
-Obtener información acerca del rendimiento del sistema de un subproceso
+Obtiene información acerca del rendimiento de los subprocesos del sistema.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4319,7 +4319,7 @@ successfully retrieved. */
 
 ## <a name="tx_thread_preemption_change"></a>tx_thread_preemption_change
 
-Cambiar el umbral de adelantamiento de un subproceso de aplicación
+Cambia el umbral de adelantamiento de un subproceso de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4400,7 +4400,7 @@ not prevented by preemption disabling. */
 
 ## <a name="tx_thread_priority_change"></a>tx_thread_priority_change
 
-Cambiar la prioridad de un subproceso de aplicación
+Cambia la prioridad de un subproceso de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4478,7 +4478,7 @@ now at the highest priority level in the system. */
 
 ## <a name="tx_thread_relinquish"></a>tx_thread_relinquish
 
-Ceder el control a otros subprocesos de aplicación
+Cede el control a otros subprocesos de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4571,7 +4571,7 @@ VOID my_second_thread(ULONG thread_input)
 
 ## <a name="tx_thread_reset"></a>tx_thread_reset
 
-Restablecer un subproceso
+Restablece un subproceso.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4581,7 +4581,7 @@ UINT tx_thread_reset(TX_THREAD *thread_ptr);
 
 ### <a name="description"></a>Descripción
 
-Este servicio restablece el subproceso especificado para que se ejecute en el punto de entrada definido al crear el subproceso. El subproceso debe estar en un estado **TX_COMPLETED** o **TX_TERMINATED** para que se pueda restablecer.
+Este servicio restablece el subproceso especificado para que se ejecute en el punto de entrada definido al crearlo. El subproceso debe estar en un estado **TX_COMPLETED** o **TX_TERMINATED** para que se pueda restablecer.
 
 > [!IMPORTANT]
 > *Se debe reanudar el subproceso para que se pueda ejecutar de nuevo.*
@@ -4637,7 +4637,7 @@ status = tx_thread_reset(&my_thread);
 
 ## <a name="tx_thread_resume"></a>tx_thread_resume
 
-Reanudar un subproceso de aplicación suspendido
+Reanuda un subproceso de aplicación suspendido.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4705,7 +4705,7 @@ now ready to execute. */
 
 ## <a name="tx_thread_sleep"></a>tx_thread_sleep
 
-Suspender el subproceso actual durante el tiempo especificado
+Suspende el subproceso actual durante el tiempo especificado.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4770,7 +4770,7 @@ timer-ticks. */
 
 ## <a name="tx_thread_stack_error_notify"></a>tx_thread_stack_error_notify
 
-Registrar una devolución de llamada de notificación de error de la pila de un subproceso
+Registra una devolución de llamada de notificación de error de la pila de subprocesos.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4831,7 +4831,7 @@ status = tx_thread_stack_error_notify(my_stack_error_handler);
 
 ## <a name="tx_thread_suspend"></a>tx_thread_suspend
 
-Suspender un subproceso de aplicación
+Suspende un subproceso de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4902,7 +4902,7 @@ unconditionally suspended. */
 
 ## <a name="tx_thread_terminate"></a>tx_thread_terminate
 
-Finalizar un subproceso de aplicación
+Finaliza un subproceso de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -4970,7 +4970,7 @@ and cannot execute again until it is reset. */
 
 ## <a name="tx_thread_time_slice_change"></a>tx_thread_time_slice_change
 
-Cambiar la porción de tiempo de un subproceso de aplicación
+Cambia la porción de tiempo de un subproceso de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5031,7 +5031,7 @@ in "my_old_time_slice." */
 
 ### <a name="see-also"></a>Consulte también
 
-- tx_thread_create tx_thread_delete
+- tx_thread_create
 - tx_thread_delete
 - tx_thread_entry_exit_notify
 - tx_thread_identify
@@ -5051,7 +5051,7 @@ in "my_old_time_slice." */
 
 ## <a name="tx_thread_wait_abort"></a>tx_thread_wait_abort
 
-Anular una suspensión de un subproceso especificado
+Anula la suspensión de un subproceso especificado.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5099,7 +5099,7 @@ was aborted (TX_WAIT_ABORTED). */
 
 ### <a name="see-also"></a>Consulte también
 
-- tx_thread_create tx_thread_delete
+- tx_thread_create
 - tx_thread_delete
 - tx_thread_entry_exit_notify
 - tx_thread_identify
@@ -5169,7 +5169,7 @@ clock. */
 
 ## <a name="tx_time_set"></a>tx_time_set
 
-Establecer la hora actual
+Establece la hora actual.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5216,7 +5216,7 @@ interrupt. */
 
 ## <a name="tx_timer_activate"></a>tx_timer_activate
 
-Activar un temporizador de aplicación
+Activa un temporizador de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5275,7 +5275,7 @@ now active. */
 
 ## <a name="tx_timer_change"></a>tx_timer_change
 
-Cambiar un temporizador de aplicación
+Cambia un temporizador de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5348,7 +5348,7 @@ status = tx_timer_activate(&my_timer);
 
 ## <a name="tx_timer_create"></a>tx_timer_create
 
-Crear un temporizador de aplicación
+Crea un temporizador de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5365,7 +5365,7 @@ UINT tx_timer_create(
 
 ### <a name="description"></a>Descripción
 
-Este servicio crea un temporizador de aplicación periódico con la función de expiración especificada y periódico.
+Este servicio crea un temporizador de aplicación periódico con la función de expiración especificada.
 
 ### <a name="parameters"></a>Parámetros
 
@@ -5379,7 +5379,7 @@ Este servicio crea un temporizador de aplicación periódico con la función de 
   > [!NOTE]
   > *Cuando un temporizador monoestable expira, se debe restablecer mediante tx_timer_change para que se pueda volver a activar.*
 
-- **auto_activate**: determina si el temporizador se activa automáticamente durante la creación. Si este valor es **TX_AUTO_ACTIVATE** (0x01), el temporizador se activa. De lo contrario, si se selecciona el valor **TX_NO_ACTIVATE** (0x00), el temporizador se crea en un estado no activo. En este caso, es necesario llamar con posterioridad al servicio **_tx_timer_activate_** para que realmente empiece el temporizador.
+- **auto_activate**: determina si el temporizador se activa automáticamente durante la creación. Si este valor es **TX_AUTO_ACTIVATE** (0x01), el temporizador se activa. De lo contrario, si se selecciona el valor **TX_NO_ACTIVATE** (0x00), el temporizador se crea en un estado no activo. En este caso, es necesario llamar después al servicio **_tx_timer_activate_** para que el temporizador se inicie.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -5429,7 +5429,7 @@ my_timer_function every time it is called. */
 
 ## <a name="tx_timer_deactivate"></a>tx_timer_deactivate
 
-Desactivar un temporizador de aplicación
+Desactiva un temporizador de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5484,7 +5484,7 @@ now deactivated. */
 
 ## <a name="tx_timer_delete"></a>tx_timer_delete
 
-Eliminar un temporizador de aplicación
+Elimina un temporizador de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5543,7 +5543,7 @@ deleted. */
 
 ## <a name="tx_timer_info_get"></a>tx_timer_info_get
 
-Recuperar información acerca de un temporizador de aplicación
+Recupera información acerca de un temporizador de aplicación.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5621,7 +5621,7 @@ valid. */
 
 ## <a name="tx_timer_performance_info_get"></a>tx_timer_performance_info_get
 
-Obtener información acerca del rendimiento de un temporizador
+Obtiene información acerca del rendimiento de un temporizador.
 
 ### <a name="prototype"></a>Prototipo
 
@@ -5694,7 +5694,7 @@ successfully retrieved. */
 
 ## <a name="tx_timer_performance_system_info_get"></a>tx_timer_performance_system_info_get
 
-Obtener información acerca del rendimiento del sistema de un temporizador
+Obtiene información acerca del rendimiento de los temporizadores del sistema.
 
 ### <a name="prototype"></a>Prototipo
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2399666b5b4d7c34db50d539e200c90f06f7235f
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6a8758bff2f205b06448905634172c05dd7fe189cce9fbe3977f6080c51eb95d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814350"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784791"
 ---
 # <a name="about-this-guide"></a>Acerca de esta guía
 
@@ -53,8 +53,8 @@ A continuación se muestra una lista de los tipos de datos de llamada de servici
 
 | Tipo de datos          | Significado                                                          |
 | --------- | --------------------------------------------------------- |
-| **UINT**  | Entero sin signo básico. Este tipo debe admitir datos sin signo de 8 bits, pero se asigna al tipo de datos sin signo más conveniente. |
-| **ULONG** | Tipo largo sin signo. Este tipo debe admitir datos sin signo de 32 bits.                                                                     |
+| **UINT**  | Entero sin signo básico. Este tipo debe admitir datos sin signo de 8 bits, pero se asigna al tipo de datos sin signo más conveniente. |
+| **ULONG** | Tipo largo sin signo. Este tipo debe admitir datos sin signo de 32 bits.                                                                     |
 | **VOID**  | Casi siempre equivale al tipo void del compilador.                                                                                |
 | **CHAR**  | Suele ser un tipo de carácter de 8 bits estándar.                                                                                          |
 

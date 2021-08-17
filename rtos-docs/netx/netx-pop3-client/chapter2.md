@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 24de396c69d458866f9423fd995bcb8d905f29c8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e8fc4f1194e423efdd179c3b7f33c3935bf683fcdd0321d83a7510dc6bdffb81
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815162"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783397"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-pop3-client"></a>Capítulo 2: Instalación y uso del cliente POP3 de Azure RTOS NetX
 

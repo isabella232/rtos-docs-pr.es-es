@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 39f3a71c28dd14e0093f72d1a3b1ff6837c6f1f7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 28e733e37b06da7053f238e23e2b8b8046df2dd9940e50cd0321ccf15c27ec47
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816129"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802114"
 ---
 # <a name="chapter-2-usbx-host-classes-api"></a>Capítulo 2: API de clases de host de USBX
 
@@ -210,7 +210,7 @@ Esta función obtiene la cadena de identidad del dispositivo IEEE 1284 de la im
 - **UX_TRANSFER_NOT_READY**: (0x25): el dispositivo estaba en un estado no válido; debe estar en los estados ATTACHED, ADDRESSED o CONFIGURED.
 - **UX_TRANSFER_STALL**: (0x21): se ha detenido la transferencia.
 - **TX_WAIT_ABORTED** (0x1A): otro subproceso, temporizador o ISR anuló la suspensión.
-- **TX_SEMAPHORE_ERROR** (0x0C) puntero del semáforo de recuento no válido.
+- **TX_SEMAPHORE_ERROR** (0x0C): puntero del semáforo de recuento no válido.
 - **TX_WAIT_ERROR** (0x04): se ha especificado una opción de espera distinta de TX_NO_WAIT en una llamada de un no subproceso.
 
 ### <a name="example"></a>Ejemplo

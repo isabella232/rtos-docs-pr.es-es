@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b94dad3c5ec94befd57200049138b184461a9b55
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5da4c12cf3c035e59dcd1abef063d5ae40a657d6fd91bbd29f51cf7d46813154
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104816049"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784060"
 ---
 # <a name="chapter-6---demonstration-system-for-azure-rtos-threadx-smp"></a>Capítulo 6: Sistema de demostración de Azure RTOS ThreadX SMP
 

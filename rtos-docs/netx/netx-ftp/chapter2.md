@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 812422566b9761baac5f9c2477dba1f0fcc0a778
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9da2761ed9483a920ab6f735b8a3a6bd82936c867ece8047b622788d5fb99804
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815202"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799496"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-ftp"></a>Capítulo 2: Instalación y uso de FTP de Azure RTOS NetX
 

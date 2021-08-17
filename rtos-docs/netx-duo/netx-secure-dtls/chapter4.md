@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: e795a5fa35a4590e508c7fe2eec53f5494809657
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 45966e7c8ea9be18bf294e8a7540e7226e803f29ae4f3ad3faaa29e4939c2ed8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814513"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801856"
 ---
 # <a name="chapter-4-description-of-azure-rtos-netx-secure-dtls-services"></a>Capítulo 4: Descripción de los servicios Azure RTOS NetX Secure DTLS
 
@@ -84,9 +84,9 @@ El bloque de control de sesión DTLS debe inicializarse antes de llamar a este s
 - **NX_NOT_CONNECTED** (0x38) No se puede tener acceso al servidor en la dirección y el puerto especificados.
 - **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0X102) Un tipo de mensaje TLS/DTLS recibido es incorrecto.
 - **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) No se admite el cifrado proporcionado por el host remoto.
-- **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) Procesamiento del mensaje durante el protocolo de enlace de TLS.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Un mensaje entrante no pudo realizar una comprobación de MAC hash.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) Error al enviar un socket TCP subyacente.
+- **NX_SECURE_TLS_HANDSHAKE_FAILURE**: (0x107) Error al procesar el mensaje durante el protocolo de enlace de TLS.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE**: (0x108) Un mensaje entrante no pudo realizar una comprobación del hash de MAC.
+- **NX_SECURE_TLS_TCP_SEND_FAILED**: (0x109) Error al enviar mediante un socket TCP subyacente.
 - **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10A) Un mensaje entrante tenía un campo de longitud no válido.
 - **NX_SECURE_TLS_BAD_CIPHERSPEC** (0X10B) Un mensaje ChangeCipherSpec entrante era incorrecto.
 - **NX_SECURE_TLS_INVALID_SERVER_CERT** (0x10C) Un certificado TLS entrante no se puede usar para identificar el servidor DTLS remoto.
@@ -95,7 +95,7 @@ El bloque de control de sesión DTLS debe inicializarse antes de llamar a este s
 - **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0X10F) Un mensaje DTLS recibido tenía una versión DTLS desconocida en el encabezado.
 - **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0X110) Un mensaje DTLS recibido tenía una versión de DTLS conocida pero no admitida en su encabezado.
 - **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Error en una asignación interna de paquetes TLS.
-- **NX_SECURE_TLS_INVALID_CERTIFICATE** (0x112) El host remoto proporcionó un certificado no válido.
+- **NX_SECURE_TLS_INVALID_CERTIFICATE**: (0x112) El host remoto proporcionó un certificado no válido.
 - **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) El host remoto envió una alerta que indica un error y finaliza la sesión de TLS.
 - **NX_SECURE_TLS_MISSING_CRYPTO_ROUTINE** (0x13B) Una entrada en la tabla de conjunto de aplicaciones de cifrado tenía un puntero de función NULL.
 - **NX_PTR_ERROR** (0x07): La sesión, el socket o el puntero de dirección no son válidos.
@@ -230,13 +230,13 @@ El paquete asignado se ha inicializado correctamente para que se puedan agregar 
 
 - **session_ptr** Puntero a una instancia de sesión DTLS.
 - **pool_ptr** Puntero a un NX_PACKET_POOL desde el que se va a asignar el paquete.
-- **packet_ptr** Puntero de salida al paquete recién asignado.
-- **wait_option** Opción de suspensión para la asignación de paquetes.
+- **packet_ptr**: puntero de salida al paquete recién asignado.
+- **wait_option**: opción de suspensión para la asignación de paquetes.
 
 
 ### <a name="return-values"></a>Valores devueltos
 
-- **NX_SUCCESS** (0x00) Asignación correcta de paquetes.
+- **NX_SUCCESS**: (0x00) Asignación correcta del paquete.
 - **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Error al asignar el paquete subyacente.
 - **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) No se inicializó la sesión DTLS proporcionada.
 
@@ -287,11 +287,11 @@ Este servicio agrega una clave precompartida (PSK), su cadena de identidad y una
 
 - **session_ptr** Puntero a una instancia de sesión DTLS creada anteriormente.
 - **pre_shared_key** Valor de PSK real.
-- **psk_length** Longitud del valor de PSK.
-- **psk_identity** Cadena que se usa para identificar este valor de PSK.
-- **identity_length** La longitud de la identidad de PSK.
-- **hint** Cadena usada para indicar qué grupo de PSK elegir en un servidor TLS.
-- **hint_length** Longitud de la cadena de sugerencia.
+- **psk_length**: longitud del valor de la PSK.
+- **psk_identity**: cadena que se usa para identificar este valor de PSK.
+- **identity_length**: longitud de la identidad de la PSK.
+- **hint**: cadena usada para indicar qué grupo de PSK elegir en un servidor TLS.
+- **hint_length**: longitud de la cadena de sugerencia.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -1067,11 +1067,11 @@ La PSK que se agrega se replica en todas las sesiones DTLS asignadas al servidor
 
 - **server_ptr** Puntero a una instancia del servidor DTLS creada anteriormente.
 - **pre_shared_key** Valor de PSK real.
-- **psk_length** Longitud del valor de PSK.
-- **psk_identity** Cadena que se usa para identificar este valor de PSK.
-- **identity_length** La longitud de la identidad de PSK.
-- **hint** Cadena usada para indicar qué grupo de PSK elegir en un servidor TLS.
-- **hint_length** Longitud de la cadena de sugerencia.
+- **psk_length**: longitud del valor de la PSK.
+- **psk_identity**: cadena que se usa para identificar este valor de PSK.
+- **identity_length**: longitud de la identidad de la PSK.
+- **hint**: cadena usada para indicar qué grupo de PSK elegir en un servidor TLS.
+- **hint_length**: longitud de la cadena de sugerencia.
 
 ### <a name="return-values"></a>Valores devueltos
 
@@ -2504,7 +2504,7 @@ UINT nx_secure_dtls_session_create(
 
 ### <a name="description"></a>Descripción
 
-Este servicio crea y configura una sesión DTLS. Por lo general, esto se usará para crear sesiones de cliente DTLS, ya que las sesiones del servidor DTLS se administran con el mecanismo de servidor DTLS (consulte *nx_secure_dtls_server_create*), pero puede haber instancias en las que una aplicación necesita crear una única instancia de sesión de servidor DTLS independiente, en cuyo caso se puede usar este servicio<sup>7</sup>.
+Este servicio crea y configura una sesión DTLS. Por lo general, esto se usará para crear sesiones de cliente DTLS, ya que las sesiones del servidor DTLS se administran con el mecanismo de servidor DTLS (consulte *nx_secure_dtls_server_create*), pero puede haber instancias en las que una aplicación necesita crear una única instancia de sesión de servidor DTLS independiente, en cuyo caso se puede usar este servicio <sup>7</sup>.
 
 Los parámetros configuran la información y la asignación de memoria necesaria para crear una instancia de una sesión DTLS. El parámetro crypto_table es una tabla de TLS que contiene todas las rutinas criptográficas necesarias para el cifrado y la autenticación de TLS/DTLS. El parámetro metadata_buffer se usa para cálculos de cifrado (consulte nx_secure_tls_metadata_size_calculate en la guía de usuario de NetX Secure TLS) y el parámetro packet_reassembly_buffer se usa para volver a ensamblar los datagramas UDP en un registro DTLS completo para el descifrado.
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 68a24f0345a2c4d3e824270699b00a2daab32f8e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 66bffa2dbf52bc458bfaf124aa006a79e810100ac2e926c17444daf090519e66
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815057"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783792"
 ---
 # <a name="chapter-6---azure-rtos-filex-fault-tolerant-module"></a>Capítulo 6: Módulo de tolerancia a errores de Azure RTOS FileX
 

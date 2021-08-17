@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: be8b5dc4885951bee3dba38af6fe5e21b81aa767
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 4b7286726eb6bfc666ba7a4b9983847da442fe212a45f4b28e184f70cf46e2b4
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815258"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801247"
 ---
 # <a name="appendix-a---description-of-the-restore-state-feature"></a>Apéndice A: Descripción de la característica de restauración de estado
 

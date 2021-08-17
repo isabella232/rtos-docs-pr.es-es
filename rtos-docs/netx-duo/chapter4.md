@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 85617aadab7f484a4f4e467fd13f815f4d8b5609
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d28ca64a6a655bb3f1ad10c563450a0e65b645a1e1a2a464c4137f9a999815bc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104815417"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785029"
 ---
 # <a name="chapter-4---description-of-azure-rtos-netx-duo-services"></a>Capítulo 4: Descripción de los servicios de Azure RTOS NetX Duo
 
@@ -4427,7 +4427,7 @@ Este servicio asigna un paquete del grupo especificado y ajusta el puntero antep
 - **NX_SUCCESS**: (0x00) Asignación correcta del paquete.
 - **NX_NO_PACKET**: (0x01) No hay ningún paquete disponible.
 - **NX_WAIT_ABORTED**: (0x1A) Una llamada a tx_thread_wait_abort ha anulado la suspensión solicitada.
-- **NX_INVALID_PARAMETERS**: (0x4D) El tamaño de paquete no admite el protocolo.
+- **NX_INVALID_PARAMETERS** (0x4D) El tamaño de paquete no admite el protocolo.
 - **NX_OPTION_ERROR**: (0x0A) Tipo de paquete no válido.
 - **NX_PTR_ERROR**: (0x07) Grupo o puntero de devolución del paquete no válidos.
 - **NX_CALLER_ERROR**: (0x11) Opción de espera no válida desde algo que no es un subproceso.

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3533471edf17ec6e812027ef0af672a00773f968
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c84d9e4f0ff99475c92e96cfaaf48201c605e80547696c44820015cbf348393f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104814514"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784094"
 ---
 # <a name="chapter-2-installation-and-use-of-azure-rtos-netx-secure-dtls"></a>Capítulo 2: Instalación y uso de DTLS de Azure RTOS NetX Secure
 

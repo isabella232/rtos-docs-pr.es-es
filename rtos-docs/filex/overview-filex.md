@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 0a54f160c96fb3e90c2295ae72020c121d367a12
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: 399586eca18ef9345b94cc577bdacbf3c3a591bcd22b474b4e3d4ca4eefb4432
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171360"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782860"
 ---
 # <a name="overview-of-azure-rtos-filex"></a>Información general sobre Azure RTOS FileX
 
