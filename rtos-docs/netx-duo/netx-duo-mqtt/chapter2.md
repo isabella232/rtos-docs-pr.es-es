@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: faf9d84b8b2bce12a99a72198a396b121055a8eef975349f53833a180092e0a3
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: 4e27a6738456a90f3d708789f51b0471868c6f9e
+ms.sourcegitcommit: 4842f4cfe9e31b3ac59059f43e598eb70faebc8f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116797541"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122601317"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-mqtt-client"></a>Capítulo 2: Instalación y uso del cliente MQTT de NetX Duo para Azure RTOS
 
