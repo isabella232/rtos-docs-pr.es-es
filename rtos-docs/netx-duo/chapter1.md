@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c9b5e0ea82319bd369318cca753cf1db222ca29b0b4db3da150642ca007f1191
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: 8f45d32afcc2edbd5b851f1b7fb03e7fa2430ebc
+ms.sourcegitcommit: 20a136b06a25e31bbde718b4d12a03ddd8db9051
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116789872"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123552371"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo"></a>Capítulo 1: Introducción a Azure RTOS NetX Duo
 
@@ -35,7 +35,7 @@ NetX Duo proporciona una implementación de TCP/IP sin copia basada en paquetes.
 
 Con la <em>tecnología UDP Fast Path</em>, NetX Duo proporciona el procesamiento UDP más rápido posible. En el lado del envío, el procesamiento de UDP (incluida la suma de comprobación opcional de UDP) está incluido en el servicio <em>**nx_udp_socket_send**</em>. No se realiza ninguna llamada de función adicional hasta que el paquete está listo para enviarse mediante la rutina interna de envío IP de NetX Duo. Esta rutina también es plana (es decir, su anidamiento de llamadas de función es mínimo), por lo que el paquete se envía rápidamente al controlador de red de la aplicación. Cuando se recibe el paquete UDP, el procesamiento de recepción de paquetes de NetX Duo coloca el paquete directamente en la cola de recepción del socket UDP correspondiente o se lo pasa al primer subproceso suspendido en espera de un paquete recibido de la cola de recepción del socket UDP. No es necesario ningún otro modificador de contexto de ThreadX.
 
-### <a name="ansi-c-source-cod"></a>Código fuente ANSI C
+### <a name="ansi-c-source-code"></a>Código fuente ANSI C
 
 NetX Duo está escrito completamente en ANSI C y se puede portar de forma inmediata a prácticamente cualquier arquitectura de procesador que tenga un compilador ANSI C y compatibilidad con ThreadX. 
 
