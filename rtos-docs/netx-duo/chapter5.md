@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: a0d18929f33f15a342e8fb8b3d01d4ce934d6ec7dc287707f960adb36fb4f44b
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: 7d30e14ce1865e2fbce4a6e00cff787c859b32be
+ms.sourcegitcommit: 20a136b06a25e31bbde718b4d12a03ddd8db9051
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116788854"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123552422"
 ---
 # <a name="chapter-5---azure-rtos-netx-duo-network-drivers"></a>Capítulo 5: Controladores de red de Azure RTOS NetX Duo
 
@@ -118,7 +118,7 @@ Los siguientes miembros de NX_IP_DRIVER se usan para la solicitud de envío del 
 | -----------------------------------| --------------------------------------|
 | nx_ip_driver_command            | NX_LINK_PACKET_SEND                |
 | nx_ip_driver_ptr                | Puntero a la instancia de IP                |
-| nx_ip_driver_packet             | Puntero al paquete que se va a enviar.         |
+| nx_ip_driver_packet             | Puntero al paquete que se va a enviar         |
 | nx_ip_driver_interface          | Puntero a la instancia de interfaz.    |
 | nx_ip_driver_physical_address_msw | 32 bits de dirección física más significativos (solo si se requiere asignación física) |
 | nx_ip_driver_physical_address_lsw | Los 32 bits de dirección física más significativos (solo si se necesita asignación física) |
@@ -162,7 +162,7 @@ Esta solicitud es casi idéntica a la solicitud de paquetes ARP. La única difer
 | -------------------------------------- | -----------------------------------------|
 | nx_ip_driver_command                | NX_LINK_ARP_RESPONSE_SEND            |
 | nx_ip_driver_ptr                    | Puntero a la instancia de IP   |
-| nx_ip_driver_packet                 | Puntero al paquete que se va a enviar.          |
+| nx_ip_driver_packet                 | Puntero al paquete que se va a enviar          |
 | nx_ip_driver_physical_address_msw | 32 bits de dirección física más significativos |
 | nx_ip_driver_physical_address_lsw | 32 bits de dirección física menos significativos |
 | nx_ip_driver_interface              | Puntero a la instancia de interfaz |
@@ -503,3 +503,59 @@ La instancia de IP transmite los paquetes de red a través de uno de estos coman
 Al procesar estos comandos, el controlador de red debe anteponer el encabezado del marco Ethernet adecuado y, después, enviarlo al hardware subyacente para su transmisión. Durante el proceso de transmisión, el controlador de red tiene la propiedad exclusiva del área del búfer de paquetes. Por consiguiente, una vez que se transmiten los datos (o una vez que los datos se han copiado en el búfer de transferencia interno del controlador), el controlador de red es responsable de liberar el búfer de paquetes, para lo cual en primer lugar mueve el puntero antepuesto más allá del encabezado Ethernet al encabezado de IP (y ajusta la longitud del paquete en consecuencia) y, después, llama al servicio ***nx_packet_transmit_release()*** para liberar el paquete. Si no se libera el paquete después de la transmisión de datos, se producirán pérdidas de paquetes.
 
 El controlador de dispositivo de red también es responsable de administrar los paquetes de datos entrantes. En el ejemplo del controlador de RAM, la función ***_nx_ram_network_driver_receive()*** procesa el paquete recibido. Una vez que el dispositivo recibe un marco Ethernet, el controlador es responsable de almacenar los datos en la estructura NX_PACKET. Tenga en cuenta que NetX Duo supone que el encabezado IP comienza en una dirección alineada de 4 bytes. Dado que la longitud del encabezado de Ethernet es de 14 bytes, el controlador necesita almacenar el inicio del encabezado Ethernet en una dirección alineada de 2 bytes para garantizar que el encabezado IP se inicia en una dirección alineada de 4 bytes.
+
+## <a name="tcpip-offload-driver-guidance"></a>Guía del controlador de descarga de TCP/IP
+Para la característica de descarga de TCP/IP, se necesita una función de controlador para cada interfaz IP. Esta es una lista de tareas adicionales para el controlador de red.
+
+* Para el comando `NX_LINK_INITIALIZE`,
+  * Cree un subproceso del controlador para controlar los eventos de recepción de descarga de TCP/IP.
+* Para el comando `NX_LINK_INTERFACE_ATTACH`,
+  * Establezca la funcionalidad en la interfaz del controlador. Observe el código de ejemplo que se muestra a continuación.
+``` C
+driver_req_ptr -> nx_ip_driver_interface -> nx_interface_capability_flag = NX_INTERFACE_CAPABILITY_TCPIP_OFFLOAD;
+```
+* Para el comando `NX_LINK_ENABLE`,
+  * Inicie el subproceso del controlador.
+  * Establezca la función de devolución de llamada de TCP/IP en la interfaz del controlador. Observe el código de ejemplo que se muestra a continuación.
+``` C
+driver_req_ptr -> nx_ip_driver_interface -> nx_interface_tcpip_offload_handler = _nx_driver_tcpip_handler;
+```
+* Para el comando `NX_LINK_DISABLE`,
+  * Detenga el subproceso del controlador.
+  * Borre la función de devolución de llamada de TCP/IP de la interfaz del controlador.
+* Para el comando `NX_LINK_UNINITIALIZE`,
+  * Elimine el subproceso del controlador.
+
+### <a name="tcpip-offload-driver-thread"></a>Subproceso del controlador de descarga de TCP/IP
+El propósito del subproceso del controlador es recibir los paquetes TCP o UDP entrantes. En el subproceso del controlador, normalmente hay un bucle while para comprobar si hay paquetes TCP o UDP entrantes disponibles o si se ha establecido una conexión. Cuando haya datos disponibles, pase el paquete TCP o UDP a NetX Duo. El espacio entre `nx_packet_data_start` y `nx_packet_prepend_ptr` debe ser suficiente para insertar el encabezado TCP/IP. Para el socket TCP, asigne el paquete con el tipo `NX_TCP_PACKET`. Para el socket UDP, asigne el paquete con el tipo `NX_UDP_PACKET`. Rellene los datos entrantes desde `nx_packet_append_ptr` hasta `nx_packet_data_end`. Los datos de `nx_packet_append_ptr` deben contener solo carga TCP o UDP. El encabezado TCP/IP **NO SE DEBE** rellenar en el paquete. Ajuste la longitud del paquete, establezca la interfaz de recepción y, a continuación, llame a `_nx_tcp_socket_driver_packet_receive` para un paquete TCP y a `_nx_udp_socket_driver_packet_receive` para un paquete UDP. Si se cierra una conexión TCP, llame a `_nx_tcp_socket_driver_packet_receive` con el paquete establecido en NULL. Cuando se establece la conexión, llame a `_nx_tcp_socket_driver_establish`.
+
+### <a name="tcpip-offload-driver-handler"></a>Manipulador del controlador de descarga de TCP/IP
+Los siguientes comandos del controlador son necesarios para las interfaces de red con los servicios de TCP/IP. 
+* Para la operación `NX_TCPIP_OFFLOAD_TCP_CLIENT_SOCKET_CONNECT`,
+  * Asigne el recurso si es necesario.
+  * Realice el enlace al puerto TCP local y conéctese al servidor.
+  * Devuelva un valor correcto cuando se establece la conexión. Cuando la conexión esté en curso, devuelva `NX_IN_PROGRESS`. En caso contrario, devuelva un error.
+* Para la operación `NX_TCPIP_OFFLOAD_TCP_SERVER_SOCKET_LISTEN`,
+  * Compruebe primero si hay escuchas duplicadas. Se puede llamar varias veces en el mismo puerto. La primera vez desde `nx_tcp_server_socket_listen` y después desde `nx_tcp_server_socket_relisten`.
+  * Asigne el recurso si es necesario.
+  * Escuche el puerto TCP local.
+* Para la operación `NX_TCPIP_OFFLOAD_TCP_SERVER_SOCKET_ACCEPT`,
+  * Asigne el recurso si es necesario.
+  * Acepte la conexión.
+* Para la operación `NX_TCPIP_OFFLOAD_TCP_SERVER_SOCKET_UNLISTEN`,
+  * Busque el socket TCP que escucha en el puerto local.
+  * Cierre el socket de escucha si se encuentra.
+* Para la operación `NX_TCPIP_OFFLOAD_TCP_SOCKET_DISCONNECT`,
+  * Cierre la conexión de descarga de TCP/IP.
+  * Cancele el enlace del puerto TCP local.
+  * Limpie los recursos creados durante la conexión.
+* Para la operación `NX_TCPIP_OFFLOAD_TCP_SOCKET_SEND`,
+  * Envíe los datos mediante la descarga de TCP/IP. Prepárese para controlar la longitud de los paquetes mayores que el valor de MSS o la situación de la cadena de paquetes.
+* Para la operación `NX_TCPIP_OFFLOAD_UDP_SOCKET_BIND`,
+  * Asigne el recurso si es necesario.
+  * Realice el enlace al puerto UDP local.
+* Para la operación `NX_TCPIP_OFFLOAD_UDP_SOCKET_UNBIND`,
+  * Cancele el enlace al puerto UDP local.
+  * Limpie los recursos creados durante el enlace.
+* Para la operación `NX_TCPIP_OFFLOAD_UDP_SOCKET_SEND`,
+  * Envíe los datos mediante la descarga de TCP/IP. Prepárese para controlar la longitud de los paquetes mayores que el valor de MTU o la situación de la cadena de paquetes.

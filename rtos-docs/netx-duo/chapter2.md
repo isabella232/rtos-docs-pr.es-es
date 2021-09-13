@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 32a9efaac3c85d415316fba2e9536cc40939f1f6debcbe3e2fa588de613a694d
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: 08697d7155c79a7850f834af2e7e88f461d48188
+ms.sourcegitcommit: 20a136b06a25e31bbde718b4d12a03ddd8db9051
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116788837"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123552354"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo"></a>Capítulo 2: Instalación y uso de Azure RTOS NetX Duo
 
@@ -182,6 +182,7 @@ y la aplicación no utiliza la característica de fragmentación de IP ni la car
 |NX_IP_RAW_MAX_QUEUE_DEPTH | Símbolo que controla el número de paquetes IP sin procesar que se pueden poner en la cola de recepción de paquetes sin procesar. De manera predeterminada, el valor se establece en 20.| 
 |NX_IP_ROUTING_TABLE_SIZE | Si se define, establece el número máximo de entradas que puede haber en la tabla de enrutamiento estático IPv4, que es una lista de una interfaz de salida y las direcciones de próximo salto de una dirección de destino determinada. El valor predeterminado es 8 y se define en ***nx_api.h.** _. Este símbolo solo se usa si se define _ *_NX_ENABLE_IP_STATIC_ROUTING_**.|
 |NX_IPV4_MAX_REASSEMBLY_TIME | Símbolo que controla el tiempo máximo permitido para volver a ensamblar un fragmento IPv4. Tenga en cuenta que el valor definido en NX_IP_MAX_REASSEMBLY_TIME sobrescribe este valor.|
+|NX_ENABLE_TCPIP_OFFLOAD | Símbolo que habilita la característica de descarga de TCP/IP. Tenga en cuenta que se debe definir NX_ENABLE_INTERFACE_CAPABILITY para habilitar esta característica.|
 
 ### <a name="packet-configuration-options"></a>Opciones de configuración de paquetes
 

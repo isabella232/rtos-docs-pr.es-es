@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 32af483db1f97b45bfe3d334b8c79d984dedc8470a37ce1d4164331549b6954c
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: c96e6e422ea570085f5d7c6aeaaaa697a2393b5e
+ms.sourcegitcommit: 20a136b06a25e31bbde718b4d12a03ddd8db9051
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116789055"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123552388"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-netx-duo"></a>Capítulo 3: Componentes funcionales de Azure RTOS NetX Duo
 
@@ -1388,3 +1388,84 @@ Todas estas estadísticas e informes de errores están disponibles para la aplic
 
 ### <a name="tcp-socket-control-block-nx_tcp_socket"></a>Bloque de control de socket TCP NX_TCP_SOCKET      
 Las características de cada socket TCP se encuentran en el bloque de control *NX_TCP_SOCKET* asociado, que contiene información útil, como el vínculo a la estructura de datos IP, la interfaz de la conexión de red, el puerto enlazado y la cola de paquetes de recepción. Esta estructura se define en el archivo ***tx_api.h***.
+
+## <a name="tcpip-offload"></a>Descarga de TCP/IP
+Esta característica permite a NetX Duo admitir tarjetas de interfaz de red que ofrecen el servicio TCP/IP en el hardware. Algunos módulos Wi-Fi ofrecen procesamiento TCP/IP en el módulo y las aplicaciones del MCU envían y reciben paquetes mediante las API para acceder a su pila TCP/IP. Con esta característica habilitada, los desarrolladores pueden ejecutar aplicaciones nativas de NetX Duo directamente.
+
+Para habilitar la característica de descarga de TCP/IP, NetX Duo se debe compilar con `NX_ENABLE_TCPIP_OFFLOAD` y `NX_ENABLE_INTERFACE_CAPABILITY` definidos.
+
+### <a name="tcpip-offload-handler"></a>Manipulador de descarga de TCP/IP
+NetX Duo se comunica con el controlador de red mediante una función de devolución de llamada para controlar las operaciones de los sockets TCP y UDP. La función de devolución de llamada se define en `NX_INTERFACE_STRUCT`. El controlador de red debe establecer la función de devolución de llamada de TCP/IP durante el comando `NX_LINK_ENABLE` del controlador. El prototipo de función de devolución de llamada de TCP/IP es el siguiente.
+
+``` C
+UINT (*nx_interface_tcpip_offload_handler)(struct NX_IP_STRUCT *ip_ptr,
+                                           struct NX_INTERFACE_STRUCT *interface_ptr,
+                                           VOID *socket_ptr, UINT operation, NX_PACKET *packet_ptr,
+                                           NXD_ADDRESS *local_ip, NXD_ADDRESS *remote_ip,
+                                           UINT local_port, UINT *remote_port, UINT wait_option);
+```
+Descripción de los parámetros.
+* `ip_ptr`: puntero a la instancia de IP
+* `interface_ptr`: puntero a la interfaz
+* `socket_ptr`: puntero a `NX_TCP_SOCKET` o `NX_UDP_SOCKET`, en función del valor de `operation`
+* `operation`: operación de la llamada de función actual. Los valores se definen como se indica a continuación.
+``` C
+#define NX_TCPIP_OFFLOAD_TCP_CLIENT_SOCKET_CONNECT  0
+#define NX_TCPIP_OFFLOAD_TCP_SERVER_SOCKET_LISTEN   1
+#define NX_TCPIP_OFFLOAD_TCP_SERVER_SOCKET_ACCEPT   2
+#define NX_TCPIP_OFFLOAD_TCP_SERVER_SOCKET_UNLISTEN 3
+#define NX_TCPIP_OFFLOAD_TCP_SOCKET_DISCONNECT      4
+#define NX_TCPIP_OFFLOAD_TCP_SOCKET_SEND            5
+#define NX_TCPIP_OFFLOAD_UDP_SOCKET_BIND            6
+#define NX_TCPIP_OFFLOAD_UDP_SOCKET_UNBIND          7
+#define NX_TCPIP_OFFLOAD_UDP_SOCKET_SEND            8
+```
+* `packet_ptr`: puntero al paquete. El valor se establece cuando `operation` es `TCP_SOCKET_SEND` o `UDP_SOCKET_SEND`.
+* `local_ip`: puntero a la dirección IP local. El valor se establece cuando `operation` es `UDP_SOCKET_SEND`.
+* `remote_ip`: puntero a la dirección IP remota. El valor se establece cuando `operation` es `TCP_CLIENT_SOCKET_CONNECT` o `UDP_SOCKET_SEND`. Cuando la operación es `TCP_SERVER_SOCKET_ACCEPT`, este valor se debe devolver mediante la función de devolución de llamada.
+* `local_port`: puerto local. El valor se establece cuando `operation` es `TCP_CLIENT_SOCKET_CONNECT`, `TCP_SERVER_SOCKET_LISTEN`, `TCP_SERVER_SOCKET_ACCEPT`, `TCP_SERVER_SOCKET_UNLISTEN` o UDP.
+* `remote_port`: puerto remoto. El valor se establece cuando `operation` es `TCP_CLIENT_SOCKET_CONNECT` o `UDP_SOCKET_SEND`. Cuando la operación es `TCP_SERVER_SOCKET_ACCEPT`, este valor se debe devolver mediante la función de devolución de llamada.
+* `wait_option`: opción de espera expresada en tics. El valor se establece para todas las operaciones.
+
+### <a name="tcpip-offload-context"></a>Contexto de descarga de TCP/IP
+Se agrega un puntero a la estructura `NX_TCP_SOCKET` que usará el controlador de descarga de TCP/IP.
+```
+typedef struct NX_TCP_SOCKET_STRUCT
+{
+    // ...
+
+    /* This pointer is designed to be accessed by TCP/IP offload directly.  */
+    VOID *nx_tcp_socket_tcpip_offload_context;
+} NX_TCP_SOCKET;
+```
+
+Se agrega un puntero a la estructura `NX_UDP_SOCKET` que usará el controlador de descarga de TCP/IP.
+```
+typedef struct NX_UDP_SOCKET_STRUCT
+{
+    // ...
+
+    /* This pointer is designed to be accessed by TCP/IP offload directly.  */
+    VOID *nx_udp_socket_tcpip_offload_context;
+} NX_UDP_SOCKET;
+```
+
+### <a name="apis-for-tcpip-offload-network-driver"></a>API del controlador de red de descarga de TCP/IP
+``` C
+/* Invoked when TCP packet is receive or connection error.  */
+VOID _nx_tcp_socket_driver_packet_receive(NX_TCP_SOCKET *socket_ptr, NX_PACKET *packet_ptr);
+
+/* Invoked when TCP connection is establish.  */
+UINT _nx_tcp_socket_driver_establish(NX_TCP_SOCKET *socket_ptr, NX_INTERFACE *interface_ptr, UINT remote_port);
+
+/* Invoked when UDP packet is receive.  */
+VOID _nx_udp_socket_driver_packet_receive(NX_UDP_SOCKET *socket_ptr, NX_PACKET *packet_ptr,
+                                          NXD_ADDRESS *local_ip, NXD_ADDRESS *remote_ip, UINT remote_port);
+```
+### <a name="tcpip-offload-driver"></a>Controlador de descarga de TCP/IP
+Se necesita una función del controlador para cada interfaz IP. Consulte el [Capítulo 5](chapter5.md#tcpip-offload-driver-guidance) para más detalles sobre cómo desarrollar funciones del controlador de NetX Duo.
+
+### <a name="tcpip-offload-known-limitations"></a>Limitaciones conocidas de la descarga de TCP/IP
+- Solo se admiten sockets TCP y UDP.
+- Las operaciones de DHCP normalmente se realizan mediante la pila TCP/IP de la capa inferior, no mediante NetX Duo.
+- Otras limitaciones de la pila TCP/IP de la capa inferior
