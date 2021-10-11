@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: dabc1603423d8422ed6f8f540f8a06e80d14ec0098c886ca8731ac8ce981f15d
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: 42ca29b0c3c4e45330b02e0b9eb93de422c8c235
+ms.sourcegitcommit: 74d1e48424370d565617f3a1e868150ab0bdbd88
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116783414"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129319230"
 ---
 # <a name="chapter-4---description-of-azure-rtos-threadx-services"></a>Capítulo 4: Descripción de los servicios de Azure RTOS ThreadX
 
@@ -266,6 +266,10 @@ Este servicio recupera información sobre el grupo de bloques de memoria especif
 
 Inicialización, subprocesos, temporizadores e ISR
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -341,6 +345,10 @@ Este servicio recupera información sobre el rendimiento del grupo de bloques de
 
 Inicialización, subprocesos, temporizadores e ISR
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -409,6 +417,10 @@ Este servicio recupera información sobre el rendimiento de todos los grupos de 
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -500,12 +512,15 @@ Libera un bloque de memoria de tamaño fijo.
 
 ```c
 UINT tx_block_release(VOID *block_ptr);
-``````
+```
 
 ### <a name="description"></a>Descripción
 
-Este servicio libera un bloque previamente asignado a su grupo de memoria asociado. Si hay uno o más subprocesos suspendidos en espera de bloques de memoria de este grupo, el primer subproceso suspendido recibe este bloque de memoria y se reanuda.
+Este servicio libera un bloque previamente asignado a su grupo de memoria asociado. Si hay uno o más subprocesos suspendidos en espera de bloques de memoria de este grupo, el primer subproceso suspendido se asigna a este bloque de memoria y se reanuda.
 
+>[!NOTE]
+> *Para evitar pérdidas de datos, es posible que la aplicación quiera borrar el bloque de memoria antes de liberarlo.*
+ 
 >[!IMPORTANT]
 >*La aplicación debe impedir el uso de un área del bloque de memoria tras haberse liberado al grupo.*
 
@@ -882,6 +897,10 @@ Este servicio recupera información sobre el rendimiento del grupo de bytes de m
 
 Inicialización, subprocesos, temporizadores e ISR
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -959,6 +978,10 @@ Este servicio recupera información sobre el rendimiento de todos los grupos de 
 ### <a name="allowed-from"></a>Permitido desde
 
  Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -1061,6 +1084,9 @@ UINT tx_byte_release(VOID *memory_ptr);
 ### <a name="description"></a>Descripción
 
 Este servicio libera un área de memoria previamente asignada a su grupo asociado. Si hay uno o más subprocesos suspendidos en espera de memoria de este grupo, se asigna memoria a cada subproceso suspendido y estos se reanudan hasta que la memoria se agote o no haya más subprocesos suspendidos. Este proceso de asignación de memoria a los subprocesos suspendidos siempre comienza con el subproceso que se suspendió primero.
+
+>[!NOTE]
+> *Para evitar pérdidas de datos, es posible que la aplicación quiera borrar el área de memoria antes de liberarlo.*
 
 > [!IMPORTANT]
 > *La aplicación debe impedir el uso del área de memoria una vez que se libera.*
@@ -1301,7 +1327,7 @@ status = tx_event_flags_get(&my_event_flags_group, 0x111,
 actual events obtained. */
 ```
 
-**Vea también**
+### <a name="see-also"></a>Consulte también
 
 - tx_event_flags_create
 - tx_event_flags_delete
@@ -1311,11 +1337,11 @@ actual events obtained. */
 - tx_event_flags_set
 - tx_event_flags_set_notify
 
-### <a name="tx_event_flags_info_get"></a>tx_event_flags_info_get
+## <a name="tx_event_flags_info_get"></a>tx_event_flags_info_get
 
-Recuperar la información acerca de un grupo de marcas de eventos
+Recupera información acerca de un grupo de marcas de evento.
 
-**Prototipo**
+### <a name="prototype"></a>Prototipo
 
 ```c
 UINT tx_event_flags_info_get(
@@ -1326,11 +1352,11 @@ UINT tx_event_flags_info_get(
     TX_EVENT_FLAGS_GROUP **next_group);
 ```
 
-**Descripción**
+### <a name="description"></a>Descripción
 
-Este servicio recupera información sobre el grupo de marcas de eventos especificado.
+Este servicio recupera información sobre el grupo de marcas de evento especificado.
 
-**Parámetros**
+### <a name="parameters"></a>Parámetros
 
 - **group_ptr**: puntero a un bloque de control del grupo de marcas de eventos.
 - **name**: puntero al destino del puntero al nombre del grupo de marcas de eventos.
@@ -1375,7 +1401,7 @@ status = tx_event_flags_info_get(&my_event_group, &name,
 /* If status equals TX_SUCCESS, the information requested is
 valid. */
 ```
-**Vea también**
+### <a name="see-also"></a>Consulte también
 
 - tx_event_flags_create
 - tx_event_flags_delete
@@ -1426,6 +1452,10 @@ Este servicio recupera información sobre el rendimiento del grupo de marcas de 
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -1492,6 +1522,14 @@ Este servicio recupera información sobre el rendimiento de todos los grupos de 
 - **TX_SUCCESS** (0x00): rendimiento del sistema de marcas de eventos obtenido correctamente.
 - **TX_FEATURE_NOT_ENABLED** (0XFF): el sistema no se compiló con la información de rendimiento habilitada.
 
+### <a name="allowed-from"></a>Permitido desde
+
+Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -1551,6 +1589,10 @@ Este servicio establece o borra las marcas de evento de un grupo de marcas de ev
 - **TX_GROUP_ERROR** (0x06): puntero al grupo de marcas de eventos no válido.
 - **TX_OPTION_ERROR** (0x08): la opción Set especificada no es válida.
 
+### <a name="allowed-from"></a>Permitido desde
+
+Inicialización, subprocesos, temporizadores e ISR
+
 ### <a name="preemption-possible"></a>Adelantamiento posible
 
 Sí
@@ -1605,6 +1647,14 @@ Este servicio registra una función de devolución de llamada de notificación a
 - **TX_SUCCESS** (0x00): notificación de establecimiento de marcas de eventos registrada correctamente.
 - **TX_GROUP_ERROR** (0x06): puntero del grupo de marcas de eventos no válido.
 - **TX_FEATURE_NOT_ENABLED** (0XFF): el sistema se compiló con las funcionalidades de notificación deshabilitadas.
+
+### <a name="allowed-from"></a>Permitido desde
+
+Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -1924,7 +1974,7 @@ Inicialización, subprocesos, temporizadores e ISR
 
 No
 
-**Ejemplo**
+### <a name="example"></a>Ejemplo
 
 ```c
 TX_MUTEX my_mutex;
@@ -2004,6 +2054,10 @@ Este servicio recupera información sobre el rendimiento de la exclusión mutua 
 
 Inicialización, subprocesos, temporizadores e ISR
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -2077,6 +2131,10 @@ Este servicio recupera información sobre el rendimiento de todas las exclusione
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -2628,6 +2686,10 @@ Este servicio recupera información sobre el rendimiento de la cola especificada
 
 Inicialización, subprocesos, temporizadores e ISR
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -2697,7 +2759,7 @@ Este servicio recupera información sobre el rendimiento de todas las colas del 
 > [!NOTE]
 > *La especificación de un valor TX_NULL para cualquier parámetro indica que este no es necesario.*
 
-**Valores devueltos**
+### <a name="return-values"></a>Valores devueltos
 
 - **TX_SUCCESS** (0x00): rendimiento del sistema de la cola obtenido correctamente.
 - **TX_FEATURE_NOT_ENABLED** (0XFF): el sistema no se compiló con la información de rendimiento habilitada.
@@ -2705,6 +2767,10 @@ Este servicio recupera información sobre el rendimiento de todas las colas del 
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -2938,7 +3004,7 @@ status = tx_queue_send(&my_queue, my_message, TX_NO_WAIT);
 queue. */
 ```
 
-**Vea también**
+### <a name="see-also"></a>Consulte también
 
 - tx_queue_create
 - tx_queue_delete
@@ -2984,6 +3050,10 @@ Este servicio registra una función de devolución de llamada de notificación a
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -3045,6 +3115,10 @@ Este servicio coloca una instancia en el semáforo de recuento especificado, lo 
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+Sí
 
 ### <a name="example"></a>Ejemplo
 
@@ -3185,7 +3259,7 @@ status = tx_semaphore_delete(&my_semaphore);
 deleted. */
 ```
 
-**Vea también**
+### <a name="see-also"></a>Consulte también
 
 - tx_semaphore_ceiling_put
 - tx_semaphore_create
@@ -3367,7 +3441,7 @@ Este servicio recupera información sobre el rendimiento del semáforo especific
 > [!IMPORTANT]
 > *La biblioteca y la aplicación ThreadX se deben compilar con el servicio* ***TX_SEMAPHORE_ENABLE_PERFORMANCE_INFO** _ _definido para que devuelva información sobre el rendimiento.*
 
-**Parámetros**
+### <a name="parameters"></a>Parámetros
 
 -  **semaphore_ptr**: puntero a un semáforo creado previamente.
 -  **puts**: puntero al destino del número de solicitudes Put realizadas en este semáforo.
@@ -3387,6 +3461,10 @@ Este servicio recupera información sobre el rendimiento del semáforo especific
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -3457,6 +3535,10 @@ Este servicio recupera información sobre el rendimiento de todos los semáforos
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -3636,6 +3718,10 @@ Este servicio registra una función de devolución de llamada de notificación a
 
 Inicialización, subprocesos, temporizadores e ISR
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -3689,7 +3775,7 @@ UINT tx_thread_create(
 
 Este servicio crea un subproceso de aplicación que inicia la ejecución en la función de entrada de tarea especificada. Entre los atributos especificados por los parámetros de entrada se encuentran la pila, la prioridad, el umbral de adelantamiento y la porción de tiempo. Además, también se especifica el estado de ejecución inicial del subproceso.
 
-**Parámetros**
+### <a name="parameters"></a>Parámetros
 
 - **thread_ptr**: puntero a un bloque de control del subproceso.
 - **name_ptr**: puntero al nombre del subproceso.
@@ -3890,6 +3976,10 @@ Este servicio registra una función de devolución de llamada de notificación a
 
 Inicialización, subprocesos, temporizadores e ISR
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -3952,7 +4042,7 @@ Este servicio devuelve un puntero al subproceso que se está ejecutando actualme
 
 Ninguno
 
-### <a name="retuen-values"></a>Valores devueltos
+### <a name="return-values"></a>Valores devueltos
 
 - **thread pointer**: puntero al subproceso que se está ejecutando actualmente. Si no se está ejecutando ningún subproceso, el valor devuelto es **TX_NULL**.
 
@@ -3965,9 +4055,6 @@ Subprocesos e ISR
 No
 
 ### <a name="example"></a>Ejemplo
-
-TX_THREAD *my_thread_ptr;
-
 ```c
 TX_THREAD *my_thread_ptr;
 
@@ -4043,10 +4130,9 @@ Este servicio recupera información sobre el subproceso especificado.
 - **run_count**: puntero al destino del recuento de ejecuciones del subproceso.
 - **priority**: puntero al destino de la prioridad del subproceso.
 - **preemption_threshold**: puntero al destino del umbral de adelantamiento del subproceso.
-**time_slice**: puntero al destino de la porción de tiempo del subproceso.
-**next_thread**: puntero al destino del siguiente puntero de subproceso creado.
-
-**suspended_thread**: puntero al destino del puntero al siguiente subproceso en la lista de suspensiones.
+- **time_slice**: puntero al destino de la porción de tiempo del subproceso.
+- **next_thread**: puntero al destino del siguiente puntero de subproceso creado.
+- **suspended_thread**: puntero al destino del puntero al siguiente subproceso en la lista de suspensiones.
 
 > [!NOTE]
 > *La especificación de un valor TX_NULL para cualquier parámetro indica que este no es necesario.*
@@ -4164,6 +4250,10 @@ Este servicio recupera información sobre el rendimiento del subproceso especifi
 
 Inicialización, subprocesos, temporizadores e ISR
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -4267,6 +4357,10 @@ Este servicio recupera información sobre el rendimiento de todos los subproceso
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -4509,7 +4603,7 @@ Subprocesos
 
 Sí
 
-### <a name="examples"></a>Ejemplos
+### <a name="example"></a>Ejemplo
 
 ```c
 ULONG run_counter_1 = 0;
@@ -4601,10 +4695,11 @@ Este servicio restablece el subproceso especificado para que se ejecute en el pu
 
 Subprocesos
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+Sí
+
 ### <a name="example"></a>Ejemplo
-
-TX_THREAD my_thread;
-
 ```c
 TX_THREAD my_thread;
 
@@ -4796,6 +4891,10 @@ Este servicio registra una función de devolución de llamada de notificación p
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
@@ -5136,7 +5235,7 @@ Este servicio devuelve el contenido del reloj interno del sistema. Cada tic del 
 > [!NOTE]
 > *El tiempo real que representa cada tic del temporizador es específico de la aplicación.*
 
-**Parámetros**
+### <a name="parameters"></a>Parámetros
 
 Ninguno
 
@@ -5235,7 +5334,7 @@ Este servicio activa el temporizador de aplicación especificado. Las rutinas de
 
 - **timer_ptr**: puntero a un temporizador de aplicación creado previamente.
 
-**Valores devueltos**
+### <a name="return-values"></a>Valores devueltos
 
 - **TX_SUCCESS** (0x00): temporizador de aplicación activado correctamente.
 - **TX_TIMER_ERROR** (0x15): puntero de temporizador de aplicación no válido.
@@ -5662,6 +5761,10 @@ Este servicio recupera información sobre el rendimiento del temporizador de apl
 
 Inicialización, subprocesos, temporizadores e ISR
 
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
+
 ### <a name="example"></a>Ejemplo
 
 ```c
@@ -5714,7 +5817,7 @@ Este servicio recupera información sobre el rendimiento de todos los temporizad
 > [!IMPORTANT]
 > *La biblioteca y la aplicación ThreadX se deben compilar con el servicio* **TX_TIMER_ENABLE_PERFORMANCE_INFO**  *definido para que devuelva información sobre el rendimiento.*
 
-**Parámetros**
+### <a name="parameters"></a>Parámetros
 
 - **activates**: puntero al destino del número total de solicitudes de activación realizadas en todos los temporizadores.
 - **reactivates**: puntero al destino del número total de reactivaciones automáticas realizadas en todos los temporizadores periódicos.
@@ -5733,6 +5836,10 @@ Este servicio recupera información sobre el rendimiento de todos los temporizad
 ### <a name="allowed-from"></a>Permitido desde
 
 Inicialización, subprocesos, temporizadores e ISR
+
+### <a name="preemption-possible"></a>Adelantamiento posible
+
+No
 
 ### <a name="example"></a>Ejemplo
 
